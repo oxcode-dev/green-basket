@@ -3,8 +3,8 @@ import { Logo } from './Logo'
 
 export const Footer = () => {
   return (
-        <div>
-            <footer className="footer sm:footer-horizontal bg-neutral text-neutral-content p-10">
+        <div className="bg-neutral text-neutral-content">
+            <footer className="footer sm:footer-horizontal py-10 mx-auto container w-full">
                 <aside>
                     <Logo />
                     <p>

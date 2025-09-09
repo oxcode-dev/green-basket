@@ -5,8 +5,8 @@ import { ArrowRightEndOnRectangleIcon, MagnifyingGlassIcon, ShoppingCartIcon, Us
 export const Header = () => {
     return (
         <div className=''>
-            <div className="py-2 w-full">
-                <div className="w-full container mx-auto flex justify-between items-center text-sm">
+            <div className="py-2 w-full border-b border-gray-300">
+                <div className="w-full container mx-auto flex justify-between items-center text-sm text-gray-500">
                     <div>
                         <p className="text-sm">
                             <span>Need help? Call us: </span>
@@ -15,7 +15,7 @@ export const Header = () => {
                     </div>
                     <div>
                         <p>
-                            1000% Secure delivery without contacting the courier.
+                            100% Secure delivery without contacting the courier.
                         </p>
                     </div>
                     <div> 
@@ -46,16 +46,16 @@ export const Header = () => {
                         <nav>
                             <ul className="flex">
                                 <li>
-                                    <a className="border-0 px-4 py-6 text-md hover:text-green-600">Home</a>
+                                    <a className="border-0 px-4 py-6 text-xs font-semibold hover:text-green-600">Home</a>
                                 </li>
                                 <li>
-                                    <a className="border-0 px-4 py-6 text-md hover:text-green-600">Shop</a>
+                                    <a className="border-0 px-4 py-6 text-xs font-semibold hover:text-green-600">Shop</a>
                                 </li>
                                 <li>
-                                    <a className="border-0 px-4 py-6 text-md hover:text-green-600">About</a>
+                                    <a className="border-0 px-4 py-6 text-xs font-semibold hover:text-green-600">About</a>
                                 </li>
                                 <li>
-                                    <a className="border-0 px-4 py-6 text-md hover:text-green-600">Contact</a>
+                                    <a className="border-0 px-4 py-6 text-xs font-semibold hover:text-green-600">Contact</a>
                                 </li>
                             </ul>
                         </nav>
