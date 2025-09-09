@@ -3,7 +3,7 @@ import React from 'react'
 
 export const Logo = () => {
     return (
-        <div className="inline-flex space-x-2 items-center text-green-500">
+        <div className="inline-flex space-x-2 items-center text-green-600">
             <div>
                 <ShoppingCartIcon className="size-8" />
             </div>
