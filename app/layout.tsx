@@ -1,6 +1,6 @@
 'use client'
 
-import { Geist, Geist_Mono, Quicksand } from "next/font/google";
+import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import { usePathname } from "next/navigation";
 import { useEffect } from "react";
@@ -13,11 +13,6 @@ const geistSans = Geist({
 const geistMono = Geist_Mono({
   variable: "--font-geist-mono",
   subsets: ["latin"],
-});
-
-const quicksand = Quicksand({
-  subsets: ["latin"],
-  variable: "--font-quicksand",
 });
 
 const ScrollToTop = ({ 

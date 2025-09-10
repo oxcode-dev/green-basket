@@ -1,8 +1,14 @@
 import { Footer } from '@/components/Footer'
 import { Header } from '@/components/Header'
+import { Quicksand } from 'next/font/google'
 import Image from 'next/image'
 import Link from 'next/link'
 import React from 'react'
+
+const quicksand = Quicksand({
+  subsets: ["latin"],
+  variable: "--font-quicksand",
+});
 
 export const page = () => {
   return (
@@ -12,17 +18,17 @@ export const page = () => {
       <div className="container w-full mx-auto py-8">
         <div className="w-full flex relative h-full">
 
-            <div className="relative z-50 py-26 space-y-8 px-20 flex flex-col justify-center">
+            <div className="relative z-50 py-22 space-y-6 px-24 flex flex-col justify-center w-full md:max-w-xl">
 
-              <p className="text-4xl font-bold">
+              <p className={`text-4xl font-bold capitalize ${quicksand.className}`}>
                 We serve fresh & organic foods
               </p>
-              <p className="text-xl font-semibold">
+              <p className={`${quicksand.className} text-2xl font-semibold capitalize`}>
                 Fresh Items with big discount
               </p>
 
-              <Link href="#" className="btn btn-info w-24">
-                Shop
+              <Link href="#" className="btn btn-success rounded w-32 text-white">
+                Shop Now
               </Link>
 
             </div>
@@ -41,6 +47,10 @@ export const page = () => {
 
         </div>
         
+      </div>
+
+      <div>
+
       </div>
 
       <Footer />
