@@ -64,9 +64,9 @@ export const page = () => {
                     <div className="flex flex-col justify-center items-center">
                       <img 
                         src="https://preview.colorlib.com/theme/vegefoods/images/product-2.jpg"
-                        width={100}
+                        width={200}
                         alt='Product Image'
-                        height={100}
+                        height={200}
                       />
                     </div>
                     <div className="flex flex-col justify-center items-center">
