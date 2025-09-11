@@ -1,5 +1,6 @@
 import { Footer } from '@/components/Footer'
 import { Header } from '@/components/Header'
+import { BenefitSection } from '@/sections/BenefitSection'
 import { Quicksand } from 'next/font/google'
 import Image from 'next/image'
 import Link from 'next/link'
@@ -50,6 +51,8 @@ export const page = () => {
         </div>
         
       </div>
+
+      <BenefitSection />
 
       <Footer />
     </div>

@@ -1,7 +1,13 @@
 import { CakeIcon, ChatBubbleOvalLeftEllipsisIcon, CheckBadgeIcon, TruckIcon } from '@heroicons/react/20/solid'
 import React from 'react'
 
-const benefitItems = [
+type BenefitProp = {
+    title: string,
+    description: string,
+    icon: React.JSX.Element,
+}
+
+const benefitItems :BenefitProp[] = [
     {
       icon: <TruckIcon className="size-8" />,
       title: 'Free Shipping',
@@ -34,10 +40,10 @@ export const BenefitSection = () => {
                                 <span className="size-5">{item.icon}</span>
                             </p>
                             <p className="text-sm font-semibold uppercase">
-                                Free shipping
+                                {item.title}
                             </p>
                             <p className="text-xs font-medium text-gray-500 uppercase">
-                                on order over $300
+                                {item.description}
                             </p>
                         </div>
                     </div>
