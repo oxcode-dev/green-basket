@@ -54,6 +54,11 @@ export const page = () => {
 
       <BenefitSection />
 
+      <div className="container w-full mx-auto py-8">
+        
+      </div>
+
+
       <Footer />
     </div>
   )
