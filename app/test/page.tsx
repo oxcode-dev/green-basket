@@ -57,7 +57,7 @@ export const page = () => {
       <div className="container w-full mx-auto py-8">
         <div className="flex w-full flex-wrap md:flex-nowrap">
           <div className="w-full md:w-4/5 md:pr-4">
-            <div className="grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+            <div className="grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 md:gap-6 sm:gap-4">
             { Array.from({ length: 20 }).map((item, key) => (
                 <div key={key}>
                   <div className="flex flex-col justify-center rounded-md border border-gray-300">
