@@ -26,3 +26,11 @@ body {
   color: var(--foreground);
   font-family: var(--font-sans);
 }
+
+.cart-btn {
+  display: none;
+}
+
+.product-card:hover .cart-btn {
+  display: inline-flex;
+}

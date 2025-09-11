@@ -61,7 +61,7 @@ export const page = () => {
             <div className="grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 md:gap-6 sm:gap-4">
             { Array.from({ length: 20 }).map((item, key) => (
                 <div key={key}>
-                  <div className="flex flex-col justify-center rounded-md border border-gray-300">
+                  <div className="product-card flex flex-col justify-center rounded-md border border-gray-300">
                     <div className="flex flex-col justify-center items-center">
                       <img 
                         src="https://preview.colorlib.com/theme/vegefoods/images/product-2.jpg"
@@ -70,15 +70,15 @@ export const page = () => {
                         height={160}
                       />
                     </div>
-                    <div className="flex flex-col justify-center items-center p-2">
+                    <div className="flex flex-col justify-center items-center p-2 py-4">
                       <p className="text-gray-800 font-semibold">
                         Bell Pepper
                       </p>
-                      <p className="text-gray-400 text-sm font-medium">
+                      <p className="cart-text text-gray-400 text-sm font-medium">
                         $100.00
                       </p>
 
-                      <div className="inline-flex space-x-3">
+                      <div className="inline-flex space-x-3 py-1 cart-btn">
                         <a href="#" className="inline-flex justify-center items-center bg-green-600 text-white size-8 p-1 rounded-full">
                           <ShoppingCartIcon className="size-4" />
                         </a>
@@ -101,7 +101,7 @@ export const page = () => {
                     Categories
                   </h3>
                   <div className="w-full h-0.5 relative bg-gray-300 rounded-full">
-                    <div className="w-[30%] h-0.5 relative bg-green-400 rounded-full"></div>
+                    <div className="w-[30%] h-0.5 relative bg-green-500 rounded-full"></div>
                   </div>
                 </div>
 
