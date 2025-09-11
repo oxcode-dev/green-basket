@@ -57,8 +57,11 @@ export const page = () => {
       <div className="container w-full mx-auto py-8">
         <div className="flex w-full flex-wrap md:flex-nowrap">
           <div className="w-full md:w-4/5 md:pr-4">
-
+            <div>
+              
+            </div>
           </div>
+
           <div className="w-full md:w-1/5">
             <div className="flex flex-col space-y-4">
               <div className="border border-gray-300 shadow-sm rounded-md p-4">
