@@ -60,8 +60,8 @@ export const page = () => {
             <div className="grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
             { Array.from({ length: 20 }).map((item, key) => (
                 <div key={key}>
-                  <div className="flex flex-col justify-center">
-                    <div>
+                  <div className="flex flex-col justify-center rounded-md border border-gray-300">
+                    <div className="flex flex-col justify-center items-center">
                       <img 
                         src="https://preview.colorlib.com/theme/vegefoods/images/product-2.jpg"
                         width={100}
@@ -69,9 +69,12 @@ export const page = () => {
                         height={100}
                       />
                     </div>
-                    <div className="">
+                    <div className="flex flex-col justify-center items-center">
                       <p>
                         Bell Pepper
+                      </p>
+                      <p>
+                        $100
                       </p>
                     </div>
                   </div>
