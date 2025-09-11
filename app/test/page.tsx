@@ -57,8 +57,26 @@ export const page = () => {
       <div className="container w-full mx-auto py-8">
         <div className="flex w-full flex-wrap md:flex-nowrap">
           <div className="w-full md:w-4/5 md:pr-4">
-            <div>
-              
+            <div className="grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+            { Array.from({ length: 20 }).map((item, key) => (
+                <div key={key}>
+                  <div className="flex flex-col justify-center">
+                    <div>
+                      <img 
+                        src="https://preview.colorlib.com/theme/vegefoods/images/product-2.jpg"
+                        width={100}
+                        alt='Product Image'
+                        height={100}
+                      />
+                    </div>
+                    <div className="">
+                      <p>
+                        Bell Pepper
+                      </p>
+                    </div>
+                  </div>
+                </div>
+            ))}
             </div>
           </div>
 
