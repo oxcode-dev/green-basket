@@ -1,6 +1,5 @@
 import { Footer } from '@/components/Footer'
 import { Header } from '@/components/Header'
-import { CakeIcon, ChatBubbleOvalLeftEllipsisIcon, CheckBadgeIcon, TruckIcon } from '@heroicons/react/20/solid'
 import { Quicksand } from 'next/font/google'
 import Image from 'next/image'
 import Link from 'next/link'
@@ -11,28 +10,7 @@ const quicksand = Quicksand({
   variable: "--font-quicksand",
 });
 
-const benefitItems = [
-  {
-    icon: <TruckIcon className="size-8" />,
-    title: 'Free Shipping',
-    description: 'On order over $100',
-  },
-  {
-    icon: <CakeIcon className="size-8" />,
-    title: 'Always Fresh',
-    description: 'Product well packaged',
-  },
-  {
-    icon: <CheckBadgeIcon className="size-8" />,
-    title: 'Superior Quality',
-    description: 'Quality Products',
-  },
-  {
-    icon: <ChatBubbleOvalLeftEllipsisIcon className="size-8" />,
-    title: 'Support',
-    description: '24/7 Support',
-  },
-]
+
 
 export const page = () => {
   return (
@@ -71,27 +49,6 @@ export const page = () => {
 
         </div>
         
-      </div>
-
-      <div className="container w-full md:max-w-4xl mx-auto py-10">
-        <div className="grid sm:grid-cols-2 md:grid-cols-4 gap-x-6 items-center justify-center my-10">
-          { benefitItems.map((item, key) => (
-            <div key={key}>
-              <div  className="flex flex-col space-y-4 items-center">
-                <p>
-                  <span className="size-5">{item.icon}</span>
-                </p>
-                <p className="text-sm font-semibold uppercase">
-                  Free shipping
-                </p>
-                <p className="text-xs font-medium text-gray-500 uppercase">
-                  on order over $300
-                </p>
-              </div>
-            </div>
-          ))}
-
-        </div>
       </div>
 
       <Footer />
