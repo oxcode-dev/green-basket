@@ -62,26 +62,27 @@ export const page = () => {
           <div className="w-full md:w-1/5">
             <div className="flex flex-col space-y-4">
               <div className="border border-gray-300 shadow-sm rounded-md p-4">
-                <h3>
-                  Categories
-                </h3>
+                <div className="space-y-2 pb-2">
+                  <h3 className="font-semibold">
+                    Categories
+                  </h3>
+                  <div className="w-full h-0.5 relative bg-gray-300 rounded-full">
+                    <div className="w-[30%] h-0.5 relative bg-green-400 rounded-full"></div>
+                  </div>
+                </div>
 
-                <div className='pt-2'>
+                <div className='pt-2 space-y-1.5'>
                   {
                     Array.from({ length: 10 }).map((item, key) => (
-                      <p key={key}>
-                        <span>Fresh fruits</span>
+                      <a href="#" key={key} className="inline-flex justify-between items-center rounded-md border border-gray-200 w-full p-1.5 space-x-1.5">
+                        <span className="text-xs font-medium text-gray-600">Fresh fruits</span>
                         <span>
-                          <span>12</span>
+                          <span className="badge badge-success badge-xs font-medium text-white">100</span>
                         </span>
-                      </p>
+                      </a>
                     ))
                   }
                 </div>
-              </div>
-
-              <div className="border rounded-md py-3">
-
               </div>
 
             </div>
