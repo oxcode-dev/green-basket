@@ -1,11 +1,13 @@
 import React from 'react'
 import { Logo } from './Logo'
-import { ArrowRightEndOnRectangleIcon, EnvelopeIcon, MagnifyingGlassIcon, ShoppingCartIcon, TagIcon, UserIcon } from '@heroicons/react/20/solid'
+import { ArrowRightEndOnRectangleIcon, Bars3Icon, EnvelopeIcon, MagnifyingGlassIcon, ShoppingCartIcon, TagIcon, UserIcon, XMarkIcon } from '@heroicons/react/20/solid'
 
 export const Header = () => {
     return (
         <div>
-            {/* <DesktopHeader /> */}
+            <DesktopHeader />
+
+            <MobileHeader />
 
         </div>
     )
@@ -133,3 +135,114 @@ export const DesktopHeader = () => {
     </div>
   )
 }
+
+export const MobileHeader = () => {
+  return (
+    <div className="">
+        <nav className="fixed bg-white w-full flex justify-between items-center mx-auto px-4 z-50 h-24 shadow shadow-green-50">
+            <div className="inline-flex text-gray-600">
+                <a href="/">
+                    <Logo />
+                </a>
+            </div>
+            <div className="sm:px-12 flex h-full items-center">
+                <div className="flex md:hidden">
+                {/* <div className="bg-white h-screen fixed top-0 w-full left-0 transition-transform duration-[0.8s] ease-[ease-in-out] translate-x-[-100%]"> */}
+                    <div className="bg-white h-screen fixed top-0 w-full left-0 transition-transform duration-[0.8s] ease-[ease-in-out]">
+                        <div className="absolute right-4 top-8">
+                            <a className="w-6">
+                                <XMarkIcon className="size-5" />
+                            </a>
+                        </div>
+                        <div>
+                            <div className="w-full mx-auto h-full">
+                                <div className="flex flex-col mx-auto">
+                                    <a
+                                        className="text-slate-700 border-0 px-4 py-3 text-md hover:text-green-600"
+                                        href="/">
+                                        Home
+                                    </a>
+                                    <a
+                                        className="text-green-700 border-green-600 border-b-4 px-4 py-3 text-md hover:text-green-600"
+                                        href="/about">
+                                        About Us
+                                    </a>
+                                    <a
+                                        className="text-slate-700 border-0 px-4 py-3 text-md hover:text-green-600"
+                                        href="/store">
+                                        Shop
+                                    </a>
+                                    <a
+                                        className="text-slate-700 border-0 px-4 py-3 text-md hover:text-green-600"
+                                        href="/contact">
+                                        Contact
+                                    </a>
+                                </div>
+
+                                <div className="w-full flex text-sm text-gray-500">
+                                    <div>
+                                        <p className="text-sm">
+                                            <span>Need help? Call us: </span>
+                                            <a href="tel: +234807890930" className="underline">+123 903434</a>
+                                        </p>
+                                    </div>
+                                    <div>
+                                        <p>
+                                            100% Secure delivery without contacting the courier.
+                                        </p>
+                                    </div>
+                                    <div> 
+                                        <a href="mailto:info@greenbasket.com" className="inline-flex space-x-1.5 items-center">
+                                            <span>
+                                                <EnvelopeIcon className="size-5" />
+                                            </span>
+                                            <span>info@greenbasket.com</span>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+                <div className="flex items-center space-x-4">
+                    <div className="dropdown dropdown-end">
+                        <div tabIndex={0} role="button" className="btn btn-ghost btn-circle avatar hover:border-0 p-0">
+                            <div className="w-8 rounded-full">
+                                <img
+                                    alt="Tailwind CSS Navbar component"
+                                    src="https://img.daisyui.com/images/stock/photo-1534528741775-53994a69daeb.webp" />
+                            </div>
+                        </div>
+                        <ul
+                            tabIndex={0}
+                            className="bg-white menu menu-sm dropdown-content bg-base-100 rounded-box z-1 mt-3 w-52 p-2 shadow"
+                        >
+                            <li>
+                                <a className="justify-between">
+                                    Account
+                                </a>
+                            </li>
+                            <li><a>Settings</a></li>
+                            <li><a>Logout</a></li>
+                        </ul>
+                    </div>
+
+                    <a className="w-6 relative" href="/cart" title="Shopping Cart">
+                        <span className="w-4 h-4 text-xs text-white absolute right-0 -top-2 bg-red-600 p-1 rounded-full items-center justify-center inline-flex">
+                            3
+                        </span>
+                        <span>
+                            <ShoppingCartIcon className="size-5" />
+                        </span>
+                    </a>
+                    <a className="w-6 flex">
+                        <Bars3Icon className="size-6" />
+                    </a>
+                </div>
+            </div>
+        </nav>
+    </div>
+  )
+}
+
