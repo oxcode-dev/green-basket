@@ -2,6 +2,7 @@ import { Footer } from '@/components/Footer'
 import { Header } from '@/components/Header'
 import { ProductCad } from '@/components/ProductCad'
 import { BenefitSection } from '@/sections/BenefitSection'
+import { SubscriptionSection } from '@/sections/SubscriptionSection'
 import { ArrowRightIcon, HeartIcon, ShoppingCartIcon } from '@heroicons/react/20/solid'
 import { Quicksand } from 'next/font/google'
 import Image from 'next/image'
@@ -156,8 +157,7 @@ export const page = () => {
 
       </div>
 
-      <div className="w-full mx-auto py-12 bg-gray-50">
-      </div>
+      <SubscriptionSection />
 
       <Footer />
     </div>
