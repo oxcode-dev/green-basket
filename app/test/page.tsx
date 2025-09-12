@@ -60,7 +60,7 @@ export const page = () => {
         <div className="flex w-full flex-wrap md:flex-nowrap">
           <div className="w-full md:w-4/5 md:pr-6">
             <div className="space-y-2 pb-2">
-              <h3 className="font-semibold">
+              <h3 className="font-semibold text-2xl">
                 Popular Products
               </h3>
             </div>
