@@ -92,8 +92,8 @@ export const page = () => {
             ))}
             </div>
 
-            <div className="py-4 flex justify-center">
-              <button className="btn ">
+            <div className="py-8 flex justify-center">
+              <button className="btn btn-pill">
                 View More
               </button>
             </div>
@@ -111,7 +111,7 @@ export const page = () => {
                   </div>
                 </div>
 
-                <div className='pt-2 space-y-1.5'>
+                <div className='pt-2 space-y-2'>
                   {
                     Array.from({ length: 10 }).map((item, key) => (
                       <a href="#" key={key} className="inline-flex justify-between items-center rounded-md border border-gray-200 w-full p-1.5 space-x-1.5">
