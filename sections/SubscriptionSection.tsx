@@ -23,7 +23,7 @@ export const SubscriptionSection = () => {
                                 />
                             </div>
                             <div className="w-full sm:w-1/3 my-4 sm:my-0">
-                                <button type="button" className="bg-green-700 h-16 sm:mx-2 w-full text-white rounded-lg">
+                                <button type="button" className="bg-green-700 h-16 sm:mx-2 w-full text-white rounded-lg cursor-pointer">
                                     Subscribe
                                 </button>
                             </div>
