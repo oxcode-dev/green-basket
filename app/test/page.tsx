@@ -21,12 +21,12 @@ export const page = () => {
     <div>
       <Header />
 
-      <div className="container w-full mx-auto py-8">
+      <div className="container w-full mx-auto pt-12 md:py-8">
         <div className="w-full flex relative h-full px-4 sm:px-6">
 
             <div className="relative md:z-50 py-16 md:px-24 flex flex-col justify-center w-full md:max-w-xl">
 
-              <div className="bg-[#c5ead9] md:bg-transparent space-y-3 md:space-y-5 p-3 md:p-0">
+              <div className="bg-[#c5ead9] md:bg-transparent space-y-3 md:space-y-5 p-4 md:p-0 rounded-md">
                 <p className={`text-2xl md:text-4xl font-bold capitalize ${quicksand.className}`}>
                   We serve fresh & organic foods
                 </p>

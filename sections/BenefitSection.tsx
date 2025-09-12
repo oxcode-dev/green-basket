@@ -31,7 +31,7 @@ const benefitItems :BenefitProp[] = [
 ]
 export const BenefitSection = () => {
     return (
-        <div className="container w-full md:max-w-4xl mx-auto py-10 text-gray-600">
+        <div className="container w-full md:max-w-4xl mx-auto md:py-12 md:pt-24 text-gray-600">
             <div className="grid sm:grid-cols-2 md:grid-cols-4 gap-8 items-center justify-center my-10">
                 { benefitItems.map((item, key) => (
                     <div key={key}>
