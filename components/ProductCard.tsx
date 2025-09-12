@@ -1,7 +1,7 @@
 import { HeartIcon, ShoppingCartIcon } from '@heroicons/react/20/solid'
 import React from 'react'
 
-export const ProductCad = () => {
+export const ProductCard = () => {
   return (
     <div className="product-card flex flex-col justify-center rounded-md border border-gray-300">
       <div className="flex flex-col justify-center items-center">

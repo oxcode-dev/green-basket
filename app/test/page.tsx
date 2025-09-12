@@ -1,9 +1,9 @@
 import { Footer } from '@/components/Footer'
 import { Header } from '@/components/Header'
-import { ProductCad } from '@/components/ProductCad'
+import { ProductCard } from '@/components/ProductCard'
 import { BenefitSection } from '@/sections/BenefitSection'
 import { SubscriptionSection } from '@/sections/SubscriptionSection'
-import { ArrowRightIcon, HeartIcon, ShoppingCartIcon } from '@heroicons/react/20/solid'
+import { ArrowRightIcon, ChevronDownIcon, HeartIcon, ShoppingCartIcon, TagIcon } from '@heroicons/react/20/solid'
 import { Quicksand } from 'next/font/google'
 import Image from 'next/image'
 import Link from 'next/link'
@@ -60,6 +60,32 @@ export const page = () => {
       <div className="container w-full mx-auto py-8">
         <div className="flex w-full flex-wrap md:flex-nowrap">
           <div className="w-full md:w-4/5 md:pr-6">
+          <div className="dropdown pb-8">
+            <div tabIndex={0} role="button" className="btn btn-neutral">
+              <div className="inline-flex items-center space-x-2">
+                <span>
+                  <TagIcon className="size-5" />
+                </span>
+                <span>All Categories</span>
+                <span>
+                  <ChevronDownIcon className="size-5" />
+                </span>
+              </div>
+            </div>
+            <ul
+              tabIndex={0}
+              className="bg-white menu menu-sm dropdown-content bg-base-100 rounded-box z-1 mt-3 w-52 p-2 shadow"
+            >
+              <li>
+                <a className="justify-between">
+                  Account
+                </a>
+              </li>
+              <li><a>Settings</a></li>
+              <li><a>Logout</a></li>
+            </ul>
+            </div>
+
             <div className="space-y-2 pb-2">
               <h3 className="font-semibold text-2xl">
                 Popular Products
@@ -72,7 +98,7 @@ export const page = () => {
             <div className="grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 md:gap-6 sm:gap-4">
             { Array.from({ length: 20 }).map((item, key) => (
                 <div key={key}>
-                  <ProductCad />
+                  <ProductCard />
                 </div>
             ))}
             </div>
