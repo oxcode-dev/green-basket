@@ -32,7 +32,7 @@ const benefitItems :BenefitProp[] = [
 export const BenefitSection = () => {
     return (
         <div className="container w-full md:max-w-4xl mx-auto py-10 text-gray-600">
-            <div className="grid sm:grid-cols-2 md:grid-cols-4 gap-x-6 items-center justify-center my-10">
+            <div className="grid sm:grid-cols-2 md:grid-cols-4 gap-8 items-center justify-center my-10">
                 { benefitItems.map((item, key) => (
                     <div key={key}>
                         <div  className="flex flex-col space-y-4 items-center">

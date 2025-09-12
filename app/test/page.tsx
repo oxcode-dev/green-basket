@@ -22,24 +22,26 @@ export const page = () => {
       <Header />
 
       <div className="container w-full mx-auto py-8">
-        <div className="w-full flex relative h-full">
+        <div className="w-full flex relative h-full px-4 sm:px-6">
 
-            <div className="relative md:z-50 py-22 space-y-6 px-24 flex flex-col justify-center w-full md:max-w-xl">
+            <div className="relative md:z-50 py-16 md:px-24 flex flex-col justify-center w-full md:max-w-xl">
 
-              <p className={`text-4xl font-bold capitalize ${quicksand.className}`}>
-                We serve fresh & organic foods
-              </p>
-              <p className={`${quicksand.className} text-2xl font-semibold capitalize`}>
-                Fresh Items with big discount
-              </p>
+              <div className="bg-[#c5ead9] md:bg-transparent space-y-3 md:space-y-5 p-3 md:p-0">
+                <p className={`text-2xl md:text-4xl font-bold capitalize ${quicksand.className}`}>
+                  We serve fresh & organic foods
+                </p>
+                <p className={`${quicksand.className} text-lg md:text-2xl font-semibold capitalize`}>
+                  Fresh Items with big discount
+                </p>
 
-              <Link href="#" className="btn btn-success rounded w-32 text-white">
-                Shop Now
-              </Link>
+                <Link href="#" className="btn btn-success rounded w-32 text-white">
+                  Shop Now
+                </Link>
+              </div>
 
             </div>
 
-            <div className="absolute rounded-lg right-0 left-0">
+            <div className="absolute rounded-lg right-0 left-0 hidden md:flex">
               <Image
                 className="w-full rounded-lg"
                 src="/Background.png"
