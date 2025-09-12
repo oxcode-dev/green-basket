@@ -2,7 +2,7 @@ import { Footer } from '@/components/Footer'
 import { Header } from '@/components/Header'
 import { ProductCad } from '@/components/ProductCad'
 import { BenefitSection } from '@/sections/BenefitSection'
-import { HeartIcon, ShoppingCartIcon } from '@heroicons/react/20/solid'
+import { ArrowRightIcon, HeartIcon, ShoppingCartIcon } from '@heroicons/react/20/solid'
 import { Quicksand } from 'next/font/google'
 import Image from 'next/image'
 import Link from 'next/link'
@@ -63,6 +63,9 @@ export const page = () => {
               <h3 className="font-semibold text-2xl">
                 Popular Products
               </h3>
+              <p className="font-medium text-gray-600 text-sm">
+                These are some of our most popular products among customers.
+              </p>
             </div>
 
             <div className="grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 md:gap-6 sm:gap-4">
@@ -75,7 +78,8 @@ export const page = () => {
 
             <div className="py-8 flex justify-center">
               <button className="btn btn-pill">
-                View More
+                <span>Visit Shop</span>
+                <ArrowRightIcon className="size-5" />
               </button>
             </div>
           </div>
@@ -109,6 +113,38 @@ export const page = () => {
             </div>
           </div>
         </div>
+      </div>
+
+      {/* Review */}
+      <div className="w-full mx-auto py-8 bg-gray-100">
+
+        <div className="text-center space-y-4 w-full md:max-w-xl mx-auto pt-4">
+          <p className="text-2xl md:text-3xl font-bold">
+            Happy & Satisfied Faces
+          </p>
+          <p className="text-md text-gray-500 font-medium">
+            Here's what some of our satisfied customers have to say about us.
+          </p>
+        </div>
+
+
+        <div className="container w-full mx-auto">
+          <div className="grid sm:grid-cols-2 md:grid-cols-3 md:gap-6 sm:gap-4">
+
+          {
+            Array.from({ length: 10 }).map((item, key) => (
+              <a href="#" key={key} className="inline-flex justify-between items-center rounded-md border border-gray-200 w-full p-1.5 space-x-1.5">
+                <span className="text-xs font-medium text-gray-600">Fresh fruits</span>
+                <span>
+                  <span className="badge bg-green-600 border-0 badge-xs font-medium text-white">100</span>
+                </span>
+              </a>
+            ))
+          }
+
+          </div>
+        </div>
+
       </div>
 
 
