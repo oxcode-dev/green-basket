@@ -116,7 +116,7 @@ export const page = () => {
       </div>
 
       {/* Review */}
-      <div className="w-full mx-auto py-12 bg-gray-100">
+      <div className="w-full mx-auto py-12 bg-gray-50">
 
         <div className="text-center space-y-4 w-full md:max-w-xl mx-auto pt-4">
           <p className="text-2xl md:text-3xl font-bold">
@@ -156,6 +156,8 @@ export const page = () => {
 
       </div>
 
+      <div className="w-full mx-auto py-12 bg-gray-50">
+      </div>
 
       <Footer />
     </div>
