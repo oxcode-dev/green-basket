@@ -59,50 +59,50 @@ export const page = () => {
 
       <BenefitSection />
 
-      <div className="container w-full mx-auto py-8">
+      <div className="container w-full mx-auto py-8 px-4 md:px-0">
         <div className="flex w-full flex-wrap md:flex-nowrap">
           <div className="w-full md:w-4/5 md:pr-6">
-          <div className="dropdown pb-8">
-            <div tabIndex={0} role="button" className="btn btn-neutral">
-              <div className="inline-flex items-center space-x-2">
-                <span>
-                  <TagIcon className="size-5" />
-                </span>
-                <span>All Categories</span>
-                <span>
-                  <ChevronDownIcon className="size-5" />
-                </span>
+            <div className="dropdown pb-8 md:hidden">
+              <div tabIndex={0} role="button" className="btn btn-neutral">
+                <div className="inline-flex items-center space-x-2">
+                  <span>
+                    <TagIcon className="size-5" />
+                  </span>
+                  <span>All Categories</span>
+                  <span>
+                    <ChevronDownIcon className="size-5" />
+                  </span>
+                </div>
               </div>
-            </div>
-            <ul
-              tabIndex={0}
-              className="bg-white menu menu-sm dropdown-content bg-base-100 rounded-box z-1 mt-3 w-52 p-2 shadow"
-            >
-              <li>
-                <a className="justify-between">
-                  Account
-                </a>
-              </li>
-              <li><a>Settings</a></li>
-              <li><a>Logout</a></li>
-            </ul>
+              <ul
+                tabIndex={0}
+                className="bg-white menu menu-sm dropdown-content bg-base-100 rounded-box z-1 mt-3 w-52 p-2 shadow"
+              >
+                <li>
+                  <a className="justify-between">
+                    Account
+                  </a>
+                </li>
+                <li><a>Settings</a></li>
+                <li><a>Logout</a></li>
+              </ul>
             </div>
 
             <div className="space-y-2 pb-2">
               <h3 className="font-semibold text-2xl">
                 Popular Products
               </h3>
-              <p className="font-medium text-gray-600 text-sm">
+              <p className="font-medium text-gray-600 text-sm pb-4">
                 These are some of our most popular products among customers.
               </p>
             </div>
 
-            <div className="grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 md:gap-6 sm:gap-4">
-            { Array.from({ length: 20 }).map((item, key) => (
+            <div className="grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 md:gap-6 gap-6 sm:gap-4">
+              { Array.from({ length: 20 }).map((item, key) => (
                 <div key={key}>
                   <ProductCard />
                 </div>
-            ))}
+              ))}
             </div>
 
             <div className="py-8 flex justify-center">
@@ -113,7 +113,7 @@ export const page = () => {
             </div>
           </div>
 
-          <div className="w-full md:w-1/5">
+          <div className="w-full md:w-1/5 md:flex hidden">
             <div className="flex flex-col space-y-4">
               <div className="border border-gray-300 shadow-sm rounded-md p-4">
                 <div className="space-y-2 pb-2">
@@ -145,7 +145,7 @@ export const page = () => {
       </div>
 
       {/* Review */}
-      <div className="w-full mx-auto py-12 bg-gray-50">
+      <div className="w-full mx-auto py-12 px-4 bg-gray-50">
 
         <div className="text-center space-y-4 w-full md:max-w-xl mx-auto pt-4">
           <p className="text-2xl md:text-3xl font-bold">
