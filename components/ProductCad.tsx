@@ -16,7 +16,7 @@ export const ProductCad = () => {
         <p className="text-gray-800 font-semibold text-lg">
           Bell Pepper
         </p>
-        <p className="cart-text text-gray-400 text-md font-medium">
+        <p className="cart-text text-gray-400 text-md font-medium pb-2.5">
           $100.00
         </p>
 
