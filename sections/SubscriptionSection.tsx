@@ -3,7 +3,7 @@ import React from 'react'
 export const SubscriptionSection = () => {
   return (
     <div>
-        <div className="w-full mx-auto py-8 md:py-16 bg-green-50">
+        <div className="w-full mx-auto py-8 md:py-16 px-4 bg-green-50">
             <div className="container mx-auto flex flex-wrap justify-between items-center">
                 <div className="w-full md:w-2/3">
                     <div>

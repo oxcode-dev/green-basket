@@ -4,7 +4,7 @@ import { Logo } from './Logo'
 export const Footer = () => {
   return (
         <div className="bg-neutral text-neutral-content">
-            <footer className="footer sm:footer-horizontal py-10 mx-auto container w-full">
+            <footer className="px-4 md:px-0 footer sm:footer-horizontal py-10 mx-auto container w-full">
                 <aside>
                     <Logo />
                     <p>
