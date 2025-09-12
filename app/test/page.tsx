@@ -24,7 +24,7 @@ export const page = () => {
       <div className="container w-full mx-auto py-8">
         <div className="w-full flex relative h-full">
 
-            <div className="relative z-50 py-22 space-y-6 px-24 flex flex-col justify-center w-full md:max-w-xl">
+            <div className="relative md:z-50 py-22 space-y-6 px-24 flex flex-col justify-center w-full md:max-w-xl">
 
               <p className={`text-4xl font-bold capitalize ${quicksand.className}`}>
                 We serve fresh & organic foods

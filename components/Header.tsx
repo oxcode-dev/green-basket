@@ -1,3 +1,5 @@
+'use client';
+
 import React from 'react'
 import { Logo } from './Logo'
 import { ArrowRightEndOnRectangleIcon, Bars3Icon, EnvelopeIcon, MagnifyingGlassIcon, ShoppingCartIcon, TagIcon, UserIcon, XMarkIcon } from '@heroicons/react/20/solid'
@@ -148,14 +150,48 @@ export const MobileHeader = () => {
             <div className="sm:px-12 flex h-full items-center">
                 <div className="flex md:hidden">
                 {/* <div className="bg-white h-screen fixed top-0 w-full left-0 transition-transform duration-[0.8s] ease-[ease-in-out] translate-x-[-100%]"> */}
-                    <div className="bg-white h-screen fixed top-0 w-full left-0 transition-transform duration-[0.8s] ease-[ease-in-out]">
+                    <div className="bg-white h-screen fixed top-0 w-full left-0 transition-transform duration-[0.8s] ease-[ease-in-out] z-[1000]">
                         <div className="absolute right-4 top-8">
                             <a className="w-6">
                                 <XMarkIcon className="size-5" />
                             </a>
                         </div>
-                        <div>
+                        <div className="pt-16">
                             <div className="w-full mx-auto h-full">
+                            <div className="dropdown">
+                        <div tabIndex={0} role="button" className="btn btn-ghost">
+                            <div className="inline-flex items-center space-x-1">
+                                <span>
+                                    <TagIcon className="size-5" />
+                                </span>
+                                <span>All Categories</span>
+                            </div>
+                        </div>
+                        <ul
+                            tabIndex={0}
+                            className="bg-white menu menu-sm dropdown-content bg-base-100 rounded-box z-1 mt-3 w-52 p-2 shadow"
+                        >
+                            <li>
+                                <a className="justify-between">
+                                    Account
+                                </a>
+                            </li>
+                            <li><a>Settings</a></li>
+                            <li><a>Logout</a></li>
+                        </ul>
+                    </div>
+
+                    <div>
+                        <div className="inline-flex space-x-2 items-center">
+                            <label className="input bg-white input-neutral shadow-xl">
+                                <MagnifyingGlassIcon className="h-5 opacity-50" />
+                                <input type="text" className="grow focus:outline-none" placeholder="Search Product..." />
+                                <button className="btn btn-circle btn-xs">
+                                    <MagnifyingGlassIcon className="size-4 opacity-50" />
+                                </button>
+                            </label>
+                        </div>
+                    </div>
                                 <div className="flex flex-col mx-auto">
                                     <a
                                         className="text-slate-700 border-0 px-4 py-3 text-md hover:text-green-600"
