@@ -17,22 +17,22 @@ export const ContactFormCard = () => {
             <form className="space-y-4 pt-6">
                 <div className="space-y-4 md:space-y-0 flex gap-x-4 grid md:grid-cols-2">
                     <div>
-                        <input type="text" placeholder="Name" className="input w-full" />
+                        <input type="text" placeholder="Name" className="input w-full bg-white" />
                     </div>
                     <div>
-                        <input type="text" placeholder="Your Email" className="input w-full" />
+                        <input type="email" placeholder="Your Email" className="input w-full bg-white" />
                     </div>
                 </div>
                 <div className="space-y-4 md:space-y-0 flex gap-x-4 grid md:grid-cols-2">
                     <div>
-                        <input type="text" placeholder="Your Phone" className="input w-full" />
+                        <input type="text" name="phone" placeholder="Your Phone" className="input w-full bg-white" />
                     </div>
                     <div>
-                        <input type="text" placeholder="Subject" className="input w-full" />
+                        <input type="text" name="subject" placeholder="Subject" className="input w-full bg-white" />
                     </div>
                 </div>
                 <div>
-                    <textarea className="textarea w-full h-24" placeholder="Message"></textarea>
+                    <textarea className="textarea w-full h-24 bg-white" placeholder="Message"></textarea>
                 </div>
                 <div>
                     <button type="submit" className="btn bg-slate-800 text-white rounded-lg btn-md">
