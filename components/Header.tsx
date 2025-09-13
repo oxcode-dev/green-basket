@@ -3,6 +3,7 @@
 import React, { useState } from 'react'
 import { Logo } from './Logo'
 import { ArrowRightEndOnRectangleIcon, Bars3Icon, ChevronDownIcon, EnvelopeIcon, MagnifyingGlassIcon, ShoppingCartIcon, TagIcon, UserIcon, XMarkIcon } from '@heroicons/react/20/solid'
+import Link from 'next/link';
 
 export const Header = () => {
     return (
@@ -44,7 +45,9 @@ export const DesktopHeader = () => {
         <div>
             <div className="w-full container mx-auto flex justify-between items-center">
                 <div className="py-3">
-                    <Logo />
+                    <Link href="/">
+                        <Logo />
+                    </Link>
                 </div>
 
                 <div className="flex space-x-4 items-center">
@@ -88,16 +91,16 @@ export const DesktopHeader = () => {
                     <nav>
                         <ul className="flex">
                             <li>
-                                <a className="hover:border-b-4 px-4 py-5 text-xs font-semibold hover:text-green-600">Home</a>
+                                <Link href="/" className="hover:border-b-4 px-4 py-5 text-xs font-semibold hover:text-green-600">Home</Link>
                             </li>
                             <li>
-                                <a className="hover:border-b-4 px-4 py-5 text-xs font-semibold hover:text-green-600">Shop</a>
+                                <Link href="/shop" className="hover:border-b-4 px-4 py-5 text-xs font-semibold hover:text-green-600">Shop</Link>
                             </li>
                             <li>
-                                <a className="hover:border-b-4 px-4 py-5 text-xs font-semibold hover:text-green-600">About</a>
+                                <Link href="/about" className="hover:border-b-4 px-4 py-5 text-xs font-semibold hover:text-green-600">About</Link>
                             </li>
                             <li>
-                                <a className="hover:border-b-4 px-4 py-5 text-xs font-semibold hover:text-green-600">Contact</a>
+                                <Link href="/contact" className="hover:border-b-4 px-4 py-5 text-xs font-semibold hover:text-green-600">Contact</Link>
                             </li>
                         </ul>
                     </nav>
@@ -148,9 +151,9 @@ export const MobileHeader = () => {
         <div className="md:hidden">
             <nav className="fixed bg-white w-full flex justify-between items-center mx-auto px-4 z-50 h-24 shadow shadow-green-50">
                 <div className="inline-flex text-gray-600">
-                    <a href="/">
+                    <Link href="/">
                         <Logo />
-                    </a>
+                    </Link>
                 </div>
                 <div className="sm:px-12 flex h-full items-center">
                     <div className="flex md:hidden">
@@ -206,26 +209,26 @@ export const MobileHeader = () => {
                                     </div>
 
                                     <div className="flex flex-col mx-auto">
-                                        <a
+                                        <Link
                                             className="text-slate-700 border-0 px-4 py-3 text-md hover:text-green-600"
                                             href="/">
                                             Home
-                                        </a>
-                                        <a
+                                        </Link>
+                                        <Link
                                             className="text-green-700 border-green-600 border-b-4 px-4 py-3 text-md hover:text-green-600"
                                             href="/about">
                                             About Us
-                                        </a>
-                                        <a
+                                        </Link>
+                                        <Link
                                             className="text-slate-700 border-0 px-4 py-3 text-md hover:text-green-600"
-                                            href="/store">
+                                            href="/shop">
                                             Shop
-                                        </a>
-                                        <a
+                                        </Link>
+                                        <Link
                                             className="text-slate-700 border-0 px-4 py-3 text-md hover:text-green-600"
                                             href="/contact">
                                             Contact
-                                        </a>
+                                        </Link>
                                     </div>
 
                                     <div className="w-full flex flex-col space-y-2 px-4 py-5 text-sm text-gray-500">
