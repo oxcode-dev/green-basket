@@ -50,11 +50,14 @@ export const DesktopHeader = () => {
                 <div className="flex space-x-4 items-center">
                     <div className="dropdown">
                         <div tabIndex={0} role="button" className="btn btn-ghost">
-                            <div className="inline-flex items-center space-x-1">
+                            <div className="inline-flex items-center space-x-1.5">
                                 <span>
                                     <TagIcon className="size-5" />
                                 </span>
                                 <span>All Categories</span>
+                                <span>
+                                    <ChevronDownIcon className="size-5" />
+                                </span>
                             </div>
                         </div>
                         <ul
