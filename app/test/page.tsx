@@ -179,7 +179,7 @@ export const page = () => {
 
       </div>
 
-      <SubscriptionSection />
+      {/* <SubscriptionSection /> */}
     </div>
   )
 }
