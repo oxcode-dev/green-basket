@@ -1,5 +1,3 @@
-import { Footer } from '@/components/Footer'
-import { Header } from '@/components/Header'
 import { ProductCard } from '@/components/ProductCard'
 import { BenefitSection } from '@/sections/BenefitSection'
 import { SubscriptionSection } from '@/sections/SubscriptionSection'
@@ -19,7 +17,7 @@ const quicksand = Quicksand({
 export const page = () => {
   return (
     <div>
-      <div className="container w-full mx-auto pt-12 md:py-8">
+      <div className="container w-full mx-auto md:py-8">
         <div className="w-full flex relative h-full px-4 sm:px-6">
 
             <div className="relative md:z-50 py-16 md:px-24 flex flex-col justify-center w-full md:max-w-xl">

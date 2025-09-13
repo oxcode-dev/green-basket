@@ -42,7 +42,9 @@ export default function RootLayout({
       >
         <ScrollToTop>
           <Header />
-          {children}
+          <div className="pt-12 md:py-0">
+            {children}
+          </div>
           <Footer />
         </ScrollToTop>
       </body>
