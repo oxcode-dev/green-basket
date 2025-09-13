@@ -19,8 +19,6 @@ const quicksand = Quicksand({
 export const page = () => {
   return (
     <div>
-      <Header />
-
       <div className="container w-full mx-auto pt-12 md:py-8">
         <div className="w-full flex relative h-full px-4 sm:px-6">
 
@@ -184,8 +182,6 @@ export const page = () => {
       </div>
 
       <SubscriptionSection />
-
-      <Footer />
     </div>
   )
 }
