@@ -1,5 +1,6 @@
 import { ProductCard } from '@/components/ProductCard'
 import { BenefitSection } from '@/sections/BenefitSection'
+import { ReviewSection } from '@/sections/ReviewSection'
 import { SubscriptionSection } from '@/sections/SubscriptionSection'
 import { ArrowRightIcon, ChevronDownIcon, HeartIcon, ShoppingCartIcon, TagIcon } from '@heroicons/react/20/solid'
 import { Quicksand } from 'next/font/google'
@@ -141,7 +142,7 @@ export const page = () => {
       </div>
 
       {/* Review */}
-      
+      <ReviewSection />
 
       {/* <SubscriptionSection /> */}
     </div>
