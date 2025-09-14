@@ -6,8 +6,43 @@ const page = () => {
     return (
         <div>
             <div className="container w-full mx-auto py-8 px-4 md:px-0">
+
+                <img src='/shop-hero.svg' />
+
+            </div>
+
+            <div className="container w-full mx-auto py-8 px-4 md:px-0">
                 <div className="flex w-full flex-wrap md:flex-nowrap">
-                    <div className="w-full md:w-4/5 md:pr-6">
+                    <div className="w-full md:w-1/5 md:flex hidden">
+                        <div className="flex flex-col space-y-4">
+                            <div className="border border-gray-300 shadow-sm rounded-md p-4">
+                                <div className="space-y-2 pb-2">
+                                    <h3 className="font-semibold">
+                                        Categories
+                                    </h3>
+                                    <div className="w-full h-0.5 relative bg-gray-300 rounded-full">
+                                        <div className="w-[30%] h-0.5 relative bg-green-500 rounded-full"></div>
+                                    </div>
+                                </div>
+
+                                <div className='pt-2 space-y-2'>
+                                    {
+                                        Array.from({ length: 10 }).map((item, key) => (
+                                        <a href="#" key={key} className="inline-flex justify-between items-center rounded-md border border-gray-200 w-full p-1.5 space-x-1.5">
+                                            <span className="text-xs font-medium text-gray-600">Fresh fruits</span>
+                                            <span>
+                                                <span className="badge bg-green-600 border-0 badge-xs font-medium text-white">100</span>
+                                            </span>
+                                        </a>
+                                        ))
+                                    }
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+
+                    <div className="w-full md:w-4/5 md:pl-6">
                         <div className="dropdown pb-8 md:hidden">
                             <div tabIndex={0} role="button" className="btn btn-neutral">
                                 <div className="inline-flex items-center space-x-2">
