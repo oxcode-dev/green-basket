@@ -1,5 +1,5 @@
 import { ProductCard } from '@/components/ProductCard';
-import { ArrowRightIcon, ChevronDownIcon, TagIcon } from '@heroicons/react/20/solid';
+import { ArrowRightIcon, ArrowsUpDownIcon, ChevronDownIcon, TagIcon } from '@heroicons/react/20/solid';
 import React from 'react'
 
 const page = () => {
@@ -13,9 +13,6 @@ const page = () => {
                         </p>
                     </div>
                 </div>
-
-                {/* <img src='/shop-hero.svg' /> */}
-
             </div>
 
             <div className="container w-full mx-auto py-8 px-4 md:px-0">
@@ -76,13 +73,60 @@ const page = () => {
                             </ul>
                         </div>
 
-                        <div className="space-y-2 pb-2 hidden">
-                            <h3 className="font-semibold text-2xl">
-                                Popular Products
-                            </h3>
-                            <p className="font-medium text-gray-600 text-sm pb-4">
-                                These are some of our most popular products among customers.
-                            </p>
+                        <div className="space-y-2 pb-3">
+                           <div className="flex justify-end">
+                                    
+                                <div className="space-x-2">
+                                    <div className="dropdown dropdown-end">
+                                        <div tabIndex={0} role="button" className="btn btn-sm bg-gray-100 border-gray-300 rounded-md">
+                                            <div className="inline-flex items-center text-xs text-gray-500 space-x-2">
+                                                <span>Show</span>
+                                                <span>
+                                                    <ChevronDownIcon className="size-5" />
+                                                </span>
+                                            </div>
+                                        </div>
+                                        <ul
+                                            tabIndex={0}
+                                            className="bg-white menu menu-sm dropdown-content bg-base-100 rounded-box z-1 mt-3 w-52 p-2 shadow"
+                                        >
+                                            <li>
+                                                <a className="justify-between">
+                                                    Account
+                                                </a>
+                                            </li>
+                                            <li><a>Settings</a></li>
+                                            <li><a>Logout</a></li>
+                                        </ul>
+                                    </div>
+                                    <div className="dropdown dropdown-end">
+                                        <div tabIndex={0} role="button" className="btn btn-sm bg-gray-100 border-gray-300 rounded-md">
+                                            <div className="inline-flex items-center text-xs text-gray-500 space-x-2">
+                                                <span>
+                                                    <ArrowsUpDownIcon className="size-4" />
+                                                </span>
+                                                <span>Sort</span>
+                                                <span>
+                                                    <ChevronDownIcon className="size-4" />
+                                                </span>
+                                            </div>
+                                        </div>
+                                        <ul
+                                            tabIndex={0}
+                                            className="bg-white menu menu-sm dropdown-content bg-base-100 rounded-box z-1 mt-3 w-52 p-2 shadow"
+                                        >
+                                            <li>
+                                                <a className="justify-between">
+                                                    Account
+                                                </a>
+                                            </li>
+                                            <li><a>Settings</a></li>
+                                            <li><a>Logout</a></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                
+                           </div>
                         </div>
 
                         <div className="grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 md:gap-6 gap-6 sm:gap-4">
