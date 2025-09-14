@@ -138,10 +138,11 @@ const page = () => {
                         </div>
 
                         <div className="py-8 flex justify-center">
-                            <button className="btn btn-pill">
-                                <span>Visit Shop</span>
-                                <ArrowRightIcon className="size-5" />
-                            </button>
+                            <div className="join">
+                                <button className="join-item btn">«</button>
+                                <button className="join-item btn">Page 22</button>
+                                <button className="join-item btn">»</button>
+                            </div>
                         </div>
                     </div>
 
