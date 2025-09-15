@@ -43,7 +43,7 @@ const page = () => {
                                                             <div>
                                                                 <p className="font-semibold text-lg">
                                                                     Product Title Name
-                                                                    Product Title Name
+                                                                    Product
                                                                 </p>
                                                                 <p>
                                                                     $30
@@ -57,11 +57,11 @@ const page = () => {
                                                 </td>
                                                 <td className="px-1 py-2 border-t border-gray-200 bg-white text-md text-center">
                                                     <div className="inline-flex rounded-full p-0.5 border border-gray-400 text-gray-600">
-                                                        <button className="text-gray-800 font-semibold p-0.5 px-1.5">
+                                                        <button type="button" className="text-gray-800 font-semibold p-0.5 px-1.5 cursor-pointer">
                                                             <MinusIcon className="size-4" />
                                                         </button>
                                                         <p className="text-md font-semibold w-4">3</p>
-                                                        <button className="text-gray-800 font-semibold p-0.5 px-1.5">
+                                                        <button type="button" className="text-gray-800 font-semibold p-0.5 px-1.5 cursor-pointer">
                                                             <PlusIcon className="size-4" />
                                                         </button>
                                                     </div>
