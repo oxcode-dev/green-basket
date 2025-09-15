@@ -56,14 +56,14 @@ const page = () => {
                                                     </div>
                                                 </td>
                                                 <td className="px-1 py-2 border-t border-gray-200 bg-white text-md text-center">
-                                                    <div className="inline-flex space-x-3">
-                                                        <button className="bg-green-700 text-white rounded-full p-1">
+                                                    <div className="inline-flex rounded-full p-0.5 border border-gray-400 text-gray-600">
+                                                        <button className="text-gray-800 font-semibold p-0.5 px-1.5">
                                                             <MinusIcon className="size-4" />
                                                         </button>
-                                                        <p className="text-lg">3</p>
-                                                        <a className="bg-green-700 text-white rounded-full p-1" href="#">
-                                                            <PlusIcon className="size-5" />
-                                                        </a>
+                                                        <p className="text-md font-semibold w-4">3</p>
+                                                        <button className="text-gray-800 font-semibold p-0.5 px-1.5">
+                                                            <PlusIcon className="size-4" />
+                                                        </button>
                                                     </div>
                                                 </td>
                                                 <td className="px-1 py-2 border-t border-gray-200 bg-white text-md text-center">$102</td>
