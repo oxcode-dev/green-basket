@@ -100,8 +100,20 @@ const page = () => {
                 <div className="w-full flex flex-wrap md:flex-nowrap py-4 md:py-8">
                     <div className="border border-gray-300 rounded-lg p-4 md:p-8 w-full">
 
-                        <div>
-                            <button className="btn rounded-full bg-white text-gray-500 border-gray-300">Default</button>
+                        <div className="space-x-2">
+                            <button className="btn btn-sm rounded-full bg-white text-gray-500 border-gray-300">Description</button>
+                            <button className="btn btn-sm rounded-full bg-white text-gray-500 border-gray-300">Review (3)</button>
+                        </div>
+
+                        <div className="pt-4 md:pt-6">
+                            <div className="text-gray-500 text-sm">
+                                Lorem ipsum dolor sit, amet consectetur adipisicing elit. Error, repellat! Provident aspernatur asperiores dolor adipisci aliquid doloribus, excepturi sapiente, voluptatibus eum labore minima eius inventore reprehenderit officia quos commodi. In.
+                                Lorem ipsum dolor sit, amet consectetur adipisicing elit. Error, repellat! Provident aspernatur asperiores dolor adipisci aliquid doloribus, excepturi sapiente, voluptatibus eum labore minima eius inventore reprehenderit officia quos commodi. In.
+                                Lorem ipsum dolor sit, amet consectetur adipisicing elit. Error, repellat! Provident aspernatur asperiores dolor adipisci aliquid doloribus, excepturi sapiente, voluptatibus eum labore minima eius inventore reprehenderit officia quos commodi. In.
+                                Lorem ipsum dolor sit, amet consectetur adipisicing elit. Error, repellat! Provident aspernatur asperiores dolor adipisci aliquid doloribus, excepturi sapiente, voluptatibus eum labore minima eius inventore reprehenderit officia quos commodi. In.
+                                Lorem ipsum dolor sit, amet consectetur adipisicing elit. Error, repellat! Provident aspernatur asperiores dolor adipisci aliquid doloribus, excepturi sapiente, voluptatibus eum labore minima eius inventore reprehenderit officia quos commodi. In.
+                                Lorem ipsum dolor sit, amet consectetur adipisicing elit. Error, repellat! Provident aspernatur asperiores dolor adipisci aliquid doloribus, excepturi sapiente, voluptatibus eum labore minima eius inventore reprehenderit officia quos commodi. In.
+                            </div>
                         </div>
 
                     </div>
