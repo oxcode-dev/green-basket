@@ -1,3 +1,4 @@
+import { MinusIcon, PlusIcon } from '@heroicons/react/20/solid';
 import React from 'react'
 
 const page = () => {
@@ -34,17 +35,46 @@ const page = () => {
                                                         <div>
                                                             <img 
                                                                 src="https://preview.colorlib.com/theme/vegefoods/images/product-2.jpg"
-                                                                width={160}
+                                                                width={80}
                                                                 alt='Product Image'
-                                                                height={160}
+                                                                height={80}
                                                             />
+                                                            <div>
+                                                                <p>
+                                                                    Product Title Name
+                                                                </p>
+                                                                <p>
+                                                                    $30
+                                                                </p>
+                                                            </div>
                                                         </div>
                                                     </div>
                                                     <div>
 
                                                     </div>
                                                 </th>
-                                                <td>Cy Ganderton</td>
+                                                <td>
+                                                    <div className="join">
+                                                        <button className="join-item btn btn-sm border-gray-300 bg-white text-gray-800">
+                                                            <MinusIcon className="size-5" />
+                                                        </button>
+                                                        <div className="join-item min-w-12 shadow-lg inline-flex justify-center items-center border border-gray-300 bg-white text-gray-800">
+                                                            1
+                                                        </div>
+                                                        <button className="join-item btn btn-sm border-gray-300 bg-white text-gray-800">
+                                                            <PlusIcon className="size-5" />
+                                                        </button>
+                                                    </div>
+                                                    <div className="inline-flex space-x-6">
+                                                        <button className="bg-green-700 text-white rounded-full p-1">
+                                                            <MinusIcon className="size-5" />
+                                                        </button>
+                                                        <p className="text-lg">3</p>
+                                                        <a className="bg-green-700 text-white rounded-full p-1" href="#">
+                                                            <PlusIcon className="size-5" />
+                                                        </a>
+                                                    </div>
+                                                </td>
                                                 <td>$102</td>
                                                 <td>Blue</td>
                                             </tr>
