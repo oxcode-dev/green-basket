@@ -1,4 +1,5 @@
-import { BuildingStorefrontIcon, TruckIcon, ArrowPathRoundedSquareIcon } from '@heroicons/react/24/outline';
+import { MinusIcon, PlusIcon, ShoppingBagIcon } from '@heroicons/react/20/solid';
+import { HeartIcon, BuildingStorefrontIcon, TruckIcon, ArrowPathRoundedSquareIcon } from '@heroicons/react/24/outline';
 import React from 'react'
 
 const page = () => {
@@ -17,20 +18,42 @@ const page = () => {
                             />
                         </div>
                     </div>
-                    <div className="w-full md:pl-4 space-y-2">
-                        <div>
+                    <div className="w-full md:pl-4">
+                        <div className="space-y-2">
                             <p className="text-xl md:text-3xl font-semibold">
                                 Title is the greatest movie of all time
                             </p>
-                            <p className="text-sm text-gray-600 font-medium">
+                            <p className="text-sm text-gray-500 font-medium uppercase">
                                 Category
                             </p>
-                            <p>$100</p>
-                            <p>
-                                summary
+                            <p className="text-3xl text-green-600 font-semibold py-2">$100</p>
+                            <p className="text-sm text-gray-500 font-medium">
+                                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quae provident porro ducimus et nam error quaerat consequatur natus assumenda, blanditiis
                             </p>
                             <div>
-                                Add to Cart
+                                <div className="flex items-center space-x-2 flex-wrap py-2">
+                                    <div className="join">
+                                        <button className="join-item btn btn-sm border-gray-300 bg-white text-gray-800">
+                                            <MinusIcon className="size-5" />
+                                        </button>
+                                        <div className="join-item min-w-12 shadow-lg inline-flex justify-center items-center border border-gray-300 bg-white text-gray-800">
+                                            1
+                                        </div>
+                                        <button className="join-item btn btn-sm border-gray-300 bg-white text-gray-800">
+                                            <PlusIcon className="size-5" />
+                                        </button>
+                                    </div>
+                                    <div className="space-x-2">
+                                        <button className="btn btn-sm bg-green-600 rounded text-white border-green-600 inline-flex items-center space-x-1">
+                                            <ShoppingBagIcon className="size-4" />
+                                            <span>Add to cart</span>
+                                        </button>
+
+                                        <button className="btn btn-sm bg-white text-gray-500 border-gray-300 rounded">
+                                            <HeartIcon className="size-4" />
+                                        </button>
+                                    </div>
+                                </div>
                             </div>
 
                             <div className="pt-4">
@@ -72,6 +95,16 @@ const page = () => {
                         </div>
                     </div>
 
+                </div>
+
+                <div className="w-full flex flex-wrap md:flex-nowrap py-4 md:py-8">
+                    <div className="border border-gray-300 rounded-lg p-4 md:p-8 w-full">
+
+                        <div>
+                            <button className="btn rounded-full bg-white text-gray-500 border-gray-300">Default</button>
+                        </div>
+
+                    </div>
                 </div>
             </div>
         </div>
