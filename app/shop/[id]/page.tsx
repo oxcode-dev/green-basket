@@ -32,16 +32,14 @@ const page = () => {
                             </p>
                             <div>
                                 <div className="flex items-center space-x-2 flex-wrap py-2">
-                                    <div className="join">
-                                        <button className="join-item btn btn-sm border-gray-300 bg-white text-gray-800">
+                                    <div className="inline-flex space-x-6">
+                                        <button className="bg-green-700 text-white rounded-full p-1">
                                             <MinusIcon className="size-5" />
                                         </button>
-                                        <div className="join-item min-w-12 shadow-lg inline-flex justify-center items-center border border-gray-300 bg-white text-gray-800">
-                                            1
-                                        </div>
-                                        <button className="join-item btn btn-sm border-gray-300 bg-white text-gray-800">
+                                        <p className="text-lg">3</p>
+                                        <a className="bg-green-700 text-white rounded-full p-1" href="#">
                                             <PlusIcon className="size-5" />
-                                        </button>
+                                        </a>
                                     </div>
                                     <div className="space-x-2">
                                         <button className="btn btn-sm bg-green-600 rounded text-white border-green-600 inline-flex items-center space-x-1">

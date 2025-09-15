@@ -1,4 +1,4 @@
-import { MinusIcon, PlusIcon } from '@heroicons/react/20/solid';
+import { MinusIcon, PlusIcon, TrashIcon } from '@heroicons/react/20/solid';
 import React from 'react'
 
 const page = () => {
@@ -29,18 +29,20 @@ const page = () => {
                                             </tr>
                                         </thead>
                                         <tbody>
-                                            <tr>
-                                                <th>
+                                            <tr className="">
+                                                <td className="px-1 py-2 border-t border-gray-200 bg-white">
                                                     <div>
-                                                        <div>
+                                                        <div className="inline-flex space-x-3 items-center">
                                                             <img 
                                                                 src="https://preview.colorlib.com/theme/vegefoods/images/product-2.jpg"
                                                                 width={80}
                                                                 alt='Product Image'
                                                                 height={80}
+                                                                className="size-12 object-cover"
                                                             />
                                                             <div>
-                                                                <p>
+                                                                <p className="font-semibold text-lg">
+                                                                    Product Title Name
                                                                     Product Title Name
                                                                 </p>
                                                                 <p>
@@ -52,22 +54,11 @@ const page = () => {
                                                     <div>
 
                                                     </div>
-                                                </th>
-                                                <td>
-                                                    <div className="join">
-                                                        <button className="join-item btn btn-sm border-gray-300 bg-white text-gray-800">
-                                                            <MinusIcon className="size-5" />
-                                                        </button>
-                                                        <div className="join-item min-w-12 shadow-lg inline-flex justify-center items-center border border-gray-300 bg-white text-gray-800">
-                                                            1
-                                                        </div>
-                                                        <button className="join-item btn btn-sm border-gray-300 bg-white text-gray-800">
-                                                            <PlusIcon className="size-5" />
-                                                        </button>
-                                                    </div>
-                                                    <div className="inline-flex space-x-6">
+                                                </td>
+                                                <td className="px-1 py-2 border-t border-gray-200 bg-white text-md text-center">
+                                                    <div className="inline-flex space-x-3">
                                                         <button className="bg-green-700 text-white rounded-full p-1">
-                                                            <MinusIcon className="size-5" />
+                                                            <MinusIcon className="size-4" />
                                                         </button>
                                                         <p className="text-lg">3</p>
                                                         <a className="bg-green-700 text-white rounded-full p-1" href="#">
@@ -75,8 +66,12 @@ const page = () => {
                                                         </a>
                                                     </div>
                                                 </td>
-                                                <td>$102</td>
-                                                <td>Blue</td>
+                                                <td className="px-1 py-2 border-t border-gray-200 bg-white text-md text-center">$102</td>
+                                                <td className="px-1 py-2 border-t border-gray-200 bg-white text-md text-center">
+                                                    <a className="text-gray-600 p-1 inline-flex justify-center" href="#">
+                                                        <TrashIcon className="size-5" />
+                                                    </a>
+                                                </td>
                                             </tr>
                                         </tbody>
                                     </table>
