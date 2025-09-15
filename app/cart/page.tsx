@@ -156,9 +156,15 @@ const page = () => {
                                         <p className="text-xs text-gray-500 font-normal inline-flex space-x-2">
                                             <ShieldExclamationIcon className="size-5" />
                                             <span>
-                                                Shipping cost will be calculate at checkout
+                                                Delivery charges will be calculate at checkout
                                             </span>
                                         </p>
+                                    </div>
+
+                                    <div className="pt-6">
+                                        <button className="btn btn-md bg-black text-white border-black w-full rounded-full">
+                                            Checkout Now
+                                        </button>
                                     </div>
                                 </div>
                             </div>
