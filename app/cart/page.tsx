@@ -1,4 +1,5 @@
 import { MinusIcon, PlusIcon, TrashIcon } from '@heroicons/react/20/solid';
+import { ShieldExclamationIcon } from '@heroicons/react/24/outline';
 import React from 'react'
 
 const page = () => {
@@ -124,14 +125,14 @@ const page = () => {
                             </div>
                         </div>
 
-                        <div className="w-full md:w-1/3 md:pl-2">
+                        <div className="w-full md:w-1/3 md:pl-2 md:pt-0 pt-6">
                             <div className="border border-gray-300 rounded-lg p-4 w-full">
                                 <div className="w-full">
-                                    <p>
+                                    <p className="text-md text-gray-600 font-semibold pb-6">
                                         Order Summary
                                     </p>
 
-                                    <dl>
+                                    <dl className="space-y-1">
                                         <div className="w-full inline-flex justify-between items-center">
                                             <dt className="text-sm text-gray-500 font-normal">Sub Total</dt>
                                             <dd className="text-sm text-gray-800 font-medium">200NGN</dd>
@@ -151,9 +152,12 @@ const page = () => {
                                         <dd className="text-xl text-gray-800 font-medium">$200NGN</dd>
                                     </div>
 
-                                    <div>
-                                        <p className="text-sm text-gray-500 font-normal">
-                                            Shipping cost will be calculate at checkout
+                                    <div className="py-4">
+                                        <p className="text-xs text-gray-500 font-normal inline-flex space-x-2">
+                                            <ShieldExclamationIcon className="size-5" />
+                                            <span>
+                                                Shipping cost will be calculate at checkout
+                                            </span>
                                         </p>
                                     </div>
                                 </div>
