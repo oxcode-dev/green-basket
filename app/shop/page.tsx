@@ -1,10 +1,11 @@
 import { ProductCard } from '@/components/ProductCard';
+import { AppSetup } from '@/setups/AppSetup';
 import { ArrowRightIcon, ArrowsUpDownIcon, ChevronDownIcon, TagIcon } from '@heroicons/react/20/solid';
 import React from 'react'
 
 const page = () => {
     return (
-        <div>
+        <AppSetup>
             <div className="container w-full mx-auto py-8 px-4 md:px-0">
                 <div className="w-full min-h-28 rounded-xl bg-center flex items-center" style={{ backgroundImage: "url(/shop-hero.svg)"}}>
                     <div className="p-4 sm:px-8 md:px-12 py-4">
@@ -149,7 +150,7 @@ const page = () => {
                     
                 </div>
             </div>
-        </div>
+        </AppSetup>
     )
 }
 
