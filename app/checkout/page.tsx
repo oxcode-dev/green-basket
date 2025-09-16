@@ -27,11 +27,14 @@ const page = () => {
                                                 <p className="font-semibold text-sm text-gray-800">
                                                     Product Title Name
                                                     Product Title Name
-                                                    Product
                                                 </p>
                                                 
                                                 <div className="flex justify-between items-center">
-                                                    <p className="font-semibold text-gray-500">
+                                                    <p>
+                                                        <span>Qty:</span>
+                                                        <span>2</span>
+                                                    </p>
+                                                    <p className="font-semibold text-gray-500 hidden">
                                                         $30
                                                     </p>
                                                     <p className="px-1 py-2 font-bold text-lg text-center">$102</p>
