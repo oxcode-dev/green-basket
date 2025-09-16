@@ -23,10 +23,10 @@ const page = () => {
                                         {/* head */}
                                         <thead className="text-gray-500">
                                             <tr>
-                                                <th>Product</th>
-                                                <th>Quantity</th>
-                                                <th>Total</th>
-                                                <th>Action</th>
+                                                <th className="text-center">Product</th>
+                                                <th className="text-center">Quantity</th>
+                                                <th className="text-center">Total</th>
+                                                <th className="text-center">Action</th>
                                             </tr>
                                         </thead>
                                         <tbody>
