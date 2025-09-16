@@ -1,12 +1,13 @@
 import { ContactFormCard } from '@/components/ContactFormCard';
 import { ContactInfoSection } from '@/sections/ContactInfoSection';
+import { AppSetup } from '@/setups/AppSetup';
 import Image from 'next/image';
 import React from 'react'
 
 
 const page = () => {
     return (
-        <div>
+        <AppSetup>
             <ContactInfoSection />
 
             <div className="w-full container mx-auto md:py-8 md:pb-16">
@@ -31,7 +32,7 @@ const page = () => {
 
                 </div>
             </div>
-        </div>
+        </AppSetup>
     )
 }
 
