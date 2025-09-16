@@ -1,10 +1,11 @@
+import { AppSetup } from '@/setups/AppSetup';
 import { MinusIcon, PlusIcon, ShoppingBagIcon } from '@heroicons/react/20/solid';
 import { HeartIcon, BuildingStorefrontIcon, TruckIcon, ArrowPathRoundedSquareIcon } from '@heroicons/react/24/outline';
 import React from 'react'
 
 const page = () => {
     return (
-        <div>
+        <AppSetup>
             <div className="container w-full mx-auto py-8 px-4 md:px-0">
                 <div className="w-full flex flex-wrap md:flex-nowrap">
                     <div className="w-full md:pr-6">
@@ -117,7 +118,7 @@ const page = () => {
                     </div>
                 </div>
             </div>
-        </div>
+        </AppSetup>
     )
 }
 

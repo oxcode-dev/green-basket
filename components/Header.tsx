@@ -131,10 +131,10 @@ export const DesktopHeader = () => {
                             <a>
                                 <ArrowRightEndOnRectangleIcon className="size-5" />
                             </a>
-                            <a className="w-6 relative">
+                            <Link href="/cart" className="w-6 relative">
                                 <ShoppingCartIcon className="size-5" />
                                 <span className="w-4 h-4 text-xs text-white absolute right-0 -top-2 bg-red-600 p-1 rounded-full items-center justify-center inline-flex">1</span>
-                            </a>
+                            </Link>
                         </div>
                     </div>
                 </div>
@@ -280,14 +280,14 @@ export const MobileHeader = () => {
                             </ul>
                         </div>
 
-                        <a className="w-6 relative" href="/cart" title="Shopping Cart">
+                        <Link className="w-6 relative" href="/cart" title="Shopping Cart">
                             <span className="w-4 h-4 text-xs text-white absolute right-0 -top-2 bg-red-600 p-1 rounded-full items-center justify-center inline-flex">
                                 3
                             </span>
                             <span>
                                 <ShoppingCartIcon className="size-5" />
                             </span>
-                        </a>
+                        </Link>
                         <a onClick={() => setActive(true)} className="w-6 flex">
                             <Bars3Icon className="size-6" />
                         </a>
@@ -297,4 +297,3 @@ export const MobileHeader = () => {
         </div>
     )
 }
-
