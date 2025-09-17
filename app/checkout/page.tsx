@@ -12,58 +12,44 @@ const page = () => {
                                     Shipping Address
                                 </p>
 
-                                <div className="space-y-3">
-                                    <div className="relative">
-                                        <input
-                                            className="hidden peer"
-                                            defaultValue="1"
-                                            id="option1-checkbox"
-                                            name="options"
-                                            type="radio"
-                                        />
-                                        <label
-                                            className="inline-flex items-center justify-between w-full p-5 bg-white border-2 rounded-lg cursor-pointer group border-neutral-200/70 text-neutral-600 peer-checked:border-blue-400 peer-checked:text-neutral-900 peer-checked:bg-blue-200/50 hover:text-neutral-900 hover:border-neutral-300"
-                                            htmlFor="option1-checkbox"
-                                        >
-                                            <div className="flex items-center space-x-5">
-                                                {/* icon */}
-                                                <div className="flex flex-col justify-start">
-                                                    <div className="w-full text-lg font-semibold">Option 1</div>
-                                                    <div className="w-full text-sm opacity-60">
-                                                        The first option is cool
+                                <div className="space-y-3 pb-2">
+                                    { Array.from({ length: 3 }).map((item, key) => (
+                                        <div key={key} className="relative">
+                                            <input
+                                                className="hidden peer"
+                                                defaultValue={key}
+                                                id={`option${key}-checkbox`}
+                                                name="options"
+                                                type="radio"
+                                            />
+                                            <label
+                                                className="inline-flex items-center justify-between w-full p-3 bg-white border-2 rounded-lg cursor-pointer group border-neutral-200/70 text-neutral-600 peer-checked:border-green-200 peer-checked:text-neutral-900 peer-checked:bg-green-200/50 hover:text-neutral-900 hover:border-neutral-300"
+                                                htmlFor={`option${key}-checkbox`}
+                                            >
+                                                <div className="flex items-center space-x-5">
+                                                    {/* icon */}
+                                                    <div className="flex flex-col justify-start space-y-1">
+                                                        <div className="w-full font-semibold">Oxcode</div>
+                                                        <div className="w-full text-xs opacity-60 space-x-1.5">
+                                                            <span>Address</span>
+                                                            <span>City</span>
+                                                            <span>State</span>
+                                                            <span>Phone</span>
+                                                        </div>
                                                     </div>
                                                 </div>
-                                            </div>
-                                        </label>
-                                    </div>
-                                    <div className="relative">
-                                        <input
-                                            className="hidden peer"
-                                            defaultValue="2"
-                                            id="option2-checkbox"
-                                            name="options"
-                                            type="radio"
-                                        />
-                                        <label
-                                            className="inline-flex items-center justify-between w-full p-5 bg-white border-2 rounded-lg cursor-pointer group border-neutral-200/70 text-neutral-600 peer-checked:border-blue-400 peer-checked:text-neutral-900 peer-checked:bg-blue-200/50 hover:text-neutral-900 hover:border-neutral-300"
-                                            htmlFor="option2-checkbox"
-                                        >
-                                            <div className="flex items-center space-x-5">
-                                                {/* icon */}
-                                                <div className="flex flex-col justify-start">
-                                                    <div className="w-full text-lg font-semibold">Option 2</div>
-                                                    <div className="w-full text-sm opacity-60">
-                                                        The second option is nice
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </label>
-                                    </div>
+                                            </label>
+                                        </div>
+                                    ))}
                                 </div>
                             </div>
-                        </div>
 
-                        
+                            <div className="border border-gray-300 rounded-xl p-2 px-4 w-full">
+                                <p className="text-md text-gray-600 font-semibold py-2">
+                                    Payment
+                                </p>
+                            </div>
+                        </div>
                     </div>
 
                     <div className="w-full md:w-1/3 md:pl-2">
