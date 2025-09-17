@@ -62,16 +62,16 @@ const page = () => {
                                             <p>Expiry</p>
                                             <div className="w-full grid grid-cols-1 md:grid-cols-3 md:space-x-3">
                                                 <div className="space-y-4 md:space-y-0">
-                                                    <label>Month</label>
-                                                    <input type="text" name="subject" placeholder="Subject" className="input w-full bg-white" />
+                                                    {/* <label>Month</label> */}
+                                                    <input type="text" name="month" placeholder="month" className="input w-full bg-white" />
                                                 </div>
                                                 <div className="space-y-4 md:space-y-0">
-                                                    <label>Year</label>
-                                                    <input type="text" name="subject" placeholder="Subject" className="input w-full bg-white" />
+                                                    {/* <label>Year</label> */}
+                                                    <input type="text" name="year" placeholder="year" className="input w-full bg-white" />
                                                 </div>
                                                 <div className="space-y-4 md:space-y-0">
-                                                    <label>CVV</label>
-                                                    <input type="text" name="subject" placeholder="Subject" className="input w-full bg-white" />
+                                                    {/* <label>CVV</label> */}
+                                                    <input type="text" name="cvv" placeholder="CVV" className="input w-full bg-white" />
                                                 </div>
                                             </div>
                                         </div>
