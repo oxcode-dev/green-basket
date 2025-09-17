@@ -6,7 +6,15 @@ const page = () => {
             <div className="container w-full mx-auto py-8 px-4 md:px-0">
                 <div className="w-full flex flex-wrap md:flex-nowrap items-start space-y-6 md:space-y-0">
                     <div className="w-full md:w-2/3 md:pr-6">
+                        <div className="space-y-4">
+                            <div className="border border-gray-300 rounded-xl p-2 px-4 w-full">
+                                <p className="text-md text-gray-600 font-semibold py-2">
+                                    Shipping Address
+                                </p>
+                            </div>
+                        </div>
 
+                        
                     </div>
 
                     <div className="w-full md:w-1/3 md:pl-2">
