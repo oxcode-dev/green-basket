@@ -48,6 +48,28 @@ const page = () => {
                                 <p className="text-md text-gray-600 font-semibold py-2">
                                     Payment
                                 </p>
+                                <div>
+                                    <div className="space-y-4 pt-6">
+                                        <div className="space-y-4 md:space-y-0">
+                                            <input type="text" name="subject" placeholder="Subject" className="input w-full bg-white" />
+                                        </div>
+                                        <div className="space-y-4 md:space-y-0">
+                                            <input type="text" name="subject" placeholder="Subject" className="input w-full bg-white" />
+                                        </div>
+                                        <div className="w-full grid grid-cols-1 md:grid-cols-3">
+                                            <div className="space-y-4 md:space-y-0">
+                                                <input type="text" name="subject" placeholder="Subject" className="input w-full bg-white" />
+                                            </div>
+                                            <div className="space-y-4 md:space-y-0">
+                                                <input type="text" name="subject" placeholder="Subject" className="input w-full bg-white" />
+                                            </div>
+                                            <div className="space-y-4 md:space-y-0">
+                                                <input type="text" name="subject" placeholder="Subject" className="input w-full bg-white" />
+                                            </div>
+                                        </div>
+                                        
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
