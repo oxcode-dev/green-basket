@@ -18,7 +18,7 @@ export const DashboardSetup = ({
                                 <div className="border border-gray-300 rounded-xl p-2 px-4 w-full">
                                     {/* Profile Info and Avatar */}
                                     <div>
-                                        <div className="flex flex-col items-center w-full py-6 border-b">
+                                        <div className="flex flex-col items-center w-full py-6 md:border-b">
                                             <div>
                                                 <img
                                                     className="w-20 h-20 rounded-full object-cover object-center"
@@ -179,7 +179,11 @@ export const DashboardSetup = ({
                         </div>
 
                         <div className="w-full md:w-2/3 md:pr-6">
-                            {children}
+                            <div className="space-y-4">
+                                <div className="border border-gray-300 rounded-xl p-2 px-4 w-full">
+                                    {children}
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
