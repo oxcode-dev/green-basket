@@ -1,103 +1,152 @@
-import Image from "next/image";
+import { ProductCard } from '@/components/ProductCard'
+import { BenefitSection } from '@/sections/BenefitSection'
+import { ReviewSection } from '@/sections/ReviewSection'
+import { SubscriptionSection } from '@/sections/SubscriptionSection'
+import { AppSetup } from '@/setups/AppSetup'
+import { ArrowRightIcon, ChevronDownIcon, HeartIcon, ShoppingCartIcon, TagIcon } from '@heroicons/react/20/solid'
+import { Quicksand } from 'next/font/google'
+import Image from 'next/image'
+import Link from 'next/link'
+import React from 'react'
 
-export default function Home() {
+const quicksand = Quicksand({
+  subsets: ["latin"],
+  variable: "--font-quicksand",
+});
+
+export const page = () => {
   return (
-    <div className="font-sans grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20">
-      <main className="flex flex-col gap-[32px] row-start-2 items-center sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        />
-        <ol className="font-quicksand list-inside list-decimal text-sm/6 text-center sm:text-left">
-          <li className="mb-2 tracking-[-.01em]">
-            Get started by editing{" "}
-            <code className="bg-black/[.05] dark:bg-white/[.06] font-mono font-semibold px-1 py-0.5 rounded">
-              app/page.tsx
-            </code>
-            .
-          </li>
-          <li className="tracking-[-.01em]">
-            Save and see your changes instantly.
-          </li>
-        </ol>
+    <AppSetup>
+      <div className="container w-full mx-auto md:py-8">
+        <div className="w-full flex relative h-full px-4 sm:px-6">
 
-        <div className="flex gap-4 items-center flex-col sm:flex-row">
-          <a
-            className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:w-auto"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
-            />
-            Deploy now
-          </a>
-          <a
-            className="rounded-full border border-solid border-black/[.08] dark:border-white/[.145] transition-colors flex items-center justify-center hover:bg-[#f2f2f2] dark:hover:bg-[#1a1a1a] hover:border-transparent font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 w-full sm:w-auto md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Read our docs
-          </a>
+            <div className="relative md:z-50 py-16 md:px-24 flex flex-col justify-center w-full md:max-w-xl">
+
+              <div className="bg-[#c5ead9] md:bg-transparent space-y-3 md:space-y-5 p-4 md:p-0 rounded-md">
+                <p className={`text-2xl md:text-4xl font-bold capitalize ${quicksand.className}`}>
+                  We serve fresh & organic foods
+                </p>
+                <p className={`${quicksand.className} text-lg md:text-2xl font-semibold capitalize`}>
+                  Fresh Items with big discount
+                </p>
+
+                <Link href="#" className="btn btn-success rounded w-32 text-white">
+                  Shop Now
+                </Link>
+              </div>
+
+            </div>
+
+            <div className="absolute rounded-lg right-0 left-0 hidden md:flex">
+              <Image
+                className="w-full rounded-lg"
+                src="/Background.png"
+                alt="Next.js logo"
+                width={500}
+                height={350}
+                priority
+                layout="responsive"
+              />
+            </div>
+
         </div>
-      </main>
-      <footer className="row-start-3 flex gap-[24px] flex-wrap items-center justify-center">
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
-          />
-          Learn
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
-      </footer>
-    </div>
-  );
+        
+      </div>
+
+      <BenefitSection />
+
+      <div className="container w-full mx-auto py-8 px-4 md:px-0">
+        <div className="flex w-full flex-wrap md:flex-nowrap">
+          <div className="w-full md:w-4/5 md:pr-6">
+            <div className="dropdown pb-8 md:hidden">
+              <div tabIndex={0} role="button" className="btn btn-neutral">
+                <div className="inline-flex items-center space-x-2">
+                  <span>
+                    <TagIcon className="size-5" />
+                  </span>
+                  <span>All Categories</span>
+                  <span>
+                    <ChevronDownIcon className="size-5" />
+                  </span>
+                </div>
+              </div>
+              <ul
+                tabIndex={0}
+                className="bg-white menu menu-sm dropdown-content bg-base-100 rounded-box z-1 mt-3 w-52 p-2 shadow"
+              >
+                <li>
+                  <a className="justify-between">
+                    Account
+                  </a>
+                </li>
+                <li><a>Settings</a></li>
+                <li><a>Logout</a></li>
+              </ul>
+            </div>
+
+            <div className="space-y-2 pb-2">
+              <h3 className="font-semibold text-2xl">
+                Popular Products
+              </h3>
+              <p className="font-medium text-gray-600 text-sm pb-4">
+                These are some of our most popular products among customers.
+              </p>
+            </div>
+
+            <div className="grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 md:gap-6 gap-6 sm:gap-4">
+              { Array.from({ length: 20 }).map((item, key) => (
+                <div key={key}>
+                  <ProductCard />
+                </div>
+              ))}
+            </div>
+
+            <div className="py-8 flex justify-center">
+              <button className="btn btn-pill">
+                <span>Visit Shop</span>
+                <ArrowRightIcon className="size-5" />
+              </button>
+            </div>
+          </div>
+
+          <div className="w-full md:w-1/5 md:flex hidden">
+            <div className="flex flex-col space-y-4">
+              <div className="border border-gray-300 shadow-sm rounded-md p-4">
+                <div className="space-y-2 pb-2">
+                  <h3 className="font-semibold">
+                    Categories
+                  </h3>
+                  <div className="w-full h-0.5 relative bg-gray-300 rounded-full">
+                    <div className="w-[30%] h-0.5 relative bg-green-500 rounded-full"></div>
+                  </div>
+                </div>
+
+                <div className='pt-2 space-y-2'>
+                  {
+                    Array.from({ length: 10 }).map((item, key) => (
+                      <a href="#" key={key} className="inline-flex justify-between items-center rounded-md border border-gray-200 w-full p-1.5 space-x-1.5">
+                        <span className="text-xs font-medium text-gray-600">Fresh fruits</span>
+                        <span>
+                          <span className="badge bg-green-600 border-0 badge-xs font-medium text-white">100</span>
+                        </span>
+                      </a>
+                    ))
+                  }
+                </div>
+              </div>
+
+            </div>
+          </div>
+        </div>
+      </div>
+
+      {/* Review */}
+      <ReviewSection />
+
+      {/* <SubscriptionSection /> */}
+    </AppSetup>
+  )
 }
+
+export default page
+
