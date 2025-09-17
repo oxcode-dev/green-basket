@@ -1,5 +1,6 @@
 'use client'
 
+import { Header } from "@/components/Header";
 import { Logo } from "@/components/Logo";
 import Link from "next/link";
 
@@ -10,6 +11,7 @@ export default function DashboardLayout({
 }>) {
     return (
         <div className="">
+            <Header />
             {children}
         </div>
     );
