@@ -18,7 +18,7 @@ export const DashboardSetup = ({
                                 <div className="border border-gray-300 rounded-xl p-2 px-4 w-full">
                                     {/* Profile Info and Avatar */}
                                     <div>
-                                        <div className="flex flex-col items-center w-full py-6 md:border-b">
+                                        <div className="flex flex-col items-center w-full py-6 border-gray-300 md:border-b">
                                             <div>
                                                 <img
                                                     className="w-20 h-20 rounded-full object-cover object-center"
@@ -27,7 +27,7 @@ export const DashboardSetup = ({
                                             </div>
                                             <div className="text-center">
                                                 <h2 className="text-xl font-semibold text-gray-500 pt-3">Vivian Brooks</h2>
-                                                <a className="underline text-sm text-blue-500" href="#">
+                                                <a className="underline text-sm text-gray-500" href="#">
                                                     Change Avatar
                                                 </a>
                                             </div>
