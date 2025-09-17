@@ -1,8 +1,11 @@
+import { DashboardSetup } from '@/setups/DashboardSetup'
 import React from 'react'
 
 const page = () => {
     return (
-        <div>page</div>
+        <DashboardSetup>
+            Hello World
+        </DashboardSetup>
     )
 }
 

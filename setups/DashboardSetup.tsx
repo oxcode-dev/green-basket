@@ -3,7 +3,7 @@ import { Header } from '@/components/Header';
 import { SubscriptionSection } from '@/sections/SubscriptionSection';
 import React from 'react'
 
-export const AppSetup = ({
+export const DashboardSetup = ({
         children,
     }: Readonly<{
     children: React.ReactNode;
