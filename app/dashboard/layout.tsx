@@ -28,8 +28,8 @@ const navigationItems :NavigationProp[] = [
     },
     {
         icon: <BookmarkIcon className="size-6" />,
-        link: "/dashboard/saved-products",
-        label: "Saved Products",
+        link: "/dashboard/wishlists",
+        label: "Wishlists",
     },
     {
         icon: <Cog8ToothIcon className="size-6" />,
