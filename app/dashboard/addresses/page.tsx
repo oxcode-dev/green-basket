@@ -37,12 +37,14 @@ const page = () => {
 
                             </div>
                             <div className="border-t border-gray-200 p-2 py-1">
-                                <button>
-                                    <TrashIcon className="size-4" />
-                                </button>
-                                <button>
-                                    <PencilIcon className="size-4" />
-                                </button>
+                                <div className="space-x-2 flex- justify-end">
+                                    <button className="btn btn-sm btn-circle rounded-md btn-error text-white font-medium">
+                                        <TrashIcon className="size-4" />
+                                    </button>
+                                    <button className="btn btn-sm btn-circle rounded-md bg-white text-gray-600 border border-gray-200 font-medium">
+                                        <PencilIcon className="size-4" />
+                                    </button>
+                                </div>
                             </div>
                         </div>
                     ))}
