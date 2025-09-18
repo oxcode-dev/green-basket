@@ -1,6 +1,7 @@
 import { Footer } from '@/components/Footer';
 import { Header } from '@/components/Header';
 import { SubscriptionSection } from '@/sections/SubscriptionSection';
+import { HomeIcon } from '@heroicons/react/20/solid';
 import React from 'react'
 
 export const DashboardSetup = ({
@@ -38,29 +39,11 @@ export const DashboardSetup = ({
                                         <ul className="hidden md:flex flex-col py-2">
                                             <li className="py-1 w-full">
                                                 <a
-                                                className="inline-flex items-center text-blue-500 hover:bg-white w-full space-x-2 p-2.5"
-                                                href="/dashboard/">
-                                                <i
-                                                    className="vue-feather vue-feather--home w-5"
-                                                    data-name="home"
-                                                    data-tags="house,living"
-                                                    data-type="home">
-                                                    <svg
-                                                    className="feather feather-home vue-feather__content"
-                                                    fill="none"
-                                                    height="24"
-                                                    stroke="currentColor"
-                                                    strokeLinecap="round"
-                                                    strokeLinejoin="round"
-                                                    strokeWidth="2"
-                                                    viewBox="0 0 24 24"
-                                                    width="24"
-                                                    xmlns="http://www.w3.org/2000/svg">
-                                                    <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z" />
-                                                    <polyline points="9 22 9 12 15 12 15 22" />
-                                                    </svg>
-                                                </i>
-                                                <span>Home</span>
+                                                    className="inline-flex items-center text-blue-500 hover:bg-white w-full space-x-2 p-2.5"
+                                                    href="/dashboard/"
+                                                >
+                                                    <HomeIcon className="size-5" />
+                                                    <span>Home</span>
                                                 </a>
                                             </li>
                                             <li className="py-1 w-full">
