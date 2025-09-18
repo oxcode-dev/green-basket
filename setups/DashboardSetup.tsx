@@ -1,4 +1,4 @@
-import { ShoppingBagIcon, HomeIcon, BookmarkIcon, MapIcon } from '@heroicons/react/24/outline';
+import { ShoppingBagIcon, HomeIcon, BookmarkIcon, MapIcon, ArrowLeftStartOnRectangleIcon } from '@heroicons/react/24/outline';
 import React from 'react'
 
 export const DashboardSetup = ({
@@ -73,57 +73,20 @@ export const DashboardSetup = ({
                                             </li>
                                             <li className="py-1 w-full">
                                                 <a
-                                                className="inline-flex items-center text-gray-500 hover:bg-gray-100 w-full space-x-4 p-2.5"
-                                                href="/dashboard/account">
-                                                <i
-                                                    className="vue-feather vue-feather--settings w-5"
-                                                    data-name="settings"
-                                                    data-tags="cog,edit,gear,preferences"
-                                                    data-type="settings">
-                                                    <svg
-                                                    className="feather feather-settings vue-feather__content"
-                                                    fill="none"
-                                                    height="24"
-                                                    stroke="currentColor"
-                                                    strokeLinecap="round"
-                                                    strokeLinejoin="round"
-                                                    strokeWidth="2"
-                                                    viewBox="0 0 24 24"
-                                                    width="24"
-                                                    xmlns="http://www.w3.org/2000/svg">
-                                                    <circle cx="12" cy="12" r="3" />
-                                                    <path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z" />
-                                                    </svg>
-                                                </i>
-                                                <span>Account Management</span>
+                                                    className="inline-flex items-center text-gray-500 hover:bg-gray-100 w-full space-x-4 p-2.5"
+                                                    href="/dashboard/account"
+                                                >
+                                                    <span>Account Management</span>
                                                 </a>
                                             </li>
                                             <li className="py-1 w-full">
                                                 <a
-                                                className="inline-flex items-center text-gray-500 hover:bg-gray-100 w-full space-x-4 p-2.5"
-                                                href="#">
-                                                <i
-                                                    className="vue-feather vue-feather--log-out w-5"
-                                                    data-name="log-out"
-                                                    data-tags="sign out,arrow,exit"
-                                                    data-type="log-out">
-                                                    <svg
-                                                    className="feather feather-log-out vue-feather__content"
-                                                    fill="none"
-                                                    height="24"
-                                                    stroke="currentColor"
-                                                    strokeLinecap="round"
-                                                    strokeLinejoin="round"
-                                                    strokeWidth="2"
-                                                    viewBox="0 0 24 24"
-                                                    width="24"
-                                                    xmlns="http://www.w3.org/2000/svg">
-                                                    <path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4" />
-                                                    <polyline points="16 17 21 12 16 7" />
-                                                    <line x1="21" x2="9" y1="12" y2="12" />
-                                                    </svg>
-                                                </i>
-                                                <span>Sign out</span>
+                                                    className="inline-flex items-center text-gray-500 hover:bg-gray-100 w-full space-x-4 p-2.5"
+                                                    href="#"
+                                                >
+                                                    <ArrowLeftStartOnRectangleIcon className="size-6" />
+                                                    
+                                                    <span>Sign out</span>
                                                 </a>
                                             </li>
                                         </ul>

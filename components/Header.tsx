@@ -2,7 +2,7 @@
 
 import React, { useState } from 'react'
 import { Logo } from './Logo'
-import { ArrowRightEndOnRectangleIcon, Bars3Icon, ChevronDownIcon, EnvelopeIcon, MagnifyingGlassIcon, ShoppingCartIcon, TagIcon, UserIcon, XMarkIcon } from '@heroicons/react/20/solid'
+import { ArrowRightEndOnRectangleIcon, Bars3Icon, ChevronDownIcon, EnvelopeIcon, MagnifyingGlassIcon, ShoppingCartIcon, TagIcon, XMarkIcon } from '@heroicons/react/20/solid'
 import Link from 'next/link';
 
 export const Header = () => {
