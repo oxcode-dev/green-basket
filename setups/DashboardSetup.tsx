@@ -1,7 +1,4 @@
-import { Footer } from '@/components/Footer';
-import { Header } from '@/components/Header';
-import { SubscriptionSection } from '@/sections/SubscriptionSection';
-import { HomeIcon } from '@heroicons/react/20/solid';
+import { ShoppingBagIcon, HomeIcon } from '@heroicons/react/24/outline';
 import React from 'react'
 
 export const DashboardSetup = ({
@@ -42,36 +39,18 @@ export const DashboardSetup = ({
                                                     className="inline-flex items-center text-blue-500 hover:bg-white w-full space-x-2 p-2.5"
                                                     href="/dashboard/"
                                                 >
-                                                    <HomeIcon className="size-5" />
+                                                    <HomeIcon className="size-6" />
                                                     <span>Home</span>
                                                 </a>
                                             </li>
                                             <li className="py-1 w-full">
                                                 <a
-                                                aria-current="page"
-                                                className="router-link-active router-link-exact-active bg-white font-medium inline-flex items-center text-blue-500 hover:bg-white w-full space-x-2 p-2.5"
-                                                href="/dashboard/applied-jobs">
-                                                <i
-                                                    className="vue-feather vue-feather--mouse-pointer w-5"
-                                                    data-name="mouse-pointer"
-                                                    data-tags="arrow,cursor"
-                                                    data-type="mouse-pointer">
-                                                    <svg
-                                                    className="feather feather-mouse-pointer vue-feather__content"
-                                                    fill="none"
-                                                    height="24"
-                                                    stroke="currentColor"
-                                                    strokeLinecap="round"
-                                                    strokeLinejoin="round"
-                                                    strokeWidth="2"
-                                                    viewBox="0 0 24 24"
-                                                    width="24"
-                                                    xmlns="http://www.w3.org/2000/svg">
-                                                    <path d="M3 3l7.07 16.97 2.51-7.39 7.39-2.51L3 3z" />
-                                                    <path d="M13 13l6 6" />
-                                                    </svg>
-                                                </i>
-                                                <span>Applied Jobs</span>
+                                                    aria-current="page"
+                                                    className="router-link-active router-link-exact-active bg-white font-medium inline-flex items-center text-blue-500 hover:bg-white w-full space-x-2 p-2.5"
+                                                    href="/dashboard/applied-jobs"
+                                                >
+                                                    <ShoppingBagIcon className="size-6" />
+                                                    <span>Orders</span>
                                                 </a>
                                             </li>
                                             <li className="py-1 w-full">
