@@ -1,4 +1,4 @@
-import { ShoppingBagIcon, HomeIcon } from '@heroicons/react/24/outline';
+import { ShoppingBagIcon, HomeIcon, BookmarkIcon, MapIcon } from '@heroicons/react/24/outline';
 import React from 'react'
 
 export const DashboardSetup = ({
@@ -36,7 +36,7 @@ export const DashboardSetup = ({
                                         <ul className="hidden md:flex flex-col py-2">
                                             <li className="py-1 w-full">
                                                 <a
-                                                    className="inline-flex items-center text-blue-500 hover:bg-white w-full space-x-2 p-2.5"
+                                                    className="inline-flex items-center text-gray-500 hover:bg-gray-100 w-full space-x-4 p-2.5"
                                                     href="/dashboard/"
                                                 >
                                                     <HomeIcon className="size-6" />
@@ -45,43 +45,35 @@ export const DashboardSetup = ({
                                             </li>
                                             <li className="py-1 w-full">
                                                 <a
+                                                    className="inline-flex items-center text-gray-500 hover:bg-gray-100 w-full space-x-4 p-2.5"
+                                                    href="/dashboard/"
+                                                >
+                                                    <MapIcon className="size-6" />
+                                                    <span>My Addresses</span>
+                                                </a>
+                                            </li>
+                                            <li className="py-1 w-full">
+                                                <a
                                                     aria-current="page"
-                                                    className="router-link-active router-link-exact-active bg-white font-medium inline-flex items-center text-blue-500 hover:bg-white w-full space-x-2 p-2.5"
+                                                    className="router-link-active router-link-exact-active bg-white font-medium inline-flex items-center text-gray-500 hover:bg-gray-100 w-full space-x-4 p-2.5"
                                                     href="/dashboard/applied-jobs"
                                                 >
                                                     <ShoppingBagIcon className="size-6" />
-                                                    <span>Orders</span>
+                                                    <span>My Orders</span>
                                                 </a>
                                             </li>
                                             <li className="py-1 w-full">
                                                 <a
-                                                className="inline-flex items-center text-blue-500 hover:bg-white w-full space-x-2 p-2.5"
-                                                href="/dashboard/saved-jobs">
-                                                <i
-                                                    className="vue-feather vue-feather--bookmark w-5"
-                                                    data-name="bookmark"
-                                                    data-tags="read,clip,marker,tag"
-                                                    data-type="bookmark">
-                                                    <svg
-                                                    className="feather feather-bookmark vue-feather__content"
-                                                    fill="none"
-                                                    height="24"
-                                                    stroke="currentColor"
-                                                    strokeLinecap="round"
-                                                    strokeLinejoin="round"
-                                                    strokeWidth="2"
-                                                    viewBox="0 0 24 24"
-                                                    width="24"
-                                                    xmlns="http://www.w3.org/2000/svg">
-                                                    <path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z" />
-                                                    </svg>
-                                                </i>
-                                                <span>Saved Jobs</span>
+                                                    className="inline-flex items-center text-gray-500 hover:bg-gray-100 w-full space-x-4 p-2.5"
+                                                    href="/dashboard/saved-jobs"
+                                                >
+                                                    <BookmarkIcon className="size-6" />
+                                                    <span>Saved Products</span>
                                                 </a>
                                             </li>
                                             <li className="py-1 w-full">
                                                 <a
-                                                className="inline-flex items-center text-blue-500 hover:bg-white w-full space-x-2 p-2.5"
+                                                className="inline-flex items-center text-gray-500 hover:bg-gray-100 w-full space-x-4 p-2.5"
                                                 href="/dashboard/account">
                                                 <i
                                                     className="vue-feather vue-feather--settings w-5"
@@ -108,7 +100,7 @@ export const DashboardSetup = ({
                                             </li>
                                             <li className="py-1 w-full">
                                                 <a
-                                                className="inline-flex items-center text-blue-500 hover:bg-white w-full space-x-2 p-2.5"
+                                                className="inline-flex items-center text-gray-500 hover:bg-gray-100 w-full space-x-4 p-2.5"
                                                 href="#">
                                                 <i
                                                     className="vue-feather vue-feather--log-out w-5"
