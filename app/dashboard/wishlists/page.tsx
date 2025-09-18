@@ -1,3 +1,4 @@
+import { ProductCard } from '@/components/ProductCard'
 import React from 'react'
 
 const page = () => {
@@ -10,8 +11,12 @@ const page = () => {
                 </div>
             </div>
             <div className="py-4 p-6">
-                <div className="">
-                    Hello
+                <div className="w-full grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 md:gap-4">
+                    { Array.from({ length: 10 }).map((item, key) => (
+                        <div key={key}>
+                            <ProductCard />
+                        </div>
+                    ))}
                 </div>
             </div>
         </div>
