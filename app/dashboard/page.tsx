@@ -16,11 +16,11 @@ const page = () => {
                             <input type="text" placeholder="First Name" className="input w-full bg-white border border-gray-300" />
                         </div>
                         <div>
-                            <input type="text" placeholder="Last Name" className="input w-full bg-white" />
+                            <input type="text" placeholder="Last Name" className="input w-full bg-white border border-gray-300" />
                         </div>
 
                         <div>
-                            <input type="email" placeholder="Your Email" className="input w-full bg-white" />
+                            <input type="email" placeholder="Your Email" className="input w-full bg-white border border-gray-300" />
                         </div>
                 
                         <div>
