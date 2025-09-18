@@ -10,7 +10,7 @@ type NavigationProp = {
     icon: React.JSX.Element,
 };
 
-const navigation :NavigationProp[] = [
+const navigationItems :NavigationProp[] = [
     {
         icon: <HomeIcon className="size-6" />,
         link: "/dashboard/",
@@ -73,15 +73,18 @@ export default function DashboardLayout({
                                         {/* Dashboard Navigation */}
                                         <div>
                                             <ul className="hidden md:flex flex-col py-2">
-                                                <li className="py-1 w-full">
-                                                    <Link
-                                                        className="inline-flex items-center text-gray-500 hover:bg-gray-100 w-full space-x-4 p-2.5"
-                                                        href="/dashboard/"
-                                                    >
-                                                        <HomeIcon className="size-6" />
-                                                        <span>Home</span>
-                                                    </Link>
-                                                </li>
+                                                { navigationItems.map((item, key) => (
+                                                    <li key={key} className="py-1 w-full">
+                                                        <Link
+                                                            className="inline-flex items-center text-gray-500 hover:bg-gray-100 w-full space-x-4 p-2.5"
+                                                            href={item.link}
+                                                        >
+                                                            {item.icon}
+                                                            <span>{item.label}</span>
+                                                        </Link>
+                                                    </li>
+                                                ))}
+
                                                 
                                                 <li className="py-1 w-full">
                                                     <a
