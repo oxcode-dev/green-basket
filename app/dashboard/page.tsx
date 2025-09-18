@@ -12,20 +12,28 @@ const page = () => {
             <div className="py-4 p-6">
                 <div className="">
                     <form className="space-y-4 pt-6">
-                        <div>
-                            <input type="text" placeholder="First Name" className="input w-full bg-white border border-gray-300" />
+                        <div className="space-y-1.5 flex flex-col">
+                            <label className="text-sm font-medium text-gray-800" htmlFor="first_name">First Name</label>
+                            <input type="text" name="first_name" placeholder="First Name" className="input w-full bg-white border border-gray-300" />
                         </div>
-                        <div>
-                            <input type="text" placeholder="Last Name" className="input w-full bg-white border border-gray-300" />
+                        <div className="space-y-1.5 flex flex-col">
+                            <label className="text-sm font-medium text-gray-800" htmlFor="last_name">Last Name</label>
+                            <input type="text" name="last_name" placeholder="Last Name" className="input w-full bg-white border border-gray-300" />
                         </div>
 
-                        <div>
-                            <input type="email" placeholder="Your Email" className="input w-full bg-white border border-gray-300" />
+                        <div className="space-y-1.5 flex flex-col">
+                            <label className="text-sm font-medium text-gray-800" htmlFor="email">Email</label>
+                            <input type="email" name="email" placeholder="Your Email" className="input w-full bg-white border border-gray-300" />
+                        </div>
+
+                        <div className="space-y-1.5 flex flex-col">
+                            <label className="text-sm font-medium text-gray-800" htmlFor="phone">Phone</label>
+                            <input type="text" name="phone" placeholder="+234 8123 456 7890" className="input w-full bg-white border border-gray-300" />
                         </div>
                 
-                        <div>
+                        <div className="py-2 pt-6">
                             <button type="submit" className="btn bg-slate-800 text-white rounded-lg btn-md">
-                                Send Message
+                                Save Changes
                             </button>
                         </div>
                     </form>
