@@ -11,7 +11,24 @@ const page = () => {
             </div>
             <div className="py-4 p-6">
                 <div className="">
-                    Hello
+                    <form className="space-y-4 pt-6">
+                        <div>
+                            <input type="text" placeholder="First Name" className="input w-full bg-white border border-gray-300" />
+                        </div>
+                        <div>
+                            <input type="text" placeholder="Last Name" className="input w-full bg-white" />
+                        </div>
+
+                        <div>
+                            <input type="email" placeholder="Your Email" className="input w-full bg-white" />
+                        </div>
+                
+                        <div>
+                            <button type="submit" className="btn bg-slate-800 text-white rounded-lg btn-md">
+                                Send Message
+                            </button>
+                        </div>
+                    </form>
                 </div>
             </div>
         </div>
