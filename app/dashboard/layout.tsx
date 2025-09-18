@@ -103,7 +103,7 @@ export default function DashboardLayout({
 
                             <div className="w-full md:w-2/3 md:pr-6">
                                 <div className="space-y-4">
-                                    <div className="border border-gray-300 rounded-xl w-full">
+                                    <div className="border border-gray-300 rounded-xl w-full md:min-h-[580px]">
                                         {children}
                                     </div>
                                 </div>
