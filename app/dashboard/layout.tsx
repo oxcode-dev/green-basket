@@ -4,6 +4,40 @@ import { Header } from "@/components/Header";
 import { ShoppingBagIcon, HomeIcon, BookmarkIcon, MapIcon, ArrowLeftStartOnRectangleIcon, Cog8ToothIcon } from '@heroicons/react/24/outline';
 import Link from "next/link";
 
+type NavigationProp = {
+    link: string,
+    label: string,
+    icon: React.JSX.Element,
+};
+
+const navigation :NavigationProp[] = [
+    {
+        icon: <HomeIcon className="size-6" />,
+        link: "/dashboard/",
+        label: "Home",
+    },
+    {
+        icon: <MapIcon className="size-6" />,
+        link: "/dashboard/addresses",
+        label: "My Addresses",
+    },
+    {
+        icon: <ShoppingBagIcon className="size-6" />,
+        link: "/dashboard/orders",
+        label: "My Orders",
+    },
+    {
+        icon: <BookmarkIcon className="size-6" />,
+        link: "/dashboard/saved-products",
+        label: "Saved Products",
+    },
+    {
+        icon: <Cog8ToothIcon className="size-6" />,
+        link: "/dashboard/account",
+        label: "Account Management",
+    }
+]
+
 export default function DashboardLayout({
     children,
 }: Readonly<{
@@ -40,51 +74,15 @@ export default function DashboardLayout({
                                         <div>
                                             <ul className="hidden md:flex flex-col py-2">
                                                 <li className="py-1 w-full">
-                                                    <a
+                                                    <Link
                                                         className="inline-flex items-center text-gray-500 hover:bg-gray-100 w-full space-x-4 p-2.5"
                                                         href="/dashboard/"
                                                     >
                                                         <HomeIcon className="size-6" />
                                                         <span>Home</span>
-                                                    </a>
+                                                    </Link>
                                                 </li>
-                                                <li className="py-1 w-full">
-                                                    <a
-                                                        className="inline-flex items-center text-gray-500 hover:bg-gray-100 w-full space-x-4 p-2.5"
-                                                        href="/dashboard/"
-                                                    >
-                                                        <MapIcon className="size-6" />
-                                                        <span>My Addresses</span>
-                                                    </a>
-                                                </li>
-                                                <li className="py-1 w-full">
-                                                    <a
-                                                        aria-current="page"
-                                                        className="router-link-active router-link-exact-active bg-white font-medium inline-flex items-center text-gray-500 hover:bg-gray-100 w-full space-x-4 p-2.5"
-                                                        href="/dashboard/applied-jobs"
-                                                    >
-                                                        <ShoppingBagIcon className="size-6" />
-                                                        <span>My Orders</span>
-                                                    </a>
-                                                </li>
-                                                <li className="py-1 w-full">
-                                                    <a
-                                                        className="inline-flex items-center text-gray-500 hover:bg-gray-100 w-full space-x-4 p-2.5"
-                                                        href="/dashboard/saved-jobs"
-                                                    >
-                                                        <BookmarkIcon className="size-6" />
-                                                        <span>Saved Products</span>
-                                                    </a>
-                                                </li>
-                                                <li className="py-1 w-full">
-                                                    <a
-                                                        className="inline-flex items-center text-gray-500 hover:bg-gray-100 w-full space-x-4 p-2.5"
-                                                        href="/dashboard/account"
-                                                    >
-                                                        <Cog8ToothIcon className="size-6" />
-                                                        <span>Account Management</span>
-                                                    </a>
-                                                </li>
+                                                
                                                 <li className="py-1 w-full">
                                                     <a
                                                         className="inline-flex items-center text-gray-500 hover:bg-gray-100 w-full space-x-4 p-2.5"
