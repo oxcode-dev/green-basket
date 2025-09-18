@@ -1,4 +1,4 @@
-import { ShoppingBagIcon, HomeIcon, BookmarkIcon, MapIcon, ArrowLeftStartOnRectangleIcon } from '@heroicons/react/24/outline';
+import { ShoppingBagIcon, HomeIcon, BookmarkIcon, MapIcon, ArrowLeftStartOnRectangleIcon, Cog8ToothIcon } from '@heroicons/react/24/outline';
 import React from 'react'
 
 export const DashboardSetup = ({
@@ -76,6 +76,7 @@ export const DashboardSetup = ({
                                                     className="inline-flex items-center text-gray-500 hover:bg-gray-100 w-full space-x-4 p-2.5"
                                                     href="/dashboard/account"
                                                 >
+                                                    <Cog8ToothIcon className="size-6" />
                                                     <span>Account Management</span>
                                                 </a>
                                             </li>
@@ -85,7 +86,6 @@ export const DashboardSetup = ({
                                                     href="#"
                                                 >
                                                     <ArrowLeftStartOnRectangleIcon className="size-6" />
-                                                    
                                                     <span>Sign out</span>
                                                 </a>
                                             </li>
