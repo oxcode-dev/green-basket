@@ -36,8 +36,8 @@ const page = () => {
                                 </p>
 
                             </div>
-                            <div className="border-t border-gray-200 p-2 py-1">
-                                <div className="space-x-2 flex- justify-end">
+                            <div className="border-t border-gray-200 p-2 py-1 w-full">
+                                <div className="space-x-2 flex justify-end w-full">
                                     <button className="btn btn-sm btn-circle rounded-md btn-error text-white font-medium">
                                         <TrashIcon className="size-4" />
                                     </button>
