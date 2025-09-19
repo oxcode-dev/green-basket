@@ -12,7 +12,8 @@ const page = () => {
             
             <div className="py-4 p-6">
                 <div className="">
-                    
+                    {/* Change Password */}
+
                 </div>
             </div>
         </div>
