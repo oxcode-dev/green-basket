@@ -12,9 +12,9 @@ const page = () => {
             
             <div className="py-4 p-6">
                 <div className="">
-                    <div role="tablist" className="tabs tabs-box">
-                        <a role="tab" className="tab">Change Password</a>
-                        <a role="tab" className="tab tab-active">Delete Account</a>
+                    <div role="tablist" className="tabs tabs-border space-x-4">
+                        <a role="tab" className="tab text-gray-500">Change Password</a>
+                        <a role="tab" className="tab tab-active text-gray-500">Delete Account</a>
                     </div>
                     {/* Change Password */}
                     <div className="">
