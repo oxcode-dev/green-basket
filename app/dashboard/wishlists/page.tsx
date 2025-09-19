@@ -13,7 +13,7 @@ const page = () => {
             </div>
             <div className="py-4 p-6">
                 <div className="w-full grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 md:gap-4 gap-y-4">
-                    { Array.from({ length: 10 }).map((item, key) => (
+                    { Array.from({ length: 6 }).map((item, key) => (
                         <div className="group relative" key={key}>
                             <a href="#" title="Remove from Wishlist" className="absolute -top-2 -right-1 flex md:hidden group-hover:flex">
                                 <span className="bg-red-500 text-white rounded-full p-1">
