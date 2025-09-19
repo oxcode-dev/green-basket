@@ -25,7 +25,7 @@ const page = () => {
                         </a>
                     </div>
 
-                    <div className="w-full md:max-w-xl">
+                    <div className="w-full md:max-w-md">
                         {selectedTab ? <ChangePasswordForm /> : null}
                     </div>
 
