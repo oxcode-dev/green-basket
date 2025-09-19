@@ -1,6 +1,7 @@
 'use client';
 
 import ChangePasswordForm from '@/forms/dashboard/ChangePasswordForm'
+import DeleteAccountForm from '@/forms/dashboard/DeleteAccountForm';
 import React, { useState } from 'react'
 
 const page = () => {
@@ -25,8 +26,8 @@ const page = () => {
                         </a>
                     </div>
 
-                    <div className="w-full md:max-w-md">
-                        {selectedTab ? <ChangePasswordForm /> : null}
+                    <div className="w-full md:max-w-lg">
+                        {selectedTab ? <ChangePasswordForm /> : <DeleteAccountForm />}
                     </div>
 
                 </div>
