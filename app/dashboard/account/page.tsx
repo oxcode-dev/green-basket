@@ -18,10 +18,10 @@ const page = () => {
             <div className="py-4 p-6">
                 <div className="">
                     <div role="tablist" className="tabs tabs-border space-x-4">
-                        <a onClick={() => setSelectedTab(true)} role="tab" className={`tab ${selectedTab ? 'tab-active' : '!text-gray-500'} hover:!text-gray-800`}>
+                        <a onClick={() => setSelectedTab(true)} role="tab" className={`tab ${selectedTab ? 'tab-active font-semibold' : '!text-gray-500'} hover:!text-gray-800`}>
                             Change Password
                         </a>
-                        <a onClick={() => setSelectedTab(false)} role="tab" className={`tab ${!selectedTab ? 'tab-active' : '!text-gray-500'} hover:!text-gray-800`}>
+                        <a onClick={() => setSelectedTab(false)} role="tab" className={`tab ${!selectedTab ? 'tab-active font-semibold' : '!text-gray-500'} hover:!text-gray-800`}>
                             Delete Account
                         </a>
                     </div>
