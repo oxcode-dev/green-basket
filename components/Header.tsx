@@ -281,10 +281,16 @@ export const MobileHeader = () => {
                                     </Link>
                                 </li>
                                 <li>
+                                    <Link href="/dashboard/addresses">Addresses</Link>
+                                </li>
+                                <li>
                                     <Link href="/dashboard/orders">My Orders</Link>
                                 </li>
                                 <li>
                                     <Link href="/dashboard/wishlists">Wishlists</Link>
+                                </li>
+                                <li>
+                                    <Link href="/dashboard/account">Account Management</Link>
                                 </li>
                                 <li><a>Logout</a></li>
                             </ul>

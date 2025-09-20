@@ -11,7 +11,7 @@ const page = () => {
                 </div>
             </div>
             <div className="p-3 md:p-4">
-                <div className="w-full grid grid-cols-1 md:grid-cols-2 md:gap-4">
+                <div className="w-full grid grid-cols-1 md:grid-cols-2 gap-4">
                     { Array.from({ length: 3 }).map((item, key) => (
                         <div key={key} className="border border-gray-200 shadow-sm rounded-md">
                             <div className="flex flex-col space-y-2.5 p-2 text-gray-500">
