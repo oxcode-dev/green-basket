@@ -10,9 +10,9 @@ const layout = ({
     return (
         <div>
             <div className="relative">
-                <div className="w-full h-screen overflow-hidden fixed inset-0">
+                <div className="w-full h-screen bg-[#d18849] overflow-hidden fixed inset-0 md:flex hidden">
                     <Image
-                        className="w-full object-center object-cover"
+                        className="w-full h-full object-center object-cover"
                         src="/auth-bg.jpg"
                         alt="Auth Background"
                         width={500}
@@ -25,7 +25,7 @@ const layout = ({
                 <div className="relative z-50 w-full h-screen">
                     <div className="w-full flex justify-end">
                         <div className="w-full h-full md:max-w-xl bg-white min-h-screen bg-gradient-to-br from-0% to-60% from-green-50 to-white">
-                            <div className="py-6 md:pt-16 px-4 md:px-8">
+                            <div className="py-6 md:pt-16 px-4 md:px-8 h-full">
                                 <Logo />
 
                                 <div>

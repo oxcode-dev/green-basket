@@ -133,9 +133,9 @@ export const DesktopHeader = () => {
                                 </ul>
                             </div>
                             
-                            <a>
+                            <Link href="/auth" title="Sign In">
                                 <ArrowRightEndOnRectangleIcon className="size-5" />
-                            </a>
+                            </Link>
                             <Link href="/cart" className="w-6 relative">
                                 <ShoppingCartIcon className="size-5" />
                                 <span className="w-4 h-4 text-xs text-white absolute right-0 -top-2 bg-red-600 p-1 rounded-full items-center justify-center inline-flex">1</span>

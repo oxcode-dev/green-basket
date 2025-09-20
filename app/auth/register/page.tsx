@@ -6,7 +6,7 @@ import React from 'react'
 const page = () => {
     return (
         <div>
-            <div className="flex flex-col">
+            <div className="flex flex-col justify-center h-full">
                 <div className="py-4 md:py-8 space-y-2">
                     <p className="text-xl md:text-3xl font-bold text-gray-800">
                         Create new account
@@ -39,7 +39,7 @@ const page = () => {
             
                     <div className="py-2 pt-6">
                         <button type="submit" className="btn bg-green-600 border-green-600 text-white btn-md">
-                            Sign In
+                            Register
                         </button>
                     </div>
 
