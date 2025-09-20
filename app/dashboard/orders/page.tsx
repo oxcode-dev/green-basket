@@ -9,7 +9,8 @@ const page = () => {
                     <h2>My Orders</h2>
                 </div>
             </div>
-            <div className="py-4 p-6">
+
+            <div className="py-4 p-6 hidden">
                 <div className="space-y-4">
                     { Array.from({ length: 6 }).map((item, key) => (
 
@@ -41,6 +42,9 @@ const page = () => {
                         </div>
                     ))}
                 </div>
+            </div>
+
+            <div className="py-4 p-6">
             </div>
         </div>
 
