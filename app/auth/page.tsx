@@ -30,14 +30,14 @@ const page = () => {
 
                     <div className="flex justify-between items-center">
                         <div>
-                            <label className="label">
+                            <label className="label text-sm">
                                 <input type="checkbox" defaultChecked className="checkbox checkbox-success checked:text-white" />
                                 Remember me
                             </label>
                         </div>
 
                         <div>
-                            <Link href="#">
+                            <Link href="#" className="text-sm text-gray-500 font-medium underline">
                                 Forgot Password?
                             </Link>
                         </div>

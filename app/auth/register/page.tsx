@@ -9,7 +9,7 @@ const page = () => {
             <div className="flex flex-col">
                 <div className="py-4 md:py-8 space-y-2">
                     <p className="text-xl md:text-3xl font-bold text-gray-800">
-                        Fill details form
+                        Create new account
                     </p>
 
                     <p className="text-sm text-gray-500 font-medium">
