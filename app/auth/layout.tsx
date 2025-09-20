@@ -24,7 +24,7 @@ const layout = ({
 
                 <div className="relative z-50 w-full h-screen">
                     <div className="w-full flex justify-end">
-                        <div className="w-full h-full md:max-w-lg bg-white min-h-screen bg-gradient-to-br from-0% to-60% from-green-50 to-white">
+                        <div className="w-full h-full md:max-w-xl bg-white min-h-screen bg-gradient-to-br from-0% to-60% from-green-50 to-white">
                             <div className="py-6 md:pt-16 px-4 md:px-8">
                                 <Logo />
 
