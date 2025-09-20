@@ -1,5 +1,7 @@
+'use client'
+
 import { DevicePhoneMobileIcon, MapPinIcon, UserCircleIcon } from '@heroicons/react/24/outline'
-import React from 'react'
+import React, { useState } from 'react'
 
 const OrderView = () => {
     return (
@@ -113,12 +115,20 @@ const OrderView = () => {
     )
 }
 
-const OrderList = () => {
+type OrderListProp = {
+    setShowOrderView: React.Dispatch<React.SetStateAction<Boolean>>
+}
+
+const OrderList = ({ setShowOrderView } : OrderListProp) => {
+    const handleViewOrder = () => {
+        setShowOrderView(true)
+    }
+
     return (
-        <div className="py-4 p-6 hidden">
+        <div className="py-4 p-6">
             <div className="space-y-4">
                 { Array.from({ length: 6 }).map((item, key) => (
-                    <div className="card w-full bg-white border border-gray-300 card-sm shadow-sm hover:bg-gray-100">
+                    <div key={key} className="card w-full bg-white border border-gray-300 card-sm shadow-sm hover:bg-gray-100">
                         <a href="#" className="card-body">
                             <div className="flex justify-between items-center">
                                 <p className="text-gray-800 text-lg font-semibold">
@@ -139,9 +149,6 @@ const OrderList = () => {
                                     <span>pj3034934</span>
                                 </p>
                             </div>
-                            <div className="justify-end card-actions">
-                                <button className="btn btn-primary">Buy Now</button>
-                            </div>
                         </a>
                     </div>
                 ))}
@@ -150,6 +157,7 @@ const OrderList = () => {
     )
 }
 const OrderSection = () => {
+    const [showOrderView, setShowOrderView] = useState<Boolean>(false)
     return (
         <div>
             <div className="p-3 md:p-4 border-gray-300 border-b">
@@ -157,6 +165,14 @@ const OrderSection = () => {
                     <h2>My Orders</h2>
                 </div>
             </div>
+
+            { 
+                showOrderView ?
+                    <OrderView /> :
+                    <OrderList
+                        setShowOrderView={setShowOrderView}
+                    />
+            }
 
         </div>
     )

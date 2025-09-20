@@ -1,11 +1,10 @@
-import { DevicePhoneMobileIcon, MapPinIcon, UserCircleIcon } from '@heroicons/react/24/outline'
+import OrderSection from '@/sections/OrderSection'
 import React from 'react'
 
 const page = () => {
     return (
         <div>
-            
-            
+            <OrderSection />
         </div>
     )
 }
