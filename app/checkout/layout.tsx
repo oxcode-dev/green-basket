@@ -10,7 +10,7 @@ export default function CheckoutLayout({
 }>) {
   return (
     <div className="">
-      <div className="w-full border-b border-gray-200 shadow">
+      <div className="w-full border-b border-gray-200 shadow px-4">
         <div className="w-full container mx-auto flex justify-between items-center">
           <div className="py-3">
             <Link href="/">

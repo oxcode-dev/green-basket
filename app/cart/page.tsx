@@ -2,6 +2,7 @@ import { AppSetup } from '@/setups/AppSetup';
 import { MinusIcon, PlusIcon, TrashIcon } from '@heroicons/react/20/solid';
 import { ShieldExclamationIcon } from '@heroicons/react/24/outline';
 import React from 'react'
+import Link from "next/link";
 
 const page = () => {
     return (
@@ -92,7 +93,7 @@ const page = () => {
                                                     className="size-16 object-cover rounded-md"
                                                 />
                                                 <div className="w-full">
-                                                    <p className="font-semibold text-gray-800">
+                                                    <p className="text-sm md:text-base font-semibold text-gray-800">
                                                         Product Title Name
                                                         Product Title Name
                                                         Product
@@ -163,9 +164,9 @@ const page = () => {
                                     </div>
 
                                     <div className="pt-6">
-                                        <button className="btn btn-md bg-black text-white border-black w-full rounded-full">
+                                        <Link href="/checkout" className="btn btn-md bg-black text-white border-black w-full rounded-full">
                                             Checkout Now
-                                        </button>
+                                        </Link>
                                     </div>
                                 </div>
                             </div>
