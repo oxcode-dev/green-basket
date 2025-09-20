@@ -1,6 +1,6 @@
 import { ProductCard } from '@/components/ProductCard';
 import { AppSetup } from '@/setups/AppSetup';
-import { ArrowRightIcon, ArrowsUpDownIcon, ChevronDownIcon, TagIcon } from '@heroicons/react/20/solid';
+import { ArrowsUpDownIcon, ChevronDownIcon, TagIcon } from '@heroicons/react/20/solid';
 import React from 'react'
 
 const page = () => {
