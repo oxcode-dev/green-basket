@@ -119,11 +119,16 @@ export const DesktopHeader = () => {
                                     className="bg-white menu menu-sm dropdown-content bg-base-100 rounded-box z-1 mt-3 w-52 p-2 shadow"
                                 >
                                     <li>
-                                        <a className="justify-between">
-                                            Account
-                                        </a>
+                                        <Link href="/dashboard" className="justify-between">
+                                            Dashboard
+                                        </Link>
                                     </li>
-                                    <li><a>Settings</a></li>
+                                    <li>
+                                        <Link href="/dashboard/orders">My Orders</Link>
+                                    </li>
+                                    <li>
+                                        <Link href="/dashboard/wishlists">Wishlists</Link>
+                                    </li>
                                     <li><a>Logout</a></li>
                                 </ul>
                             </div>
@@ -271,11 +276,16 @@ export const MobileHeader = () => {
                                 className="bg-white menu menu-sm dropdown-content bg-base-100 rounded-box z-1 mt-3 w-52 p-2 shadow"
                             >
                                 <li>
-                                    <a className="justify-between">
-                                        Account
-                                    </a>
+                                    <Link href="/dashboard" className="justify-between">
+                                        Dashboard
+                                    </Link>
                                 </li>
-                                <li><a>Settings</a></li>
+                                <li>
+                                    <Link href="/dashboard/orders">My Orders</Link>
+                                </li>
+                                <li>
+                                    <Link href="/dashboard/wishlists">Wishlists</Link>
+                                </li>
                                 <li><a>Logout</a></li>
                             </ul>
                         </div>
