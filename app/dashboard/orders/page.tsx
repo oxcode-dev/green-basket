@@ -13,15 +13,31 @@ const page = () => {
                 <div className="space-y-4">
                     { Array.from({ length: 6 }).map((item, key) => (
 
-                        <div className="card w-full bg-white border border-gray-300 card-sm shadow-sm">
-                            <div className="card-body">
-                                <h2 className="card-title">Xsmall Card</h2>
-                                <p>A card component has a figure, a body part, and inside body there are title and actions parts</p>
-                                <p>A card component has a figure, a body part, and inside body there are title and actions parts</p>
+                        <div className="card w-full bg-white border border-gray-300 card-sm shadow-sm hover:bg-gray-100">
+                            <a href="#" className="card-body">
+                                <div className="flex justify-between items-center">
+                                    <p className="text-gray-800 text-lg font-semibold">
+                                        <span>Order Date:</span>
+                                        <span>11 Dec 2024</span>
+                                    </p>
+                                    <div>
+                                        <span>status</span>
+                                    </div>
+                                </div>
+                                <div>
+                                    <p className="text-gray-500 text-sm">
+                                        <span className="font-semibold">Total:</span>
+                                        <span>£2000</span>
+                                    </p>
+                                    <p className="text-gray-500 text-sm">
+                                        <span className="font-semibold">Order No:</span>
+                                        <span>pj3034934</span>
+                                    </p>
+                                </div>
                                 <div className="justify-end card-actions">
                                     <button className="btn btn-primary">Buy Now</button>
                                 </div>
-                            </div>
+                            </a>
                         </div>
                     ))}
                 </div>
