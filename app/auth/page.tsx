@@ -37,7 +37,7 @@ const page = () => {
                         </div>
 
                         <div>
-                            <Link href="#" className="text-sm text-gray-500 font-medium underline">
+                            <Link href="/auth/forgot-password" className="text-sm text-gray-500 font-medium underline">
                                 Forgot Password?
                             </Link>
                         </div>
@@ -50,7 +50,7 @@ const page = () => {
                         </button>
                     </div>
 
-                    <div className="pt-4 md:pt-6">
+                    <div className="pt-4 md:pt-6 text-center">
                         <p className="text-sm text-gray-500 font-medium">
                             <span>Don't have an account? </span>
                             <Link href="/auth/register" className="text-green-600 font-semibold underline">
