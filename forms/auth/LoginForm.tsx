@@ -1,18 +1,42 @@
+'use client';
+
 import Link from 'next/link'
 import React from 'react'
+import { useForm, SubmitHandler } from "react-hook-form"
+
+type LoginFormProp = {
+    email: string
+    password: string
+}
 
 export const LoginForm = () => {
+    const {
+        register,
+        handleSubmit,
+        watch,
+        formState: { errors },
+    } = useForm<LoginFormProp>()
+
+    const onSubmit: SubmitHandler<LoginFormProp> = (data) => console.log(data)
+
     return (
         <div>
-            <form>
-                <div className="space-y-1.5 flex flex-col">
+            <form onSubmit={handleSubmit(onSubmit)}>
+                <div className="space-y-1.5 flex flex-col py-1.5">
                     <label className="text-sm font-medium text-gray-600" htmlFor="email">Email</label>
-                    <input type="email" name="email" placeholder="Your Email" className="input w-full bg-white border border-gray-300" />
+                    <input 
+                        type="email" 
+                        {...register("email",  { required: true })} 
+                        placeholder="Your Email"  required
+                        className="input w-full bg-white border border-gray-300" 
+                    />
+                    {errors.email && <span className="text-red-600 text-xs font-medium">Email is required</span>}
                 </div>
 
-                <div className="space-y-1.5 flex flex-col">
+                <div className="space-y-1.5 flex flex-col py-1.5">
                     <label className="text-sm font-medium text-gray-600" htmlFor="password">Password</label>
-                    <input type="password" name="password" placeholder="*********" className="input w-full bg-white border border-gray-300" />
+                    <input type="password" {...register("password",  { required: true })} placeholder="*********" className="input w-full bg-white border border-gray-300" />
+                    {errors.password && <span className="text-red-600 text-xs font-medium">Password is required</span>}
                 </div>
 
                 <div className="flex justify-between items-center py-1.5">
