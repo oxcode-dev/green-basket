@@ -24,7 +24,7 @@ export const LoginForm = () => {
                     </div>
 
                     <div>
-                        <Link href="#" className="text-sm text-gray-500 font-medium underline">
+                        <Link href="/auth/forgot-password" className="text-sm text-gray-500 font-medium underline">
                             Forgot Password?
                         </Link>
                     </div>
