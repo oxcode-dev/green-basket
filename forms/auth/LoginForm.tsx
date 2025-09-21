@@ -6,7 +6,8 @@ import { useForm, SubmitHandler } from "react-hook-form"
 
 type LoginFormProp = {
     email: string
-    password: string
+    password: string,
+    remember_me: boolean,
 }
 
 export const LoginForm = () => {
@@ -18,6 +19,8 @@ export const LoginForm = () => {
     } = useForm<LoginFormProp>()
 
     const onSubmit: SubmitHandler<LoginFormProp> = (data) => console.log(data)
+
+    // console.log(watch("email"))
 
     return (
         <div>
@@ -42,7 +45,12 @@ export const LoginForm = () => {
                 <div className="flex justify-between items-center py-1.5">
                     <div>
                         <label className="label text-sm">
-                            <input type="checkbox" defaultChecked className="checkbox checkbox-success checked:text-white" />
+                            <input 
+                                type="checkbox" 
+                                {...register("remember_me")} 
+                                defaultChecked
+                                className="checkbox checkbox-success checked:text-white" 
+                            />
                             Remember me
                         </label>
                     </div>
