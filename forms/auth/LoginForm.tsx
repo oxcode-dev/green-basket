@@ -15,7 +15,7 @@ export const LoginForm = () => {
                     <input type="password" name="password" placeholder="*********" className="input w-full bg-white border border-gray-300" />
                 </div>
 
-                <div className="flex justify-between items-center">
+                <div className="flex justify-between items-center py-1.5">
                     <div>
                         <label className="label text-sm">
                             <input type="checkbox" defaultChecked className="checkbox checkbox-success checked:text-white" />

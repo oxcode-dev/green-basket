@@ -21,7 +21,7 @@ const page = () => {
                 <div className="w-full space-y-2">
                     <LoginForm />
                    
-                    <div className="pt-4 md:pt-6 text-center">
+                    <div className="pt-4 md:pt-6">
                         <p className="text-sm text-gray-500 font-medium">
                             <span>Don't have an account? </span>
                             <Link href="/auth/register" className="text-green-600 font-semibold underline">
