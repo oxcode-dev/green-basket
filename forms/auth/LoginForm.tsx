@@ -6,8 +6,8 @@ import { useForm, SubmitHandler } from "react-hook-form"
 
 type LoginFormProp = {
     email: string
-    password: string,
-    remember_me: boolean,
+    password: string
+    remember_me: boolean
 }
 
 export const LoginForm = () => {
