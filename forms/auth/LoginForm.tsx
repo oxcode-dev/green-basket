@@ -18,7 +18,24 @@ export const LoginForm = () => {
         formState: { errors },
     } = useForm<LoginFormProp>()
 
-    const onSubmit: SubmitHandler<LoginFormProp> = (data) => console.log(data)
+    const onSubmit: SubmitHandler<LoginFormProp> = async(data) => {
+        const res = await fetch('/api/login', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ 
+                email: data.email, 
+                password: data.password,
+                remember_me: data.remember_me
+            }),
+        })
+      
+        if (res.ok) {
+            console.log(res)
+        // router.push('/dashboard') // redirect to a protected page
+        } else {
+            alert('Invalid credentials')
+        }
+    }
 
     return (
         <div>
