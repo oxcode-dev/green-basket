@@ -20,8 +20,6 @@ export const LoginForm = () => {
 
     const onSubmit: SubmitHandler<LoginFormProp> = (data) => console.log(data)
 
-    // console.log(watch("email"))
-
     return (
         <div>
             <form onSubmit={handleSubmit(onSubmit)}>
