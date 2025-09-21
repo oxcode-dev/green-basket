@@ -19,8 +19,7 @@ export const LoginForm = () => {
     } = useForm<LoginFormProp>()
 
     const onSubmit: SubmitHandler<LoginFormProp> = async(data) => {
-        const res = await fetch('http://127.0.0.1:8000/api/login', {
-        // const res = await fetch('/api/login', {
+        const response = await fetch('/api/login', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({ 
@@ -30,8 +29,10 @@ export const LoginForm = () => {
             }),
         })
       
-        if (res.ok) {
-            console.log(res.json())
+        const newData = await response.json()
+
+        if (response.ok) {
+            console.log(newData)
         // router.push('/dashboard') // redirect to a protected page
         } else {
             alert('Invalid credentials')

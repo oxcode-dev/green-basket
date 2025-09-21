@@ -12,7 +12,8 @@ export async function POST(request: NextRequest) {
         // const formData = await request.formData();
         // const email = formData.get('email');
         //@ts-ignore
-        const body : LoginFormProp = request.body;
+        // const body : LoginFormProp = request.body;
+        const body = await request.json();
 
         const { email, password, remember_me } = body
 
@@ -30,8 +31,9 @@ export async function POST(request: NextRequest) {
 
         // Assuming API returns a token (JWT)
         // const token = data.token
+        const res = JSON.parse(JSON.stringify(data))
     
-        return new Response(JSON.stringify(data), {
+        return new Response(JSON.stringify(res), {
             status: 201,
             headers: { 'Content-Type': 'application/json' },
         });
