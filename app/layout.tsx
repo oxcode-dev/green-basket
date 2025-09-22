@@ -4,6 +4,7 @@ import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import { usePathname } from "next/navigation";
 import { useEffect } from "react";
+import Providers from "./providers";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -38,9 +39,11 @@ export default function RootLayout({
       <body
         className={`${geistSans.className} ${geistMono.className} antialiased min-h-screen`}
       >
-        <ScrollToTop>
-          {children}
-        </ScrollToTop>
+        <Providers>
+          <ScrollToTop>
+            {children}
+          </ScrollToTop>
+        </Providers>
       </body>
     </html>
   );
