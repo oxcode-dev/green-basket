@@ -1,14 +1,14 @@
 'use client';
 
 import Link from 'next/link'
-import React from 'react'
+import React, { useEffect } from 'react'
 import { useForm, SubmitHandler } from "react-hook-form"
 
 type LoginFormProp = {
     email: string
     password: string
     remember_me: boolean
-}
+};
 
 export const LoginForm = () => {
     const {
@@ -29,15 +29,40 @@ export const LoginForm = () => {
             }),
         })
       
-        const newData = await response.json()
+        console.log(response)
+
+        // const feedback = await response.json()
+        // console.log(feedback)
 
         if (response.ok) {
-            console.log(newData)
+            console.log(response)
         // router.push('/dashboard') // redirect to a protected page
         } else {
             alert('Invalid credentials')
         }
     }
+
+    const fetchUser = async () => {
+        const response = await fetch('/api/profile', {
+            // method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+        })
+      
+        console.log(response)
+
+        // const feedback = await response.json()
+        // console.log(feedback)
+
+        if (response.ok) {
+            console.log(response)
+        // router.push('/dashboard') // redirect to a protected page
+        } else {
+            alert('Invalid credentials')
+        }
+    }
+    useEffect(() => {
+        fetchUser()
+    }, [])
 
     return (
         <div>

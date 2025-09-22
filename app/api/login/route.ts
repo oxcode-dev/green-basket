@@ -1,4 +1,7 @@
 import { NextRequest } from "next/server";
+import { cookies } from 'next/headers';
+import cookie from 'cookie'
+import { NextApiResponse } from "next";
 
 type LoginFormProp = {
     email: string
@@ -6,7 +9,7 @@ type LoginFormProp = {
     remember_me: boolean
 }
 
-export async function POST(request: NextRequest) {
+export async function POST(request: NextRequest, res: NextApiResponse) {
     try{
         // Parse the request body
         // const formData = await request.formData();
@@ -25,15 +28,34 @@ export async function POST(request: NextRequest) {
 
         const data = await response.json()
 
-        // if (!response.ok) {
-        //     return res.status(401).json({ message: 'Invalid credentials' })
-        // }
+        // // if (!response.ok) {
+        if (!data.success) {
+            return new Response(JSON.stringify({ message: 'Invalid credentials' }), {
+                status: 500,
+                headers: { 'Content-Type': 'application/json' }
+            });
+        }
 
         // Assuming API returns a token (JWT)
-        // const token = data.token
-        const res = JSON.parse(JSON.stringify(data))
-    
-        return new Response(JSON.stringify(res), {
+        const token = data.token
+        
+        const cookieStore = await cookies();
+        // const token = cookieStore.get('token');
+
+        // await cookies().set('token', token, {
+        //@ts-ignore
+        cookieStore.set('token', token, {
+            httpOnly: true, // Prevents client-side JavaScript access
+            secure: process.env.NODE_ENV === 'production', // Only send over HTTPS in production
+            maxAge: 60 * 60 * 24 * 7, // 1 week
+            path: '/', // Accessible across the entire site
+            sameSite: 'Strict', // Protection against CSRF
+        });
+
+        // const newToken = (await cookies()).get('token');
+        const newToken = cookieStore.get('token');
+
+        return new Response(JSON.stringify({data, newToken}), {
             status: 201,
             headers: { 'Content-Type': 'application/json' },
         });
