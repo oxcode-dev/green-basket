@@ -28,7 +28,6 @@ export async function POST(request: NextRequest, res: NextApiResponse) {
 
         const data = await response.json()
 
-        // // if (!response.ok) {
         if (!data.success) {
             return new Response(JSON.stringify({ message: 'Invalid credentials' }), {
                 status: 500,
@@ -37,11 +36,8 @@ export async function POST(request: NextRequest, res: NextApiResponse) {
         }
 
         // Assuming API returns a token (JWT)
-        const token = data.token
+        const token = data?.data?.token
 
-        // const cookieStore = cookies();
-        // cookieStore.set('newCookie', 'newValue', { httpOnly: true, secure: true, maxAge: 3600 });
-        
         const cookieStore = await cookies();
 
         //@ts-ignore
@@ -59,6 +55,7 @@ export async function POST(request: NextRequest, res: NextApiResponse) {
         const newToken = cookieStore.get('token')?.value;
 
         return new Response(JSON.stringify({data, newToken}), {
+        // return new Response(JSON.stringify(data), {
             status: 201,
             headers: { 'Content-Type': 'application/json' },
         });

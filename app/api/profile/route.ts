@@ -13,10 +13,17 @@ export async function GET(request: Request) {
         });
     }
 
-    // const res = await fetch('https://127.0.0.1:8000/api/user', {
-    //     headers: { Authorization: `Bearer ${sessionToken.value}` },
-    //     credentials: 'include',
-    // })
+    const response = await fetch('http://127.0.0.1:8000/api/user', {
+        method: 'GET',
+        headers: { 
+            Authorization: `Bearer ${sessionToken?.value}`,
+            'Content-Type': 'application/json' 
+        },
+        // credentials: 'include',
+    })
+
+
+    const data = await response.json()
 
     // if (!res.ok) {
     //     return {
@@ -27,13 +34,10 @@ export async function GET(request: Request) {
     //     }
     // }
 
-    // const user = await res.json()
-   
+    // return new Response('Hello, Next.js!', { status: 200, headers: { 'Set-Cookie': `token=${sessionToken?.value}` } });
 
-    return new Response('Hello, Next.js!', { status: 200, headers: { 'Set-Cookie': `token=${sessionToken}` } });
-
-    // return new Response(JSON.stringify({ user: {user} }), {
-    //     status: 200,
-    //     headers: { 'Content-Type': 'application/json' },
-    // });
+    return new Response(JSON.stringify({ user: data }), {
+        status: 200,
+        headers: { 'Content-Type': 'application/json' },
+    });
 }
