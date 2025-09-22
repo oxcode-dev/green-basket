@@ -3,6 +3,7 @@ import { configureStore } from '@reduxjs/toolkit';
 
 export const makeStore = () => {
     return configureStore({
+        devTools: process.env.NODE_ENV !== 'production',
         reducer: {
         //   counter: counterReducer,
         },
