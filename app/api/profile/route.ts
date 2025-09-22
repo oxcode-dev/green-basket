@@ -2,8 +2,6 @@ import { cookies } from "next/headers";
 
 
 export async function GET(request: Request) {
-    //@ts-ignore
-    // const sessionToken = cookies().get('token')?.value;
 
     const cookieStore = await cookies();
     const sessionToken = cookieStore.get('token');
@@ -17,6 +15,7 @@ export async function GET(request: Request) {
 
     // const res = await fetch('https://127.0.0.1:8000/api/user', {
     //     headers: { Authorization: `Bearer ${sessionToken.value}` },
+    //     credentials: 'include',
     // })
 
     // if (!res.ok) {
@@ -31,7 +30,7 @@ export async function GET(request: Request) {
     // const user = await res.json()
    
 
-    return new Response('Hello, Next.js!', { status: 200, headers: { 'Set-Cookie': `token=${sessionToken.value}` } });
+    return new Response('Hello, Next.js!', { status: 200, headers: { 'Set-Cookie': `token=${sessionToken}` } });
 
     // return new Response(JSON.stringify({ user: {user} }), {
     //     status: 200,
