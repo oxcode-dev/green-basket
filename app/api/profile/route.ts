@@ -25,15 +25,6 @@ export async function GET(request: Request) {
 
     const data = await response.json()
 
-    // if (!res.ok) {
-    //     return {
-    //         redirect: {
-    //             destination: '/login',
-    //             permanent: false,
-    //         },
-    //     }
-    // }
-
     // return new Response('Hello, Next.js!', { status: 200, headers: { 'Set-Cookie': `token=${sessionToken?.value}` } });
 
     return new Response(JSON.stringify({ user: data }), {

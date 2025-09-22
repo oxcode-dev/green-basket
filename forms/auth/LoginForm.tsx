@@ -29,13 +29,10 @@ export const LoginForm = () => {
             }),
         })
       
-        console.log(response)
-
-        // const feedback = await response.json()
-        // console.log(feedback)
+        const feedback = await response.json()
 
         if (response.ok) {
-            console.log(response)
+            console.log(feedback)
         // router.push('/dashboard') // redirect to a protected page
         } else {
             alert('Invalid credentials')

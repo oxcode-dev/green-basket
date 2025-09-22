@@ -37,25 +37,25 @@ export async function POST(request: NextRequest, res: NextApiResponse) {
 
         // Assuming API returns a token (JWT)
         const token = data?.data?.token
+        let newToken;
 
-        const cookieStore = await cookies();
+        if(token) {
+            const cookieStore = await cookies();
+            //@ts-ignore
+            cookieStore.set({
+                name: 'token',
+                value: token,
+                httpOnly: true, // Prevents client-side JavaScript access
+                // secure: process.env.NODE_ENV === 'production', // Only send over HTTPS in production
+                sameSite: 'strict', // Enhances security against CSRF attacks
+                maxAge: 60 * 60 * 24 * 7, // 1 week expiration
+                path: '/', // Available across the entire site
+            });    
 
-        //@ts-ignore
-        cookieStore.set({
-            name: 'token',
-            value: token,
-            httpOnly: true, // Prevents client-side JavaScript access
-            // secure: process.env.NODE_ENV === 'production', // Only send over HTTPS in production
-            sameSite: 'strict', // Enhances security against CSRF attacks
-            maxAge: 60 * 60 * 24 * 7, // 1 week expiration
-            path: '/', // Available across the entire site
-        });    
-
-        // const newToken = (await cookies()).get('token');
-        const newToken = cookieStore.get('token')?.value;
+            newToken = cookieStore.get('token')?.value;
+        }
 
         return new Response(JSON.stringify({data, newToken}), {
-        // return new Response(JSON.stringify(data), {
             status: 201,
             headers: { 'Content-Type': 'application/json' },
         });
