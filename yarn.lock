@@ -132,6 +132,30 @@
     postcss "^8.4.41"
     tailwindcss "4.1.13"
 
+"@tanstack/query-core@5.90.1":
+  version "5.90.1"
+  resolved "https://registry.npmjs.org/@tanstack/query-core/-/query-core-5.90.1.tgz"
+  integrity sha512-hmi8i+mWP3QnD8yq3+6LWri9IEZAlFbpbM/UVB+TJtp5RIxUfzuARqyW39b+HCfBKKnFKSHWMXNB5YN8lo/E/Q==
+
+"@tanstack/query-devtools@5.90.1":
+  version "5.90.1"
+  resolved "https://registry.npmjs.org/@tanstack/query-devtools/-/query-devtools-5.90.1.tgz"
+  integrity sha512-GtINOPjPUH0OegJExZ70UahT9ykmAhmtNVcmtdnOZbxLwT7R5OmRztR5Ahe3/Cu7LArEmR6/588tAycuaWb1xQ==
+
+"@tanstack/react-query-devtools@^5.90.1":
+  version "5.90.1"
+  resolved "https://registry.npmjs.org/@tanstack/react-query-devtools/-/react-query-devtools-5.90.1.tgz"
+  integrity sha512-otOjczcUft13RZlWi8JHIWei1MLuRf0AK+hyEEAm0/IqKUbs/0ZXj0wlc+P1XdE0nYcOMuHK69496FvP/9g3LQ==
+  dependencies:
+    "@tanstack/query-devtools" "5.90.1"
+
+"@tanstack/react-query@^5.90.1":
+  version "5.90.1"
+  resolved "https://registry.npmjs.org/@tanstack/react-query/-/react-query-5.90.1.tgz"
+  integrity sha512-tN7Fx2HuV2SBhl+STgL8enbfSInRoNU1B1+5LIU62klcMElE4lFzol4aReuRSUeD6ntzPayK0KrM6w9+ZlHEkw==
+  dependencies:
+    "@tanstack/query-core" "5.90.1"
+
 "@types/node@^20":
   version "20.19.13"
   resolved "https://registry.npmjs.org/@types/node/-/node-20.19.13.tgz"
@@ -343,7 +367,7 @@ react-hook-form@^7.63.0:
   resolved "https://registry.npmjs.org/react-hook-form/-/react-hook-form-7.63.0.tgz"
   integrity sha512-ZwueDMvUeucovM2VjkCf7zIHcs1aAlDimZu2Hvel5C5907gUzMpm4xCrQXtRzCvsBqFjonB4m3x4LzCFI1ZKWA==
 
-"react@^16.8.0 || ^17 || ^18 || ^19", "react@^18.2.0 || 19.0.0-rc-de68d2f4-20241204 || ^19.0.0", react@^19.1.0, "react@>= 16 || ^19.0.0-rc", "react@>= 16.8.0 || 17.x.x || ^18.0.0-0 || ^19.0.0-0", react@19.1.0:
+"react@^16.8.0 || ^17 || ^18 || ^19", "react@^18 || ^19", "react@^18.2.0 || 19.0.0-rc-de68d2f4-20241204 || ^19.0.0", react@^19.1.0, "react@>= 16 || ^19.0.0-rc", "react@>= 16.8.0 || 17.x.x || ^18.0.0-0 || ^19.0.0-0", react@19.1.0:
   version "19.1.0"
   resolved "https://registry.npmjs.org/react/-/react-19.1.0.tgz"
   integrity sha512-FS+XFBNvn3GTAWq26joslQgWNoFu08F4kl0J4CgdNKADkdSGXQyTCnKteIAJy96Br6YbpEU1LSzV5dYtjMkMDg==
