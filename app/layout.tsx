@@ -41,7 +41,7 @@ export default function RootLayout({
         className={`${geistSans.className} ${geistMono.className} antialiased min-h-screen`}
       >
         <Providers>
-          <ReduxProvider>
+          <ReduxProvider >
             <ScrollToTop>
               {children}
             </ScrollToTop>
