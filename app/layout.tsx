@@ -5,6 +5,7 @@ import "./globals.css";
 import { usePathname } from "next/navigation";
 import { useEffect } from "react";
 import Providers from "./providers";
+import ReduxProvider from "@/store/ReduxProvider";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -40,9 +41,11 @@ export default function RootLayout({
         className={`${geistSans.className} ${geistMono.className} antialiased min-h-screen`}
       >
         <Providers>
-          <ScrollToTop>
-            {children}
-          </ScrollToTop>
+          <ReduxProvider>
+            <ScrollToTop>
+              {children}
+            </ScrollToTop>
+          </ReduxProvider>
         </Providers>
       </body>
     </html>
