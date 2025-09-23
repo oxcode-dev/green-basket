@@ -18,6 +18,8 @@ export async function POST(request: NextRequest, res: NextApiResponse) {
         // const body : LoginFormProp = request.body;
         const body = await request.json();
 
+        await fetch('http://127.0.0.1:8000/sanctum/csrf-cookie')
+
         const { email, password, remember_me } = body
 
         const response = await fetch('http://127.0.0.1:8000/api/login', {
