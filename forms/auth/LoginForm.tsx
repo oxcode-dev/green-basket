@@ -89,7 +89,7 @@ export const LoginForm = () => {
                                 type="checkbox" 
                                 {...register("remember_me")} 
                                 defaultChecked
-                                className="checkbox checkbox-success checked:text-white" 
+                                className="checkbox checkbox-success checked:text-white checked:bg-green-600 checked:border-transparent checkbox-sm" 
                             />
                             Remember me
                         </label>
