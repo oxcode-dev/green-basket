@@ -1,7 +1,6 @@
 import { User } from "@/types";
 import { createSlice } from "@reduxjs/toolkit";
 
-// Type for our state
 export interface AuthState {
     // authenticated: boolean;
     user?: User | null;
