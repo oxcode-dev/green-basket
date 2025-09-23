@@ -29,7 +29,7 @@ export async function POST(request: NextRequest, res: NextApiResponse) {
         const data = await response.json()
 
         if (!data.success) {
-            return new Response(JSON.stringify({ message: 'Invalid credentials', data }), {
+            return new Response(JSON.stringify({ data }), {
                 status: 500,
                 headers: { 'Content-Type': 'application/json' }
             });

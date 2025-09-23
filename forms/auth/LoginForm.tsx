@@ -35,7 +35,8 @@ export const LoginForm = () => {
             console.log(feedback)
         // router.push('/dashboard') // redirect to a protected page
         } else {
-            alert('Invalid credentials')
+            // alert('Invalid credentials')
+            console.log(feedback)
         }
     }
 
