@@ -4,19 +4,28 @@ import React, { useState } from 'react'
 import { Logo } from './Logo'
 import { ArrowRightEndOnRectangleIcon, Bars3Icon, ChevronDownIcon, EnvelopeIcon, MagnifyingGlassIcon, ShoppingCartIcon, TagIcon, XMarkIcon } from '@heroicons/react/20/solid'
 import Link from 'next/link';
+import { User } from '@/types';
+import { useSelector } from 'react-redux';
+import { getUser } from '@/store/slices/auth';
 
+type UserProp = {
+    user: User | null
+}
 export const Header = () => {
+    // @ts-ignore
+    const loggedUser : User | null = useSelector(getUser)?.user || null;
+
     return (
         <div>
-            <DesktopHeader />
+            <DesktopHeader user={loggedUser} />
 
-            <MobileHeader />
+            <MobileHeader user={loggedUser} />
 
         </div>
     )
 }
 
-export const DesktopHeader = () => {
+export const DesktopHeader = ({ user }: UserProp) => {
   return (
     <div className="shadow hidden md:block">
         <div className="py-2 w-full border-b border-gray-300 font-medium">
@@ -149,7 +158,7 @@ export const DesktopHeader = () => {
   )
 }
 
-export const MobileHeader = () => {
+export const MobileHeader = ({ user }: UserProp) => {
     const [active, setActive] = useState(false)
 
     return (

@@ -5,7 +5,7 @@ import { ShoppingBagIcon, HomeIcon, BookmarkIcon, MapIcon, ArrowLeftStartOnRecta
 import Link from "next/link";
 import { getUser, setUser } from '@/store/slices/auth';
 import { useDispatch, useSelector } from "react-redux"
-import { useRouter } from 'next/navigation'
+import { usePathname, useRouter } from 'next/navigation'
 import { FormEvent } from "react";
 import { User } from "@/types";
 import { useInitials } from "@/types/helper";
@@ -50,6 +50,7 @@ export default function DashboardLayout({
     children: React.ReactNode;
 }>) {
 
+    const pathname = usePathname()
     const dispatch = useDispatch()
     const router = useRouter()
     // @ts-ignore
@@ -63,8 +64,6 @@ export default function DashboardLayout({
             headers: { 'Content-Type': 'application/json' },
         })
       
-        // await response.json()
-
         dispatch(setUser(null))
         router.push('/') 
     }
@@ -114,7 +113,10 @@ export default function DashboardLayout({
                                                 { navigationItems.map((item, key) => (
                                                     <li key={key} className="py-1 w-full">
                                                         <Link
-                                                            className="inline-flex items-center text-gray-500 hover:bg-gray-100 w-full space-x-4 p-2.5"
+                                                            className={
+                                                                `${pathname === item.link ? 'bg-gray-100' : ''} 
+                                                                inline-flex items-center text-gray-500 hover:bg-gray-100 w-full space-x-4 p-2.5`
+                                                            }
                                                             href={item.link}
                                                         >
                                                             {item.icon}
