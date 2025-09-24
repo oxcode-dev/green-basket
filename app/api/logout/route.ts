@@ -8,15 +8,15 @@ export async function POST(request: NextRequest, res: NextApiResponse) {
         const cookieStore = await cookies();
         const sessionToken = cookieStore.get('token');
     
-        // if (!sessionToken) {
-        //     return new Response(JSON.stringify({ message: 'Unauthorized' }), {
-        //         status: 401,
-        //         headers: { 'Content-Type': 'application/json' },
-        //     });
-        // }
+        if (!sessionToken) {
+            return new Response(JSON.stringify({ message: 'Unauthorized' }), {
+                status: 401,
+                headers: { 'Content-Type': 'application/json' },
+            });
+        }
 
         const response = await fetch('http://127.0.0.1:8000/api/logout', {
-            method: 'GET',
+            method: 'DELETE',
             headers: { 
                 Authorization: `Bearer ${sessionToken?.value}`,
                 'Content-Type': 'application/json' 

@@ -3,6 +3,10 @@
 import { Header } from "@/components/Header";
 import { ShoppingBagIcon, HomeIcon, BookmarkIcon, MapIcon, ArrowLeftStartOnRectangleIcon, Cog8ToothIcon } from '@heroicons/react/24/outline';
 import Link from "next/link";
+import { getUser, setUser } from '@/store/slices/auth';
+import { useDispatch, useSelector } from "react-redux"
+import { useRouter } from 'next/navigation'
+import { FormEvent } from "react";
 
 type NavigationProp = {
     link: string,
@@ -43,6 +47,24 @@ export default function DashboardLayout({
 }: Readonly<{
     children: React.ReactNode;
 }>) {
+
+    const dispatch = useDispatch()
+    const router = useRouter()
+
+    const handleLogout = async(event: FormEvent) => {
+        event.preventDefault();
+
+        const response = await fetch('/api/logout', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+        })
+      
+        // await response.json()
+
+        dispatch(setUser(null))
+        router.push('/') 
+    }
+
     return (
         <div className="">
             <Header />
@@ -88,6 +110,7 @@ export default function DashboardLayout({
                                                 
                                                 <li className="py-1 w-full">
                                                     <a
+                                                        onClick={(event: FormEvent) => handleLogout(event)}
                                                         className="inline-flex items-center text-gray-500 hover:bg-gray-100 w-full space-x-4 p-2.5"
                                                         href="#"
                                                     >
