@@ -3,6 +3,7 @@
 import { getUser, setUser } from '@/store/slices/auth';
 import { XCircleIcon } from '@heroicons/react/24/outline';
 import Link from 'next/link'
+import { useRouter } from 'next/navigation'
 import React, { useEffect, useState } from 'react'
 import { useForm, SubmitHandler } from "react-hook-form"
 import { useDispatch, useSelector } from "react-redux"
@@ -18,9 +19,11 @@ export const LoginForm = () => {
     // const { token } = req.cookies
 
     const dispatch = useDispatch()
-    const getAllCarts = useSelector(getUser) || []
+    // const getAllCarts = useSelector(getUser) || []
     const [errorMessage, setErrorMessage] = useState('')
     const [isLoading, setIsLoading] = useState(false)
+    const router = useRouter()
+
     const {
         register,
         handleSubmit,
@@ -43,37 +46,15 @@ export const LoginForm = () => {
         const feedback = await response.json()
 
         if (response.ok) {
-            console.log(feedback?.data?.data)
+            // console.log(feedback?.data?.data)
             dispatch(setUser(feedback?.data?.data))
-        // router.push('/dashboard') // redirect to a protected page
+            router.push('/dashboard') // redirect to a protected page
         } else {
             // console.log(feedback.data, feedback.data.message)
             setErrorMessage(feedback?.data?.message || '')
-        }
-        setIsLoading(false);
-    }
-
-    const fetchUserData = async () => {
-        const response = await fetch('/api/profile', {
-            // method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-        })
-      
-        console.log(response)
-
-        const feedback = await response.json()
-        console.log(feedback)
-
-        if (response.ok) {
-            console.log(feedback)
-        // router.push('/dashboard') // redirect to a protected page
-        } else {
-            alert('Invalid credentials')
+            setIsLoading(false);
         }
     }
-    useEffect(() => {
-        fetchUserData()
-    }, [])
 
     return (
         <div>
