@@ -1,7 +1,7 @@
 'use client'
 
 import { Header } from "@/components/Header";
-import { ShoppingBagIcon, HomeIcon, BookmarkIcon, MapIcon, ArrowLeftStartOnRectangleIcon, Cog8ToothIcon } from '@heroicons/react/24/outline';
+import { ArrowLeftStartOnRectangleIcon } from '@heroicons/react/24/outline';
 import Link from "next/link";
 import { getUser, setUser } from '@/store/slices/auth';
 import { useDispatch, useSelector } from "react-redux"
@@ -9,40 +9,7 @@ import { usePathname, useRouter } from 'next/navigation'
 import { FormEvent } from "react";
 import { User } from "@/types";
 import { useInitials } from "@/types/helper";
-
-type NavigationProp = {
-    link: string,
-    label: string,
-    icon: React.JSX.Element,
-};
-
-const navigationItems :NavigationProp[] = [
-    {
-        icon: <HomeIcon className="size-6" />,
-        link: "/dashboard",
-        label: "Home",
-    },
-    {
-        icon: <MapIcon className="size-6" />,
-        link: "/dashboard/addresses",
-        label: "My Addresses",
-    },
-    {
-        icon: <ShoppingBagIcon className="size-6" />,
-        link: "/dashboard/orders",
-        label: "My Orders",
-    },
-    {
-        icon: <BookmarkIcon className="size-6" />,
-        link: "/dashboard/wishlists",
-        label: "Wishlists",
-    },
-    {
-        icon: <Cog8ToothIcon className="size-6" />,
-        link: "/dashboard/account",
-        label: "Account Management",
-    }
-]
+import { useNavigationItems } from "@/hooks/useNavigationItems";
 
 export default function DashboardLayout({
     children,
@@ -50,6 +17,7 @@ export default function DashboardLayout({
     children: React.ReactNode;
 }>) {
 
+    const { navigationItems } = useNavigationItems()
     const pathname = usePathname()
     const dispatch = useDispatch()
     const router = useRouter()
