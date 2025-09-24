@@ -7,6 +7,7 @@ import Link from 'next/link';
 import { User } from '@/types';
 import { useSelector } from 'react-redux';
 import { getUser } from '@/store/slices/auth';
+import { useInitials } from '@/types/helper';
 
 type UserProp = {
     user: User | null
@@ -115,36 +116,47 @@ export const DesktopHeader = ({ user }: UserProp) => {
                     </nav>
                     <div>
                         <div className="inline-flex items-center space-x-3">
-                            <div className="dropdown dropdown-end">
-                                <div tabIndex={0} role="button" className="btn btn-ghost btn-circle avatar hover:border-0 p-0">
-                                    <div className="w-8 rounded-full">
-                                        <img
-                                            alt="Tailwind CSS Navbar component"
-                                            src="https://img.daisyui.com/images/stock/photo-1534528741775-53994a69daeb.webp" />
+                            { user && user.email ?
+                                <div className="dropdown dropdown-end">
+                                    <div tabIndex={0} role="button" className="btn btn-ghost btn-circle avatar hover:border-0 p-0">
+                                        {/* <div className="w-8 rounded-full">
+                                            <img
+                                                alt="Tailwind CSS Navbar component"
+                                                src="https://img.daisyui.com/images/stock/photo-1534528741775-53994a69daeb.webp" />
+                                        </div> */}
+                                        <div className="avatar avatar-placeholder">
+                                            <div className="bg-neutral text-neutral-content w-8 rounded-full">
+                                                <span className="text-md">
+                                                    {useInitials(`${user?.first_name} ${user?.last_name}`)}
+                                                </span>
+                                            </div>
+                                        </div>
                                     </div>
+                                    <ul
+                                        tabIndex={0}
+                                        className="bg-white menu menu-sm dropdown-content bg-base-100 rounded-box z-1 mt-3 w-52 p-2 shadow"
+                                    >
+                                        <li>
+                                            <Link href="/dashboard" className="justify-between">
+                                                Dashboard
+                                            </Link>
+                                        </li>
+                                        <li>
+                                            <Link href="/dashboard/orders">My Orders</Link>
+                                        </li>
+                                        <li>
+                                            <Link href="/dashboard/wishlists">Wishlists</Link>
+                                        </li>
+                                        <li><a>Logout</a></li>
+                                    </ul>
                                 </div>
-                                <ul
-                                    tabIndex={0}
-                                    className="bg-white menu menu-sm dropdown-content bg-base-100 rounded-box z-1 mt-3 w-52 p-2 shadow"
-                                >
-                                    <li>
-                                        <Link href="/dashboard" className="justify-between">
-                                            Dashboard
-                                        </Link>
-                                    </li>
-                                    <li>
-                                        <Link href="/dashboard/orders">My Orders</Link>
-                                    </li>
-                                    <li>
-                                        <Link href="/dashboard/wishlists">Wishlists</Link>
-                                    </li>
-                                    <li><a>Logout</a></li>
-                                </ul>
-                            </div>
+                            : null }
                             
-                            <Link href="/auth" title="Sign In">
-                                <ArrowRightEndOnRectangleIcon className="size-5" />
-                            </Link>
+                            { !user ?
+                                <Link href="/auth" title="Sign In">
+                                    <ArrowRightEndOnRectangleIcon className="size-5" />
+                                </Link>
+                            : null }
                             <Link href="/cart" className="w-6 relative">
                                 <ShoppingCartIcon className="size-5" />
                                 <span className="w-4 h-4 text-xs text-white absolute right-0 -top-2 bg-red-600 p-1 rounded-full items-center justify-center inline-flex">1</span>
