@@ -14,10 +14,8 @@ export interface User {
     last_name: string;
     email: string;
     phone: string;
-    role: string;
     avatar?: string;
-    email_verified_at: string | null;
-    created_at: string;
+    // created_at: string;
     // updated_at: string;
     // products: ProductItem[],
     // addresses: AddressItem[],

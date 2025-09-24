@@ -43,8 +43,8 @@ export const LoginForm = () => {
         const feedback = await response.json()
 
         if (response.ok) {
-            console.log(feedback?.data)
-            // dispatch(setUser(items))
+            console.log(feedback?.data?.data)
+            dispatch(setUser(feedback?.data?.data))
         // router.push('/dashboard') // redirect to a protected page
         } else {
             // console.log(feedback.data, feedback.data.message)
