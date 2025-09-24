@@ -11,7 +11,7 @@ const page = () => {
     const router = useRouter()
 
     const handleLogout = async() => {
-        const response = await fetch('/api/logout', {
+        await fetch('/api/logout', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
         })
@@ -20,9 +20,9 @@ const page = () => {
         router.push('/') 
     }
 
-    // useEffect(() => {
-    //     handleLogout()
-    // }, [dispatch])
+    useEffect(() => {
+        handleLogout()
+    }, [dispatch])
 
     return (
         <div className="fixed z-[1000] h-screen w-full bg-white top-0 left-0 items-center self-center justify-center flex ">

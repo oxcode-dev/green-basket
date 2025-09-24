@@ -3,10 +3,10 @@
 import { XCircleIcon } from '@heroicons/react/24/outline';
 import Link from 'next/link'
 import { useRouter } from 'next/navigation'
-import React, { useEffect, useState } from 'react'
+import React, { useState } from 'react'
 import { useForm, SubmitHandler } from "react-hook-form"
-import { getUser, setUser } from '@/store/slices/auth';
-import { useDispatch, useSelector } from "react-redux"
+import { setUser } from '@/store/slices/auth';
+import { useDispatch } from "react-redux"
 
 
 type LoginFormProp = {
@@ -16,10 +16,8 @@ type LoginFormProp = {
 };
 
 export const LoginForm = () => {
-    // const { token } = req.cookies
 
     const dispatch = useDispatch()
-    // const getAllCarts = useSelector(getUser) || []
     const [errorMessage, setErrorMessage] = useState('')
     const [isLoading, setIsLoading] = useState(false)
     const router = useRouter()
