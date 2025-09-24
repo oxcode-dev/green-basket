@@ -1,4 +1,7 @@
+'use client';
+
 import { Logo } from '@/components/Logo';
+import useRedirectIfAuthenticated from '@/hooks/useRedirectIfAuthenticated';
 import Image from 'next/image'
 import React, { Children } from 'react'
 
@@ -7,9 +10,9 @@ const layout = ({
 }: Readonly<{
     children: React.ReactNode;
 }>) => {
-    // @ts-ignore
-    const loggedUser : User | null = useSelector(getUser)?.user || null;
-    
+   
+    useRedirectIfAuthenticated()
+
     return (
         <div>
             <div className="relative">
