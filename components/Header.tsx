@@ -139,10 +139,6 @@ export const DesktopHeader = ({ user }: UserProp) => {
                                                     </Link>
                                                 </li>
                                             ))}
-                                           
-                                            <li>
-                                                <a className="py-1 hover:bg-gray-100">Logout</a>
-                                            </li>
                                         </ul>
                                     </div>
                                 : null }
@@ -292,10 +288,6 @@ export const MobileHeader = ({ user }: UserProp) => {
                                             </Link>
                                         </li>
                                     ))}
-                                    
-                                    <li>
-                                        <a className="py-1 hover:bg-gray-100">Logout</a>
-                                    </li>
                                 </ul>
                             </div>
                         : null }

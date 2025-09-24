@@ -7,6 +7,9 @@ const layout = ({
 }: Readonly<{
     children: React.ReactNode;
 }>) => {
+    // @ts-ignore
+    const loggedUser : User | null = useSelector(getUser)?.user || null;
+    
     return (
         <div>
             <div className="relative">
