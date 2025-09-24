@@ -114,7 +114,7 @@ export default function DashboardLayout({
                                                     <li key={key} className="py-1 w-full">
                                                         <Link
                                                             className={
-                                                                `${pathname === item.link ? 'bg-gray-100' : ''} 
+                                                                `${pathname === item.link ? 'bg-gray-100 font-semibold' : ''} 
                                                                 inline-flex items-center text-gray-500 hover:bg-gray-100 w-full space-x-4 p-2.5`
                                                             }
                                                             href={item.link}
