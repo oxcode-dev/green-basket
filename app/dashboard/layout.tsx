@@ -7,6 +7,8 @@ import { getUser, setUser } from '@/store/slices/auth';
 import { useDispatch, useSelector } from "react-redux"
 import { useRouter } from 'next/navigation'
 import { FormEvent } from "react";
+import { User } from "@/types";
+import { useInitials } from "@/types/helper";
 
 type NavigationProp = {
     link: string,
@@ -17,7 +19,7 @@ type NavigationProp = {
 const navigationItems :NavigationProp[] = [
     {
         icon: <HomeIcon className="size-6" />,
-        link: "/dashboard/",
+        link: "/dashboard",
         label: "Home",
     },
     {
@@ -50,6 +52,8 @@ export default function DashboardLayout({
 
     const dispatch = useDispatch()
     const router = useRouter()
+    // @ts-ignore
+    const loggedUser : User | null = useSelector(getUser)?.user || null;
 
     const handleLogout = async(event: FormEvent) => {
         event.preventDefault();
@@ -79,16 +83,28 @@ export default function DashboardLayout({
                                         <div>
                                             <div className="flex flex-col items-center w-full py-6 border-gray-300 md:border-b">
                                                 <div>
-                                                    <img
+                                                    {/* <img
                                                         className="w-20 h-20 rounded-full object-cover object-center"
                                                         src="https://firebasestorage.googleapis.com/v0/b/jobquest-ac99d.appspot.com/o/talents%2Favatar%2FIMG_0965.jpgb12beebd-03de-4167-a91e-1331fe607ff4?alt=media&token=069b1783-4f7c-4a6a-b58a-7e413e64590f"
-                                                    />
+                                                    /> */}
+                                                    <div className="avatar avatar-placeholder">
+                                                        <div className="bg-neutral text-neutral-content w-24 rounded-full">
+                                                            <span className="text-3xl">
+                                                                {useInitials(`${loggedUser?.first_name} ${loggedUser?.last_name}`)}
+                                                            </span>
+                                                        </div>
+                                                    </div>
                                                 </div>
                                                 <div className="text-center">
-                                                    <h2 className="text-xl font-semibold text-gray-500 pt-3">Vivian Brooks</h2>
-                                                    <a className="underline text-sm text-gray-500" href="#">
+                                                    <h2 className="text-xl font-semibold text-gray-500 pt-3">
+                                                        { `${loggedUser?.first_name} ${loggedUser?.last_name}`}
+                                                    </h2>
+                                                    <p className="text-sm text-gray-500">
+                                                        { loggedUser?.email}
+                                                    </p>
+                                                    {/* <a className="underline text-sm text-gray-500" href="#">
                                                         Change Avatar
-                                                    </a>
+                                                    </a> */}
                                                 </div>
                                             </div>
                                         </div>
