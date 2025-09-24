@@ -19,22 +19,9 @@ export default function DashboardLayout({
 
     const { navigationItems } = useNavigationItems()
     const pathname = usePathname()
-    const dispatch = useDispatch()
-    const router = useRouter()
+    
     // @ts-ignore
     const loggedUser : User | null = useSelector(getUser)?.user || null;
-
-    const handleLogout = async(event: FormEvent) => {
-        event.preventDefault();
-
-        const response = await fetch('/api/logout', {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-        })
-      
-        dispatch(setUser(null))
-        router.push('/') 
-    }
 
     return (
         <div className="">
@@ -92,18 +79,6 @@ export default function DashboardLayout({
                                                         </Link>
                                                     </li>
                                                 ))}
-
-                                                
-                                                <li className="py-1 w-full">
-                                                    <a
-                                                        onClick={(event: FormEvent) => handleLogout(event)}
-                                                        className="inline-flex items-center text-gray-500 hover:bg-gray-100 w-full space-x-4 p-2.5"
-                                                        href="#"
-                                                    >
-                                                        <ArrowLeftStartOnRectangleIcon className="size-6" />
-                                                        <span>Sign out</span>
-                                                    </a>
-                                                </li>
                                             </ul>
                                         </div>
                                     </div>

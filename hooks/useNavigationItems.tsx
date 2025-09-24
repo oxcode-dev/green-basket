@@ -1,4 +1,4 @@
-import { ShoppingBagIcon, HomeIcon, BookmarkIcon, MapIcon, Cog8ToothIcon } from '@heroicons/react/24/outline';
+import { ShoppingBagIcon, HomeIcon, BookmarkIcon, MapIcon, Cog8ToothIcon, ArrowLeftStartOnRectangleIcon } from '@heroicons/react/24/outline';
 
 type NavigationProp = {
     link: string,
@@ -33,7 +33,13 @@ export function useNavigationItems() {
             icon: <Cog8ToothIcon className="size-6" />,
             link: "/dashboard/account",
             label: "Account Management",
-        }
+        },
+        {
+            icon: <ArrowLeftStartOnRectangleIcon className="size-6" />,
+            link: "/dashboard/logout",
+            label: "Sign out",
+        },
+        
     ]
 
     const appNavigationItems :NavigationProp[] = [
