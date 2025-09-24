@@ -3,7 +3,7 @@ import { ShoppingBagIcon, HomeIcon, BookmarkIcon, MapIcon, Cog8ToothIcon } from 
 type NavigationProp = {
     link: string,
     label: string,
-    icon: React.JSX.Element,
+    icon?: React.JSX.Element,
 };
 
 
@@ -36,5 +36,12 @@ export function useNavigationItems() {
         }
     ]
 
-    return { navigationItems } as const;
+    const appNavigationItems :NavigationProp[] = [
+        { link: "/", label: "Home" },
+        { link: "/about", label: "About" },
+        { link: "/shop", label: "Shop" },
+        { link: "/contact", label: "Contact" },
+    ]
+
+    return { navigationItems, appNavigationItems } as const;
 }

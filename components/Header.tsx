@@ -8,6 +8,7 @@ import { User } from '@/types';
 import { useSelector } from 'react-redux';
 import { getUser } from '@/store/slices/auth';
 import { useInitials } from '@/types/helper';
+import { useNavigationItems } from '@/hooks/useNavigationItems';
 
 type UserProp = {
     user: User | null
@@ -27,151 +28,146 @@ export const Header = () => {
 }
 
 export const DesktopHeader = ({ user }: UserProp) => {
-  return (
-    <div className="shadow hidden md:block">
-        <div className="py-2 w-full border-b border-gray-300 font-medium">
-            <div className="w-full container mx-auto flex justify-between items-center text-sm text-gray-500">
-                <div>
-                    <p className="text-sm">
-                        <span>Need help? Call us: </span>
-                        <a href="tel: +234807890930" className="underline">+123 903434</a>
-                    </p>
-                </div>
-                <div>
-                    <p>
-                        100% Secure delivery without contacting the courier.
-                    </p>
-                </div>
-                <div> 
-                    <a href="mailto:info@greenbasket.com" className="inline-flex space-x-1.5 items-center">
-                        <span>
-                            <EnvelopeIcon className="size-5" />
-                        </span>
-                        <span>info@greenbasket.com</span>
-                    </a>
+    const { navigationItems, appNavigationItems } = useNavigationItems()
+
+    return (
+        <div className="shadow hidden md:block">
+            <div className="py-2 w-full border-b border-gray-300 font-medium">
+                <div className="w-full container mx-auto flex justify-between items-center text-sm text-gray-500">
+                    <div>
+                        <p className="text-sm">
+                            <span>Need help? Call us: </span>
+                            <a href="tel: +234807890930" className="underline">+123 903434</a>
+                        </p>
+                    </div>
+                    <div>
+                        <p>
+                            100% Secure delivery without contacting the courier.
+                        </p>
+                    </div>
+                    <div> 
+                        <a href="mailto:info@greenbasket.com" className="inline-flex space-x-1.5 items-center">
+                            <span>
+                                <EnvelopeIcon className="size-5" />
+                            </span>
+                            <span>info@greenbasket.com</span>
+                        </a>
+                    </div>
                 </div>
             </div>
-        </div>
-        <div>
-            <div className="w-full container mx-auto flex justify-between items-center">
-                <div className="py-3">
-                    <Link href="/">
-                        <Logo />
-                    </Link>
-                </div>
+            <div>
+                <div className="w-full container mx-auto flex justify-between items-center">
+                    <div className="py-3">
+                        <Link href="/">
+                            <Logo />
+                        </Link>
+                    </div>
 
-                <div className="flex space-x-4 items-center">
-                    <div className="dropdown">
-                        <div tabIndex={0} role="button" className="btn btn-ghost">
-                            <div className="inline-flex items-center space-x-1.5">
-                                <span>
-                                    <TagIcon className="size-5" />
-                                </span>
-                                <span>All Categories</span>
-                                <span>
-                                    <ChevronDownIcon className="size-5" />
-                                </span>
+                    <div className="flex space-x-4 items-center">
+                        <div className="dropdown">
+                            <div tabIndex={0} role="button" className="btn btn-ghost">
+                                <div className="inline-flex items-center space-x-1.5">
+                                    <span>
+                                        <TagIcon className="size-5" />
+                                    </span>
+                                    <span>All Categories</span>
+                                    <span>
+                                        <ChevronDownIcon className="size-5" />
+                                    </span>
+                                </div>
+                            </div>
+                            <ul
+                                tabIndex={0}
+                                className="bg-white menu menu-sm dropdown-content bg-base-100 rounded-box z-1 mt-3 w-52 p-2 shadow"
+                            >
+                                <li>
+                                    <a className="justify-between">
+                                        Account
+                                    </a>
+                                </li>
+                                <li><a>Settings</a></li>
+                                <li><a>Logout</a></li>
+                            </ul>
+                        </div>
+
+                        <div>
+                            <div className="inline-flex space-x-2 items-center">
+                                <label className="input bg-white input-neutral shadow-xl">
+                                    <MagnifyingGlassIcon className="h-5 opacity-50" />
+                                    <input type="text" className="grow focus:outline-none" placeholder="Search Product..." />
+                                    <button className="btn btn-circle btn-xs">
+                                        <MagnifyingGlassIcon className="size-4 opacity-50" />
+                                    </button>
+                                </label>
                             </div>
                         </div>
-                        <ul
-                            tabIndex={0}
-                            className="bg-white menu menu-sm dropdown-content bg-base-100 rounded-box z-1 mt-3 w-52 p-2 shadow"
-                        >
-                            <li>
-                                <a className="justify-between">
-                                    Account
-                                </a>
-                            </li>
-                            <li><a>Settings</a></li>
-                            <li><a>Logout</a></li>
-                        </ul>
-                    </div>
-
-                    <div>
-                        <div className="inline-flex space-x-2 items-center">
-                            <label className="input bg-white input-neutral shadow-xl">
-                                <MagnifyingGlassIcon className="h-5 opacity-50" />
-                                <input type="text" className="grow focus:outline-none" placeholder="Search Product..." />
-                                <button className="btn btn-circle btn-xs">
-                                    <MagnifyingGlassIcon className="size-4 opacity-50" />
-                                </button>
-                            </label>
-                        </div>
-                    </div>
-                    <nav>
-                        <ul className="flex">
-                            <li>
-                                <Link href="/" className="hover:border-b-4 px-4 py-5 text-xs font-semibold hover:text-green-600">Home</Link>
-                            </li>
-                            <li>
-                                <Link href="/shop" className="hover:border-b-4 px-4 py-5 text-xs font-semibold hover:text-green-600">Shop</Link>
-                            </li>
-                            <li>
-                                <Link href="/about" className="hover:border-b-4 px-4 py-5 text-xs font-semibold hover:text-green-600">About</Link>
-                            </li>
-                            <li>
-                                <Link href="/contact" className="hover:border-b-4 px-4 py-5 text-xs font-semibold hover:text-green-600">Contact</Link>
-                            </li>
-                        </ul>
-                    </nav>
-                    <div>
-                        <div className="inline-flex items-center space-x-3">
-                            { user && user.email ?
-                                <div className="dropdown dropdown-end">
-                                    <div tabIndex={0} role="button" className="btn btn-ghost btn-circle avatar hover:border-0 p-0">
-                                        {/* <div className="w-8 rounded-full">
-                                            <img
-                                                alt="Tailwind CSS Navbar component"
-                                                src="https://img.daisyui.com/images/stock/photo-1534528741775-53994a69daeb.webp" />
-                                        </div> */}
-                                        <div className="avatar avatar-placeholder">
-                                            <div className="bg-neutral text-neutral-content w-8 rounded-full">
-                                                <span className="text-md">
-                                                    {useInitials(`${user?.first_name} ${user?.last_name}`)}
-                                                </span>
+                        <nav>
+                            <ul className="flex">
+                                { appNavigationItems.map((item, key) => (
+                                    <Link href={item.link} key={key} className="hover:border-b-4 px-4 py-5 text-xs font-semibold hover:text-green-600">
+                                        {item.label}
+                                    </Link>
+                                ))}
+                            </ul>
+                        </nav>
+                        <div>
+                            <div className="inline-flex items-center space-x-3">
+                                { user && user.email ?
+                                    <div className="dropdown dropdown-end">
+                                        <div tabIndex={0} role="button" className="btn btn-ghost btn-circle avatar hover:border-0 p-0">
+                                            {/* <div className="w-8 rounded-full">
+                                                <img
+                                                    alt="Tailwind CSS Navbar component"
+                                                    src="https://img.daisyui.com/images/stock/photo-1534528741775-53994a69daeb.webp" />
+                                            </div> */}
+                                            <div className="avatar avatar-placeholder">
+                                                <div className="bg-neutral text-neutral-content w-8 rounded-full">
+                                                    <span className="text-md">
+                                                        {useInitials(`${user?.first_name} ${user?.last_name}`)}
+                                                    </span>
+                                                </div>
                                             </div>
                                         </div>
+                                        <ul
+                                            tabIndex={0}
+                                            className="bg-white menu menu-sm text-md dropdown-content bg-base-100 rounded-box z-1 mt-3 w-52 p-2 shadow"
+                                        >
+                                            { navigationItems.map((item, key) => (
+                                                <li key={key}>
+                                                    <Link href={item.link} className="justify-between py-1 hover:bg-gray-100">
+                                                        <span>{item.label}</span>
+                                                    </Link>
+                                                </li>
+                                            ))}
+                                           
+                                            <li>
+                                                <a className="py-1 hover:bg-gray-100">Logout</a>
+                                            </li>
+                                        </ul>
                                     </div>
-                                    <ul
-                                        tabIndex={0}
-                                        className="bg-white menu menu-sm dropdown-content bg-base-100 rounded-box z-1 mt-3 w-52 p-2 shadow"
-                                    >
-                                        <li>
-                                            <Link href="/dashboard" className="justify-between">
-                                                Dashboard
-                                            </Link>
-                                        </li>
-                                        <li>
-                                            <Link href="/dashboard/orders">My Orders</Link>
-                                        </li>
-                                        <li>
-                                            <Link href="/dashboard/wishlists">Wishlists</Link>
-                                        </li>
-                                        <li><a>Logout</a></li>
-                                    </ul>
-                                </div>
-                            : null }
-                            
-                            { !user ?
-                                <Link href="/auth" title="Sign In">
-                                    <ArrowRightEndOnRectangleIcon className="size-5" />
+                                : null }
+                                
+                                { !user ?
+                                    <Link href="/auth" title="Sign In">
+                                        <ArrowRightEndOnRectangleIcon className="size-5" />
+                                    </Link>
+                                : null }
+                                <Link href="/cart" className="w-6 relative">
+                                    <ShoppingCartIcon className="size-5" />
+                                    <span className="w-4 h-4 text-xs text-white absolute right-0 -top-2 bg-red-600 p-1 rounded-full items-center justify-center inline-flex">1</span>
                                 </Link>
-                            : null }
-                            <Link href="/cart" className="w-6 relative">
-                                <ShoppingCartIcon className="size-5" />
-                                <span className="w-4 h-4 text-xs text-white absolute right-0 -top-2 bg-red-600 p-1 rounded-full items-center justify-center inline-flex">1</span>
-                            </Link>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
-  )
+    )
 }
 
 export const MobileHeader = ({ user }: UserProp) => {
     const [active, setActive] = useState(false)
+    const { navigationItems, appNavigationItems } = useNavigationItems()
 
     return (
         <div className="md:hidden">
@@ -235,26 +231,11 @@ export const MobileHeader = ({ user }: UserProp) => {
                                     </div>
 
                                     <div className="flex flex-col mx-auto">
-                                        <Link
-                                            className="text-slate-700 border-0 px-4 py-3 text-md hover:text-green-600"
-                                            href="/">
-                                            Home
-                                        </Link>
-                                        <Link
-                                            className="text-green-700 border-green-600 border-b-4 px-4 py-3 text-md hover:text-green-600"
-                                            href="/about">
-                                            About Us
-                                        </Link>
-                                        <Link
-                                            className="text-slate-700 border-0 px-4 py-3 text-md hover:text-green-600"
-                                            href="/shop">
-                                            Shop
-                                        </Link>
-                                        <Link
-                                            className="text-slate-700 border-0 px-4 py-3 text-md hover:text-green-600"
-                                            href="/contact">
-                                            Contact
-                                        </Link>
+                                        { appNavigationItems.map((item, key) => (
+                                            <Link href={item.link} key={key} className="text-slate-700 border-0 px-4 py-3 text-md hover:text-green-600">
+                                                {item.label}
+                                            </Link>
+                                        ))}
                                     </div>
 
                                     <div className="w-full flex flex-col space-y-2 px-4 py-5 text-sm text-gray-500">
@@ -284,38 +265,46 @@ export const MobileHeader = ({ user }: UserProp) => {
                         </div>
                     </div>
                     <div className="flex items-center space-x-4">
-                        <div className="dropdown dropdown-end">
-                            <div tabIndex={0} role="button" className="btn btn-ghost btn-circle avatar hover:border-0 p-0">
-                                <div className="w-8 rounded-full">
-                                    <img
-                                        alt="Tailwind CSS Navbar component"
-                                        src="https://img.daisyui.com/images/stock/photo-1534528741775-53994a69daeb.webp" />
+                        { user && user.email ?
+                            <div className="dropdown dropdown-end">
+                                <div tabIndex={0} role="button" className="btn btn-ghost btn-circle avatar hover:border-0 p-0">
+                                    {/* <div className="w-8 rounded-full">
+                                        <img
+                                            alt="Tailwind CSS Navbar component"
+                                            src="https://img.daisyui.com/images/stock/photo-1534528741775-53994a69daeb.webp" />
+                                    </div> */}
+                                    <div className="avatar avatar-placeholder">
+                                        <div className="bg-neutral text-neutral-content w-8 rounded-full">
+                                            <span className="text-md">
+                                                {useInitials(`${user?.first_name} ${user?.last_name}`)}
+                                            </span>
+                                        </div>
+                                    </div>
                                 </div>
+                                <ul
+                                    tabIndex={0}
+                                    className="bg-white menu menu-sm dropdown-content bg-base-100 rounded-box z-1 mt-3 w-52 p-2 shadow"
+                                >
+                                    { navigationItems.map((item, key) => (
+                                        <li key={key}>
+                                            <Link href={item.link} className="justify-between py-1 hover:bg-gray-100">
+                                                <span>{item.label}</span>
+                                            </Link>
+                                        </li>
+                                    ))}
+                                    
+                                    <li>
+                                        <a className="py-1 hover:bg-gray-100">Logout</a>
+                                    </li>
+                                </ul>
                             </div>
-                            <ul
-                                tabIndex={0}
-                                className="bg-white menu menu-sm dropdown-content bg-base-100 rounded-box z-1 mt-3 w-52 p-2 shadow"
-                            >
-                                <li>
-                                    <Link href="/dashboard" className="justify-between">
-                                        Dashboard
-                                    </Link>
-                                </li>
-                                <li>
-                                    <Link href="/dashboard/addresses">Addresses</Link>
-                                </li>
-                                <li>
-                                    <Link href="/dashboard/orders">My Orders</Link>
-                                </li>
-                                <li>
-                                    <Link href="/dashboard/wishlists">Wishlists</Link>
-                                </li>
-                                <li>
-                                    <Link href="/dashboard/account">Account Management</Link>
-                                </li>
-                                <li><a>Logout</a></li>
-                            </ul>
-                        </div>
+                        : null }
+
+                        { !user ?
+                            <Link href="/auth" title="Sign In">
+                                <ArrowRightEndOnRectangleIcon className="size-5" />
+                            </Link>
+                        : null }
 
                         <Link className="w-6 relative" href="/cart" title="Shopping Cart">
                             <span className="w-4 h-4 text-xs text-white absolute right-0 -top-2 bg-red-600 p-1 rounded-full items-center justify-center inline-flex">
