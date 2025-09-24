@@ -1,8 +1,12 @@
 'use client';
 
+import { getUser, setUser } from '@/store/slices/auth';
+import { XCircleIcon } from '@heroicons/react/24/outline';
 import Link from 'next/link'
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 import { useForm, SubmitHandler } from "react-hook-form"
+import { useDispatch, useSelector } from "react-redux"
+
 
 type LoginFormProp = {
     email: string
@@ -11,6 +15,12 @@ type LoginFormProp = {
 };
 
 export const LoginForm = () => {
+    // const { token } = req.cookies
+
+    const dispatch = useDispatch()
+    const getAllCarts = useSelector(getUser) || []
+    const [errorMessage, setErrorMessage] = useState('')
+    const [isLoading, setIsLoading] = useState(false)
     const {
         register,
         handleSubmit,
@@ -19,6 +29,7 @@ export const LoginForm = () => {
     } = useForm<LoginFormProp>()
 
     const onSubmit: SubmitHandler<LoginFormProp> = async(data) => {
+        setIsLoading(true);
         const response = await fetch('/api/login', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
@@ -32,15 +43,17 @@ export const LoginForm = () => {
         const feedback = await response.json()
 
         if (response.ok) {
-            console.log(feedback)
+            console.log(feedback?.data)
+            // dispatch(setUser(items))
         // router.push('/dashboard') // redirect to a protected page
         } else {
-            // alert('Invalid credentials')
-            console.log(feedback)
+            // console.log(feedback.data, feedback.data.message)
+            setErrorMessage(feedback?.data?.message || '')
         }
+        setIsLoading(false);
     }
 
-    const fetchUser = async () => {
+    const fetchUserData = async () => {
         const response = await fetch('/api/profile', {
             // method: 'POST',
             headers: { 'Content-Type': 'application/json' },
@@ -59,12 +72,18 @@ export const LoginForm = () => {
         }
     }
     useEffect(() => {
-        fetchUser()
+        fetchUserData()
     }, [])
 
     return (
         <div>
             <form onSubmit={handleSubmit(onSubmit)}>
+                { errorMessage ? (
+                    <div role="alert" className="alert alert-error bg-red-500 text-white mb-2 text-sm">
+                        <XCircleIcon className="size-5" />
+                        <span>{errorMessage}</span>
+                    </div>
+                ) : null}
                 <div className="space-y-1.5 flex flex-col py-1.5">
                     <label className="text-sm font-medium text-gray-600" htmlFor="email">Email</label>
                     <input 
@@ -104,8 +123,9 @@ export const LoginForm = () => {
                 </div>
         
                 <div className="py-2 pt-6">
-                    <button type="submit" className="btn bg-green-600 border-green-600 text-white btn-md">
-                        Sign In
+                    <button disabled={isLoading} type="submit" className="btn !bg-green-600 active:bg-green-600 border-green-600 text-white btn-md">
+                        { isLoading && <span className="loading loading-spinner loading-sm text-white"></span> }
+                        <span>{ isLoading ? 'Loading...' : 'Sign In'}</span>
                     </button>
                 </div>
             </form>

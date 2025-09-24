@@ -16,13 +16,13 @@ export const AuthUserSlice = createSlice({
     initialState,
 
     reducers: {
-        fetchUser: (state, action) => {
+        setUser: (state, action) => {
             state.user = action.payload
         },
     }
 })
 
-export const { fetchUser } = AuthUserSlice.actions
+export const { setUser } = AuthUserSlice.actions
 export const getUser = (state: User) => state.user
 
 export default AuthUserSlice.reducer
