@@ -2,9 +2,9 @@
 
 import { XCircleIcon } from '@heroicons/react/24/outline';
 import Link from 'next/link'
+import { useRouter } from 'next/navigation';
 import React, { useState } from 'react'
 import { SubmitHandler, useForm } from 'react-hook-form';
-
 
 type FormProp = {
     email: string
@@ -13,6 +13,7 @@ type FormProp = {
 const page = () => {
     const [errorMessage, setErrorMessage] = useState('')
     const [isLoading, setIsLoading] = useState(false)
+    const router = useRouter()
 
     const {
         register,
@@ -34,8 +35,8 @@ const page = () => {
         const feedback = await response.json()
 
         if (response.ok) {
-            console.log(feedback)
-            // router.push('/dashboard') // redirect to a protected page
+            // console.log(feedback)
+            router.push('/auth/reset-password')
         } else {
             console.log(feedback)
             setErrorMessage(feedback.message || '')
