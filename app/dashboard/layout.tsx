@@ -10,12 +10,15 @@ import { FormEvent } from "react";
 import { User } from "@/types";
 import { useInitials } from "@/types/helper";
 import { useNavigationItems } from "@/hooks/useNavigationItems";
+import useRedirectIfNotAuthenticated from "@/hooks/useRedirectIfNotAuthenticated";
 
 export default function DashboardLayout({
     children,
 }: Readonly<{
     children: React.ReactNode;
 }>) {
+
+    useRedirectIfNotAuthenticated('/auth')
 
     const { navigationItems } = useNavigationItems()
     const pathname = usePathname()
