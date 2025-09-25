@@ -3,33 +3,32 @@ import { cookies } from 'next/headers';
 import cookie from 'cookie'
 import { NextApiResponse } from "next";
 
-type LoginFormProp = {
+type RegistrationFormProp = {
+    first_name: string
+    last_name: string
     email: string
     password: string
-    remember_me: boolean
-}
+    confirm_password: string
+    terms: boolean
+};
 
 export async function POST(request: NextRequest, res: NextApiResponse) {
     try{
         // Parse the request body
-        // const formData = await request.formData();
-        // const email = formData.get('email');
-        //@ts-ignore
-        // const body : LoginFormProp = request.body;
         const body = await request.json();
 
         // await fetch('http://127.0.0.1:8000/sanctum/csrf-cookie')
 
         const { data: formData } = body
-
-        return new Response(JSON.stringify({ ...formData }), {
-            status: 200,
-            headers: { 'Content-Type': 'application/json' }
-        });
+        // return new Response(JSON.stringify({ ...formData}), {
+        //     status: 201,
+        //     headers: { 'Content-Type': 'application/json' },
+        // });
 
         const response = await fetch('http://127.0.0.1:8000/api/register', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ ...formData })
             // body: JSON.stringify({ email, password, remember_me }),
         })
 

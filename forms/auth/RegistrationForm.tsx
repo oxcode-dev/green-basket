@@ -1,4 +1,7 @@
+'use client';
+
 import { setUser } from '@/store/slices/auth';
+import { isEmpty } from '@/types/helper';
 import { XCircleIcon } from '@heroicons/react/24/outline';
 import { useRouter } from 'next/navigation';
 import React, { useState } from 'react'
@@ -18,6 +21,7 @@ type RegistrationFormProp = {
 const RegistrationForm = () => {
     const dispatch = useDispatch()
     const [errorMessage, setErrorMessage] = useState('')
+    const [errorBag, setErrorBag] = useState({})
     const [isLoading, setIsLoading] = useState(false)
     const router = useRouter()
 
@@ -40,8 +44,11 @@ const RegistrationForm = () => {
             // }),
             body:  JSON.stringify({
                 data: {
+                    first_name: data.first_name, 
+                    last_name: data.last_name, 
                     email: data.email, 
                     password: data.password,
+                    confirm_password: data.confirm_password,
                     terms: data.terms,
                 }
             })
@@ -49,33 +56,39 @@ const RegistrationForm = () => {
         })
       
         const feedback = await response.json();
-        setIsLoading(false);
-        return console.log(feedback)
 
         if (response.ok) {
             // console.log(feedback?.data?.data)
             dispatch(setUser(feedback?.data?.data))
             router.push('/dashboard') // redirect to a protected page
         } else {
-            // console.log(feedback.data, feedback.data.message)
             setErrorMessage(feedback?.data?.message || '')
+            setErrorBag(feedback?.data?.data)
             setIsLoading(false);
         }
-
-        // setIsLoading(false);
     }
 
     return (
         <div>
             <form onSubmit={handleSubmit(onSubmit)} className="space-y-3">
-                { errorMessage ? (
+
+                { !isEmpty(errorBag) ? (
                     <div role="alert" className="alert alert-error bg-red-500 text-white mb-2 text-sm">
                         <XCircleIcon className="size-5" />
-                        <span>{errorMessage}</span>
+                        <p className="inline-flex flex-col space-y-1.5">
+                            {
+                                Object.values(errorBag).map((value, key) => (
+                                    //@ts-ignore
+                                    <span key={key}>{value}</span>
+                                ))
+                            }
+                        </p>
                     </div>
                 ) : null}
 
-                <div className="flex items-start space-x-4">
+
+
+                <div className="flex items-start space-x-4 pt-2">
                     <div className="space-y-1.5 flex flex-col w-full">
                         <label className="text-sm font-medium text-gray-600" htmlFor="first_name">First Name</label>
                         <input {...register("first_name",  { required: true })} type="text" placeholder="First Name" className="input w-full bg-white border border-gray-300" />

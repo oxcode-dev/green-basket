@@ -22,3 +22,12 @@ export function numberFormat(number: number|null) {
 
     return number.toFixed(2).replace(/\d(?=(\d{3})+\.)/g, "$&,");
 }
+
+// Check whether an object is empty
+export const isEmpty = (obj: {}) => {
+    for (let key in obj) {
+        if (obj.hasOwnProperty(key))
+            return false;
+    }
+    return true;
+}
