@@ -3,6 +3,7 @@
 import { Logo } from '@/components/Logo';
 import useRedirectIfAuthenticated from '@/hooks/useRedirectIfAuthenticated';
 import Image from 'next/image'
+import Link from 'next/link';
 import React, { Children } from 'react'
 
 const layout = ({
@@ -32,7 +33,9 @@ const layout = ({
                     <div className="w-full flex justify-end">
                         <div className="w-full h-full md:max-w-xl bg-white min-h-screen bg-gradient-to-br from-0% to-60% from-green-50 to-white">
                             <div className="py-6 pt-12 md:pt-20 px-4 md:px-8 h-full">
-                                <Logo />
+                                <Link href="/">
+                                    <Logo />
+                                </Link>
 
                                 <div>
                                     {children}
