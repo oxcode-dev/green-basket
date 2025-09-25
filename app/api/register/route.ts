@@ -18,14 +18,19 @@ export async function POST(request: NextRequest, res: NextApiResponse) {
         // const body : LoginFormProp = request.body;
         const body = await request.json();
 
-        await fetch('http://127.0.0.1:8000/sanctum/csrf-cookie')
+        // await fetch('http://127.0.0.1:8000/sanctum/csrf-cookie')
 
-        const { email, password, remember_me } = body
+        const { data: formData } = body
 
-        const response = await fetch('http://127.0.0.1:8000/api/login', {
+        return new Response(JSON.stringify({ ...formData }), {
+            status: 200,
+            headers: { 'Content-Type': 'application/json' }
+        });
+
+        const response = await fetch('http://127.0.0.1:8000/api/register', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({ email, password, remember_me }),
+            // body: JSON.stringify({ email, password, remember_me }),
         })
 
         const data = await response.json()

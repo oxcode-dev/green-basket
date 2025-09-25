@@ -63,6 +63,7 @@ export const LoginForm = () => {
                         <span>{errorMessage}</span>
                     </div>
                 ) : null}
+                
                 <div className="space-y-1.5 flex flex-col py-1.5">
                     <label className="text-sm font-medium text-gray-600" htmlFor="email">Email</label>
                     <input 
