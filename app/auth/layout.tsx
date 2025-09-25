@@ -11,7 +11,7 @@ const layout = ({
     children: React.ReactNode;
 }>) => {
    
-    useRedirectIfAuthenticated()
+    useRedirectIfAuthenticated('/dashboard')
 
     return (
         <div>

@@ -2,9 +2,9 @@
 import { NextResponse } from "next/server";
 import type { NextRequest } from "next/server";
 
-export function middleware(request: NextRequest) {
+export default function middleware(request: NextRequest) {
     // alert('Hello World')
-    console.log(request.nextUrl.pathname)
+    return console.log(request.nextUrl.pathname);
 //   const token = request.cookies.get("next-auth.session-token");
     const token = '';
 
