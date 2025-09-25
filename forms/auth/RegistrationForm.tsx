@@ -60,7 +60,9 @@ const RegistrationForm = () => {
         if (response.ok) {
             // console.log(feedback?.data?.data)
             dispatch(setUser(feedback?.data?.data))
-            router.push('/dashboard') // redirect to a protected page
+            setTimeout(() => {
+                router.push('/dashboard') // redirect to a protected page
+            }, 2000)
         } else {
             setErrorMessage(feedback?.data?.message || '')
             setErrorBag(feedback?.data?.data)

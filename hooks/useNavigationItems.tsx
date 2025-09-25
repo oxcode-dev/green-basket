@@ -12,7 +12,7 @@ export function useNavigationItems() {
         {
             icon: <HomeIcon className="size-6" />,
             link: "/dashboard",
-            label: "Home",
+            label: "Dashboard",
         },
         {
             icon: <MapIcon className="size-6" />,
