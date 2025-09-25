@@ -45,8 +45,10 @@ export const LoginForm = () => {
 
         if (response.ok) {
             // console.log(feedback?.data?.data)
-            dispatch(setUser(feedback?.data?.data))
-            router.push('/dashboard') // redirect to a protected page
+            await dispatch(setUser(feedback?.data?.data))
+            setTimeout(() => {
+                router.push('/dashboard') // redirect to a protected page
+            }, 2000)
         } else {
             // console.log(feedback.data, feedback.data.message)
             setErrorMessage(feedback?.data?.message || '')

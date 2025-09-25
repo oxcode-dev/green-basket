@@ -36,7 +36,7 @@ export function useNavigationItems() {
         },
         {
             icon: <ArrowLeftStartOnRectangleIcon className="size-6" />,
-            link: "/dashboard/logout",
+            link: "/logout",
             label: "Sign out",
         },
         
