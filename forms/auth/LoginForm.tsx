@@ -7,6 +7,7 @@ import React, { useState } from 'react'
 import { useForm, SubmitHandler } from "react-hook-form"
 import { setUser } from '@/store/slices/auth';
 import { useDispatch } from "react-redux"
+import useCookie from '@/hooks/useCookie';
 
 
 type LoginFormProp = {
@@ -21,6 +22,8 @@ export const LoginForm = () => {
     const [errorMessage, setErrorMessage] = useState('')
     const [isLoading, setIsLoading] = useState(false)
     const router = useRouter()
+
+    const { setCookie } = useCookie();
 
     const {
         register,
@@ -44,8 +47,11 @@ export const LoginForm = () => {
         const feedback = await response.json()
 
         if (response.ok) {
-            // console.log(feedback?.data?.data)
+            const userDetails = feedback?.data?.data;
+            delete userDetails.token;
+
             await dispatch(setUser(feedback?.data?.data))
+            
             setTimeout(() => {
                 router.push('/dashboard') // redirect to a protected page
             }, 2000)

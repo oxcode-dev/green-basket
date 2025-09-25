@@ -9,7 +9,6 @@ import { User } from "@/types";
 import { useInitials } from "@/types/helper";
 import { useNavigationItems } from "@/hooks/useNavigationItems";
 import useRedirectIfNotAuthenticated from "@/hooks/useRedirectIfNotAuthenticated";
-import useCookie from "@/hooks/useCookie";
 
 export default function DashboardLayout({
     children,
@@ -18,10 +17,6 @@ export default function DashboardLayout({
 }>) {
 
     useRedirectIfNotAuthenticated('/auth')
-
-    const { getCookie, setCookie } = useCookie()
-
-    setCookie('token', '123456789')
 
     const { navigationItems } = useNavigationItems()
     const pathname = usePathname()
@@ -33,7 +28,6 @@ export default function DashboardLayout({
         <div className="">
             <Header />
             <div>
-                <pre>{ getCookie('token') || 'not found' }</pre>
                 <div className="pt-24 md:pt-0">
                     <div className="container w-full mx-auto py-8 px-4 md:px-0">
                         <div className="w-full flex flex-wrap md:flex-nowrap items-start space-y-6 md:space-y-0">

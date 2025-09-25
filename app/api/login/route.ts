@@ -1,6 +1,5 @@
 import { NextRequest } from "next/server";
 import { cookies } from 'next/headers';
-import cookie from 'cookie'
 import { NextApiResponse } from "next";
 
 type LoginFormProp = {
@@ -52,7 +51,6 @@ export async function POST(request: NextRequest, res: NextApiResponse) {
                 maxAge: 60 * 60 * 24 * 7, // 1 week expiration
                 path: '/', // Available across the entire site
             });    
-
         }
 
         return new Response(JSON.stringify({data}), {

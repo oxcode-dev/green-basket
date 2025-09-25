@@ -7,8 +7,8 @@ const useCookie = () => {
     };
 
     // Getting a cookie
-    const getCookie = (name: string) => {
-        return Cookies.get(name);
+    const getCookie = (name: string) : string => {
+        return Cookies.get(name) || '';
     };
 
     // Deleting a cookie
