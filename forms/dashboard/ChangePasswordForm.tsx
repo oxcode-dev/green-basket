@@ -51,7 +51,6 @@ const ChangePasswordForm = () => {
             setSuccessResponse(feedback?.message || '')
             reset()
         } else {
-            console.log(feedback)
             setErrorBag(feedback?.data)
             setIsLoading(false);
         }
