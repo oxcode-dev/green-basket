@@ -1,7 +1,32 @@
+'use client';
+
+import { isEmpty } from '@/types/helper';
 import { DevicePhoneMobileIcon, MapPinIcon, PencilIcon, TrashIcon, UserCircleIcon } from '@heroicons/react/24/outline'
+import { useQuery } from '@tanstack/react-query';
 import React from 'react'
 
+
+async function fetchUser() {
+    const getTokenResponse = await fetch('/api/fetch-token')
+
+    const getToken = await getTokenResponse.json()
+
+    if(isEmpty(getToken)) {
+        return alert('Unauthenticated User')
+    }
+    
+    const res = await fetch("/api/addresses"); // Your API endpoint
+    if (!res.ok) {
+        throw new Error("Failed to fetch posts");
+    }
+    return res.json();
+}
+
 const page = () => {
+    const { data, error, isLoading } = useQuery({
+        queryKey: ["user"],
+        queryFn: fetchUser,
+    });
     return (
         <div>
 
