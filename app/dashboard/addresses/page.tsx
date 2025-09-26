@@ -50,13 +50,16 @@ const page = () => {
                 <div className="w-full grid grid-cols-1 md:grid-cols-2 gap-4">
                     { data?.data?.data?.map((item, key) => (
                         <div key={key}>
-                            <AddressCard address={item} />
+                            <AddressCard 
+                                address={item}
+                                onDelete={() => alert(item.city)}
+                                onEdit={() => alert(item.state)}
+                            />
                         </div>
                     ))}
                 </div>
             </div>
         </div>
-
     )
 }
 

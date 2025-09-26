@@ -6,8 +6,10 @@ import { getUser } from '@/store/slices/auth'
 
 type AddressCardProp = {
     address: AddressItemProp,
+    onEdit: (() => void) | null;
+    onDelete: (() => void) | null;
 }
-const AddressCard = ({ address }: AddressCardProp) => {
+const AddressCard = ({ address, onDelete, onEdit }: AddressCardProp) => {
     // @ts-ignore
     const loggedUser : User | null = useSelector(getUser)?.user || null;
 
@@ -38,16 +40,22 @@ const AddressCard = ({ address }: AddressCardProp) => {
                     ): null}
 
                 </div>
-                <div className="border-t border-gray-200 p-2 py-1 w-full">
-                    <div className="space-x-2 flex justify-end w-full">
-                        <button className="btn btn-sm btn-circle rounded-md btn-error text-white font-medium">
-                            <TrashIcon className="size-4" />
-                        </button>
-                        <button className="btn btn-sm btn-circle rounded-md bg-white text-gray-600 border border-gray-200 font-medium">
-                            <PencilIcon className="size-4" />
-                        </button>
+                { onEdit || onDelete ? (
+                    <div className="border-t border-gray-200 p-2 py-1 w-full">
+                        <div className="space-x-2 flex justify-end w-full">
+                            { onDelete ? (
+                                <button onClick={onDelete} className="btn btn-sm btn-circle rounded-md btn-error text-white font-medium">
+                                    <TrashIcon className="size-4" />
+                                </button>
+                            ): null}
+                            { onEdit ? (
+                                <button onClick={onEdit} className="btn btn-sm btn-circle rounded-md bg-white text-gray-600 border border-gray-200 font-medium">
+                                    <PencilIcon className="size-4" />
+                                </button>
+                            ): null }
+                        </div>
                     </div>
-                </div>
+                ) : null }
             </div>
         </div>
     )
