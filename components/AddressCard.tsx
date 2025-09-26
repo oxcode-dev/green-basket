@@ -1,22 +1,27 @@
 import React from 'react'
 import { DevicePhoneMobileIcon, MapPinIcon, PencilIcon, TrashIcon, UserCircleIcon } from '@heroicons/react/24/outline'
-import { AddressItemProp } from '@/types'
+import { AddressItemProp, User } from '@/types'
+import { useSelector } from 'react-redux'
+import { getUser } from '@/store/slices/auth'
 
 type AddressCardProp = {
     address: AddressItemProp,
 }
 const AddressCard = ({ address }: AddressCardProp) => {
+    // @ts-ignore
+    const loggedUser : User | null = useSelector(getUser)?.user || null;
+
     return (
         <div>
             <div className="border border-gray-200 shadow-sm rounded-md">
                 <div className="flex flex-col space-y-2.5 p-2 text-gray-500">
                     <p className="inline-flex items-center space-x-2 text-xs font-medium">
                         <UserCircleIcon className="size-4" />
-                        <span>Oxcode</span>
+                        <span>{loggedUser?.name}</span>
                     </p>
 
                     <p className="inline-flex items-center space-x-2 text-xs font-medium">
-                        <MapPinIcon className="size-4" />
+                        <MapPinIcon className="size-5" />
                         <span className="space-x-1.5">
                             <span>{address.street}</span>
                             <span>{address.city}</span>
@@ -25,10 +30,12 @@ const AddressCard = ({ address }: AddressCardProp) => {
                         </span>
                     </p>
 
-                    <p className="inline-flex items-center space-x-2 text-xs font-medium">
-                        <DevicePhoneMobileIcon className="size-4" />
-                        <span>{address?.phone}</span>
-                    </p>
+                    {loggedUser?.phone ? (
+                        <p className="inline-flex items-center space-x-2 text-xs font-medium">
+                            <DevicePhoneMobileIcon className="size-4" />
+                            <span>{loggedUser?.phone}</span>
+                        </p>
+                    ): null}
 
                 </div>
                 <div className="border-t border-gray-200 p-2 py-1 w-full">

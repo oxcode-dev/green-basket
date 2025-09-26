@@ -11,6 +11,7 @@ export interface BreadcrumbItem {
 export interface User {
     id: number;
     first_name: string;
+    name: string;
     last_name: string;
     email: string;
     phone: string;
@@ -102,7 +103,7 @@ export interface OrderType {
 export interface AddressItemProp {
     id: string;
     user_id: string;
-    phone: string | null;
+    // phone: string | null;
     street: string | null;
     city: string | null;
     state: string | null;
