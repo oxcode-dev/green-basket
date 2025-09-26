@@ -37,11 +37,6 @@ const RegistrationForm = () => {
         const response = await fetch('/api/register', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
-            // body: JSON.stringify({ 
-            //     email: data.email, 
-            //     password: data.password,
-            //     terms: data.terms
-            // }),
             body:  JSON.stringify({
                 data: {
                     first_name: data.first_name, 
@@ -58,7 +53,6 @@ const RegistrationForm = () => {
         const feedback = await response.json();
 
         if (response.ok) {
-            // console.log(feedback?.data?.data)
             dispatch(setUser(feedback?.data?.data))
             setTimeout(() => {
                 router.push('/dashboard') // redirect to a protected page
@@ -87,8 +81,6 @@ const RegistrationForm = () => {
                         </p>
                     </div>
                 ) : null}
-
-
 
                 <div className="flex items-start space-x-4 pt-2">
                     <div className="space-y-1.5 flex flex-col w-full">
