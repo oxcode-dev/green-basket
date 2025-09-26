@@ -1,6 +1,5 @@
 import { NextRequest } from "next/server";
 import { cookies } from 'next/headers';
-import cookie from 'cookie'
 import { NextApiResponse } from "next";
 
 type RegistrationFormProp = {
@@ -17,7 +16,7 @@ export async function POST(request: NextRequest, res: NextApiResponse) {
         // Parse the request body
         const body = await request.json();
 
-        // await fetch('http://127.0.0.1:8000/sanctum/csrf-cookie')
+        await fetch(`${process.env.NEXT_PUBLIC_API_ENDPOINT}/sanctum/csrf-cookie`)
 
         const { data: formData } = body
         // return new Response(JSON.stringify({ ...formData}), {
@@ -25,7 +24,7 @@ export async function POST(request: NextRequest, res: NextApiResponse) {
         //     headers: { 'Content-Type': 'application/json' },
         // });
 
-        const response = await fetch('http://127.0.0.1:8000/api/register', {
+        const response = await fetch(`${process.env.NEXT_PUBLIC_API_ENDPOINT}/api/register`, {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({ ...formData })

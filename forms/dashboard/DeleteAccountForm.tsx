@@ -31,7 +31,7 @@ const DeleteAccountForm = () => {
             return alert('Unauthenticated User')
         }
 
-        const response = await fetch('http://127.0.0.1:8000/api/delete-account', {
+        const response = await fetch(`${process.env.NEXT_PUBLIC_API_ENDPOINT}/api/delete-account`, {
             method: 'POST',
             headers: { 
                 Authorization: `Bearer ${getToken.token}`,

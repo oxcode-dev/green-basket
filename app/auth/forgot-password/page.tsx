@@ -24,7 +24,7 @@ const page = () => {
 
     const onSubmit: SubmitHandler<FormProp> = async(data) => {
         setIsLoading(true);
-        const response = await fetch('http://127.0.0.1:8000/api/forgot-password', {
+        const response = await fetch(`${process.env.NEXT_PUBLIC_API_ENDPOINT}/api/forgot-password`, {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({ 

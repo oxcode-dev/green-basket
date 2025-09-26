@@ -1,6 +1,5 @@
 import { NextRequest } from "next/server";
 import { cookies } from 'next/headers';
-import cookie from 'cookie'
 import { NextApiResponse } from "next";
 
 export async function POST(request: NextRequest, res: NextApiResponse) {
@@ -15,7 +14,7 @@ export async function POST(request: NextRequest, res: NextApiResponse) {
             });
         }
 
-        const response = await fetch('http://127.0.0.1:8000/api/logout', {
+        const response = await fetch(`${process.env.NEXT_PUBLIC_API_ENDPOINT}/api/logout`, {
             method: 'DELETE',
             headers: { 
                 Authorization: `Bearer ${sessionToken?.value}`,

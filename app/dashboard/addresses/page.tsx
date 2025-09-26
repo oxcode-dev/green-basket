@@ -15,7 +15,7 @@ async function fetchUser() {
         return alert('Unauthenticated User')
     }
     
-    const res = await fetch("/api/addresses"); // Your API endpoint
+    const res = await fetch(`${process.env.NEXT_PUBLIC_API_ENDPOINT}/api/addresses`); // Your API endpoint
     if (!res.ok) {
         throw new Error("Failed to fetch posts");
     }

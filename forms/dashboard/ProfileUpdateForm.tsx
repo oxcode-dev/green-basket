@@ -49,7 +49,7 @@ const ProfileUpdateForm = () => {
             return alert('Unauthenticated User')
         }
 
-        const response = await fetch('http://127.0.0.1:8000/api/profile-update', {
+        const response = await fetch(`${process.env.NEXT_PUBLIC_API_ENDPOINT}/api/profile-update`, {
             method: 'POST',
             headers: { 
                 Authorization: `Bearer ${getToken.token}`,
