@@ -76,16 +76,19 @@ const ChangePasswordForm = () => {
                     <div className="space-y-1.5 flex flex-col">
                         <label className="text-sm font-medium text-gray-800" htmlFor="current_password">Current Password</label>
                         <input type="password" {...register("current_password",  { required: true })} placeholder="********" className="input w-full bg-white border border-gray-300" />
+                        {errors.current_password && <span className="text-red-600 text-xs font-medium">Current Password is required</span>}
                     </div>
 
                     <div className="space-y-1.5 flex flex-col">
                         <label className="text-sm font-medium text-gray-800" htmlFor="password">New Password</label>
                         <input type="password" {...register("password",  { required: true })} placeholder="********" className="input w-full bg-white border border-gray-300" />
+                        {errors.password && <span className="text-red-600 text-xs font-medium">New Password is required</span>}
                     </div>
 
                     <div className="space-y-1.5 flex flex-col">
                         <label className="text-sm font-medium text-gray-800" htmlFor="confirm_password">Confirm Password</label>
                         <input type="password" {...register("confirm_password",  { required: true })} placeholder="*********" className="input w-full bg-white border border-gray-300" />
+                        {errors.confirm_password && <span className="text-red-600 text-xs font-medium">Confirm Password is required</span>}
                     </div>
             
                     <div className="py-2 pt-6">

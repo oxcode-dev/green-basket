@@ -1,3 +1,4 @@
+import ErrorAlert from '@/components/ErrorAlert';
 import { isEmpty } from '@/types/helper'
 import { useRouter } from 'next/navigation';
 import React, { useState } from 'react'
@@ -30,7 +31,7 @@ const DeleteAccountForm = () => {
             return alert('Unauthenticated User')
         }
 
-        const response = await fetch('http://127.0.0.1:8000/api/change-password', {
+        const response = await fetch('http://127.0.0.1:8000/api/delete-account', {
             method: 'POST',
             headers: { 
                 Authorization: `Bearer ${getToken.token}`,
@@ -41,9 +42,15 @@ const DeleteAccountForm = () => {
             }),
         })
 
-        await response.json()
+        const feedback = await response.json()
 
-        router.push('/logout')
+        if (feedback?.success) {
+            reset()
+            router.push('/logout')
+        } else {
+            setErrorBag(feedback?.data)
+            setIsLoading(false);
+        }
 
         setIsLoading(false);
     }
@@ -53,6 +60,16 @@ const DeleteAccountForm = () => {
 
             <div className="">
                 <form onSubmit={handleSubmit(onSubmit)} className="space-y-4 pt-6">
+                    { !isEmpty(errorBag) ? (
+                        <ErrorAlert>
+                            <ol className="inline-flex flex-col space-y-1.5 list-disc list-inside">
+                                { Object.values(errorBag).map((value, key) => (
+                                    //@ts-ignore
+                                    <li key={key}>{value}</li>
+                                ))}
+                            </ol>
+                        </ErrorAlert>
+                    ) : null}
                     <div>
                         <p className="text-sm font-normal text-gray-500">
                             You are about to request that we permanently delete your data and close 
@@ -65,6 +82,7 @@ const DeleteAccountForm = () => {
                             Kindly provided your password to confirm delete.
                         </label>
                         <input type="password" {...register("password",  { required: true })} placeholder="********" className="input w-full bg-white border border-gray-300" />
+                        {errors.password && <span className="text-red-600 text-xs font-medium">Password is required</span>}
                     </div>
 
                     <div className="py-2 pt-6">
