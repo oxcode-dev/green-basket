@@ -89,23 +89,28 @@ const ProfileUpdateForm = () => {
                         </ol>
                     </ErrorAlert>
                 ) : null}
+
                 <div className="space-y-1.5 flex flex-col">
                     <label className="text-sm font-medium text-gray-800" htmlFor="first_name">First Name</label>
                     <input type="text" {...register("first_name",  { required: true })}  placeholder="First Name" className="input w-full bg-white border border-gray-300" />
+                    {errors.first_name && <span className="text-red-600 text-xs font-medium">First Name is required</span>}
                 </div>
                 <div className="space-y-1.5 flex flex-col">
                     <label className="text-sm font-medium text-gray-800" htmlFor="last_name">Last Name</label>
                     <input type="text" {...register("last_name",  { required: true })} placeholder="Last Name" className="input w-full bg-white border border-gray-300" />
+                    {errors.last_name && <span className="text-red-600 text-xs font-medium">Last Name is required</span>}
                 </div>
 
                 <div className="space-y-1.5 flex flex-col">
                     <label className="text-sm font-medium text-gray-800" htmlFor="email">Email</label>
                     <input type="email" {...register("email",  { required: true })} placeholder="Your Email" className="input w-full bg-white border border-gray-300" />
+                    {errors.email && <span className="text-red-600 text-xs font-medium">Email is required</span>}
                 </div>
 
                 <div className="space-y-1.5 flex flex-col">
                     <label className="text-sm font-medium text-gray-800" htmlFor="phone">Phone</label>
                     <input id="phone" type="text" {...register("phone",  { required: true })} placeholder="+234 8123 456 7890" className="input w-full bg-white border border-gray-300" />
+                    {errors.phone && <span className="text-red-600 text-xs font-medium">Phone number is required</span>}
                 </div>
         
                 <div className="py-2 pt-6">
