@@ -18,7 +18,7 @@ const ChangePasswordForm = () => {
     const {
         register,
         handleSubmit,
-        watch,
+        reset,
         formState: { errors },
     } = useForm<FormProp>();
 
@@ -49,6 +49,7 @@ const ChangePasswordForm = () => {
 
         if (feedback?.success) {
             setSuccessResponse(feedback?.message || '')
+            reset()
         } else {
             console.log(feedback)
             setErrorBag(feedback?.data)
