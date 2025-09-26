@@ -80,7 +80,7 @@ export interface OrderItem {
     id: string;
     address_id: string;
     status: string;
-    address: AddressItem;
+    address: AddressItemProp;
     user: User | null;
     user_id: string;
     payment_method: string | null;
@@ -99,7 +99,7 @@ export interface OrderType {
     data: OrderItem[];
 }
 
-export interface AddressItem {
+export interface AddressItemProp {
     id: string;
     user_id: string;
     phone: string | null;
@@ -110,6 +110,14 @@ export interface AddressItem {
     postal_code: string | null;
     is_default: boolean;
     created_at: string;
+}
+
+export interface AddressTypeProp {
+    prev_page_url: string;
+    next_page_url: string;
+    last_page: string;
+    current_page: string;
+    data: AddressItemProp[];
 }
 
 export interface OrderItemsType {
