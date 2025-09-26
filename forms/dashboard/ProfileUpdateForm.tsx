@@ -1,5 +1,7 @@
 'use client';
 
+import ErrorAlert from '@/components/ErrorAlert';
+import SuccessAlert from '@/components/SuccessAlert';
 import { getUser, setUser } from '@/store/slices/auth';
 import { User } from '@/types';
 import { isEmpty } from '@/types/helper';
@@ -16,9 +18,9 @@ type FormProp = {
 
 const ProfileUpdateForm = () => {
     const dispatch = useDispatch()
-    const [errorMessage, setErrorMessage] = useState('')
     const [isLoading, setIsLoading] = useState(false)
     const [errorBag, setErrorBag] = useState({})
+    const [successResponse, setSuccessResponse] = useState('')
 
     // @ts-ignore
     const loggedUser : User | null = useSelector(getUser)?.user || null;
@@ -63,38 +65,29 @@ const ProfileUpdateForm = () => {
 
         const feedback = await response.json()
 
-        // return console.log(feedback)
-
-        if (feedback.success) {
-            console.log(feedback)
-            // const userDetails = feedback?.data?.data;
-
-            // await dispatch(setUser(feedback?.data?.data))
-            
+        if (feedback?.success) {
+            setSuccessResponse(feedback?.message || '')
+            dispatch(setUser(feedback?.data))
         } else {
             console.log(feedback)
-            setErrorMessage(feedback?.message || '')
             setErrorBag(feedback?.data)
             setIsLoading(false);
         }
 
-        // console.log(getToken.token)
         setIsLoading(false);
     }
     return (
         <div>
             <form onSubmit={handleSubmit(onSubmit)} className="space-y-4 pt-6">
                 { !isEmpty(errorBag) ? (
-                    <div role="alert" className="alert alert-error bg-red-500 text-white mb-2 text-sm">
+                    <ErrorAlert>
                         <ol className="inline-flex flex-col space-y-1.5 list-disc list-inside">
-                            {
-                                Object.values(errorBag).map((value, key) => (
-                                    //@ts-ignore
-                                    <li key={key}>{value}</li>
-                                ))
-                            }
+                            { Object.values(errorBag).map((value, key) => (
+                                //@ts-ignore
+                                <li key={key}>{value}</li>
+                            ))}
                         </ol>
-                    </div>
+                    </ErrorAlert>
                 ) : null}
                 <div className="space-y-1.5 flex flex-col">
                     <label className="text-sm font-medium text-gray-800" htmlFor="first_name">First Name</label>
@@ -121,6 +114,13 @@ const ProfileUpdateForm = () => {
                         <span>{ isLoading ? 'Loading...' : 'Save Changes'}</span>
                     </button>
                 </div>
+
+                {successResponse ? (
+                    <SuccessAlert 
+                        message={successResponse}
+                        onDismiss={() => setSuccessResponse('')}
+                    />
+                ): null}
             </form>
         </div>
     )
