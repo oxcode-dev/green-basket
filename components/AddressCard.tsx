@@ -7,12 +7,11 @@ import DeleteAddressForm from '@/forms/dashboard/DeleteAddressForm'
 
 type AddressCardProp = {
     address: AddressItemProp,
-    onEdit: (() => void) | null;
-    onDelete: (() => void) | null;
 }
-const AddressCard = ({ address, onDelete, onEdit }: AddressCardProp) => {
+const AddressCard = ({ address }: AddressCardProp) => {
     // @ts-ignore
     const loggedUser : User | null = useSelector(getUser)?.user || null;
+    const [openDelete, setOpenDelete] = React.useState(false);
 
     return (
         <div>
@@ -41,18 +40,22 @@ const AddressCard = ({ address, onDelete, onEdit }: AddressCardProp) => {
                     ): null}
 
                 </div>
-                { onEdit || onDelete ? (
+                
                     <div className="border-t border-gray-200 p-2 py-1 w-full">
                         <div className="space-x-2 flex justify-end w-full">
-                            <DeleteAddressForm />
-                            { onEdit ? (
-                                <button onClick={onEdit} className="btn btn-sm btn-circle rounded-md bg-white text-gray-600 border border-gray-200 font-medium">
+                            <DeleteAddressForm
+                                address={address}
+                                setOpen={setOpenDelete}
+                                open={openDelete}
+                            />
+                            
+                                <button className="btn btn-sm btn-circle rounded-md bg-white text-gray-600 border border-gray-200 font-medium">
                                     <PencilIcon className="size-4" />
                                 </button>
-                            ): null }
+                            
                         </div>
                     </div>
-                ) : null }
+               
             </div>
         </div>
     )

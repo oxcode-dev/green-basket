@@ -1,10 +1,14 @@
 import React from 'react'
 import { Dialog, DialogClose, DialogContent, DialogDescription, DialogFooter, DialogTitle, DialogTrigger } from '@/components/dialog';
 import { TrashIcon } from '@heroicons/react/24/outline';
+import { AddressItemProp } from '@/types';
 
-
-const DeleteAddressForm = () => {
-    const [open, setOpen] = React.useState(false);
+type FormProp = {
+    address: AddressItemProp;
+    open: boolean;
+    setOpen: React.Dispatch<React.SetStateAction<boolean>>
+}
+const DeleteAddressForm = ({ address, open, setOpen} : FormProp) => {
 
     return (
         <div>
