@@ -3,6 +3,7 @@ import { DevicePhoneMobileIcon, MapPinIcon, PencilIcon, TrashIcon, UserCircleIco
 import { AddressItemProp, User } from '@/types'
 import { useSelector } from 'react-redux'
 import { getUser } from '@/store/slices/auth'
+import DeleteAddressForm from '@/forms/dashboard/DeleteAddressForm'
 
 type AddressCardProp = {
     address: AddressItemProp,
@@ -43,11 +44,7 @@ const AddressCard = ({ address, onDelete, onEdit }: AddressCardProp) => {
                 { onEdit || onDelete ? (
                     <div className="border-t border-gray-200 p-2 py-1 w-full">
                         <div className="space-x-2 flex justify-end w-full">
-                            { onDelete ? (
-                                <button onClick={onDelete} className="btn btn-sm btn-circle rounded-md btn-error text-white font-medium">
-                                    <TrashIcon className="size-4" />
-                                </button>
-                            ): null}
+                            <DeleteAddressForm />
                             { onEdit ? (
                                 <button onClick={onEdit} className="btn btn-sm btn-circle rounded-md bg-white text-gray-600 border border-gray-200 font-medium">
                                     <PencilIcon className="size-4" />
