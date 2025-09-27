@@ -2,9 +2,8 @@
 
 import AddressCard from '@/components/AddressCard';
 import Loading from '@/components/Loading';
-import { AddressItemProp, AddressTypeProp } from '@/types';
+import { AddressItemProp } from '@/types';
 import { isEmpty } from '@/types/helper';
-import { ArrowLeftIcon, ArrowRightIcon } from '@heroicons/react/24/outline';
 import { useQuery } from '@tanstack/react-query';
 import React from 'react'
 
@@ -14,7 +13,7 @@ type AddressFetchType = {
     success: boolean
 }
 
-async function fetchUser() {
+async function fetchAddress() {
     const getTokenResponse = await fetch('/api/fetch-token')
 
     const getToken = await getTokenResponse.json()
@@ -38,8 +37,8 @@ async function fetchUser() {
 
 const page = () => {
     const { data, error, isLoading } = useQuery<AddressFetchType>({
-        queryKey: ["user"],
-        queryFn: fetchUser,
+        queryKey: ["list_address"],
+        queryFn: fetchAddress,
     });
 
     return (
