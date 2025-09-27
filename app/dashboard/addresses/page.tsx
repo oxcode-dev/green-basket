@@ -1,6 +1,7 @@
 'use client';
 
 import AddressCard from '@/components/AddressCard';
+import Loading from '@/components/Loading';
 import { AddressItemProp, AddressTypeProp } from '@/types';
 import { isEmpty } from '@/types/helper';
 import { ArrowLeftIcon, ArrowRightIcon } from '@heroicons/react/24/outline';
@@ -19,7 +20,7 @@ async function fetchUser() {
     const getToken = await getTokenResponse.json()
 
     if(isEmpty(getToken)) {
-        return alert('Unauthenticated User')
+        location.href = '/logout'
     }
     
     const res = await fetch(`${process.env.NEXT_PUBLIC_API_ENDPOINT}/api/addresses`, {
@@ -40,6 +41,7 @@ const page = () => {
         queryKey: ["user"],
         queryFn: fetchUser,
     });
+
     return (
         <div>
             <div className="p-3 md:p-4 border-gray-300 border-b">
@@ -48,6 +50,7 @@ const page = () => {
                 </div>
             </div>
             <div className="p-3 md:p-4">
+                { isLoading ? <Loading /> : null }
                 <div className="w-full grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-6">
                     { data?.data?.map((item, key) => (
                         <div key={key}>
