@@ -1,3 +1,5 @@
+'use client';
+
 import React, { FormEvent, useState } from 'react'
 import { Dialog, DialogClose, DialogContent, DialogDescription, DialogFooter, DialogTitle, DialogTrigger } from '@/components/dialog';
 import { TrashIcon } from '@heroicons/react/24/outline';

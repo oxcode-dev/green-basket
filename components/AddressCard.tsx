@@ -49,9 +49,7 @@ const AddressCard = ({ address }: AddressCardProp) => {
                                 open={openDelete}
                             />
                             
-                                <button className="btn btn-sm btn-circle rounded-md bg-white text-gray-600 border border-gray-200 font-medium">
-                                    <PencilIcon className="size-4" />
-                                </button>
+                                
                             
                         </div>
                     </div>
