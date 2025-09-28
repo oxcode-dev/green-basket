@@ -40,6 +40,14 @@ export interface WishlistItemType {
     created_at: string | null;
 }
 
+export interface WishlistDataType {
+    prev_page_url: string;
+    next_page_url: string;
+    last_page: string;
+    current_page: string;
+    data: WishlistItemType[];
+}
+
 export interface ReviewItem {
     id: string;
     product_id: string;

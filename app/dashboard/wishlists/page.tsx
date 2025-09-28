@@ -1,7 +1,9 @@
+'use client';
+
 import { ProductCard } from '@/components/ProductCard'
 import { WishlistItemType } from '@/types'
 import { isEmpty } from '@/types/helper'
-import { TrashIcon, XMarkIcon } from '@heroicons/react/24/outline'
+import { TrashIcon } from '@heroicons/react/24/outline'
 import { useQuery } from '@tanstack/react-query'
 import React from 'react'
 
@@ -35,7 +37,7 @@ const page = () => {
     }
 
     const { data, error, isLoading } = useQuery<WishlistFetchType>({
-        queryKey: ["list_address"],
+        queryKey: ["list_wishlists"],
         queryFn: fetchAddress,
     });
 
