@@ -75,12 +75,10 @@ const AddressForm = ({ address, setOpen }: FormProp) => {
         const feedback = await response.json()
 
         if (feedback?.success) {
-            // setSuccessResponse(feedback?.message || '')
             queryClient.invalidateQueries({ queryKey: ['list_address'] })
             setErrorBag({})
             setOpen(false)
         } else {
-            // console.log(feedback)
             setErrorBag(feedback?.data)
         }
 
