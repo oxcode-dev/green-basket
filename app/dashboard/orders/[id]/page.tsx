@@ -1,0 +1,70 @@
+'use client'
+
+import Pager from '@/components/Pager'
+import { OrderList, OrderView } from '@/sections/OrderSection'
+import { OrderType } from '@/types'
+import { isEmpty } from '@/types/helper'
+import { ArrowLeftIcon } from '@heroicons/react/24/outline'
+import { keepPreviousData, useQuery } from '@tanstack/react-query'
+import Link from 'next/link'
+import { useParams } from 'next/navigation'
+import React, { useState } from 'react'
+
+type OrderFetchType = {
+    data: OrderType[];
+    message: string
+    success: boolean
+}
+
+const page = () => {
+    const params = useParams<{ id: string }>()
+ 
+    async function fetchOrder() {
+        const getTokenResponse = await fetch('/api/fetch-token')
+    
+        const getToken = await getTokenResponse.json()
+    
+        if(isEmpty(getToken)) {
+            location.href = '/logout'
+        }
+        
+        const res = await fetch(`${process.env.NEXT_PUBLIC_API_ENDPOINT}/api/orders/${params.id}`, {
+            headers: { 
+                Authorization: `Bearer ${getToken.token}`,
+                'Content-Type': 'application/json' 
+            },
+        });
+    
+        if (!res.ok) {
+            throw new Error("Failed to fetch posts");
+        }
+        return res.json();
+    }
+
+    const { data: orders, error, isLoading, isFetching } = useQuery<OrderFetchType>({
+        queryKey: ["list_orders", params.id],
+        queryFn: () => fetchOrder(),
+        placeholderData: keepPreviousData,
+        staleTime: 3 * 60 * 1000,
+    });
+
+    return (
+        <div>
+            <pre>{JSON.stringify(orders)}</pre>
+            <div className="p-3 md:p-4 border-gray-300 border-b">
+                <div className="flex space-x-2 items-center">
+                    <Link href="/dashboard/orders" className="btn btn-circle bt-ghost btn-sm">
+                        <ArrowLeftIcon className="size-5" />
+                    </Link>
+                    <h2>Order Details</h2>
+                </div>
+            </div>
+
+            <div>
+                <OrderView />
+            </div>
+        </div>
+    )
+}
+
+export default page

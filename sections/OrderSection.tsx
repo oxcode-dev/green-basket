@@ -1,6 +1,7 @@
 'use client'
 
 import { DevicePhoneMobileIcon, MapPinIcon, UserCircleIcon } from '@heroicons/react/24/outline'
+import Link from 'next/link'
 import React from 'react'
 
 export const OrderView = () => {
@@ -119,18 +120,14 @@ type OrderListProp = {
     setShowOrderView: React.Dispatch<React.SetStateAction<Boolean>>
 }
 
-export const OrderList = ({ setShowOrderView } : OrderListProp) => {
-    const handleViewOrder = (e: React.MouseEvent<HTMLAnchorElement, MouseEvent>) :void => {
-        e.preventDefault()
-        setShowOrderView(true)
-    }
+export const OrderList = () => {
 
     return (
         <div className="py-4 p-6">
             <div className="space-y-4">
                 { Array.from({ length: 6 }).map((item, key) => (
                     <div key={key} className="card w-full bg-white border border-gray-300 card-sm shadow-sm hover:bg-gray-100">
-                        <a onClick={e => handleViewOrder(e)} href="#" className="card-body">
+                        <Link href={`/dashboard/orders/${1}`} className="card-body">
                             <div className="flex justify-between items-center">
                                 <p className="text-gray-800 text-lg font-semibold">
                                     <span>Order Date:</span>
@@ -150,7 +147,7 @@ export const OrderList = ({ setShowOrderView } : OrderListProp) => {
                                     <span>pj3034934</span>
                                 </p>
                             </div>
-                        </a>
+                        </Link>
                     </div>
                 ))}
             </div>
