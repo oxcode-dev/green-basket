@@ -20,13 +20,17 @@ const AddressCard = ({ address }: AddressCardProp) => {
             <div className="border border-gray-200 shadow-sm rounded-md">
                 <div className="flex flex-col space-y-2.5 p-2 text-gray-500 pb-2">
                     <p className="inline-flex items-center space-x-2 text-xs font-medium">
-                        <UserCircleIcon className="size-4" />
-                        <span>{loggedUser?.name}</span>
+                        <span>
+                            <UserCircleIcon className="size-4" />
+                        </span>
+                        <span className="pl-0.5">{loggedUser?.name}</span>
                     </p>
 
                     <p className="inline-flex items-center space-x-2 text-xs font-medium">
-                        <MapPinIcon className="size-5" />
-                        <span className="space-x-1.5">
+                        <span>
+                            <MapPinIcon className="size-5" />
+                        </span>
+                        <span className="space-x-1.5 pl-0.5">
                             <span>{address.street}</span>
                             <span>{address.city}</span>
                             <span>{address.state}</span>
@@ -36,29 +40,30 @@ const AddressCard = ({ address }: AddressCardProp) => {
 
                     {loggedUser?.phone ? (
                         <p className="inline-flex items-center space-x-2 text-xs font-medium">
-                            <DevicePhoneMobileIcon className="size-4" />
-                            <span>{loggedUser?.phone}</span>
+                            <span>
+                                <DevicePhoneMobileIcon className="size-4" />
+                            </span>
+                            <span className="pl-0.5">{loggedUser?.phone}</span>
                         </p>
                     ): null}
 
                 </div>
                 
-                    <div className="border-t border-gray-200 p-2 py-1 w-full">
-                        <div className="space-x-2 flex justify-end w-full">
-                            <DeleteAddressForm
-                                address={address}
-                                setOpen={setOpenDelete}
-                                open={openDelete}
-                            />
+                <div className="border-t border-gray-200 p-2 py-1 w-full">
+                    <div className="space-x-2 flex justify-end w-full">
+                        <DeleteAddressForm
+                            address={address}
+                            setOpen={setOpenDelete}
+                            open={openDelete}
+                        />
 
-                            <EditAddressForm
-                                address={address}
-                                setOpen={setOpenEdit}
-                                open={openEdit}
-                            />
-                        </div>
+                        <EditAddressForm
+                            address={address}
+                            setOpen={setOpenEdit}
+                            open={openEdit}
+                        />
                     </div>
-               
+                </div>
             </div>
         </div>
     )

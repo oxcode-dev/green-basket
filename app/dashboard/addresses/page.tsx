@@ -3,6 +3,7 @@
 import AddressCard from '@/components/AddressCard';
 import { EmptyState } from '@/components/EmptyState';
 import Loading from '@/components/Loading';
+import CreateAddressForm from '@/forms/dashboard/CreateAddressForm';
 import { AddressItemProp } from '@/types';
 import { isEmpty } from '@/types/helper';
 import { useQuery } from '@tanstack/react-query';
@@ -37,6 +38,9 @@ async function fetchAddress() {
 }
 
 const page = () => {
+    const [open, setOpen] = React.useState(false);
+    const addressCount = 4;
+
     const { data, error, isLoading } = useQuery<AddressFetchType>({
         queryKey: ["list_address"],
         queryFn: fetchAddress,
@@ -44,10 +48,21 @@ const page = () => {
 
     return (
         <div>
-            <div className="p-3 md:p-4 border-gray-300 border-b">
+            <div className="p-3 md:p-4 border-gray-300 border-b flex justify-between items-center">
                 <div>
                     <h2>Delivery Addresses</h2>
                 </div>
+                {
+                    data?.data && data?.data?.length < addressCount ? (
+                        <div>
+                            <CreateAddressForm
+                                open={open}
+                                setOpen={setOpen}
+                            />
+                        </div>
+                    ) : null
+                }
+                
             </div>
             <div className="p-3 md:p-4">
                 { isLoading ? <Loading /> : null }
