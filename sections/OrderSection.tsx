@@ -1,18 +1,22 @@
 'use client'
 
-import { OrderItem } from '@/types'
+import { getUser } from '@/store/slices/auth'
+import { OrderItem, User } from '@/types'
 import { formatDate, numberFormat } from '@/types/helper'
 import { DevicePhoneMobileIcon, MapPinIcon, UserCircleIcon } from '@heroicons/react/24/outline'
 import Link from 'next/link'
 import React from 'react'
+import { useSelector } from 'react-redux'
 
 type OrderViewProp = {
     order: OrderItem
 }
 export const OrderView = ({ order }: OrderViewProp) => {
+    // @ts-ignore
+    const loggedUser : User | null = useSelector(getUser)?.user || null;
+
     return (
         <div className="py-4 p-6 space-y-4">
-            <pre>{JSON.stringify(order)}</pre>
             <div>
                 <div className="flex justify-between items-center pb-2 border-b border-gray-200">
                     <p className="text-xl font-semibold">
@@ -31,15 +35,15 @@ export const OrderView = ({ order }: OrderViewProp) => {
                     </div>
                     <div className="flex justify-between items-center">
                         <dt className="font-medium">Delivery Fee</dt>
-                        <dd>#3000</dd>
+                        <dd>£{numberFormat(order?.delivery_cost)}</dd>
                     </div>
-                    <div className="flex justify-between items-center">
+                    {/* <div className="flex justify-between items-center">
                         <dt className="font-medium">Items Total</dt>
-                        <dd>#20000</dd>
-                    </div>
+                        <dd>£{numberFormat(order)}</dd>
+                    </div> */}
                     <div className="flex justify-between items-center text-gray-700">
                         <dt className="font-semibold">Total Amount</dt>
-                        <dd className="font-semibold">#200000</dd>
+                        <dd>£{numberFormat(order?.total_amount)}</dd>
                     </div>
                 </dl>
             </div>
@@ -53,22 +57,22 @@ export const OrderView = ({ order }: OrderViewProp) => {
                 <div className="flex flex-col space-y-2.5 p-2 text-gray-500">
                     <p className="inline-flex items-center space-x-2 text-sm font-medium">
                         <UserCircleIcon className="size-4" />
-                        <span>Oxcode</span>
+                        <span>{ loggedUser?.name }</span>
                     </p>
 
                     <p className="inline-flex items-center space-x-2 text-sm font-medium">
                         <MapPinIcon className="size-4" />
                         <span className="space-x-1.5">
-                            <span>Street</span>
-                            <span>city</span>
-                            <span>state</span>
-                            <span>postal_code</span>
+                            <span>{order?.address?.street}</span>
+                            <span>{order?.address?.city}</span>
+                            <span>{order?.address?.state}</span>
+                            <span>{order?.address?.postal_code}</span>
                         </span>
                     </p>
 
                     <p className="inline-flex items-center space-x-2 text-sm font-medium">
                         <DevicePhoneMobileIcon className="size-4" />
-                        <span>+2348079344556</span>
+                        <span>{ loggedUser?.phone}</span>
                     </p>
 
                 </div>
