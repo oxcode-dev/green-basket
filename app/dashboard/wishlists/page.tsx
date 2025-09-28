@@ -1,8 +1,44 @@
 import { ProductCard } from '@/components/ProductCard'
+import { WishlistItemType } from '@/types'
+import { isEmpty } from '@/types/helper'
 import { TrashIcon, XMarkIcon } from '@heroicons/react/24/outline'
+import { useQuery } from '@tanstack/react-query'
 import React from 'react'
 
+type WishlistFetchType = {
+    data: WishlistItemType[];
+    message: string
+    success: boolean
+}
+
 const page = () => {
+    async function fetchAddress() {
+        const getTokenResponse = await fetch('/api/fetch-token')
+    
+        const getToken = await getTokenResponse.json()
+    
+        if(isEmpty(getToken)) {
+            location.href = '/logout'
+        }
+        
+        const res = await fetch(`${process.env.NEXT_PUBLIC_API_ENDPOINT}/api/wishlists`, {
+            headers: { 
+                Authorization: `Bearer ${getToken.token}`,
+                'Content-Type': 'application/json' 
+            },
+        });
+    
+        if (!res.ok) {
+            throw new Error("Failed to fetch posts");
+        }
+        return res.json();
+    }
+
+    const { data, error, isLoading } = useQuery<WishlistFetchType>({
+        queryKey: ["list_address"],
+        queryFn: fetchAddress,
+    });
+
     return (
         <div>
 

@@ -33,6 +33,13 @@ export interface CategoryItem {
     created_at: string | null;
 }
 
+export interface WishlistItemType {
+    id: string;
+    user_id: string;
+    product_id: string;
+    created_at: string | null;
+}
+
 export interface ReviewItem {
     id: string;
     product_id: string;
