@@ -44,6 +44,7 @@ const page = () => {
     const { data, error, isLoading } = useQuery<AddressFetchType>({
         queryKey: ["list_address"],
         queryFn: fetchAddress,
+        staleTime: 3 * 60 * 1000,
     });
 
     return (
