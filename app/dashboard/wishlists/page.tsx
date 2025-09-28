@@ -1,20 +1,31 @@
 'use client';
 
-import { ProductCard } from '@/components/ProductCard'
-import { WishlistItemType } from '@/types'
+import { EmptyState } from '@/components/EmptyState';
+import Loading from '@/components/Loading';
+import Pager from '@/components/Pager';
+import WishlistCard from '@/components/WishlistCard';
+import { WishlistDataType } from '@/types'
 import { isEmpty } from '@/types/helper'
-import { TrashIcon } from '@heroicons/react/24/outline'
-import { useQuery } from '@tanstack/react-query'
+import { keepPreviousData, useQuery } from '@tanstack/react-query'
+import { usePathname, useRouter, useSearchParams } from 'next/navigation';
 import React from 'react'
 
 type WishlistFetchType = {
-    data: WishlistItemType[];
+    data: WishlistDataType[];
     message: string
     success: boolean
 }
 
 const page = () => {
-    async function fetchAddress() {
+    const searchParams = useSearchParams()
+    const router = useRouter()
+    const pathname = usePathname()
+    const page = Number(searchParams.get('page')) || 1
+    const setPage = (page: number) => {
+        router.push(`${pathname}?page=${page}`)
+    }
+ 
+    async function fetchWishlists(page: number) {
         const getTokenResponse = await fetch('/api/fetch-token')
     
         const getToken = await getTokenResponse.json()
@@ -23,7 +34,7 @@ const page = () => {
             location.href = '/logout'
         }
         
-        const res = await fetch(`${process.env.NEXT_PUBLIC_API_ENDPOINT}/api/wishlists`, {
+        const res = await fetch(`${process.env.NEXT_PUBLIC_API_ENDPOINT}/api/wishlists?page=${page}`, {
             headers: { 
                 Authorization: `Bearer ${getToken.token}`,
                 'Content-Type': 'application/json' 
@@ -35,10 +46,13 @@ const page = () => {
         }
         return res.json();
     }
+    // const [page, setPage] = React.useState(1)
 
-    const { data, error, isLoading } = useQuery<WishlistFetchType>({
-        queryKey: ["list_wishlists"],
-        queryFn: fetchAddress,
+    const { data: wishlists, error, isLoading } = useQuery<WishlistFetchType>({
+        queryKey: ["list_wishlists", page],
+        queryFn: () => fetchWishlists(page),
+        placeholderData: keepPreviousData,
+        staleTime: 3 * 60 * 1000,
     });
 
     return (
@@ -50,18 +64,27 @@ const page = () => {
                 </div>
             </div>
             <div className="py-4 p-6">
-                <div className="w-full grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 md:gap-4 gap-y-4">
-                    { Array.from({ length: 6 }).map((item, key) => (
-                        <div className="group relative" key={key}>
-                            <a href="#" title="Remove from Wishlist" className="absolute -top-2 -right-1 flex md:hidden group-hover:flex">
-                                <span className="bg-red-500 text-white rounded-full p-1">
-                                    <TrashIcon className="size-5" />
-                                </span>
-                            </a>
-                            <ProductCard />
+                { isLoading ? <Loading /> : null }
+                
+                { !isLoading && data?.data?.length === 0 ? <EmptyState text="No Data!" /> : null }
+
+                { !isLoading ? (
+                    <div>
+                        <div className="w-full grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 md:gap-4 gap-y-4">
+                            { wishlists?.data?.data.map((item, key) => (
+                                <div key={key}>
+                                    <WishlistCard item={item} />
+                                </div>
+                            ))}
                         </div>
-                    ))}
-                </div>
+
+                        <Pager
+                            last_page={wishlists?.data?.last_page}
+                            current_page={wishlists?.data?.current_page}
+                            setPage={setPage}
+                        />
+                    </div>
+                ) : null }
             </div>
         </div>
 
