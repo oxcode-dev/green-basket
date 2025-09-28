@@ -56,7 +56,6 @@ const page = () => {
 
     return (
         <div>
-            <pre>{JSON.stringify(orders)}</pre>
             <div className="p-3 md:p-4 border-gray-300 border-b">
                 <div>
                     <h2>My Orders</h2>
@@ -67,9 +66,9 @@ const page = () => {
                 
             { !isLoading && orders?.data?.data.length === 0 ? <EmptyState text="No Data!" /> : null }
 
-            { !isLoading && orders?.data?.data.length > 0 ? (
+            { !isFetching && orders?.data?.data.length > 0 ? (
                 <div>
-                    <OrderList />
+                    <OrderList orders={orders?.data?.data} />
                     <div>
                         <Pager
                             last_page={orders?.data?.last_page}

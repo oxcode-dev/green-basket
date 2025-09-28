@@ -1,5 +1,7 @@
 'use client'
 
+import { OrderItem } from '@/types'
+import { formatDate, numberFormat } from '@/types/helper'
 import { DevicePhoneMobileIcon, MapPinIcon, UserCircleIcon } from '@heroicons/react/24/outline'
 import Link from 'next/link'
 import React from 'react'
@@ -117,34 +119,34 @@ export const OrderView = () => {
 }
 
 type OrderListProp = {
-    setShowOrderView: React.Dispatch<React.SetStateAction<Boolean>>
+    orders: OrderItem[]
 }
 
-export const OrderList = () => {
+export const OrderList = ({ orders }: OrderListProp) => {
 
     return (
         <div className="py-4 p-6">
             <div className="space-y-4">
-                { Array.from({ length: 6 }).map((item, key) => (
+                { orders.map((item, key) => (
                     <div key={key} className="card w-full bg-white border border-gray-300 card-sm shadow-sm hover:bg-gray-100">
-                        <Link href={`/dashboard/orders/${1}`} className="card-body">
+                        <Link href={`/dashboard/orders/${item?.id}`} className="card-body">
                             <div className="flex justify-between items-center">
                                 <p className="text-gray-800 text-lg font-semibold">
                                     <span>Order Date:</span>
-                                    <span>11 Dec 2024</span>
+                                    <span>{formatDate(item?.created_at)}</span>
                                 </p>
                                 <div>
-                                    <span>status</span>
+                                    <span className="capitalize">{item?.status}</span>
                                 </div>
                             </div>
                             <div>
                                 <p className="text-gray-500 text-sm">
                                     <span className="font-semibold">Total:</span>
-                                    <span>£2000</span>
+                                    <span>£{numberFormat(item?.total_amount)}</span>
                                 </p>
                                 <p className="text-gray-500 text-sm">
                                     <span className="font-semibold">Order No:</span>
-                                    <span>pj3034934</span>
+                                    <span>{item?.id}</span>
                                 </p>
                             </div>
                         </Link>
