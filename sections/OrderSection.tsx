@@ -6,25 +6,28 @@ import { DevicePhoneMobileIcon, MapPinIcon, UserCircleIcon } from '@heroicons/re
 import Link from 'next/link'
 import React from 'react'
 
-export const OrderView = () => {
+type OrderViewProp = {
+    order: OrderItem
+}
+export const OrderView = ({ order }: OrderViewProp) => {
     return (
         <div className="py-4 p-6 space-y-4">
+            <pre>{JSON.stringify(order)}</pre>
             <div>
                 <div className="flex justify-between items-center pb-2 border-b border-gray-200">
                     <p className="text-xl font-semibold">
                         Order Information
                     </p>
-                    {/* <p></p> */}
                 </div>
 
                 <dl className="space-y-2 divide-y divide-gray-200 text-gray-500 pt-2">
                     <div className="flex justify-between items-center">
                         <dt className="font-medium">Order Number</dt>
-                        <dd>HuJ2320/4345</dd>
+                        <dd>{order?.id}</dd>
                     </div>
                     <div className="flex justify-between items-center">
                         <dt className="font-medium">Order Date</dt>
-                        <dd>11 Dec 2024</dd>
+                        <dd>{formatDate(order?.created_at)}</dd>
                     </div>
                     <div className="flex justify-between items-center">
                         <dt className="font-medium">Delivery Fee</dt>

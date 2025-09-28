@@ -1,17 +1,16 @@
 'use client'
 
-import Pager from '@/components/Pager'
-import { OrderList, OrderView } from '@/sections/OrderSection'
-import { OrderType } from '@/types'
+import { OrderView } from '@/sections/OrderSection'
+import { OrderItem } from '@/types'
 import { isEmpty } from '@/types/helper'
 import { ArrowLeftIcon } from '@heroicons/react/24/outline'
 import { keepPreviousData, useQuery } from '@tanstack/react-query'
 import Link from 'next/link'
 import { useParams } from 'next/navigation'
-import React, { useState } from 'react'
+import React from 'react'
 
 type OrderFetchType = {
-    data: OrderType[];
+    data: OrderItem;
     message: string
     success: boolean
 }
@@ -41,7 +40,7 @@ const page = () => {
         return res.json();
     }
 
-    const { data: orders, error, isLoading, isFetching } = useQuery<OrderFetchType>({
+    const { data: order, error, isLoading, isFetching } = useQuery<OrderFetchType>({
         queryKey: ["list_orders", params.id],
         queryFn: () => fetchOrder(),
         placeholderData: keepPreviousData,
@@ -50,7 +49,6 @@ const page = () => {
 
     return (
         <div>
-            <pre>{JSON.stringify(orders)}</pre>
             <div className="p-3 md:p-4 border-gray-300 border-b">
                 <div className="flex space-x-2 items-center">
                     <Link href="/dashboard/orders" className="btn btn-circle bt-ghost btn-sm">
@@ -61,7 +59,7 @@ const page = () => {
             </div>
 
             <div>
-                <OrderView />
+                <OrderView order={order?.data} />
             </div>
         </div>
     )
