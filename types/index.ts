@@ -111,7 +111,7 @@ export interface OrderType {
     prev_page_url: string;
     next_page_url: string;
     last_page: string;
-    current_page: string;
+    current_page: number;
     data: OrderItem[];
 }
 
