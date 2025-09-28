@@ -46,9 +46,8 @@ const page = () => {
         }
         return res.json();
     }
-    // const [page, setPage] = React.useState(1)
 
-    const { data: wishlists, error, isLoading } = useQuery<WishlistFetchType>({
+    const { data: wishlists, error, isLoading, isFetching } = useQuery<WishlistFetchType>({
         queryKey: ["list_wishlists", page],
         queryFn: () => fetchWishlists(page),
         placeholderData: keepPreviousData,
@@ -64,11 +63,11 @@ const page = () => {
                 </div>
             </div>
             <div className="py-4 p-6">
-                { isLoading ? <Loading /> : null }
+                { isLoading || isFetching ? <Loading /> : null }
                 
-                { !isLoading && data?.data?.length === 0 ? <EmptyState text="No Data!" /> : null }
+                { !isLoading && wishlists?.data?.data.length === 0 ? <EmptyState text="No Data!" /> : null }
 
-                { !isLoading ? (
+                { !isLoading && wishlists?.data?.data.length > 0 ? (
                     <div>
                         <div className="w-full grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 md:gap-4 gap-y-4">
                             { wishlists?.data?.data.map((item, key) => (
