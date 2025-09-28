@@ -6,12 +6,14 @@ import { PencilIcon } from '@heroicons/react/24/outline';
 import { AddressItemProp } from '@/types';
 import { isEmpty } from '@/types/helper';
 import { useMutation, useQueryClient } from '@tanstack/react-query';
+import AddressForm from './AddressForm';
 
 type FormProp = {
     address: AddressItemProp;
     open: boolean;
     setOpen: React.Dispatch<React.SetStateAction<boolean>>
 }
+
 const EditAddressForm = ({ address, open, setOpen} : FormProp) => {
     const queryClient = useQueryClient()
     const mutation = useMutation({
@@ -58,24 +60,22 @@ const EditAddressForm = ({ address, open, setOpen} : FormProp) => {
                         <PencilIcon className="size-4" />
                     </button>
                 </DialogTrigger>
-                <DialogContent className='!bg-white'>
-                    <DialogTitle>Are you sure you want to delete this address?</DialogTitle>
-                    
-                    <form onSubmit={onSubmit} className="space-y-6">
-                        <DialogFooter className="gap-2">
-                            <DialogClose asChild>
-                                <button type="button" className="btn bg-gray-200 border-gray-300 text-gray-500 rounded-md">
-                                    Cancel
-                                </button>
-                            </DialogClose>
-
-                            <button disabled={mutation.isPending} type="submit" className="btn bg-red-500 active:bg-red-500 border-red-500 text-white rounded-md">
-                                { mutation.isPending && <span className="loading loading-spinner loading-sm text-white"></span> }
-                                <span>{ mutation.isPending ? 'Loading...' : 'Delete account'}</span>
-                            </button>
-                        </DialogFooter>
-                    </form>
-                </DialogContent>
+                <div className="">
+                    <DialogContent className="!bg-white">
+                        <DialogTitle>Edit Address</DialogTitle>
+                        
+                        <AddressForm 
+                            address={{
+                                city: address?.city || '',
+                                street: address?.street || '',
+                                state: address?.state || '',
+                                postal_code: address?.postal_code || '',
+                                id: address?.id || '',
+                            }} 
+                            setOpen={setOpen}
+                        />
+                    </DialogContent>
+                </div>
             </Dialog>
         </div>
     )

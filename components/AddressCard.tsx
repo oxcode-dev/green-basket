@@ -4,6 +4,7 @@ import { AddressItemProp, User } from '@/types'
 import { useSelector } from 'react-redux'
 import { getUser } from '@/store/slices/auth'
 import DeleteAddressForm from '@/forms/dashboard/DeleteAddressForm'
+import EditAddressForm from '@/forms/dashboard/EditAddressForm'
 
 type AddressCardProp = {
     address: AddressItemProp,
@@ -12,11 +13,12 @@ const AddressCard = ({ address }: AddressCardProp) => {
     // @ts-ignore
     const loggedUser : User | null = useSelector(getUser)?.user || null;
     const [openDelete, setOpenDelete] = React.useState(false);
+    const [openEdit, setOpenEdit] = React.useState(false);
 
     return (
         <div>
             <div className="border border-gray-200 shadow-sm rounded-md">
-                <div className="flex flex-col space-y-2.5 p-2 text-gray-500">
+                <div className="flex flex-col space-y-2.5 p-2 text-gray-500 pb-2">
                     <p className="inline-flex items-center space-x-2 text-xs font-medium">
                         <UserCircleIcon className="size-4" />
                         <span>{loggedUser?.name}</span>
@@ -48,9 +50,12 @@ const AddressCard = ({ address }: AddressCardProp) => {
                                 setOpen={setOpenDelete}
                                 open={openDelete}
                             />
-                            
-                                
-                            
+
+                            <EditAddressForm
+                                address={address}
+                                setOpen={setOpenEdit}
+                                open={openEdit}
+                            />
                         </div>
                     </div>
                
