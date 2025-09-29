@@ -53,14 +53,15 @@ export const CategoryDropdown = () => {
                     !isFetching ? (
                         <ul
                             tabIndex={0}
-                            className="bg-white menu menu-sm dropdown-content bg-base-100 rounded-box z-1 mt-3 w-52 p-2 shadow"
+                            className="bg-white menu menu-sm dropdown-content bg-base-100 rounded-box z-10 mt-3 w-52 p-2 shadow"
                         >
-                            <li>
-                                <a className="justify-between">
-                                    Account
-                                </a>
-                            </li>
-                            
+                            {categories.map((item, key) => (
+                                <li key={key}>
+                                    <Link href={`/shop/${item.slug}`} className="justify-between capitalize">
+                                        { item.name }
+                                    </Link>
+                                </li>
+                            ))}
                         </ul>
                     ) : null
                 }

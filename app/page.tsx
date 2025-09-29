@@ -65,7 +65,7 @@ export const page = () => {
       <div className="container w-full mx-auto py-8 px-4 md:px-0">
         <div className="flex w-full flex-wrap md:flex-nowrap">
           <div className="w-full md:w-4/5 md:pr-6">
-            <div>
+            <div className="md:hidden">
               <CategoryDropdown />
             </div>
 
