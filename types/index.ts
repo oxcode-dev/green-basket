@@ -31,6 +31,7 @@ export interface CategoryItem {
     slug: string;
     description: string | null;
     created_at: string | null;
+    products_count: number | 0;
 }
 
 export interface WishlistItemType {
