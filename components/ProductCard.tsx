@@ -1,21 +1,25 @@
+'use client';
+
 import { HeartIcon, ShoppingCartIcon } from '@heroicons/react/20/solid'
+import Link from 'next/link';
 import React from 'react'
+
 
 export const ProductCard = () => {
   return (
     <div className="product-card flex flex-col justify-center rounded-md border border-gray-300">
-      <div className="flex flex-col justify-center items-center">
+      <Link href="/shop/id" className="flex flex-col justify-center items-center">
         <img 
           src="https://preview.colorlib.com/theme/vegefoods/images/product-2.jpg"
           width={160}
           alt='Product Image'
           height={160}
         />
-      </div>
+      </Link>
       <div className="flex flex-col justify-center items-center p-2 py-6">
-        <p className="text-gray-800 font-semibold text-lg">
+        <Link href="/shop/ij" className="text-gray-800 font-semibold text-lg">
           Bell Pepper
-        </p>
+        </Link>
         <p className="cart-text text-gray-400 text-md font-medium pb-2.5">
           $100.00
         </p>
