@@ -1,5 +1,7 @@
 'use client'
 
+import { EmptyState } from '@/components/EmptyState'
+import Loading from '@/components/Loading'
 import { OrderView } from '@/sections/OrderSection'
 import { OrderItem } from '@/types'
 import { isEmpty } from '@/types/helper'
@@ -58,9 +60,16 @@ const page = () => {
                 </div>
             </div>
 
-            <div>
-                <OrderView order={order?.data} />
-            </div>
+            { isLoading || isFetching ? <Loading /> : null }
+                
+            { !isLoading && isEmpty(order?.data || {}) ? <EmptyState text="No Data!" /> : null }
+
+            { !isFetching && !isEmpty(order?.data || {}) ? (
+
+                <div>
+                    <OrderView order={order?.data || {}} />
+                </div>
+            ) : null}
         </div>
     )
 }

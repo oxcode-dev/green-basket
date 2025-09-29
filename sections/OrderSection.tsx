@@ -86,7 +86,7 @@ export const OrderView = ({ order }: OrderViewProp) => {
                 </div>
 
                 <div className="flex flex-col space-y-4 pt-4 p-2 text-gray-500">
-                    { Array.from({ length: 3 }).map((item, key) => (
+                    { order?.order_items.map((item, key) => (
                         <div key={key} className="card w-full bg-white border border-gray-300 card-sm shadow-sm hover:bg-gray-100">
                             <div className="card-body">
                                 <div className="flex space-x-3">
@@ -104,11 +104,15 @@ export const OrderView = ({ order }: OrderViewProp) => {
                                             Bell Pepper
                                         </p>
                                         <p className="text-gray-600 text-base font-medium">
-                                            $100.00
+                                            £{numberFormat(item?.unit_price*item?.quantity)}
+                                        </p>
+                                        <p className="cart-text text-gray-400 text-md font-medium">
+                                            <span>Unit Price: </span>
+                                            <span>{numberFormat(item?.unit_price || 0)}</span>
                                         </p>
                                         <p className="cart-text text-gray-400 text-md font-medium">
                                             <span>Quantity: </span>
-                                            <span>1</span>
+                                            <span>{item?.quantity || 1}</span>
                                         </p>
                                     </div>
                                 </div>
