@@ -1,5 +1,6 @@
 import { useFetchCategories } from '@/hooks/useFetchCategories'
 import { CategoryItem } from '@/types'
+import { ChevronDownIcon, TagIcon } from '@heroicons/react/24/outline'
 import Link from 'next/link'
 import React from 'react'
 
@@ -27,6 +28,43 @@ export const CategoriesSection = () => {
                 </div>
                 ): null 
             }
+        </div>
+    )
+}
+
+export const CategoryDropdown = () => {
+    const { categories, isFetching } : CategoryProp = useFetchCategories()
+
+    return (
+        <div>
+            <div className="dropdown pb-8">
+                <div tabIndex={0} role="button" className="btn btn-neutral">
+                    <div className="inline-flex items-center space-x-2">
+                        <span>
+                            <TagIcon className="size-5" />
+                        </span>
+                        <span>All Categories</span>
+                        <span>
+                            <ChevronDownIcon className="size-5" />
+                        </span>
+                    </div>
+                </div>
+                {
+                    !isFetching ? (
+                        <ul
+                            tabIndex={0}
+                            className="bg-white menu menu-sm dropdown-content bg-base-100 rounded-box z-1 mt-3 w-52 p-2 shadow"
+                        >
+                            <li>
+                                <a className="justify-between">
+                                    Account
+                                </a>
+                            </li>
+                            
+                        </ul>
+                    ) : null
+                }
+            </div>
         </div>
     )
 }

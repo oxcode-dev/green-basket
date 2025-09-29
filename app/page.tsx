@@ -3,7 +3,7 @@
 import { ProductCard } from '@/components/ProductCard'
 import { useFetchCategories } from '@/hooks/useFetchCategories'
 import { BenefitSection } from '@/sections/BenefitSection'
-import { CategoriesSection } from '@/sections/CategoriesSection'
+import { CategoriesSection, CategoryDropdown } from '@/sections/CategoriesSection'
 import { ReviewSection } from '@/sections/ReviewSection'
 import { SubscriptionSection } from '@/sections/SubscriptionSection'
 import { AppSetup } from '@/setups/AppSetup'
@@ -65,30 +65,8 @@ export const page = () => {
       <div className="container w-full mx-auto py-8 px-4 md:px-0">
         <div className="flex w-full flex-wrap md:flex-nowrap">
           <div className="w-full md:w-4/5 md:pr-6">
-            <div className="dropdown pb-8 md:hidden">
-              <div tabIndex={0} role="button" className="btn btn-neutral">
-                <div className="inline-flex items-center space-x-2">
-                  <span>
-                    <TagIcon className="size-5" />
-                  </span>
-                  <span>All Categories</span>
-                  <span>
-                    <ChevronDownIcon className="size-5" />
-                  </span>
-                </div>
-              </div>
-              <ul
-                tabIndex={0}
-                className="bg-white menu menu-sm dropdown-content bg-base-100 rounded-box z-1 mt-3 w-52 p-2 shadow"
-              >
-                <li>
-                  <a className="justify-between">
-                    Account
-                  </a>
-                </li>
-                <li><a>Settings</a></li>
-                <li><a>Logout</a></li>
-              </ul>
+            <div>
+              <CategoryDropdown />
             </div>
 
             <div className="space-y-2 pb-2">
