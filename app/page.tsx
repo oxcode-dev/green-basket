@@ -1,4 +1,5 @@
 import { ProductCard } from '@/components/ProductCard'
+import { useFetchCategories } from '@/hooks/useFetchCategories'
 import { BenefitSection } from '@/sections/BenefitSection'
 import { ReviewSection } from '@/sections/ReviewSection'
 import { SubscriptionSection } from '@/sections/SubscriptionSection'
@@ -15,6 +16,7 @@ const quicksand = Quicksand({
 });
 
 export const page = () => {
+  const { categories } = useFetchCategories()
   return (
     <AppSetup>
       <div className="container w-full mx-auto md:py-8">
@@ -52,6 +54,8 @@ export const page = () => {
         </div>
         
       </div>
+
+      <pre>{JSON.stringify(categories)}</pre>
 
       <BenefitSection />
 
