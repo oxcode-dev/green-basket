@@ -37,7 +37,7 @@ export const CategoryDropdown = () => {
 
     return (
         <div>
-            <div className="dropdown pb-8">
+            <div className="dropdown">
                 <div tabIndex={0} role="button" className="btn btn-neutral">
                     <div className="inline-flex items-center space-x-2">
                         <span>

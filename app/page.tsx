@@ -60,12 +60,10 @@ export const page = () => {
 
       <BenefitSection />
 
-      <pre>{JSON.stringify(categories)}</pre>
-
       <div className="container w-full mx-auto py-8 px-4 md:px-0">
         <div className="flex w-full flex-wrap md:flex-nowrap">
           <div className="w-full md:w-4/5 md:pr-6">
-            <div className="md:hidden">
+            <div className="md:hidden pb-8">
               <CategoryDropdown />
             </div>
 
@@ -116,13 +114,10 @@ export const page = () => {
         </div>
       </div>
 
-      {/* Review */}
       <ReviewSection />
 
-      {/* <SubscriptionSection /> */}
     </AppSetup>
   )
 }
 
 export default page
-
