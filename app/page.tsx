@@ -3,6 +3,7 @@
 import { ProductCard } from '@/components/ProductCard'
 import { useFetchCategories } from '@/hooks/useFetchCategories'
 import { BenefitSection } from '@/sections/BenefitSection'
+import { CategoriesSection } from '@/sections/CategoriesSection'
 import { ReviewSection } from '@/sections/ReviewSection'
 import { SubscriptionSection } from '@/sections/SubscriptionSection'
 import { AppSetup } from '@/setups/AppSetup'
@@ -128,16 +129,7 @@ export const page = () => {
                 </div>
 
                 <div className='pt-2 space-y-2'>
-                  {
-                    Array.from({ length: 10 }).map((item, key) => (
-                      <a href="#" key={key} className="inline-flex justify-between items-center rounded-md border border-gray-200 w-full p-1.5 space-x-1.5">
-                        <span className="text-xs font-medium text-gray-600">Fresh fruits</span>
-                        <span>
-                          <span className="badge bg-green-600 border-0 badge-xs font-medium text-white">100</span>
-                        </span>
-                      </a>
-                    ))
-                  }
+                  <CategoriesSection />
                 </div>
               </div>
 
