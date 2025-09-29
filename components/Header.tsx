@@ -9,6 +9,7 @@ import { useSelector } from 'react-redux';
 import { getUser } from '@/store/slices/auth';
 import { useInitials } from '@/types/helper';
 import { useNavigationItems } from '@/hooks/useNavigationItems';
+import { CategoryDropdown } from '@/sections/CategoriesSection';
 
 type UserProp = {
     user: User | null
@@ -64,30 +65,8 @@ export const DesktopHeader = ({ user }: UserProp) => {
                     </div>
 
                     <div className="flex space-x-4 items-center">
-                        <div className="dropdown">
-                            <div tabIndex={0} role="button" className="btn btn-ghost">
-                                <div className="inline-flex items-center space-x-1.5">
-                                    <span>
-                                        <TagIcon className="size-5" />
-                                    </span>
-                                    <span>All Categories</span>
-                                    <span>
-                                        <ChevronDownIcon className="size-5" />
-                                    </span>
-                                </div>
-                            </div>
-                            <ul
-                                tabIndex={0}
-                                className="bg-white menu menu-sm dropdown-content bg-base-100 rounded-box z-1 mt-3 w-52 p-2 shadow"
-                            >
-                                <li>
-                                    <a className="justify-between">
-                                        Account
-                                    </a>
-                                </li>
-                                <li><a>Settings</a></li>
-                                <li><a>Logout</a></li>
-                            </ul>
+                        <div>
+                            <CategoryDropdown />
                         </div>
 
                         <div>
@@ -188,30 +167,8 @@ export const MobileHeader = ({ user }: UserProp) => {
                             </div>
                             <div className="pt-8">
                                 <div className="w-full mx-auto h-full">
-                                    <div className="dropdown p-4 pb-3">
-                                        <div tabIndex={0} role="button" className="btn btn-neutral">
-                                            <div className="inline-flex items-center space-x-2">
-                                                <span>
-                                                    <TagIcon className="size-5" />
-                                                </span>
-                                                <span>All Categories</span>
-                                                <span>
-                                                    <ChevronDownIcon className="size-5" />
-                                                </span>
-                                            </div>
-                                        </div>
-                                        <ul
-                                            tabIndex={0}
-                                            className="bg-white menu menu-sm dropdown-content bg-base-100 rounded-box z-1 mt-3 w-52 p-2 shadow"
-                                        >
-                                            <li>
-                                                <a className="justify-between">
-                                                    Account
-                                                </a>
-                                            </li>
-                                            <li><a>Settings</a></li>
-                                            <li><a>Logout</a></li>
-                                        </ul>
+                                    <div>
+                                        <CategoryDropdown />
                                     </div>
 
                                     <div className="px-4 py-4 w-full">
