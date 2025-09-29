@@ -1,13 +1,11 @@
 'use client'
 
 import { ProductCard } from '@/components/ProductCard'
-import { useFetchCategories } from '@/hooks/useFetchCategories'
 import { BenefitSection } from '@/sections/BenefitSection'
 import { CategoriesSection, CategoryDropdown } from '@/sections/CategoriesSection'
 import { ReviewSection } from '@/sections/ReviewSection'
-import { SubscriptionSection } from '@/sections/SubscriptionSection'
 import { AppSetup } from '@/setups/AppSetup'
-import { ArrowRightIcon, ChevronDownIcon, HeartIcon, ShoppingCartIcon, TagIcon } from '@heroicons/react/20/solid'
+import { ArrowRightIcon } from '@heroicons/react/20/solid'
 import { Quicksand } from 'next/font/google'
 import Image from 'next/image'
 import Link from 'next/link'
@@ -19,7 +17,6 @@ const quicksand = Quicksand({
 });
 
 export const page = () => {
-  const { categories } = useFetchCategories()
   return (
     <AppSetup>
       <div className="container w-full mx-auto md:py-8">
@@ -85,10 +82,10 @@ export const page = () => {
             </div>
 
             <div className="py-8 flex justify-center">
-              <button className="btn btn-pill">
+              <Link href="/shop" className="btn btn-pill">
                 <span>Visit Shop</span>
                 <ArrowRightIcon className="size-5" />
-              </button>
+              </Link>
             </div>
           </div>
 
