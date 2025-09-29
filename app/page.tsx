@@ -1,3 +1,5 @@
+'use client'
+
 import { ProductCard } from '@/components/ProductCard'
 import { useFetchCategories } from '@/hooks/useFetchCategories'
 import { BenefitSection } from '@/sections/BenefitSection'
@@ -55,9 +57,9 @@ export const page = () => {
         
       </div>
 
-      <pre>{JSON.stringify(categories)}</pre>
-
       <BenefitSection />
+
+      <pre>{JSON.stringify(categories)}</pre>
 
       <div className="container w-full mx-auto py-8 px-4 md:px-0">
         <div className="flex w-full flex-wrap md:flex-nowrap">

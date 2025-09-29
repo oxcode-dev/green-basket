@@ -1,5 +1,5 @@
 import { keepPreviousData, useQuery } from '@tanstack/react-query';
-import React from 'react'
+import React, { useMemo } from 'react'
 
 export const useFetchCategories = () => {
     async function fetchOrders() {
@@ -16,12 +16,17 @@ export const useFetchCategories = () => {
         return res.json();
     }
 
-    const { data: categories, error, isLoading, isFetching } = useQuery({
+    const { data: categoriesList, error, isLoading, isFetching } = useQuery({
         queryKey: ["list_categories"],
         queryFn: () => fetchOrders(),
         placeholderData: keepPreviousData,
         staleTime: 10 * 60 * 1000,
     });
+
+    const categories = useMemo(() => {
+        return categoriesList?.data;
+    }, [categoriesList]);
+
     return {
         categories,
         error,
