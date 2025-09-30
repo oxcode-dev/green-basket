@@ -5,7 +5,8 @@ import React, { useMemo } from 'react'
 export const useFetchProducts = () => {
     const searchParams = useSearchParams()
     const page = Number(searchParams.get('page')) || 1
-    const perPage = Number(searchParams.get('perPage')) || 20
+    const perPage = Number(searchParams.get('perPage')) || 20;
+    const perPageLists :number[] = [10, 20, 40, 50, 100];
     async function fetchProducts(page :number) {
         const res = await fetch(`${process.env.NEXT_PUBLIC_API_ENDPOINT}/api/products?page=${page}&perPage=${perPage}`, {
             headers: { 
@@ -47,5 +48,6 @@ export const useFetchProducts = () => {
         isFetching,
         isLoading,
         productsMeta,
+        perPageLists,
     } 
 }

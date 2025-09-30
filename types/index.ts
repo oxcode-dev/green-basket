@@ -103,6 +103,7 @@ export interface FetchedProductType {
         total_products: number,
     }
     products: ProductItem[];
+    perPageLists: number[];
 }
 
 export interface OrderItem {

@@ -79,7 +79,7 @@ const page = () => {
                                     <div className="dropdown dropdown-end">
                                         <div tabIndex={0} role="button" className="btn btn-sm bg-gray-100 border-gray-300 rounded-md">
                                             <div className="inline-flex items-center text-xs text-gray-500 space-x-2">
-                                                <span>Show</span>
+                                                <span>Show({per_page || 20})</span>
                                                 <span>
                                                     <ChevronDownIcon className="size-5" />
                                                 </span>
