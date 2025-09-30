@@ -27,6 +27,10 @@ export const useFetchProducts = () => {
         return productsList?.data?.data || [];
     }, [productsList]);
 
+    const productsMeta = useMemo(() => {
+        return productsList?.data?.data || [];
+    }, [productsList]);
+
     return {
         products,
         error,
