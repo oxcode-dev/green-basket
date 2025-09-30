@@ -1,12 +1,25 @@
 'use client'
 
+import Pager from '@/components/Pager';
 import { ProductCard } from '@/components/ProductCard';
+import { useFetchProducts } from '@/hooks/useFetchProducts';
 import { CategoriesSection, CategoryDropdown } from '@/sections/CategoriesSection';
 import { AppSetup } from '@/setups/AppSetup';
+import { FetchedProductType } from '@/types';
 import { ArrowsUpDownIcon, ChevronDownIcon, TagIcon } from '@heroicons/react/20/solid';
 import React from 'react'
 
 const page = () => {
+    const searchParams = useSearchParams()
+    const router = useRouter()
+    const pathname = usePathname()
+    const page = Number(searchParams.get('page')) || 1
+
+    const { products, isFetching, productsMeta } : FetchedProductType = useFetchProducts()
+    const setPage = (page: number) => {
+        router.push(`${pathname}?page=${page}`)
+    }
+
     return (
         <AppSetup>
             <div className="container w-full mx-auto py-8 px-4 md:px-0">
@@ -103,23 +116,21 @@ const page = () => {
                         </div>
 
                         <div className="grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 md:gap-6 gap-6 sm:gap-4">
-                            { Array.from({ length: 20 }).map((item, key) => (
+                            { products.map((item, key) => (
                                 <div key={key}>
-                                    <ProductCard />
+                                    <ProductCard product={item} />
                                 </div>
                             ))}
                         </div>
 
                         <div className="py-8 flex justify-center">
-                            <div className="join">
-                                <button className="join-item btn">«</button>
-                                <button className="join-item btn">Page 22</button>
-                                <button className="join-item btn">»</button>
-                            </div>
+                            <Pager
+                                last_page={productsMeta?.last_page}
+                                current_page={productsMeta?.current_page}
+                                setPage={setPage}
+                            />
                         </div>
                     </div>
-
-                    
                 </div>
             </div>
         </AppSetup>
