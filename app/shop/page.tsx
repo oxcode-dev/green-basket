@@ -63,7 +63,7 @@ const page = () => {
                         <div className="space-y-2 pb-3">
                            <div className="flex justify-end">
                                     
-                                <div className="space-x-2">
+                                <div className="space-x-2 hidden">
                                     <div className="dropdown dropdown-end">
                                         <div tabIndex={0} role="button" className="btn btn-sm bg-gray-100 border-gray-300 rounded-md">
                                             <div className="inline-flex items-center text-xs text-gray-500 space-x-2">
