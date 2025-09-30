@@ -20,6 +20,10 @@ const page = () => {
     const setPage = (page: number) => {
         router.push(`${pathname}?page=${page}`)
     }
+    const setShowPage = (perPage: number) => {
+        router.push(`${pathname}?page=${1}&perPage=${perPage}`)
+    }
+    const productShowLists :number[] = [10, 20, 40, 50];
 
     return (
         <AppSetup>
@@ -63,7 +67,7 @@ const page = () => {
                         <div className="space-y-2 pb-3">
                            <div className="flex justify-end">
                                     
-                                <div className="space-x-2 hidden">
+                                <div className="space-x-2">
                                     <div className="dropdown dropdown-end">
                                         <div tabIndex={0} role="button" className="btn btn-sm bg-gray-100 border-gray-300 rounded-md">
                                             <div className="inline-flex items-center text-xs text-gray-500 space-x-2">
@@ -75,15 +79,14 @@ const page = () => {
                                         </div>
                                         <ul
                                             tabIndex={0}
-                                            className="bg-white menu menu-sm dropdown-content bg-base-100 rounded-box z-1 mt-3 w-52 p-2 shadow"
+                                            className="bg-white menu menu-sm dropdown-content bg-base-100 rounded-box z-1 mt-3 w-12  p-2 shadow"
                                         >
-                                            <li>
-                                                <a className="justify-between">
-                                                    Account
-                                                </a>
-                                            </li>
-                                            <li><a>Settings</a></li>
-                                            <li><a>Logout</a></li>
+                                            {productShowLists.map((item, key) => (
+                                                <li key={key}>
+                                                    <a onClick={e => setShowPage(item)} href="#" className="justify-between">{item}</a>
+                                                </li>
+                                            ))}
+                                            
                                         </ul>
                                     </div>
                                     <div className="dropdown dropdown-end">

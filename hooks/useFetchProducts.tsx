@@ -5,8 +5,9 @@ import React, { useMemo } from 'react'
 export const useFetchProducts = () => {
     const searchParams = useSearchParams()
     const page = Number(searchParams.get('page')) || 1
+    const perPage = Number(searchParams.get('perPage')) || 20
     async function fetchProducts(page :number) {
-        const res = await fetch(`${process.env.NEXT_PUBLIC_API_ENDPOINT}/api/products?page=${page}`, {
+        const res = await fetch(`${process.env.NEXT_PUBLIC_API_ENDPOINT}/api/products?page=${page}&perPage=${perPage}`, {
             headers: { 
                 // Authorization: `Bearer ${getToken.token}`,
                 'Content-Type': 'application/json' 
@@ -20,7 +21,7 @@ export const useFetchProducts = () => {
     }
 
     const { data: productsList, error, isLoading, isFetching } = useQuery({
-        queryKey: ["list_products", page],
+        queryKey: ["list_products", page, perPage],
         queryFn: () => fetchProducts(page),
         placeholderData: keepPreviousData,
         staleTime: 10 * 60 * 1000,
