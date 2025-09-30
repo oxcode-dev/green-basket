@@ -1,4 +1,7 @@
+'use client'
+
 import { ProductCard } from '@/components/ProductCard';
+import { CategoriesSection, CategoryDropdown } from '@/sections/CategoriesSection';
 import { AppSetup } from '@/setups/AppSetup';
 import { ArrowsUpDownIcon, ChevronDownIcon, TagIcon } from '@heroicons/react/20/solid';
 import React from 'react'
@@ -31,16 +34,7 @@ const page = () => {
                                 </div>
 
                                 <div className='pt-2 space-y-2'>
-                                    {
-                                        Array.from({ length: 10 }).map((item, key) => (
-                                        <a href="#" key={key} className="inline-flex justify-between items-center rounded-md border border-gray-200 w-full p-1.5 space-x-1.5">
-                                            <span className="text-xs font-medium text-gray-600">Fresh fruits</span>
-                                            <span>
-                                                <span className="badge bg-green-600 border-0 badge-xs font-medium text-white">100</span>
-                                            </span>
-                                        </a>
-                                        ))
-                                    }
+                                    <CategoriesSection />
                                 </div>
                             </div>
 
@@ -48,30 +42,8 @@ const page = () => {
                     </div>
 
                     <div className="w-full md:w-4/5 md:pl-6">
-                        <div className="dropdown pb-8 md:hidden">
-                            <div tabIndex={0} role="button" className="btn btn-neutral">
-                                <div className="inline-flex items-center space-x-2">
-                                    <span>
-                                        <TagIcon className="size-5" />
-                                    </span>
-                                    <span>All Categories</span>
-                                    <span>
-                                        <ChevronDownIcon className="size-5" />
-                                    </span>
-                                </div>
-                            </div>
-                            <ul
-                                tabIndex={0}
-                                className="bg-white menu menu-sm dropdown-content bg-base-100 rounded-box z-1 mt-3 w-52 p-2 shadow"
-                            >
-                                <li>
-                                    <a className="justify-between">
-                                        Account
-                                    </a>
-                                </li>
-                                <li><a>Settings</a></li>
-                                <li><a>Logout</a></li>
-                            </ul>
+                        <div className="pb-8 md:hidden">
+                            <CategoryDropdown />
                         </div>
 
                         <div className="space-y-2 pb-3">
