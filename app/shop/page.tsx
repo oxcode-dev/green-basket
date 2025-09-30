@@ -7,6 +7,7 @@ import { CategoriesSection, CategoryDropdown } from '@/sections/CategoriesSectio
 import { AppSetup } from '@/setups/AppSetup';
 import { FetchedProductType } from '@/types';
 import { ArrowsUpDownIcon, ChevronDownIcon, TagIcon } from '@heroicons/react/20/solid';
+import { usePathname, useRouter, useSearchParams } from 'next/navigation';
 import React from 'react'
 
 const page = () => {

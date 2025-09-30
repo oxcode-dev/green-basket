@@ -1,9 +1,12 @@
 import { keepPreviousData, useQuery } from '@tanstack/react-query';
+import { useSearchParams } from 'next/navigation';
 import React, { useMemo } from 'react'
 
 export const useFetchProducts = () => {
-    async function fetchOrders() {
-        const res = await fetch(`${process.env.NEXT_PUBLIC_API_ENDPOINT}/api/products`, {
+    const searchParams = useSearchParams()
+    const page = Number(searchParams.get('page')) || 1
+    async function fetchProducts(page :number) {
+        const res = await fetch(`${process.env.NEXT_PUBLIC_API_ENDPOINT}/api/products?page=${page}`, {
             headers: { 
                 // Authorization: `Bearer ${getToken.token}`,
                 'Content-Type': 'application/json' 
@@ -17,8 +20,8 @@ export const useFetchProducts = () => {
     }
 
     const { data: productsList, error, isLoading, isFetching } = useQuery({
-        queryKey: ["list_products"],
-        queryFn: () => fetchOrders(),
+        queryKey: ["list_products", page],
+        queryFn: () => fetchProducts(page),
         placeholderData: keepPreviousData,
         staleTime: 10 * 60 * 1000,
     });
