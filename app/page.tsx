@@ -1,6 +1,8 @@
 'use client'
 
+import Loading from '@/components/Loading'
 import { ProductCard } from '@/components/ProductCard'
+import { useFetchProducts } from '@/hooks/useFetchProducts'
 import { BenefitSection } from '@/sections/BenefitSection'
 import { CategoriesSection, CategoryDropdown } from '@/sections/CategoriesSection'
 import { ReviewSection } from '@/sections/ReviewSection'
@@ -9,7 +11,7 @@ import { ArrowRightIcon } from '@heroicons/react/20/solid'
 import { Quicksand } from 'next/font/google'
 import Image from 'next/image'
 import Link from 'next/link'
-import React from 'react'
+import React, { Suspense } from 'react'
 
 const quicksand = Quicksand({
   subsets: ["latin"],
@@ -17,6 +19,7 @@ const quicksand = Quicksand({
 });
 
 export const page = () => {
+  const { products, isFetching } = useFetchProducts()
   return (
     <AppSetup>
       <div className="container w-full mx-auto md:py-8">
@@ -74,11 +77,14 @@ export const page = () => {
             </div>
 
             <div className="grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 md:gap-6 gap-6 sm:gap-4">
-              { Array.from({ length: 20 }).map((item, key) => (
-                <div key={key}>
-                  <ProductCard />
-                </div>
-              ))}
+              <Suspense fallback={<Loading />}>
+                {/* { products.map((item, key) => (
+                  <div key={key}>
+                    <ProductCard />
+                  </div>
+                ))} */}
+              </Suspense>
+              
             </div>
 
             <div className="py-8 flex justify-center">
