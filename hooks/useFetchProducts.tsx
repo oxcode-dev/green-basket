@@ -24,7 +24,7 @@ export const useFetchProducts = () => {
     });
 
     const products = useMemo(() => {
-        return productsList?.data;
+        return productsList?.data?.data || [];
     }, [productsList]);
 
     return {
