@@ -1,5 +1,6 @@
 'use client'
 
+import Loading from '@/components/Loading';
 import Pager from '@/components/Pager';
 import { ProductCard } from '@/components/ProductCard';
 import { useFetchProducts } from '@/hooks/useFetchProducts';
@@ -7,6 +8,7 @@ import { CategoriesSection, CategoryDropdown } from '@/sections/CategoriesSectio
 import { AppSetup } from '@/setups/AppSetup';
 import { FetchedProductType } from '@/types';
 import { ArrowsUpDownIcon, ChevronDownIcon, TagIcon } from '@heroicons/react/20/solid';
+import Link from 'next/link';
 import { usePathname, useRouter, useSearchParams } from 'next/navigation';
 import React from 'react'
 
@@ -15,15 +17,21 @@ const page = () => {
     const router = useRouter()
     const pathname = usePathname()
     const page = Number(searchParams.get('page')) || 1
+    const per_page = Number(searchParams.get('perPage'))
 
     const { products, isFetching, productsMeta } : FetchedProductType = useFetchProducts()
     const setPage = (page: number) => {
+        if(per_page) {
+            router.push(`${pathname}?page=${page}&perPage=${per_page || 20}`)
+            return;
+        }
+
         router.push(`${pathname}?page=${page}`)
     }
     const setShowPage = (perPage: number) => {
         router.push(`${pathname}?page=${1}&perPage=${perPage}`)
     }
-    const productShowLists :number[] = [10, 20, 40, 50];
+    const productShowLists :number[] = [10, 20, 40, 50, 100];
 
     return (
         <AppSetup>
@@ -83,7 +91,7 @@ const page = () => {
                                         >
                                             {productShowLists.map((item, key) => (
                                                 <li key={key}>
-                                                    <a onClick={e => setShowPage(item)} href="#" className="justify-between">{item}</a>
+                                                    <Link href={`${pathname}?page=${1}&perPage=${item}`} className="justify-between">{item}</Link>
                                                 </li>
                                             ))}
                                             
@@ -119,21 +127,26 @@ const page = () => {
                            </div>
                         </div>
 
-                        <div className="grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 md:gap-6 gap-6 sm:gap-4">
-                            { products.map((item, key) => (
-                                <div key={key}>
-                                    <ProductCard product={item} />
+                        { isFetching ? <Loading /> : null }
+                        
+                        { !isFetching ? (
+                            <div>
+                                <div className="grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 md:gap-6 gap-6 sm:gap-4">
+                                    { products.map((item, key) => (
+                                        <div key={key}>
+                                            <ProductCard product={item} />
+                                        </div>
+                                    ))}
                                 </div>
-                            ))}
-                        </div>
-
-                        <div className="py-8 flex justify-center">
-                            <Pager
-                                last_page={productsMeta?.last_page}
-                                current_page={productsMeta?.current_page}
-                                setPage={setPage}
-                            />
-                        </div>
+                                <div className="py-8 flex justify-center">
+                                    <Pager
+                                        last_page={productsMeta?.last_page}
+                                        current_page={productsMeta?.current_page}
+                                        setPage={setPage}
+                                    />
+                                </div>
+                            </div>
+                        ): null }
                     </div>
                 </div>
             </div>
