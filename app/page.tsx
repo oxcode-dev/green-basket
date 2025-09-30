@@ -7,6 +7,7 @@ import { BenefitSection } from '@/sections/BenefitSection'
 import { CategoriesSection, CategoryDropdown } from '@/sections/CategoriesSection'
 import { ReviewSection } from '@/sections/ReviewSection'
 import { AppSetup } from '@/setups/AppSetup'
+import { FetchedProductType } from '@/types'
 import { ArrowRightIcon } from '@heroicons/react/20/solid'
 import { Quicksand } from 'next/font/google'
 import Image from 'next/image'
@@ -19,7 +20,7 @@ const quicksand = Quicksand({
 });
 
 export const page = () => {
-  const { products, isFetching } = useFetchProducts()
+  const { products, isFetching, productsMeta } : FetchedProductType = useFetchProducts()
   return (
     <AppSetup>
       <div className="container w-full mx-auto md:py-8">
@@ -75,6 +76,8 @@ export const page = () => {
                 These are some of our most popular products among customers.
               </p>
             </div>
+
+            <pre>{ JSON.stringify(productsMeta) }</pre>
 
             <div className="grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 md:gap-6 gap-6 sm:gap-4">
               <Suspense fallback={<Loading />}>

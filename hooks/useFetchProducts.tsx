@@ -28,7 +28,13 @@ export const useFetchProducts = () => {
     }, [productsList]);
 
     const productsMeta = useMemo(() => {
-        return productsList?.data?.data || [];
+        const { last_page, current_page, per_page, total: total_products } = productsList?.data || [];
+        return {
+            last_page,
+            current_page,
+            per_page,
+            total_products,
+        }
     }, [productsList]);
 
     return {
@@ -36,5 +42,6 @@ export const useFetchProducts = () => {
         error,
         isFetching,
         isLoading,
+        productsMeta,
     } 
 }

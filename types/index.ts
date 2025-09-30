@@ -93,6 +93,18 @@ export interface ProductType {
     data: ProductItem[];
 }
 
+export interface FetchedProductType {
+    isFetching: boolean;
+    isLoading: boolean;
+    productsMeta: {
+        last_page: number;
+        current_page: number;
+        per_page: number,
+        total_products: number,
+    }
+    products: ProductItem[];
+}
+
 export interface OrderItem {
     id: string;
     address_id: string;
