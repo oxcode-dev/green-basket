@@ -1,11 +1,15 @@
 'use client';
 
+import { ProductItem } from '@/types';
 import { HeartIcon, ShoppingCartIcon } from '@heroicons/react/20/solid'
 import Link from 'next/link';
 import React from 'react'
 
+type ProductCardType = {
+  product: ProductItem
+}
 
-export const ProductCard = () => {
+export const ProductCard = ({ product } : ProductCardType) => {
   return (
     <div className="product-card flex flex-col justify-center rounded-md border border-gray-300">
       <Link href="/shop/id" className="flex flex-col justify-center items-center">
@@ -18,7 +22,7 @@ export const ProductCard = () => {
       </Link>
       <div className="flex flex-col justify-center items-center p-2 py-6">
         <Link href="/shop/ij" className="text-gray-800 font-semibold text-lg">
-          Bell Pepper
+          { product?.title }
         </Link>
         <p className="cart-text text-gray-400 text-md font-medium pb-2.5">
           $100.00

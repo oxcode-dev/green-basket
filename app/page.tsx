@@ -77,10 +77,8 @@ export const page = () => {
               </p>
             </div>
 
-            <pre>{ JSON.stringify(productsMeta) }</pre>
-
             <div className="grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 md:gap-6 gap-6 sm:gap-4">
-              <Suspense fallback={<Loading />}>
+              <Suspense fallback={isFetching && <Loading />}>
                 { products.map((item, key) => (
                   <div key={key}>
                     <ProductCard />
