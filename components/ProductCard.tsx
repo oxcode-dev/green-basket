@@ -1,6 +1,7 @@
 'use client';
 
 import { ProductItem } from '@/types';
+import { moneyFormat } from '@/types/helper';
 import { HeartIcon, ShoppingCartIcon } from '@heroicons/react/20/solid'
 import Link from 'next/link';
 import React from 'react'
@@ -24,9 +25,7 @@ export const ProductCard = ({ product } : ProductCardType) => {
         <Link href="/shop/ij" className="text-gray-800 font-semibold text-lg">
           { product?.title }
         </Link>
-        <p className="cart-text text-gray-400 text-md font-medium pb-2.5">
-          $100.00
-        </p>
+        <p dangerouslySetInnerHTML={{ __html: moneyFormat(product?.price || 0)}} className="cart-text text-gray-400 text-md font-medium pb-2.5"></p>
 
         <div className="inline-flex space-x-3 py-1 cart-btn">
           <a href="#" className="inline-flex justify-center items-center bg-green-600 text-white size-6.5 p-1 rounded-full">

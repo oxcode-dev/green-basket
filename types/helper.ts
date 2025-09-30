@@ -31,3 +31,7 @@ export const isEmpty = (obj: {}) => {
     }
     return true;
 }
+
+export function moneyFormat(number: number|null) {
+    return `<span>&#8358;${numberFormat(number)}</span>`
+}

@@ -81,7 +81,7 @@ export const page = () => {
               <Suspense fallback={isFetching && <Loading />}>
                 { products.map((item, key) => (
                   <div key={key}>
-                    <ProductCard />
+                    <ProductCard product={item} />
                   </div>
                 ))}
               </Suspense>
