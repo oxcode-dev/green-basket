@@ -19,7 +19,7 @@ const page = () => {
     const page = Number(searchParams.get('page')) || 1
     const per_page = Number(searchParams.get('perPage'))
 
-    const { products, isFetching, productsMeta } : FetchedProductType = useFetchProducts()
+    const { products, isFetching, productsMeta, perPageLists } : FetchedProductType = useFetchProducts()
     const setPage = (page: number) => {
         if(per_page) {
             router.push(`${pathname}?page=${page}&perPage=${per_page || 20}`)
@@ -28,10 +28,6 @@ const page = () => {
 
         router.push(`${pathname}?page=${page}`)
     }
-    const setShowPage = (perPage: number) => {
-        router.push(`${pathname}?page=${1}&perPage=${perPage}`)
-    }
-    const productShowLists :number[] = [10, 20, 40, 50, 100];
 
     return (
         <AppSetup>
@@ -89,7 +85,7 @@ const page = () => {
                                             tabIndex={0}
                                             className="bg-white menu menu-sm dropdown-content bg-base-100 rounded-box z-1 mt-3 w-12  p-2 shadow"
                                         >
-                                            {productShowLists.map((item, key) => (
+                                            {perPageLists.map((item, key) => (
                                                 <li key={key}>
                                                     <Link href={`${pathname}?page=${1}&perPage=${item}`} className="justify-between">{item}</Link>
                                                 </li>
@@ -118,8 +114,6 @@ const page = () => {
                                                     Account
                                                 </a>
                                             </li>
-                                            <li><a>Settings</a></li>
-                                            <li><a>Logout</a></li>
                                         </ul>
                                     </div>
                                 </div>
