@@ -2,12 +2,18 @@
 
 import { useFetchProduct } from '@/hooks/useFetchSingleProduct';
 import { AppSetup } from '@/setups/AppSetup';
+import { moneyFormat } from '@/types/helper';
 import { MinusIcon, PlusIcon, ShoppingBagIcon } from '@heroicons/react/20/solid';
 import { HeartIcon, BuildingStorefrontIcon, TruckIcon, ArrowPathRoundedSquareIcon } from '@heroicons/react/24/outline';
-import React from 'react'
+import { PHASE_PRODUCTION_SERVER } from 'next/dist/shared/lib/constants';
+import React, { useMemo } from 'react'
 
 const page = () => {
-    const { products} = useFetchProduct();
+    const { product, isFetching} = useFetchProduct();
+    const reviews = useMemo(() => {
+        return product?.reviews
+    }, [product]);
+
     return (
         <AppSetup>
             <div className="container w-full mx-auto py-8 px-4 md:px-0">
@@ -21,19 +27,20 @@ const page = () => {
                                 alt='Product Image'
                                 height={400}
                             />
+                            <pre>{ JSON.stringify(reviews) }</pre>
                         </div>
                     </div>
                     <div className="w-full md:pl-4">
                         <div className="space-y-2">
                             <p className="text-xl md:text-3xl font-semibold">
-                                Title is the greatest movie of all time
+                                { product?.title }
                             </p>
                             <p className="text-sm text-gray-500 font-medium uppercase">
-                                Category
+                                { product?.category?.name }
                             </p>
-                            <p className="text-3xl text-green-600 font-semibold py-2">$100</p>
+                            <p dangerouslySetInnerHTML={{ __html: moneyFormat(product?.price)}} className="text-3xl text-green-600 font-semibold py-2"></p>
                             <p className="text-sm text-gray-500 font-medium">
-                                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quae provident porro ducimus et nam error quaerat consequatur natus assumenda, blanditiis
+                                { product?.summary }
                             </p>
                             <div>
                                 <div className="flex items-center space-x-2 flex-wrap py-2">
