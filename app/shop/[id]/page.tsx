@@ -9,7 +9,7 @@ import { getUser } from '@/store/slices/auth';
 import { ReviewItem, User } from '@/types';
 import { isEmpty, moneyFormat } from '@/types/helper';
 import { MinusIcon, PlusIcon, ShoppingBagIcon } from '@heroicons/react/20/solid';
-import { HeartIcon, BuildingStorefrontIcon, TruckIcon, ArrowPathRoundedSquareIcon } from '@heroicons/react/24/outline';
+import { HeartIcon, BuildingStorefrontIcon, TruckIcon, ArrowPathRoundedSquareIcon, ShoppingCartIcon } from '@heroicons/react/24/outline';
 import Link from 'next/link';
 import React, { useMemo, useState } from 'react'
 import { useSelector } from 'react-redux';
@@ -70,7 +70,7 @@ const page = () => {
                                                 <div>
                                                     <Link href="/cart" className="btn btn-md bg-green-600 rounded text-white border-green-600 inline-flex items-center space-x-1">
                                                         <span>Buy Now</span>
-                                                        <ShoppingBagIcon className="size-4" />
+                                                        <ShoppingCartIcon className="size-4" />
                                                     </Link>
                                                 </div>
                                             </div>
@@ -150,6 +150,7 @@ const page = () => {
                                                     <ReviewCard review={review} />
                                                 </div>
                                             ))}
+                                            { reviews && reviews.length === 0 ? <EmptyState text="Product Not Found" /> : null }
                                         </div>
                                     )}
                                 </div>
