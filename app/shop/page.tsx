@@ -19,7 +19,7 @@ const page = () => {
     const page = Number(searchParams.get('page')) || 1
     const per_page = Number(searchParams.get('perPage'))
 
-    const { products, isFetching, productsMeta, perPageLists } : FetchedProductType = useFetchProducts()
+    const { products, isFetching, productsMeta, perPageLists, productSortLists } : FetchedProductType = useFetchProducts()
     const setPage = (page: number) => {
         if(per_page) {
             router.push(`${pathname}?page=${page}&perPage=${per_page || 20}`)
@@ -90,7 +90,6 @@ const page = () => {
                                                     <Link href={`${pathname}?page=${1}&perPage=${item}`} className="justify-between">{item}</Link>
                                                 </li>
                                             ))}
-                                            
                                         </ul>
                                     </div>
                                     <div className="dropdown dropdown-end">
@@ -109,11 +108,11 @@ const page = () => {
                                             tabIndex={0}
                                             className="bg-white menu menu-sm dropdown-content bg-base-100 rounded-box z-1 mt-3 w-52 p-2 shadow"
                                         >
-                                            <li>
-                                                <a className="justify-between">
-                                                    Account
-                                                </a>
-                                            </li>
+                                            {productSortLists.map((item, key) => (
+                                                <li key={key}>
+                                                    <Link href={`${pathname}?page=${1}&sort=${item?.value}`} className="justify-between">{item?.label}</Link>
+                                                </li>
+                                            ))}
                                         </ul>
                                     </div>
                                 </div>
