@@ -1,17 +1,20 @@
 'use client';
 
+import { ReviewCard } from '@/components/ReviewCard';
 import { useFetchProduct } from '@/hooks/useFetchSingleProduct';
 import { AppSetup } from '@/setups/AppSetup';
 import { moneyFormat } from '@/types/helper';
 import { MinusIcon, PlusIcon, ShoppingBagIcon } from '@heroicons/react/20/solid';
 import { HeartIcon, BuildingStorefrontIcon, TruckIcon, ArrowPathRoundedSquareIcon } from '@heroicons/react/24/outline';
-import React, { useMemo } from 'react'
+import React, { useMemo, useState } from 'react'
 
 const page = () => {
     const { product, isFetching} = useFetchProduct();
     const reviews = useMemo(() => {
         return product?.reviews
     }, [product]);
+
+    const [isActiveTab, setIsActiveTab] = useState(true)
 
 
     return (
@@ -111,25 +114,22 @@ const page = () => {
                     <div className="border border-gray-300 rounded-lg p-4 md:p-8 w-full">
 
                         <div className="space-x-2">
-                            <button className="btn btn-sm rounded-full bg-white text-gray-500 border-gray-300">Description</button>
-                            <button className="btn btn-sm rounded-full bg-white text-gray-500 border-gray-300">Review (3)</button>
+                            <button onClick={() => setIsActiveTab(true)} className="btn btn-sm rounded-full bg-white text-gray-500 border-gray-300">Description</button>
+                            <button onClick={() => setIsActiveTab(false)} className="btn btn-sm rounded-full bg-white text-gray-500 border-gray-300">
+                                Reviews ({ reviews &&reviews.length || 0})
+                            </button>
                         </div>
 
                         <div className="pt-4 md:pt-6">
-                            <div className="text-gray-500 text-sm">
-                                { product?.description }
-                            </div>
-                            <div>
-                                <div className="card w-full bg-base-100 card-md shadow-sm">
-                                    <div className="card-body">
-                                        <h2 className="card-title">Xlarge Card</h2>
-                                        <p>A card component has a figure, a body part, and inside body there are title and actions parts</p>
-                                        <div className="justify-end card-actions">
-                                            <button className="btn btn-primary">Buy Now</button>
-                                        </div>
-                                    </div>
+                            { isActiveTab ? (
+                                <div className="text-gray-500 text-sm">
+                                    { product?.description }
                                 </div>
-                            </div>
+                            ) : (
+                                <div>
+                                    <ReviewCard />
+                                </div>
+                            )}
                         </div>
 
                     </div>
