@@ -21,36 +21,24 @@ export const useFetchProduct = () => {
         if (!res.ok) {
             throw new Error("Failed to fetch posts");
         }
-        console.log(res.json())
         return res.json();
     }
 
-    const { data: productsList, error, isLoading, isFetching } = useQuery({
+    const { data, error, isLoading, isFetching } = useQuery({
         queryKey: ["list_products", id],
         queryFn: () => fetchProduct(id),
         placeholderData: keepPreviousData,
         staleTime: 10 * 60 * 1000,
     });
 
-    const products = useMemo(() => {
-        return productsList?.data?.data || [];
-    }, [productsList]);
-
-    const productsMeta = useMemo(() => {
-        const { last_page, current_page, per_page, total: total_products } = productsList?.data || [];
-        return {
-            last_page,
-            current_page,
-            per_page,
-            total_products,
-        }
-    }, [productsList]);
+    const product = useMemo(() => {
+        return data?.data || [];
+    }, [data]);
 
     return {
-        products,
+        product,
         error,
         isFetching,
         isLoading,
-        productsMeta,
     } 
 }

@@ -1,3 +1,5 @@
+'use client';
+
 import { useFetchProduct } from '@/hooks/useFetchSingleProduct';
 import { AppSetup } from '@/setups/AppSetup';
 import { MinusIcon, PlusIcon, ShoppingBagIcon } from '@heroicons/react/20/solid';
