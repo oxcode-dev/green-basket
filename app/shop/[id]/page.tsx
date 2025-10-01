@@ -4,6 +4,7 @@ import { EmptyState } from '@/components/EmptyState';
 import Loading from '@/components/Loading';
 import { ReviewCard } from '@/components/ReviewCard';
 import { useFetchProduct } from '@/hooks/useFetchSingleProduct';
+import { useUpdateWishlists } from '@/hooks/useUpdateWishlists';
 import { AppSetup } from '@/setups/AppSetup';
 import { getUser } from '@/store/slices/auth';
 import { ReviewItem, User } from '@/types';
@@ -18,6 +19,8 @@ const page = () => {
     // @ts-ignore
     const loggedUser : User | {} = useSelector(getUser)?.user || {};
     const { product, isFetching} = useFetchProduct();
+    const { onClick } = useUpdateWishlists()
+
     const reviews = useMemo(() : ReviewItem[] => {
         return product?.reviews
     }, [product]);
@@ -81,7 +84,7 @@ const page = () => {
                                                 </button>
 
                                                 { !isEmpty(loggedUser) ?
-                                                    <button className="btn btn-sm bg-white text-gray-500 border-gray-300 rounded">
+                                                    <button onClick={() => onClick(product)} className="btn btn-sm bg-white text-gray-500 border-gray-300 rounded">
                                                         <HeartIcon className="size-4" />
                                                     </button>
                                                 : null}

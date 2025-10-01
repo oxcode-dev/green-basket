@@ -34,7 +34,6 @@ export const useUpdateWishlists = () => {
         });
 
         const feedback = await response.json()
-        return console.log(feedback)
 
         if (feedback?.success) {
             queryClient.invalidateQueries()
