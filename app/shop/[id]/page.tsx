@@ -3,6 +3,7 @@
 import { ReviewCard } from '@/components/ReviewCard';
 import { useFetchProduct } from '@/hooks/useFetchSingleProduct';
 import { AppSetup } from '@/setups/AppSetup';
+import { ReviewItem } from '@/types';
 import { moneyFormat } from '@/types/helper';
 import { MinusIcon, PlusIcon, ShoppingBagIcon } from '@heroicons/react/20/solid';
 import { HeartIcon, BuildingStorefrontIcon, TruckIcon, ArrowPathRoundedSquareIcon } from '@heroicons/react/24/outline';
@@ -10,7 +11,7 @@ import React, { useMemo, useState } from 'react'
 
 const page = () => {
     const { product, isFetching} = useFetchProduct();
-    const reviews = useMemo(() => {
+    const reviews = useMemo(() : ReviewItem[] => {
         return product?.reviews
     }, [product]);
 
@@ -127,7 +128,11 @@ const page = () => {
                                 </div>
                             ) : (
                                 <div>
-                                    <ReviewCard />
+                                    { reviews.map((review, key) => (    
+                                        <div key={key}>
+                                            <ReviewCard review={review} />
+                                        </div>
+                                    ))}
                                 </div>
                             )}
                         </div>

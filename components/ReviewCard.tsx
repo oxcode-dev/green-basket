@@ -1,9 +1,15 @@
+import { ReviewItem } from '@/types'
+import { formatDate } from '@/types/helper'
+import { CalendarDaysIcon, UserIcon } from '@heroicons/react/24/outline'
 import React from 'react'
 
-export const ReviewCard = () => {
+type ReviewCardProp = {
+    review: ReviewItem
+}
+export const ReviewCard = ({ review } : ReviewCardProp) => {
   return (
     <div>
-        <div className="card w-full bg-base-100 card-md shadow-sm">
+        <div className="card w-full bg-white card-md shadow-sm">
             <div className="card-body">
                 <div>
                     <div className="rating">
@@ -13,11 +19,17 @@ export const ReviewCard = () => {
                     </div>
                 </div>
                 <p className="py-2 text-gray-600">
-                    comment
+                    {review?.comment}
                 </p>
-                <div className="inline-flex space-x-3 justify-start text-gray-500 font-light">
-                    <span>date</span>
-                    <span>user</span>
+                <div className="inline-flex space-x-4 justify-start text-gray-500 font-light items-center">
+                    <span className="inline-flex space-x-1.5 items-center">
+                        <CalendarDaysIcon className="size-4" />
+                        <span>{formatDate(review?.created_at)}</span>
+                    </span>
+                    <span className="inline-flex space-x-1.5 items-center">
+                        <UserIcon className="size-4" />
+                        <span>{review?.user?.first_name}</span>
+                    </span>
                 </div>
             </div>
         </div>
