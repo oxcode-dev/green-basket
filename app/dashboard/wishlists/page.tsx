@@ -11,7 +11,7 @@ import { usePathname, useRouter, useSearchParams } from 'next/navigation';
 import React from 'react'
 
 type WishlistFetchType = {
-    data: WishlistDataType[];
+    data: WishlistDataType;
     message: string
     success: boolean
 }
@@ -67,7 +67,7 @@ const page = () => {
                 
                 { !isLoading && wishlists?.data?.data.length === 0 ? <EmptyState text="No Data!" /> : null }
 
-                { !isLoading && wishlists?.data?.data.length > 0 ? (
+                { !isLoading && wishlists?.data?.data && wishlists?.data?.data.length > 0 ? (
                     <div>
                         <div className="w-full grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 md:gap-4 gap-y-4">
                             { wishlists?.data?.data.map((item, key) => (

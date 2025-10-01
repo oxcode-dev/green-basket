@@ -44,7 +44,7 @@ export interface WishlistItemType {
 export interface WishlistDataType {
     prev_page_url: string;
     next_page_url: string;
-    last_page: string;
+    last_page: number;
     current_page: number;
     data: WishlistItemType[];
 }
