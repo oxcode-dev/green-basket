@@ -10,6 +10,7 @@ import { ReviewItem, User } from '@/types';
 import { isEmpty, moneyFormat } from '@/types/helper';
 import { MinusIcon, PlusIcon, ShoppingBagIcon } from '@heroicons/react/20/solid';
 import { HeartIcon, BuildingStorefrontIcon, TruckIcon, ArrowPathRoundedSquareIcon } from '@heroicons/react/24/outline';
+import Link from 'next/link';
 import React, { useMemo, useState } from 'react'
 import { useSelector } from 'react-redux';
 
@@ -56,7 +57,7 @@ const page = () => {
                                     </p>
                                     <div>
                                         <div className="flex items-center space-x-2 flex-wrap py-2">
-                                            <div>
+                                            <div className="space-y-4">
                                                 <div className="inline-flex space-x-6">
                                                     <button className="bg-green-700 text-white rounded-full p-1">
                                                         <MinusIcon className="size-5" />
@@ -67,10 +68,10 @@ const page = () => {
                                                     </a>
                                                 </div>
                                                 <div>
-                                                    <button className="btn btn-sm bg-green-600 rounded text-white border-green-600 inline-flex items-center space-x-1">
+                                                    <Link href="/cart" className="btn btn-md bg-green-600 rounded text-white border-green-600 inline-flex items-center space-x-1">
                                                         <span>Buy Now</span>
                                                         <ShoppingBagIcon className="size-4" />
-                                                    </button>
+                                                    </Link>
                                                 </div>
                                             </div>
                                             <div className="space-x-2">
