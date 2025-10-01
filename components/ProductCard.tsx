@@ -1,16 +1,30 @@
 'use client';
 
-import { ProductItem } from '@/types';
-import { moneyFormat } from '@/types/helper';
+import { useUpdateWishlists } from '@/hooks/useUpdateWishlists';
+import { getUser } from '@/store/slices/auth';
+import { ProductItem, User } from '@/types';
+import { isEmpty, moneyFormat } from '@/types/helper';
 import { HeartIcon, ShoppingCartIcon } from '@heroicons/react/20/solid'
 import Link from 'next/link';
-import React from 'react'
+import React, { useMemo } from 'react'
+import { useSelector } from 'react-redux';
 
 type ProductCardType = {
   product: ProductItem
 }
 
 export const ProductCard = ({ product } : ProductCardType) => {
+  //@ts-ignore
+  const loggedUser : User | {} = useSelector(getUser)?.user || {};
+  const { onClick } = useUpdateWishlists()
+
+  const wishlist = useMemo(() => {
+    if(product?.wishlists) {
+      // @ts-ignore
+      return product?.wishlists.find(n => n.product_id === product?.id && n.user_id === loggedUser?.id);
+    }
+  }, [product]);
+
   return (
     <div className="product-card flex flex-col justify-center rounded-md border border-gray-300">
       <Link href={`/shop/${product.slug}`} className="flex flex-col justify-center items-center">
@@ -31,9 +45,17 @@ export const ProductCard = ({ product } : ProductCardType) => {
           <a href="#" className="inline-flex justify-center items-center bg-green-600 text-white size-6.5 p-1 rounded-full">
             <ShoppingCartIcon className="size-3.5" />
           </a>
-          <a href="#" className="inline-flex justify-center items-center bg-green-600 text-white size-6.5 p-1 rounded-full">
-            <HeartIcon className="size-3.5" />
-          </a>
+          { !isEmpty(loggedUser) ?
+            <button 
+              onClick={() => onClick(product)}
+              className={`
+                ${wishlist && !isEmpty(wishlist) ? 'bg-green-600 text-white' : 'text-green-600 bg-white shadow-lg'} 
+                inline-flex justify-center items-center size-6.5 p-1 rounded-full cursor-pointer`
+              }
+            >
+              <HeartIcon className="size-3.5" />
+            </button> 
+          : null }
         </div>
       </div>
     </div>

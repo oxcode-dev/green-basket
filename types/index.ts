@@ -39,6 +39,7 @@ export interface WishlistItemType {
     user_id: string;
     product_id: string;
     created_at: string | null;
+    product: ProductItem;
 }
 
 export interface WishlistDataType {

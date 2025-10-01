@@ -7,16 +7,16 @@ import React from 'react'
 import { ProductCard } from './ProductCard'
 
 type Prop = {
-    item: WishlistItemType
+    wishlist: WishlistItemType
 }
 
-const WishlistCard = ({ item }: Prop) => {
+const WishlistCard = ({ wishlist }: Prop) => {
     const searchParams = useSearchParams()
     const page = Number(searchParams.get('page')) || 1
 
     const queryClient = useQueryClient()
     const mutation = useMutation({
-        mutationFn: (wishlist) => handleRemoveWishlist(wishlist)
+        mutationFn: (wishlist: WishlistItemType) => handleRemoveWishlist(wishlist)
     })
 
     const onClick = (wishlist: WishlistItemType) => {
@@ -52,12 +52,12 @@ const WishlistCard = ({ item }: Prop) => {
 
     return (
         <div className="group relative">
-            <button type="button" onClick={() => onClick(item)} title="Remove from Wishlist" className="cursor-pointer absolute -top-2 -right-1 flex md:hidden group-hover:flex">
+            <button type="button" onClick={() => onClick(wishlist)} title="Remove from Wishlist" className="cursor-pointer absolute -top-2 -right-1 flex md:hidden group-hover:flex">
                 <span className="bg-red-500 text-white rounded-full p-1">
                     <TrashIcon className="size-5" />
                 </span>
             </button>
-            <ProductCard />
+            <ProductCard product={wishlist?.product} />
         </div>
     )
 }

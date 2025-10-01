@@ -72,7 +72,7 @@ const page = () => {
                         <div className="w-full grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 md:gap-4 gap-y-4">
                             { wishlists?.data?.data.map((item, key) => (
                                 <div key={key}>
-                                    <WishlistCard item={item} />
+                                    <WishlistCard wishlist={item} />
                                 </div>
                             ))}
                         </div>

@@ -46,19 +46,27 @@ const page = () => {
                                         alt='Product Image'
                                         height={400}
                                     />
-                                    {/* <pre>{ JSON.stringify(reviews) }</pre> */}
                                 </div>
                             </div>
                             <div className="w-full md:pl-4">
                                 <div className="space-y-2">
-                                    <pre>{JSON.stringify(wishlist)}</pre>
                                     <p className="text-xl md:text-3xl font-semibold">
                                         { product?.title }
                                     </p>
                                     <p className="text-sm text-gray-500 font-medium uppercase">
                                         { product?.category?.name }
                                     </p>
-                                    <p dangerouslySetInnerHTML={{ __html: moneyFormat(product?.price)}} className="text-3xl text-green-600 font-semibold py-2"></p>
+                                    <div className="flex justify-between items-center">
+                                        <p dangerouslySetInnerHTML={{ __html: moneyFormat(product?.price)}} className="text-3xl text-green-600 font-semibold py-2"></p>
+                                        { !isEmpty(loggedUser) ?
+                                            <button 
+                                                onClick={() => onClick(product)} 
+                                                className={`btn btn-sm rounded ${wishlist && !isEmpty(wishlist) ? 'bg-green-500 text-white border-green-500' : 'bg-white text-gray-500 border-gray-300'}`}
+                                            >
+                                                <HeartIcon className="size-4" />
+                                            </button>
+                                        : null}
+                                    </div>
                                     <p className="text-sm text-gray-500 font-medium">
                                         { product?.summary }
                                     </p>
@@ -86,12 +94,6 @@ const page = () => {
                                                     <ShoppingBagIcon className="size-4" />
                                                     <span>Add to cart</span>
                                                 </button>
-
-                                                { !isEmpty(loggedUser) ?
-                                                    <button onClick={() => onClick(product)} className="btn btn-sm bg-white text-gray-500 border-gray-300 rounded">
-                                                        <HeartIcon className="size-4" />
-                                                    </button>
-                                                : null}
                                             </div>
                                         </div>
                                     </div>
