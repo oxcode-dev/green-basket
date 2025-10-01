@@ -18,11 +18,12 @@ const page = () => {
     const pathname = usePathname()
     const page = Number(searchParams.get('page')) || 1
     const per_page = Number(searchParams.get('perPage'))
+    const sort = searchParams.get('sort')
 
     const { products, isFetching, productsMeta, perPageLists, productSortLists } : FetchedProductType = useFetchProducts()
     const setPage = (page: number) => {
-        if(per_page) {
-            router.push(`${pathname}?page=${page}&perPage=${per_page || 20}`)
+        if(per_page || sort) {
+            router.push(`${pathname}?page=${page}&perPage=${per_page || 20}&sort=${sort || 'latest'}`)
             return;
         }
 
