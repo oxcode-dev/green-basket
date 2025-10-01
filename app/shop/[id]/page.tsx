@@ -5,7 +5,6 @@ import { AppSetup } from '@/setups/AppSetup';
 import { moneyFormat } from '@/types/helper';
 import { MinusIcon, PlusIcon, ShoppingBagIcon } from '@heroicons/react/20/solid';
 import { HeartIcon, BuildingStorefrontIcon, TruckIcon, ArrowPathRoundedSquareIcon } from '@heroicons/react/24/outline';
-import { PHASE_PRODUCTION_SERVER } from 'next/dist/shared/lib/constants';
 import React, { useMemo } from 'react'
 
 const page = () => {
@@ -13,6 +12,7 @@ const page = () => {
     const reviews = useMemo(() => {
         return product?.reviews
     }, [product]);
+
 
     return (
         <AppSetup>
@@ -27,7 +27,7 @@ const page = () => {
                                 alt='Product Image'
                                 height={400}
                             />
-                            <pre>{ JSON.stringify(reviews) }</pre>
+                            {/* <pre>{ JSON.stringify(reviews) }</pre> */}
                         </div>
                     </div>
                     <div className="w-full md:pl-4">
@@ -117,12 +117,18 @@ const page = () => {
 
                         <div className="pt-4 md:pt-6">
                             <div className="text-gray-500 text-sm">
-                                Lorem ipsum dolor sit, amet consectetur adipisicing elit. Error, repellat! Provident aspernatur asperiores dolor adipisci aliquid doloribus, excepturi sapiente, voluptatibus eum labore minima eius inventore reprehenderit officia quos commodi. In.
-                                Lorem ipsum dolor sit, amet consectetur adipisicing elit. Error, repellat! Provident aspernatur asperiores dolor adipisci aliquid doloribus, excepturi sapiente, voluptatibus eum labore minima eius inventore reprehenderit officia quos commodi. In.
-                                Lorem ipsum dolor sit, amet consectetur adipisicing elit. Error, repellat! Provident aspernatur asperiores dolor adipisci aliquid doloribus, excepturi sapiente, voluptatibus eum labore minima eius inventore reprehenderit officia quos commodi. In.
-                                Lorem ipsum dolor sit, amet consectetur adipisicing elit. Error, repellat! Provident aspernatur asperiores dolor adipisci aliquid doloribus, excepturi sapiente, voluptatibus eum labore minima eius inventore reprehenderit officia quos commodi. In.
-                                Lorem ipsum dolor sit, amet consectetur adipisicing elit. Error, repellat! Provident aspernatur asperiores dolor adipisci aliquid doloribus, excepturi sapiente, voluptatibus eum labore minima eius inventore reprehenderit officia quos commodi. In.
-                                Lorem ipsum dolor sit, amet consectetur adipisicing elit. Error, repellat! Provident aspernatur asperiores dolor adipisci aliquid doloribus, excepturi sapiente, voluptatibus eum labore minima eius inventore reprehenderit officia quos commodi. In.
+                                { product?.description }
+                            </div>
+                            <div>
+                                <div className="card w-full bg-base-100 card-md shadow-sm">
+                                    <div className="card-body">
+                                        <h2 className="card-title">Xlarge Card</h2>
+                                        <p>A card component has a figure, a body part, and inside body there are title and actions parts</p>
+                                        <div className="justify-end card-actions">
+                                            <button className="btn btn-primary">Buy Now</button>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
                         </div>
 
