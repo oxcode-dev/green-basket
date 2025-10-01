@@ -104,6 +104,14 @@ export interface FetchedProductType {
     }
     products: ProductItem[];
     perPageLists: number[];
+    productSortLists: ProductSortListType[],
+}
+
+export type ProductSortListType = {
+    label: string;
+    sort_field: string;
+    sort_order: boolean;
+    value: string
 }
 
 export interface OrderItem {

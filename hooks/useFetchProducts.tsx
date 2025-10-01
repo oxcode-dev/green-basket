@@ -1,3 +1,4 @@
+import { ProductSortListType } from '@/types';
 import { keepPreviousData, useQuery } from '@tanstack/react-query';
 import { useSearchParams } from 'next/navigation';
 import React, { useMemo } from 'react'
@@ -7,6 +8,11 @@ export const useFetchProducts = () => {
     const page = Number(searchParams.get('page')) || 1
     const perPage = Number(searchParams.get('perPage')) || 20;
     const perPageLists :number[] = [10, 20, 40, 50, 100];
+    const productSortLists :ProductSortListType[] = [
+        { label: "Latest", sort_field: 'created_at', sort_order: false, value: 'latest' },
+        { label: "Lowest Price First", sort_field: 'price', sort_order: true, value: 'lowest_price' },
+        { label: "Highest Price First", sort_field: 'price', sort_order: false, value: 'highest_price'},
+    ]
     async function fetchProducts(page :number) {
         const res = await fetch(`${process.env.NEXT_PUBLIC_API_ENDPOINT}/api/products?page=${page}&perPage=${perPage}`, {
             headers: { 
@@ -49,5 +55,6 @@ export const useFetchProducts = () => {
         isLoading,
         productsMeta,
         perPageLists,
+        productSortLists,
     } 
 }
