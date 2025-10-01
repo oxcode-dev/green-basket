@@ -7,7 +7,7 @@ import { useFetchProduct } from '@/hooks/useFetchSingleProduct';
 import { useUpdateWishlists } from '@/hooks/useUpdateWishlists';
 import { AppSetup } from '@/setups/AppSetup';
 import { getUser } from '@/store/slices/auth';
-import { ReviewItem, User } from '@/types';
+import { User } from '@/types';
 import { isEmpty, moneyFormat } from '@/types/helper';
 import { MinusIcon, PlusIcon, ShoppingBagIcon } from '@heroicons/react/20/solid';
 import { HeartIcon, BuildingStorefrontIcon, TruckIcon, ArrowPathRoundedSquareIcon, ShoppingCartIcon } from '@heroicons/react/24/outline';
@@ -18,20 +18,23 @@ import { useSelector } from 'react-redux';
 const page = () => {
     // @ts-ignore
     const loggedUser : User | {} = useSelector(getUser)?.user || {};
-    const { product, isFetching} = useFetchProduct();
+    const { product, isFetching, reviews, wishlists} = useFetchProduct();
     const { onClick } = useUpdateWishlists()
 
-    const reviews = useMemo(() : ReviewItem[] => {
-        return product?.reviews
-    }, [product]);
-
     const [isActiveTab, setIsActiveTab] = useState(true)
+
+    const wishlist = useMemo(() => {
+        if(wishlists) {
+            // @ts-ignore
+            return wishlists.find(n => n.product_id === product?.id && n.user_id === loggedUser?.id);
+        }
+    }, [product, wishlists]);
 
     return (
         <AppSetup>
             <div className="container w-full mx-auto py-8 px-4 md:px-0">
                 { isFetching ? <Loading /> : null}
-                { !isFetching && !isEmpty(product) ?
+                { !isFetching && product && !isEmpty(product) ?
                     <div>
                         <div className="w-full flex flex-wrap md:flex-nowrap">
                             <div className="w-full md:pr-6">
@@ -48,6 +51,7 @@ const page = () => {
                             </div>
                             <div className="w-full md:pl-4">
                                 <div className="space-y-2">
+                                    <pre>{JSON.stringify(wishlist)}</pre>
                                     <p className="text-xl md:text-3xl font-semibold">
                                         { product?.title }
                                     </p>
@@ -150,7 +154,7 @@ const page = () => {
                                         </div>
                                     ) : (
                                         <div>
-                                            { reviews.map((review, key) => (    
+                                            { reviews?.map((review, key) => (    
                                                 <div key={key}>
                                                     <ReviewCard review={review} />
                                                 </div>
@@ -164,7 +168,7 @@ const page = () => {
                         </div>
                     </div>
                 : null }
-                { !isFetching && isEmpty(product) ? <EmptyState text="Product Not Found" /> : null }
+                { !isFetching && product && isEmpty(product) ? <EmptyState text="Product Not Found" /> : null }
             </div>
         </AppSetup>
     )

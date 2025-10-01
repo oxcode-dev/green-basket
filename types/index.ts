@@ -75,6 +75,7 @@ export interface ProductItem {
     category: CategoryItem;
     user: User | null;
     reviews: ReviewItem[],
+    wishlists: WishlistItemType[],
     description: string | null;
     summary: string | null;
     images: string | null;
