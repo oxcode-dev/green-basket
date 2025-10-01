@@ -1,9 +1,11 @@
+import { useFetchProduct } from '@/hooks/useFetchSingleProduct';
 import { AppSetup } from '@/setups/AppSetup';
 import { MinusIcon, PlusIcon, ShoppingBagIcon } from '@heroicons/react/20/solid';
 import { HeartIcon, BuildingStorefrontIcon, TruckIcon, ArrowPathRoundedSquareIcon } from '@heroicons/react/24/outline';
 import React from 'react'
 
 const page = () => {
+    const { products} = useFetchProduct();
     return (
         <AppSetup>
             <div className="container w-full mx-auto py-8 px-4 md:px-0">
