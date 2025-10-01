@@ -3,13 +3,17 @@
 import { ReviewCard } from '@/components/ReviewCard';
 import { useFetchProduct } from '@/hooks/useFetchSingleProduct';
 import { AppSetup } from '@/setups/AppSetup';
-import { ReviewItem } from '@/types';
+import { getUser } from '@/store/slices/auth';
+import { ReviewItem, User } from '@/types';
 import { moneyFormat } from '@/types/helper';
 import { MinusIcon, PlusIcon, ShoppingBagIcon } from '@heroicons/react/20/solid';
 import { HeartIcon, BuildingStorefrontIcon, TruckIcon, ArrowPathRoundedSquareIcon } from '@heroicons/react/24/outline';
 import React, { useMemo, useState } from 'react'
+import { useSelector } from 'react-redux';
 
 const page = () => {
+    // @ts-ignore
+    const loggedUser : User | null = useSelector(getUser)?.user || null;
     const { product, isFetching} = useFetchProduct();
     const reviews = useMemo(() : ReviewItem[] => {
         return product?.reviews
@@ -92,8 +96,8 @@ const page = () => {
                                             </span>
                                         </div>
                                     </div>
-                                    </div>
-                                    <div className="border-t-2 border-gray-300 pt-4">
+                                </div>
+                                <div className="border-t-2 border-gray-300 pt-4">
                                     <div className="text-gray-600 inline-flex space-x-4 items-center">
                                         <ArrowPathRoundedSquareIcon className="size-8 text-gray-500" />
                                         <div className="inline-flex flex-col">
