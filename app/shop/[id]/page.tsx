@@ -16,7 +16,7 @@ import { useSelector } from 'react-redux';
 
 const page = () => {
     // @ts-ignore
-    const loggedUser : User | null = useSelector(getUser)?.user || null;
+    const loggedUser : User | {} = useSelector(getUser)?.user || {};
     const { product, isFetching} = useFetchProduct();
     const reviews = useMemo(() : ReviewItem[] => {
         return product?.reviews
@@ -80,9 +80,11 @@ const page = () => {
                                                     <span>Add to cart</span>
                                                 </button>
 
-                                                <button className="btn btn-sm bg-white text-gray-500 border-gray-300 rounded">
-                                                    <HeartIcon className="size-4" />
-                                                </button>
+                                                { !isEmpty(loggedUser) ?
+                                                    <button className="btn btn-sm bg-white text-gray-500 border-gray-300 rounded">
+                                                        <HeartIcon className="size-4" />
+                                                    </button>
+                                                : null}
                                             </div>
                                         </div>
                                     </div>
