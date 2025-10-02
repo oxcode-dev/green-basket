@@ -171,7 +171,6 @@ const page = () => {
                     </div>
                 : null }
                 { !isFetching && !product ? <EmptyState text="Product Not Found" /> : null }
-                {/* { !isFetching && isEmpty(product) ? <EmptyState text="Product Not Found" /> : null } */}
             </div>
         </AppSetup>
     )
