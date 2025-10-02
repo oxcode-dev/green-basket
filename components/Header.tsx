@@ -70,15 +70,7 @@ export const DesktopHeader = ({ user }: UserProp) => {
                         </div>
 
                         <div>
-                            <div className="inline-flex space-x-2 items-center">
-                                <label className="input bg-white input-neutral shadow-xl">
-                                    <MagnifyingGlassIcon className="h-5 opacity-50" />
-                                    <input type="text" className="grow focus:outline-none" placeholder="Search Product..." />
-                                    <button className="btn btn-circle btn-xs">
-                                        <MagnifyingGlassIcon className="size-4 opacity-50" />
-                                    </button>
-                                </label>
-                            </div>
+                            <HeaderSearchBar />
                         </div>
                         <nav>
                             <ul className="flex">
@@ -171,16 +163,8 @@ export const MobileHeader = ({ user }: UserProp) => {
                                         <CategoryDropdown />
                                     </div>
 
-                                    <div className="px-4 py-4 w-full">
-                                        <div className="inline-flex space-x-2 w-full items-center">
-                                            <label className="input bg-white input-neutral shadow-xl">
-                                                <MagnifyingGlassIcon className="h-5 opacity-50" />
-                                                <input type="search" className="grow focus:outline-none" placeholder="Search Product..." />
-                                                <button className="btn btn-circle btn-xs">
-                                                    <MagnifyingGlassIcon className="size-4 opacity-50" />
-                                                </button>
-                                            </label>
-                                        </div>
+                                    <div>
+                                        <HeaderSearchBar />
                                     </div>
 
                                     <div className="flex flex-col mx-auto">
@@ -269,6 +253,22 @@ export const MobileHeader = ({ user }: UserProp) => {
                     </div>
                 </div>
             </nav>
+        </div>
+    )
+}
+
+const HeaderSearchBar = () => {
+    return (
+        <div className="px-4 py-4 w-full">
+            <div className="inline-flex space-x-2 w-full items-center">
+                <label className="input bg-white input-neutral shadow-xl">
+                    <MagnifyingGlassIcon className="h-5 opacity-50" />
+                    <input type="search" className="grow focus:outline-none" placeholder="Search Product..." />
+                    <button className="btn btn-circle btn-xs">
+                        <MagnifyingGlassIcon className="size-4 opacity-50" />
+                    </button>
+                </label>
+            </div>
         </div>
     )
 }

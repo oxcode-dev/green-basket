@@ -4,10 +4,9 @@ import Loading from '@/components/Loading';
 import Pager from '@/components/Pager';
 import { ProductCard } from '@/components/ProductCard';
 import { useFetchProducts } from '@/hooks/useFetchProducts';
-import { CategoriesSection, CategoryDropdown } from '@/sections/CategoriesSection';
 import { AppSetup } from '@/setups/AppSetup';
 import { FetchedProductType } from '@/types';
-import { ArrowsUpDownIcon, ChevronDownIcon, TagIcon } from '@heroicons/react/20/solid';
+import { ArrowsUpDownIcon, ChevronDownIcon } from '@heroicons/react/20/solid';
 import Link from 'next/link';
 import { usePathname, useRouter, useSearchParams } from 'next/navigation';
 import React from 'react'
