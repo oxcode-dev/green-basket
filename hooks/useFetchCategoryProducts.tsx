@@ -1,10 +1,11 @@
 import { ProductSortListType } from '@/types';
 import { keepPreviousData, useQuery } from '@tanstack/react-query';
-import { useSearchParams } from 'next/navigation';
+import { useParams, useSearchParams } from 'next/navigation';
 import React, { useMemo } from 'react'
 
-export const useFetchProducts = () => {
+export const useFetchCategoryProducts = () => {
     const searchParams = useSearchParams()
+    const params = useParams<{ slug: string }>()
     const page = Number(searchParams.get('page')) || 1
     const sortBy = searchParams.get('sort') || 'latest'
     const search = searchParams.get('search') || ''
@@ -19,7 +20,7 @@ export const useFetchProducts = () => {
         return productSortLists.find(n => n.value === sortBy)
     }, [sortBy]);
     async function fetchProducts(page :number) {
-        const res = await fetch(`${process.env.NEXT_PUBLIC_API_ENDPOINT}/api/products?search=${search}&page=${page}&perPage=${perPage}&sortField=${sortValue?.sort_field}&sortAsc=${sortValue?.sort_order}`, {
+        const res = await fetch(`${process.env.NEXT_PUBLIC_API_ENDPOINT}/api/categories/${params.slug}?page=${page}&perPage=${perPage}&sortField=${sortValue?.sort_field}&sortAsc=${sortValue?.sort_order}`, {
             headers: { 
                 // Authorization: `Bearer ${getToken.token}`,
                 'Content-Type': 'application/json' 
