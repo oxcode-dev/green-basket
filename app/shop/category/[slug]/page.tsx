@@ -4,9 +4,10 @@ import Loading from '@/components/Loading';
 import Pager from '@/components/Pager';
 import { ProductCard } from '@/components/ProductCard';
 import { useFetchProducts } from '@/hooks/useFetchProducts';
+import { CategoriesSection, CategoryDropdown } from '@/sections/CategoriesSection';
 import { AppSetup } from '@/setups/AppSetup';
 import { FetchedProductType } from '@/types';
-import { ArrowsUpDownIcon, ChevronDownIcon } from '@heroicons/react/20/solid';
+import { ArrowsUpDownIcon, ChevronDownIcon, TagIcon } from '@heroicons/react/20/solid';
 import Link from 'next/link';
 import { usePathname, useRouter, useSearchParams } from 'next/navigation';
 import React from 'react'
@@ -15,7 +16,6 @@ const page = () => {
     const searchParams = useSearchParams()
     const router = useRouter()
     const pathname = usePathname()
-    const search = searchParams.get('search') || ''
     const page = Number(searchParams.get('page')) || 1
     const per_page = Number(searchParams.get('perPage'))
     const sort = searchParams.get('sort')
@@ -23,11 +23,11 @@ const page = () => {
     const { products, isFetching, productsMeta, perPageLists, productSortLists } : FetchedProductType = useFetchProducts()
     const setPage = (page: number) => {
         if(per_page || sort) {
-            router.push(`${pathname}?search=${search}&page=${page}&perPage=${per_page || 20}&sort=${sort || 'latest'}`)
+            router.push(`${pathname}?page=${page}&perPage=${per_page || 20}&sort=${sort || 'latest'}`)
             return;
         }
 
-        router.push(`${pathname}?search=${search}&page=${page}`)
+        router.push(`${pathname}?page=${page}`)
     }
 
     return (
@@ -35,11 +35,8 @@ const page = () => {
             <div className="container w-full mx-auto py-8 px-4 md:px-0">
                 <div className="w-full min-h-28 rounded-xl bg-center flex items-center" style={{ backgroundImage: "url(/shop-hero.svg)"}}>
                     <div className="p-4 sm:px-8 md:px-12 py-4">
-                        <p className="text-sm text-gray-600">
-                            Showing {productsMeta?.total_products || 0} results for:
-                        </p>
                         <p className="font-semibold text-xl md:text-3xl">
-                            { search }
+                            All Products
                         </p>
                     </div>
                 </div>
@@ -47,8 +44,31 @@ const page = () => {
 
             <div className="container w-full mx-auto py-8 px-4 md:px-0">
                 <div className="flex w-full flex-wrap md:flex-nowrap">
+                    <div className="w-full md:w-1/5 md:flex hidden">
+                        <div className="flex flex-col space-y-4">
+                            <div className="border border-gray-300 shadow-sm rounded-md p-4">
+                                <div className="space-y-2 pb-2">
+                                    <h3 className="font-semibold">
+                                        Categories
+                                    </h3>
+                                    <div className="w-full h-0.5 relative bg-gray-300 rounded-full">
+                                        <div className="w-[30%] h-0.5 relative bg-green-500 rounded-full"></div>
+                                    </div>
+                                </div>
 
-                    <div className="w-full">
+                                <div className='pt-2 space-y-2'>
+                                    <CategoriesSection />
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+
+                    <div className="w-full md:w-4/5 md:pl-6">
+                        <div className="pb-8 md:hidden">
+                            <CategoryDropdown />
+                        </div>
+
                         <div className="space-y-2 pb-3">
                            <div className="flex justify-end">
                                     
@@ -68,7 +88,7 @@ const page = () => {
                                         >
                                             {perPageLists.map((item, key) => (
                                                 <li key={key}>
-                                                    <Link href={`${pathname}?search=${search}&page=${1}&perPage=${item}`} className="justify-between">{item}</Link>
+                                                    <Link href={`${pathname}?page=${1}&perPage=${item}`} className="justify-between">{item}</Link>
                                                 </li>
                                             ))}
                                         </ul>
@@ -91,7 +111,7 @@ const page = () => {
                                         >
                                             {productSortLists.map((item, key) => (
                                                 <li key={key}>
-                                                    <Link href={`${pathname}?search=${search}&page=${1}&sort=${item?.value}`} className="justify-between">{item?.label}</Link>
+                                                    <Link href={`${pathname}?page=${1}&sort=${item?.value}`} className="justify-between">{item?.label}</Link>
                                                 </li>
                                             ))}
                                         </ul>
@@ -105,7 +125,7 @@ const page = () => {
                         
                         { !isFetching ? (
                             <div>
-                                <div className="grid sm:grid-cols-2 md:grid-cols-4 lg:grid-cols-5 md:gap-6 gap-6 sm:gap-4">
+                                <div className="grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 md:gap-6 gap-6 sm:gap-4">
                                     { products.map((item, key) => (
                                         <div key={key}>
                                             <ProductCard product={item} />
