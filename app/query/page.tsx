@@ -65,7 +65,7 @@ const page = () => {
                                         >
                                             {perPageLists.map((item, key) => (
                                                 <li key={key}>
-                                                    <Link href={`${pathname}?page=${1}&perPage=${item}`} className="justify-between">{item}</Link>
+                                                    <Link href={`${pathname}?search=${search}&page=${1}&perPage=${item}`} className="justify-between">{item}</Link>
                                                 </li>
                                             ))}
                                         </ul>
@@ -88,7 +88,7 @@ const page = () => {
                                         >
                                             {productSortLists.map((item, key) => (
                                                 <li key={key}>
-                                                    <Link href={`${pathname}?page=${1}&sort=${item?.value}`} className="justify-between">{item?.label}</Link>
+                                                    <Link href={`${pathname}?search=${search}&page=${1}&sort=${item?.value}`} className="justify-between">{item?.label}</Link>
                                                 </li>
                                             ))}
                                         </ul>
