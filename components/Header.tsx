@@ -10,7 +10,7 @@ import { getUser } from '@/store/slices/auth';
 import { useInitials } from '@/types/helper';
 import { useNavigationItems } from '@/hooks/useNavigationItems';
 import { CategoryDropdown } from '@/sections/CategoriesSection';
-import { useRouter } from 'next/navigation';
+import { useRouter, useSearchParams } from 'next/navigation';
 
 type UserProp = {
     user: User | null
@@ -259,8 +259,10 @@ export const MobileHeader = ({ user }: UserProp) => {
 }
 
 const HeaderSearchBar = () => {
+    const searchParams = useSearchParams()
+    // const search = searchParams.get('search') || ''
     const router = useRouter();
-    const [search, setSearch] = useState('')
+    const [search, setSearch] = useState(searchParams.get('search') || '')
     const onSubmit = (e: FormEvent) => {
         e.preventDefault();
         router.push(`/query?search=${search}`)
@@ -270,7 +272,12 @@ const HeaderSearchBar = () => {
             <div className="inline-flex space-x-2 w-full items-center">
                 <label className="input bg-white input-neutral shadow-xl">
                     <MagnifyingGlassIcon className="h-5 opacity-50" />
-                    <input onChange={e => setSearch(e.target.value)} type="search" className="grow focus:outline-none" placeholder="Search Product..." />
+                    <input 
+                        onChange={e => setSearch(e.target.value)}
+                        value={search}
+                        type="search" className="grow focus:outline-none" 
+                        placeholder="Search Product..." 
+                    />
                     <button className="btn btn-circle btn-xs">
                         <MagnifyingGlassIcon className="size-4 opacity-50" />
                     </button>
