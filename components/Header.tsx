@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useState } from 'react'
+import React, { FormEvent, useState } from 'react'
 import { Logo } from './Logo'
 import { ArrowRightEndOnRectangleIcon, Bars3Icon, ChevronDownIcon, EnvelopeIcon, MagnifyingGlassIcon, ShoppingCartIcon, TagIcon, XMarkIcon } from '@heroicons/react/20/solid'
 import Link from 'next/link';
@@ -10,6 +10,7 @@ import { getUser } from '@/store/slices/auth';
 import { useInitials } from '@/types/helper';
 import { useNavigationItems } from '@/hooks/useNavigationItems';
 import { CategoryDropdown } from '@/sections/CategoriesSection';
+import { useRouter } from 'next/navigation';
 
 type UserProp = {
     user: User | null
@@ -258,17 +259,23 @@ export const MobileHeader = ({ user }: UserProp) => {
 }
 
 const HeaderSearchBar = () => {
+    const router = useRouter();
+    const [search, setSearch] = useState('')
+    const onSubmit = (e: FormEvent) => {
+        e.preventDefault();
+        router.push(`/query?search=${search}`)
+    }
     return (
-        <div className="px-4 py-4 w-full">
+        <form onSubmit={e => onSubmit(e)} className="px-4 py-4 w-full">
             <div className="inline-flex space-x-2 w-full items-center">
                 <label className="input bg-white input-neutral shadow-xl">
                     <MagnifyingGlassIcon className="h-5 opacity-50" />
-                    <input type="search" className="grow focus:outline-none" placeholder="Search Product..." />
+                    <input onChange={e => setSearch(e.target.value)} type="search" className="grow focus:outline-none" placeholder="Search Product..." />
                     <button className="btn btn-circle btn-xs">
                         <MagnifyingGlassIcon className="size-4 opacity-50" />
                     </button>
                 </label>
             </div>
-        </div>
+        </form>
     )
 }
