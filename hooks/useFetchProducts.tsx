@@ -7,6 +7,8 @@ export const useFetchProducts = () => {
     const searchParams = useSearchParams()
     const page = Number(searchParams.get('page')) || 1
     const sortBy = searchParams.get('sort') || 'latest'
+    const search = searchParams.get('search') || '
+    '
     const perPage = Number(searchParams.get('perPage')) || 20;
     const perPageLists :number[] = [10, 20, 40, 50, 100];
     const productSortLists :ProductSortListType[] = [
