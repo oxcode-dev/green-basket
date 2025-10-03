@@ -5,7 +5,6 @@ import { thunk } from 'redux-thunk';
 import AuthUserReducer from './slices/auth';
 import CartReducer from './slices/cart';
 
-
 const persistConfig = {
     key: 'root',
     storage,
