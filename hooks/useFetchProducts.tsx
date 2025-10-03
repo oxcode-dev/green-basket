@@ -7,8 +7,7 @@ export const useFetchProducts = () => {
     const searchParams = useSearchParams()
     const page = Number(searchParams.get('page')) || 1
     const sortBy = searchParams.get('sort') || 'latest'
-    const search = searchParams.get('search') || '
-    '
+    const search = searchParams.get('search') || ''
     const perPage = Number(searchParams.get('perPage')) || 20;
     const perPageLists :number[] = [10, 20, 40, 50, 100];
     const productSortLists :ProductSortListType[] = [
@@ -20,7 +19,7 @@ export const useFetchProducts = () => {
         return productSortLists.find(n => n.value === sortBy)
     }, [sortBy]);
     async function fetchProducts(page :number) {
-        const res = await fetch(`${process.env.NEXT_PUBLIC_API_ENDPOINT}/api/products?page=${page}&perPage=${perPage}&sortField=${sortValue?.sort_field}&sortAsc=${sortValue?.sort_order}`, {
+        const res = await fetch(`${process.env.NEXT_PUBLIC_API_ENDPOINT}/api/products?search=${search}page=${page}&perPage=${perPage}&sortField=${sortValue?.sort_field}&sortAsc=${sortValue?.sort_order}`, {
             headers: { 
                 // Authorization: `Bearer ${getToken.token}`,
                 'Content-Type': 'application/json' 
