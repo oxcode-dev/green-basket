@@ -3,7 +3,7 @@
 import Loading from '@/components/Loading';
 import Pager from '@/components/Pager';
 import { ProductCard } from '@/components/ProductCard';
-import { useFetchProducts } from '@/hooks/useFetchProducts';
+import { useFetchCategoryProducts } from '@/hooks/useFetchCategoryProducts';
 import { CategoriesSection, CategoryDropdown } from '@/sections/CategoriesSection';
 import { AppSetup } from '@/setups/AppSetup';
 import { FetchedProductType } from '@/types';
@@ -20,7 +20,7 @@ const page = () => {
     const per_page = Number(searchParams.get('perPage'))
     const sort = searchParams.get('sort')
 
-    const { products, isFetching, productsMeta, perPageLists, productSortLists } : FetchedProductType = useFetchProducts()
+    const { products, isFetching, productsMeta, perPageLists, productSortLists } : FetchedProductType = useFetchCategoryProducts()
     const setPage = (page: number) => {
         if(per_page || sort) {
             router.push(`${pathname}?page=${page}&perPage=${per_page || 20}&sort=${sort || 'latest'}`)
