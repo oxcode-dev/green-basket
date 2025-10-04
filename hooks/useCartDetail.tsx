@@ -1,7 +1,9 @@
 'use client'
 import { getCarts, addCart } from "@/store/slices/cart"
+import { ProductItem } from "@/types"
 import { isEmpty } from "@/types/helper"
 import { keepPreviousData, useQuery } from "@tanstack/react-query"
+import { usePathname } from "next/navigation"
 import { FormEvent, useEffect, useMemo, useState } from "react"
 import { useDispatch, useSelector } from "react-redux"
 
@@ -9,10 +11,17 @@ type CartProp = {
     product_id: string;
     quantity: number;
 }
+type ProductsProp = {
+    data: ProductItem[];
+    success: boolean;
+    message: string;
+}
 
 export const useCartDetail = () => {
     const dispatch = useDispatch()
     const getAllCarts :CartProp[] = useSelector(getCarts) || []
+
+    const pathname = usePathname();
 
     // const [carts, setCarts] = useState([])
     // const [isClient, setIsClient] = useState(false)
@@ -84,7 +93,6 @@ export const useCartDetail = () => {
             acc.total = (acc.total + itemTotal)
             return acc;
         },  { total: 0 })
-
     }
 
     const resetCart = () => {
@@ -110,7 +118,7 @@ export const useCartDetail = () => {
         
     // }
 
-    async function fetchOrders() {
+    async function fetchCartProducts() : Promise<ProductsProp | null> {
         const params = new URLSearchParams();
         cartProductsIds.forEach(id => params.append('id[]', id))
 
@@ -127,18 +135,23 @@ export const useCartDetail = () => {
         return response.json();
     }
 
-    const { data, error, isLoading, isFetching } = useQuery({
-        queryKey: ["list_categories3443"],
-        queryFn: () => fetchOrders(),
+    const { data: products, error, isLoading, isFetching } = useQuery<ProductsProp | {}>({
+        queryKey: ["list_cart_products"],
+        queryFn: () => pathname === '/cart' ? fetchCartProducts() : () => {},
         // placeholderData: keepPreviousData,
         // staleTime: 10 * 60 * 1000,
     });
 
-    console.log(data)
-    
+    const getProductDetails = (product_id: string) : ProductItem | {} => {
+        if(product_id && products) {
+            //@ts-ignore
+            return products?.data.find(n => n.id === product_id) || {}
+        }
+        return {}
+    }
 
     return {
         getAllCarts, handleAddCart, handleReduceCartQuantity, totalCartsQuantity,
-        resetCart, handleRemoveCartItem, cartProductsIds, data
+        resetCart, handleRemoveCartItem, cartProductsIds, products, totalCartsPrice,
     }
 }
