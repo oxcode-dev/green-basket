@@ -8,7 +8,7 @@ import Link from "next/link";
 import { useCartDetail } from '@/hooks/useCartDetail';
 
 const page = () => {
-    const {getAllCarts, handleAddCart, handleReduceCartQuantity, handleRemoveCartItem, cartProductsIds } = useCartDetail();
+    const {getAllCarts, handleAddCart, handleReduceCartQuantity, handleRemoveCartItem, cartProductsIds, data } = useCartDetail();
 
     return (
         <AppSetup>

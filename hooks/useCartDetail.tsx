@@ -1,6 +1,7 @@
 'use client'
 import { getCarts, addCart } from "@/store/slices/cart"
 import { isEmpty } from "@/types/helper"
+import { keepPreviousData, useQuery } from "@tanstack/react-query"
 import { FormEvent, useEffect, useMemo, useState } from "react"
 import { useDispatch, useSelector } from "react-redux"
 
@@ -109,10 +110,35 @@ export const useCartDetail = () => {
         
     // }
 
+    async function fetchOrders() {
+        const params = new URLSearchParams();
+        cartProductsIds.forEach(id => params.append('id[]', id))
+
+        const response = await fetch(`${process.env.NEXT_PUBLIC_API_ENDPOINT}/api/products`, {
+            headers: { 
+                // Authorization: `Bearer ${getToken.token}`,
+                'Content-Type': 'application/json' 
+            },
+        });
+    
+        if (!response.ok) {
+            throw new Error("Failed to fetch posts");
+        }
+        return response.json();
+    }
+
+    const { data, error, isLoading, isFetching } = useQuery({
+        queryKey: ["list_categories3443"],
+        queryFn: () => fetchOrders(),
+        // placeholderData: keepPreviousData,
+        // staleTime: 10 * 60 * 1000,
+    });
+
+    console.log(data)
     
 
     return {
         getAllCarts, handleAddCart, handleReduceCartQuantity, totalCartsQuantity,
-        resetCart, handleRemoveCartItem, cartProductsIds
+        resetCart, handleRemoveCartItem, cartProductsIds, data
     }
 }

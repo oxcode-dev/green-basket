@@ -2,7 +2,7 @@ import { keepPreviousData, useQuery } from '@tanstack/react-query';
 import React, { useMemo } from 'react'
 
 export const useFetchCategories = () => {
-    async function fetchOrders() {
+    async function fetchCategories() {
         const res = await fetch(`${process.env.NEXT_PUBLIC_API_ENDPOINT}/api/categories`, {
             headers: { 
                 // Authorization: `Bearer ${getToken.token}`,
@@ -18,7 +18,7 @@ export const useFetchCategories = () => {
 
     const { data: categoriesList, error, isLoading, isFetching } = useQuery({
         queryKey: ["list_categories"],
-        queryFn: () => fetchOrders(),
+        queryFn: () => fetchCategories(),
         placeholderData: keepPreviousData,
         staleTime: 10 * 60 * 1000,
     });
