@@ -1,17 +1,45 @@
 'use client'
 import { getCarts, addCart } from "@/store/slices/cart"
+import { isEmpty } from "@/types/helper"
 import { FormEvent, useEffect, useState } from "react"
 import { useDispatch, useSelector } from "react-redux"
 
+type CartProp = {
+    product_id: string;
+    quantity: number;
+}
+
 export const useCartDetail = () => {
     const dispatch = useDispatch()
-    const getAllCarts = useSelector(getCarts) || []
+    const getAllCarts :CartProp[] = useSelector(getCarts) || []
 
     // const [carts, setCarts] = useState([])
     // const [isClient, setIsClient] = useState(false)
     // const [isLoading, setIsLoading] = useState(true)
     // const [totalAmount, setTotalAmount] = useState(0)
     // const [shippingCost] = useState(8)
+
+    const handleAddCart = (product_id: string, e: FormEvent) => {
+        e.preventDefault();
+        let checkCart = getAllCarts.find(n => n.product_id === product_id) 
+        // let checkCart = carts.find(n => n.product_id === product_id) 
+
+        if(checkCart && !isEmpty(checkCart)) {
+            let items = getAllCarts.map(obj =>
+                obj.product_id === product_id ? { ...obj, quantity: obj.quantity + 1 } : obj
+            );
+            // setCarts(items)
+            dispatch(addCart(items))
+        }
+        else{
+            let items = [...getAllCarts, {
+                product_id: product_id, 
+                quantity: 1
+            }]
+            dispatch(addCart(items))
+            // setCarts(items)
+        }
+    }
 
 
     // const totalCartsPrice = () => {
@@ -70,35 +98,15 @@ export const useCartDetail = () => {
     //     }
     // }
 
-    // const handleAddCart = (product_id: string, e: FormEvent) => {
-    //     e.preventDefault();
-    //     let checkCart = carts.find(n => n.product_id === product_id) 
-
-    //     if(!isEmpty(checkCart)) {
-    //         let items = carts.map(obj =>
-    //             obj.product_id === product_id ? { ...obj, quantity: obj.quantity + 1 } : obj
-    //         );
-    //         setCarts(items)
-    //         dispatch(addCart(items))
-    //     }
-    //     else{
-    //         let items = [...carts, {
-    //             product_id: product_id, 
-    //             quantity: 1
-    //         }]
-    //         dispatch(addCart(items))
-    //         setCarts(items)
-    //     }
-    // }
-
     // const resetCarts = () => {
     //     dispatch(addCart([]))
     //     setCarts([])
     // }
 
     return {
-        isClient, setIsClient, totalAmount, shippingCost, getAllCarts, 
-        carts, setCarts, handleCartQuantity, isLoading,
-        handleReduceCartQuantity, handleRemoveCartItem, resetCarts, handleAddCart,
+        getAllCarts,
+        // isClient, setIsClient, totalAmount, shippingCost, getAllCarts, 
+        // carts, setCarts, handleCartQuantity, isLoading,
+        // handleReduceCartQuantity, handleRemoveCartItem, resetCarts, handleAddCart,
     }
 }

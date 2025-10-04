@@ -1,5 +1,6 @@
 'use client';
 
+import { useCartDetail } from '@/hooks/useCartDetail';
 import { useUpdateWishlists } from '@/hooks/useUpdateWishlists';
 import { getUser } from '@/store/slices/auth';
 import { ProductItem, User } from '@/types';
@@ -17,6 +18,7 @@ export const ProductCard = ({ product } : ProductCardType) => {
   //@ts-ignore
   const loggedUser : User | {} = useSelector(getUser)?.user || {};
   const { onClick } = useUpdateWishlists()
+  const { getAllCarts } = useCartDetail()
 
   const wishlist = useMemo(() => {
     if(product?.wishlists) {
@@ -27,6 +29,7 @@ export const ProductCard = ({ product } : ProductCardType) => {
 
   return (
     <div className="product-card flex flex-col justify-center rounded-md border border-gray-300">
+      <pre>{JSON.stringify(getAllCarts)}</pre>
       <Link href={`/shop/${product.slug}`} className="flex flex-col justify-center items-center">
         <img 
           src="https://preview.colorlib.com/theme/vegefoods/images/product-2.jpg"
