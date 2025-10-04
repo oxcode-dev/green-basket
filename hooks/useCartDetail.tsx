@@ -22,7 +22,6 @@ export const useCartDetail = () => {
     const handleAddCart = (product_id: string, e: FormEvent) => {
         e.preventDefault();
         let checkCart = getAllCarts.find(n => n.product_id === product_id) 
-        // let checkCart = carts.find(n => n.product_id === product_id) 
 
         if(checkCart && !isEmpty(checkCart)) {
             let items = getAllCarts.map(obj =>
@@ -37,8 +36,8 @@ export const useCartDetail = () => {
                 quantity: 1
             }]
             dispatch(addCart(items))
-            // setCarts(items)
         }
+        console.log(getAllCarts)
     }
 
 

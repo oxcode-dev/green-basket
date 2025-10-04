@@ -18,7 +18,7 @@ export const ProductCard = ({ product } : ProductCardType) => {
   //@ts-ignore
   const loggedUser : User | {} = useSelector(getUser)?.user || {};
   const { onClick } = useUpdateWishlists()
-  const { getAllCarts, handleAddCart } = useCartDetail()
+  const { handleAddCart } = useCartDetail()
 
   const wishlist = useMemo(() => {
     if(product?.wishlists) {
@@ -29,7 +29,6 @@ export const ProductCard = ({ product } : ProductCardType) => {
 
   return (
     <div className="product-card flex flex-col justify-center rounded-md border border-gray-300">
-      <pre>{JSON.stringify(getAllCarts)}</pre>
       <Link href={`/shop/${product.slug}`} className="flex flex-col justify-center items-center">
         <img 
           src="https://preview.colorlib.com/theme/vegefoods/images/product-2.jpg"
