@@ -11,6 +11,7 @@ import { useInitials } from '@/types/helper';
 import { useNavigationItems } from '@/hooks/useNavigationItems';
 import { CategoryDropdown } from '@/sections/CategoriesSection';
 import { useRouter, useSearchParams } from 'next/navigation';
+import { useCartDetail } from '@/hooks/useCartDetail';
 
 type UserProp = {
     user: User | null
@@ -31,6 +32,7 @@ export const Header = () => {
 
 export const DesktopHeader = ({ user }: UserProp) => {
     const { navigationItems, appNavigationItems } = useNavigationItems()
+    const { totalCartsQuantity } = useCartDetail()
 
     return (
         <div className="shadow hidden md:block">
@@ -122,7 +124,7 @@ export const DesktopHeader = ({ user }: UserProp) => {
                                 : null }
                                 <Link href="/cart" className="w-6 relative">
                                     <ShoppingCartIcon className="size-5" />
-                                    <span className="w-4 h-4 text-xs text-white absolute right-0 -top-2 bg-red-600 p-1 rounded-full items-center justify-center inline-flex">1</span>
+                                    <span className="size-5 text-xs text-white absolute -right-1 -top-3.5 bg-red-600 p-1.5 rounded-full items-center justify-center inline-flex">{totalCartsQuantity?.total || 0}</span>
                                 </Link>
                             </div>
                         </div>

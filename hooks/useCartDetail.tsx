@@ -1,7 +1,7 @@
 'use client'
 import { getCarts, addCart } from "@/store/slices/cart"
 import { isEmpty } from "@/types/helper"
-import { FormEvent, useEffect, useState } from "react"
+import { FormEvent, useEffect, useMemo, useState } from "react"
 import { useDispatch, useSelector } from "react-redux"
 
 type CartProp = {
@@ -18,6 +18,13 @@ export const useCartDetail = () => {
     // const [isLoading, setIsLoading] = useState(true)
     // const [totalAmount, setTotalAmount] = useState(0)
     // const [shippingCost] = useState(8)
+
+    const totalCartsQuantity = useMemo(() => {
+        return getAllCarts.reduce((acc = {total: 0}, item :CartProp) => {
+            acc.total = acc.total + item.quantity
+            return acc;
+        },  { total: 0 })
+    }, [getAllCarts])
 
     const handleAddCart = (product_id: string, e: FormEvent) => {
         e.preventDefault();
@@ -100,7 +107,7 @@ export const useCartDetail = () => {
     // }
 
     return {
-        getAllCarts, handleAddCart, handleReduceCartQuantity,
+        getAllCarts, handleAddCart, handleReduceCartQuantity, totalCartsQuantity
         // isClient, setIsClient, totalAmount, shippingCost, getAllCarts, 
         // carts, setCarts, handleCartQuantity, isLoading,
         // handleReduceCartQuantity, handleRemoveCartItem, resetCarts, handleAddCart,
