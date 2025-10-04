@@ -104,7 +104,7 @@ export const useCartDetail = () => {
     // }
 
     return {
-        getAllCarts,
+        getAllCarts, handleAddCart,
         // isClient, setIsClient, totalAmount, shippingCost, getAllCarts, 
         // carts, setCarts, handleCartQuantity, isLoading,
         // handleReduceCartQuantity, handleRemoveCartItem, resetCarts, handleAddCart,

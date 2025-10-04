@@ -18,7 +18,7 @@ export const ProductCard = ({ product } : ProductCardType) => {
   //@ts-ignore
   const loggedUser : User | {} = useSelector(getUser)?.user || {};
   const { onClick } = useUpdateWishlists()
-  const { getAllCarts } = useCartDetail()
+  const { getAllCarts, handleAddCart } = useCartDetail()
 
   const wishlist = useMemo(() => {
     if(product?.wishlists) {
@@ -45,7 +45,7 @@ export const ProductCard = ({ product } : ProductCardType) => {
         <p dangerouslySetInnerHTML={{ __html: moneyFormat(product?.price || 0)}} className="cart-text text-gray-400 text-md font-medium pb-2.5"></p>
 
         <div className="inline-flex space-x-3 py-1 cart-btn">
-          <a href="#" className="inline-flex justify-center items-center bg-green-600 text-white size-6.5 p-1 rounded-full">
+          <a onClick={e => handleAddCart(product.id, e)} href="#" className="inline-flex justify-center items-center bg-green-600 text-white size-6.5 p-1 rounded-full">
             <ShoppingCartIcon className="size-3.5" />
           </a>
           { !isEmpty(loggedUser) ?
