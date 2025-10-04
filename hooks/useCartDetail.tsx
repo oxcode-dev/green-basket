@@ -19,6 +19,12 @@ export const useCartDetail = () => {
     // const [totalAmount, setTotalAmount] = useState(0)
     // const [shippingCost] = useState(8)
 
+    const cartProductsIds = useMemo(() => {
+        let ids: string[] = [];
+        getAllCarts.forEach((item) => ids.push(item.product_id))
+        return ids;
+    }, [getAllCarts])
+
     const totalCartsQuantity = useMemo(() => {
         return getAllCarts.reduce((acc = {total: 0}, item :CartProp) => {
             acc.total = acc.total + item.quantity
@@ -84,6 +90,7 @@ export const useCartDetail = () => {
         dispatch(addCart([]))
     }
 
+
     // const handleCartQuantity = (product_id: string, e: FormEvent) => {
     //     e.preventDefault();
     //     let checkCart = carts.find(n => n.product_id === product_id)
@@ -106,6 +113,6 @@ export const useCartDetail = () => {
 
     return {
         getAllCarts, handleAddCart, handleReduceCartQuantity, totalCartsQuantity,
-        resetCart, handleRemoveCartItem
+        resetCart, handleRemoveCartItem, cartProductsIds
     }
 }
