@@ -114,7 +114,7 @@ export const useCartDetail = () => {
         const params = new URLSearchParams();
         cartProductsIds.forEach(id => params.append('id[]', id))
 
-        const response = await fetch(`${process.env.NEXT_PUBLIC_API_ENDPOINT}/api/products`, {
+        const response = await fetch(`${process.env.NEXT_PUBLIC_API_ENDPOINT}/api/products/cart?${params.toString()}`, {
             headers: { 
                 // Authorization: `Bearer ${getToken.token}`,
                 'Content-Type': 'application/json' 
