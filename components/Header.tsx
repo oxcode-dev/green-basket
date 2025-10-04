@@ -138,6 +138,7 @@ export const DesktopHeader = ({ user }: UserProp) => {
 export const MobileHeader = ({ user }: UserProp) => {
     const [active, setActive] = useState(false)
     const { navigationItems, appNavigationItems } = useNavigationItems()
+    const { totalCartsQuantity } = useCartDetail()
 
     return (
         <div className="md:hidden">
@@ -242,13 +243,9 @@ export const MobileHeader = ({ user }: UserProp) => {
                             </Link>
                         : null }
 
-                        <Link className="w-6 relative" href="/cart" title="Shopping Cart">
-                            <span className="w-4 h-4 text-xs text-white absolute right-0 -top-2 bg-red-600 p-1 rounded-full items-center justify-center inline-flex">
-                                3
-                            </span>
-                            <span>
-                                <ShoppingCartIcon className="size-5" />
-                            </span>
+                        <Link href="/cart" className="w-6 relative">
+                            <ShoppingCartIcon className="size-5" />
+                            <span className="size-5 text-xs text-white absolute -right-1 -top-3.5 bg-red-600 p-1.5 rounded-full items-center justify-center inline-flex">{totalCartsQuantity?.total || 0}</span>
                         </Link>
                         <a onClick={() => setActive(true)} className="w-6 flex">
                             <Bars3Icon className="size-6" />
