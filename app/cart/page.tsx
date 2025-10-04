@@ -1,10 +1,15 @@
+'use client';
+
 import { AppSetup } from '@/setups/AppSetup';
 import { MinusIcon, PlusIcon, TrashIcon } from '@heroicons/react/20/solid';
 import { ShieldExclamationIcon } from '@heroicons/react/24/outline';
 import React from 'react'
 import Link from "next/link";
+import { useCartDetail } from '@/hooks/useCartDetail';
 
 const page = () => {
+    const {getAllCarts, handleAddCart, handleReduceCartQuantity, handleRemoveCartItem } = useCartDetail();
+
     return (
         <AppSetup>
             <div className="container w-full mx-auto py-8 px-4 md:px-0">
@@ -17,6 +22,7 @@ const page = () => {
                 </div>
 
                 <div className="w-full py-4 md:py-8">
+                    {/* <pre>{JSON.stringify(getAllCarts)}</pre> */}
                     <div className="flex flex-wrap md:flex-nowrap">
                         <div className="w-full md:w-2/3 md:pr-6">
                             <div className="border border-gray-300 rounded-xl p-2 w-full">
@@ -32,7 +38,7 @@ const page = () => {
                                             </tr>
                                         </thead>
                                         <tbody>
-                                        { Array.from({ length: 4 }).map((item, key) => (
+                                        { getAllCarts.map((item, key) => (
                                             <tr key={key} className="">
                                                 <td className="px-1 py-2 border-t border-gray-200 bg-white">
                                                     <div>
@@ -58,18 +64,18 @@ const page = () => {
                                                 </td>
                                                 <td className="px-1 py-2 border-t border-gray-200 bg-white text-md text-center">
                                                     <div className="inline-flex rounded-full p-0.5 border border-gray-400 text-gray-600">
-                                                        <button type="button" className="text-gray-800 font-semibold p-0.5 px-1.5 cursor-pointer">
+                                                        <a onClick={e => handleReduceCartQuantity(item.product_id, e)} href="#" type="button" className="text-gray-800 font-semibold p-0.5 px-1.5 cursor-pointer">
                                                             <MinusIcon className="size-4" />
-                                                        </button>
-                                                        <p className="text-md font-semibold w-4">3</p>
-                                                        <button type="button" className="text-gray-800 font-semibold p-0.5 px-1.5 cursor-pointer">
+                                                        </a>
+                                                        <p className="text-md font-semibold w-4">{item?.quantity}</p>
+                                                        <a onClick={e => handleAddCart(item.product_id, e)} href="#" type="button" className="text-gray-800 font-semibold p-0.5 px-1.5 cursor-pointer">
                                                             <PlusIcon className="size-4" />
-                                                        </button>
+                                                        </a>
                                                     </div>
                                                 </td>
                                                 <td className="px-1 py-2 border-t border-gray-200 bg-white text-md text-center">$102</td>
                                                 <td className="px-1 py-2 border-t border-gray-200 bg-white text-md text-center">
-                                                    <a className="text-gray-600 p-1 inline-flex justify-center" href="#">
+                                                    <a onClick={e => handleRemoveCartItem(item.product_id, e)} className="text-gray-600 p-1 inline-flex justify-center" href="#">
                                                         <TrashIcon className="size-5" />
                                                     </a>
                                                 </td>
@@ -82,7 +88,7 @@ const page = () => {
                                 <div className="md:hidden">
                                     <p className="font-semibold text-gray-800 text-2xl py-2">Your Cart</p>
                                     <div>
-                                    { Array.from({ length: 4 }).map((item, key) => (
+                                    { getAllCarts.map((item, key) => (
                                         <div key={key} className="py-1.5 border-t border-gray-300">
                                             <div className="inline-flex space-x-3 items-start">
                                                 <img 
@@ -104,15 +110,15 @@ const page = () => {
                                                     <div className="flex justify-between items-center">
                                                         <div className="flex items-center">
                                                             <div className="inline-flex rounded-full p-0.5 border border-gray-400 text-gray-600">
-                                                                <button type="button" className="text-gray-800 font-semibold p-0.5 px-1.5 cursor-pointer">
+                                                                <a onClick={e => handleReduceCartQuantity(item.product_id, e)} href="#" type="button" className="text-gray-800 font-semibold p-0.5 px-1.5 cursor-pointer">
                                                                     <MinusIcon className="size-4" />
-                                                                </button>
-                                                                <p className="text-md font-semibold w-4">3</p>
-                                                                <button type="button" className="text-gray-800 font-semibold p-0.5 px-1.5 cursor-pointer">
+                                                                </a>
+                                                                <p className="text-md font-semibold w-4">{item?.quantity}</p>
+                                                                <a onClick={e => handleAddCart(item.product_id, e)} href="#" type="button" className="text-gray-800 font-semibold p-0.5 px-1.5 cursor-pointer">
                                                                     <PlusIcon className="size-4" />
-                                                                </button>
+                                                                </a>
                                                             </div>
-                                                            <a className="text-gray-600 p-1 inline-flex justify-center" href="#">
+                                                            <a onClick={e => handleRemoveCartItem(item.product_id, e)} href="#" className="text-gray-600 p-1 inline-flex justify-center">
                                                                 <TrashIcon className="size-5" />
                                                             </a>
                                                         </div>

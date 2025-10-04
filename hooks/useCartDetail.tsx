@@ -79,7 +79,10 @@ export const useCartDetail = () => {
         },  { total: 0 })
 
     }
-    
+
+    const resetCart = () => {
+        dispatch(addCart([]))
+    }
 
     // const handleCartQuantity = (product_id: string, e: FormEvent) => {
     //     e.preventDefault();
@@ -99,15 +102,10 @@ export const useCartDetail = () => {
         
     // }
 
-    const resetCart = () => {
-        dispatch(addCart([]))
-    }
+    
 
     return {
         getAllCarts, handleAddCart, handleReduceCartQuantity, totalCartsQuantity,
-        resetCart,
-        // isClient, setIsClient, totalAmount, shippingCost, getAllCarts, 
-        // carts, setCarts, handleCartQuantity, isLoading,
-        // handleReduceCartQuantity, handleRemoveCartItem, resetCarts, handleAddCart,
+        resetCart, handleRemoveCartItem
     }
 }
