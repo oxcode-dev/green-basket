@@ -22,7 +22,7 @@ const page = () => {
     const [isActiveTab, setIsActiveTab] = useState(true)
     const { product, isFetching, reviews, wishlists} = useFetchProduct();
     const { onClick } = useUpdateWishlists()
-    const { handleAddCart, getAllCarts } = useCartDetail()
+    const { handleAddCart, getAllCarts, handleReduceCartQuantity } = useCartDetail()
 
     const cart = useMemo(() => {
         if(getAllCarts){
@@ -82,9 +82,9 @@ const page = () => {
                                             { cart && !isEmpty(cart) ? (
                                                 <div className="space-y-4">
                                                     <div className="inline-flex space-x-6">
-                                                        <button className="bg-green-700 text-white rounded-full p-1">
+                                                        <a onClick={e => handleReduceCartQuantity(product.id, e)} href="#" className="bg-green-700 text-white rounded-full p-1">
                                                             <MinusIcon className="size-5" />
-                                                        </button>
+                                                        </a>
                                                         <p className="text-lg">{cart?.quantity || 0}</p>
                                                         <a onClick={e => handleAddCart(product.id, e)} className="bg-green-700 text-white rounded-full p-1" href="#">
                                                             <PlusIcon className="size-5" />

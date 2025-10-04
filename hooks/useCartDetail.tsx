@@ -27,7 +27,6 @@ export const useCartDetail = () => {
             let items = getAllCarts.map(obj =>
                 obj.product_id === product_id ? { ...obj, quantity: obj.quantity + 1 } : obj
             );
-            // setCarts(items)
             dispatch(addCart(items))
         }
         else{
@@ -37,7 +36,21 @@ export const useCartDetail = () => {
             }]
             dispatch(addCart(items))
         }
-        console.log(getAllCarts)
+    }
+
+    const handleReduceCartQuantity = (product_id: string, e: FormEvent) => {
+        e.preventDefault();
+        let checkCart = getAllCarts.find(n => n.product_id === product_id)
+        let items = []
+
+        if(checkCart) {
+            if(checkCart.quantity > 1) {
+                items = getAllCarts.map(obj =>
+                    obj.product_id === product_id ? { ...obj, quantity: obj.quantity - 1 } : obj
+                );
+                dispatch(addCart(items))
+            }
+        }
     }
 
 
@@ -81,29 +94,13 @@ export const useCartDetail = () => {
         
     // }
 
-    // const handleReduceCartQuantity = (product_id: string, e: FormEvent) => {
-    //     e.preventDefault();
-    //     let checkCart = carts.find(n => n.product_id === product_id)
-    //     let items = []
-
-    //     if(checkCart) {
-    //         if(checkCart.quantity > 1) {
-    //             items = carts.map(obj =>
-    //                 obj.product_id === product_id ? { ...obj, quantity: obj.quantity - 1 } : obj
-    //             );
-    //             dispatch(addCart(items))
-    //             setCarts(items)
-    //         }
-    //     }
-    // }
-
     // const resetCarts = () => {
     //     dispatch(addCart([]))
     //     setCarts([])
     // }
 
     return {
-        getAllCarts, handleAddCart,
+        getAllCarts, handleAddCart, handleReduceCartQuantity,
         // isClient, setIsClient, totalAmount, shippingCost, getAllCarts, 
         // carts, setCarts, handleCartQuantity, isLoading,
         // handleReduceCartQuantity, handleRemoveCartItem, resetCarts, handleAddCart,
