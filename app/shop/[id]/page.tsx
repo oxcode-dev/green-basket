@@ -3,6 +3,7 @@
 import { EmptyState } from '@/components/EmptyState';
 import Loading from '@/components/Loading';
 import { ReviewCard } from '@/components/ReviewCard';
+import { useCartDetail } from '@/hooks/useCartDetail';
 import { useFetchProduct } from '@/hooks/useFetchSingleProduct';
 import { useUpdateWishlists } from '@/hooks/useUpdateWishlists';
 import { AppSetup } from '@/setups/AppSetup';
@@ -18,10 +19,16 @@ import { useSelector } from 'react-redux';
 const page = () => {
     // @ts-ignore
     const loggedUser : User | {} = useSelector(getUser)?.user || {};
+    const [isActiveTab, setIsActiveTab] = useState(true)
     const { product, isFetching, reviews, wishlists} = useFetchProduct();
     const { onClick } = useUpdateWishlists()
+    const { handleAddCart, getAllCarts } = useCartDetail()
 
-    const [isActiveTab, setIsActiveTab] = useState(true)
+    const cart = useMemo(() => {
+        if(getAllCarts){
+            return getAllCarts.find(n => n.product_id === product?.id)
+        }
+    }, [product, getAllCarts])
 
     const wishlist = useMemo(() => {
         if(wishlists) {
@@ -72,29 +79,32 @@ const page = () => {
                                     </p>
                                     <div>
                                         <div className="flex items-center space-x-2 flex-wrap py-2">
-                                            <div className="space-y-4">
-                                                <div className="inline-flex space-x-6">
-                                                    <button className="bg-green-700 text-white rounded-full p-1">
-                                                        <MinusIcon className="size-5" />
-                                                    </button>
-                                                    <p className="text-lg">3</p>
-                                                    <a className="bg-green-700 text-white rounded-full p-1" href="#">
-                                                        <PlusIcon className="size-5" />
+                                            { cart && !isEmpty(cart) ? (
+                                                <div className="space-y-4">
+                                                    <div className="inline-flex space-x-6">
+                                                        <button className="bg-green-700 text-white rounded-full p-1">
+                                                            <MinusIcon className="size-5" />
+                                                        </button>
+                                                        <p className="text-lg">{cart?.quantity || 0}</p>
+                                                        <a onClick={e => handleAddCart(product.id, e)} className="bg-green-700 text-white rounded-full p-1" href="#">
+                                                            <PlusIcon className="size-5" />
+                                                        </a>
+                                                    </div>
+                                                    <div>
+                                                        <Link href="/cart" className="btn btn-md bg-green-600 rounded text-white border-green-600 inline-flex items-center space-x-1">
+                                                            <span>Buy Now</span>
+                                                            <ShoppingCartIcon className="size-4" />
+                                                        </Link>
+                                                    </div>
+                                                </div>
+                                            ) : (
+                                                <div className="space-x-2">
+                                                    <a href="#" onClick={e => handleAddCart(product.id, e)} className="btn btn-sm bg-green-600 rounded text-white border-green-600 inline-flex items-center space-x-1">
+                                                        <ShoppingBagIcon className="size-4" />
+                                                        <span>Add to cart</span>
                                                     </a>
                                                 </div>
-                                                <div>
-                                                    <Link href="/cart" className="btn btn-md bg-green-600 rounded text-white border-green-600 inline-flex items-center space-x-1">
-                                                        <span>Buy Now</span>
-                                                        <ShoppingCartIcon className="size-4" />
-                                                    </Link>
-                                                </div>
-                                            </div>
-                                            <div className="space-x-2">
-                                                <button className="btn btn-sm bg-green-600 rounded text-white border-green-600 inline-flex items-center space-x-1">
-                                                    <ShoppingBagIcon className="size-4" />
-                                                    <span>Add to cart</span>
-                                                </button>
-                                            </div>
+                                            )}
                                         </div>
                                     </div>
 
