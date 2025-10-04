@@ -56,31 +56,29 @@ export const useCartDetail = () => {
                     obj.product_id === product_id ? { ...obj, quantity: obj.quantity - 1 } : obj
                 );
                 dispatch(addCart(items))
+            } else{
+                handleRemoveCartItem(product_id, e)
             }
         }
     }
 
+    const handleRemoveCartItem = (product_id: string, e: FormEvent) => {
+        e.preventDefault();
 
-    // const totalCartsPrice = () => {
-    //     // setIsLoading(true)
-    //     let amount = carts.reduce((acc = {}, item = {}) => {
-    //         const itemTotal = parseFloat((item.quantity * getProductDetails(item.product_id)?.price || 0).toFixed(2));
-    //         acc.total = parseFloat((acc.total + itemTotal))
-    //         return acc;
-    //     },  { total: 0 })
+        let items = getAllCarts.filter(n => n.product_id !== product_id)
+        dispatch(addCart(items))
+    }
 
-    //     setTotalAmount(amount.total)
-    //     setIsLoading(false)
-    // }
 
-    // const handleRemoveCartItem = (product_id: string, e: FormEvent) => {
-    //     e.preventDefault();
+    const totalCartsPrice = () => {
+        return getAllCarts.reduce((acc = {total: 0}, item: CartProp) => {
+            //@ts-expect-error
+            const itemTotal = parseFloat((item.quantity * getProductDetails(item.product_id)?.price || 0).toFixed(2));
+            acc.total = (acc.total + itemTotal)
+            return acc;
+        },  { total: 0 })
 
-    //     let items = carts.filter(n => n.product_id !== product_id)
-    //     dispatch(addCart(items))
-    //     setCarts(items)
-    //     // totalCartsPrice()
-    // }
+    }
     
 
     // const handleCartQuantity = (product_id: string, e: FormEvent) => {
@@ -101,13 +99,13 @@ export const useCartDetail = () => {
         
     // }
 
-    // const resetCarts = () => {
-    //     dispatch(addCart([]))
-    //     setCarts([])
-    // }
+    const resetCart = () => {
+        dispatch(addCart([]))
+    }
 
     return {
-        getAllCarts, handleAddCart, handleReduceCartQuantity, totalCartsQuantity
+        getAllCarts, handleAddCart, handleReduceCartQuantity, totalCartsQuantity,
+        resetCart,
         // isClient, setIsClient, totalAmount, shippingCost, getAllCarts, 
         // carts, setCarts, handleCartQuantity, isLoading,
         // handleReduceCartQuantity, handleRemoveCartItem, resetCarts, handleAddCart,
