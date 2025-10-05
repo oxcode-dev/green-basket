@@ -102,10 +102,11 @@ export const useCartDetail = () => {
     }
 
     const { data: products, error, isLoading, isFetching } = useQuery<ProductsProp | {}>({
-        queryKey: ["list_cart_products"],
-        queryFn: () => pathname === '/cart' ? fetchCartProducts() : () => {},
-        // placeholderData: keepPreviousData,
-        // staleTime: 10 * 60 * 1000,
+        queryKey: ["list_cart_products", cartProductsIds],
+        queryFn: () => fetchCartProducts(),
+        // queryFn: () => pathname === '/cart' ? fetchCartProducts() : () => {},
+        placeholderData: keepPreviousData,
+        staleTime: 10 * 60 * 1000,
     });
 
     const getProductDetails = (product_id: string) : ProductItem | {} => {
@@ -127,11 +128,11 @@ export const useCartDetail = () => {
 
     const getAllTaxValue = useMemo(() => {
         return (5/100) * totalCartsPrice||0;
-    }, [getAllCarts, totalCartsPrice])
+    }, [getAllCarts])
 
     const totalAmount = useMemo(() => {
         return totalCartsPrice + getAllTaxValue;
-    }, [getAllCarts, totalCartsPrice, getAllTaxValue])
+    }, [getAllCarts])
 
     return {
         getAllCarts, handleAddCart, handleReduceCartQuantity, totalCartsQuantity,
