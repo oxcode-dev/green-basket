@@ -1,7 +1,7 @@
 'use client'
 
 import { useEffect } from 'react';
-import { redirect, useRouter } from 'next/navigation'
+import { redirect } from 'next/navigation'
 import { useSelector } from 'react-redux';
 import { getUser } from '@/store/slices/auth';
 

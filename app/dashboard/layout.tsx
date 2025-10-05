@@ -4,7 +4,6 @@ import { Header } from "@/components/Header";
 import Link from "next/link";
 import { getUser } from '@/store/slices/auth';
 import { useSelector } from "react-redux"
-import { usePathname } from 'next/navigation'
 import { User } from "@/types";
 import { useInitials } from "@/types/helper";
 import { useNavigationItems } from "@/hooks/useNavigationItems";
