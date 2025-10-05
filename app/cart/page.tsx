@@ -10,7 +10,7 @@ import { moneyFormat } from '@/types/helper';
 
 const page = () => {
     const {getAllCarts, handleAddCart, handleReduceCartQuantity, handleRemoveCartItem, getProductDetails
-        , totalCartsPrice, getAllTaxValue } = useCartDetail();
+        , totalCartsPrice, getAllTaxValue, totalAmount } = useCartDetail();
 
     return (
         <AppSetup>
@@ -24,7 +24,7 @@ const page = () => {
                 </div>
 
                 <div className="w-full py-4 md:py-8">
-                    <pre>{JSON.stringify(getAllTaxValue)}</pre>
+                    <pre>{JSON.stringify(totalAmount)}</pre>
                     <div className="flex flex-wrap md:flex-nowrap">
                         <div className="w-full md:w-2/3 md:pr-6">
                             <div className="border border-gray-300 rounded-xl p-2 w-full">
@@ -160,7 +160,9 @@ const page = () => {
 
                                     <div className="w-full inline-flex justify-between items-center pt-2 border-t border-gray-300">
                                         <dt className="text-md text-gray-600 font-normal">Total</dt>
-                                        <dd className="text-xl text-gray-800 font-medium">$200NGN</dd>
+                                        <dd className="text-xl text-gray-800 font-medium">
+                                            <span dangerouslySetInnerHTML={{ __html: moneyFormat(totalAmount)}}></span>
+                                        </dd>
                                     </div>
 
                                     <div className="py-4">
