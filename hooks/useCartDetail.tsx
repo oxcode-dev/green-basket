@@ -80,16 +80,6 @@ export const useCartDetail = () => {
         dispatch(addCart(items))
     }
 
-
-    const totalCartsPrice = useMemo((): number => {
-        return getAllCarts.reduce((acc = {total: 0}, item: CartProp) => {
-            //@ts-expect-error
-            const itemTotal = parseFloat((item.quantity * getProductDetails(item.product_id)?.price || 0).toFixed(2));
-            acc.total = (acc.total + itemTotal)
-            return acc;
-        },  { total: 0 })?.total || 0
-    }, [getAllCarts])
-
     const resetCart = () => {
         dispatch(addCart([]))
     }
@@ -126,9 +116,22 @@ export const useCartDetail = () => {
         return {}
     }
 
+    const totalCartsPrice = useMemo((): number => {
+        return getAllCarts.reduce((acc = {total: 0}, item: CartProp) => {
+            //@ts-expect-error
+            const itemTotal = parseFloat((item.quantity * getProductDetails(item.product_id)?.price || 0).toFixed(2));
+            acc.total = (acc.total + itemTotal)
+            return acc;
+        },  { total: 0 })?.total || 0
+    }, [getAllCarts, products])
+
+    const getAllTaxValue = useMemo(() => {
+        return (5/100) * totalCartsPrice||0;
+    }, [getAllCarts, totalCartsPrice])
+
     return {
         getAllCarts, handleAddCart, handleReduceCartQuantity, totalCartsQuantity,
         resetCart, handleRemoveCartItem, cartProductsIds, products, totalCartsPrice,
-        getProductDetails
+        getProductDetails, getAllTaxValue
     }
 }
