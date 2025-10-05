@@ -1,6 +1,13 @@
+'use client';
+
+import { useCartDetail } from '@/hooks/useCartDetail';
+import { moneyFormat } from '@/types/helper';
 import React from 'react'
 
 const page = () => {
+    const {getAllCarts, handleAddCart, handleReduceCartQuantity, handleRemoveCartItem, getProductDetails
+        , totalCartsPrice, getAllTaxValue, totalAmount } = useCartDetail();
+
     return (
         <div>
             <div className="container w-full mx-auto py-8 px-4 md:px-0">
@@ -87,9 +94,9 @@ const page = () => {
                                 <p className="text-md text-gray-600 font-semibold py-2">
                                     Order Summary
                                 </p>
-                                { Array.from({ length: 3 }).map((item, key) => (
+                                { getAllCarts.map((item, key) => (
                                     <div key={key} className="py-1.5 border-t border-gray-300">
-                                        <div className="inline-flex space-x-3 items-start">
+                                        <div className="inline-flex space-x-3 items-start w-full">
                                             <img 
                                                 src="https://preview.colorlib.com/theme/vegefoods/images/product-2.jpg"
                                                 width={80}
@@ -99,18 +106,19 @@ const page = () => {
                                             />
                                             <div className="w-full">
                                                 <p className="font-semibold text-sm text-gray-800">
-                                                    Product Title Name
-                                                    Product Title Name
+                                                    {getProductDetails(item.product_id)?.title || ''}
                                                 </p>
                                                 
-                                                <div className="flex justify-between items-center">
-                                                    <p className="font-medium text-xs text-gray-500">
-                                                        <span>Qty:</span>
-                                                        <span>2</span>
-                                                    </p>
-                                                    <p className="font-semibold text-gray-500 hidden">
-                                                        $30
-                                                    </p>
+                                                <div className="flex justify-between items-center w-full">
+                                                    <div className="inline-flex flex-col space-y-1">
+                                                        <p className="font-medium text-xs text-gray-500">
+                                                            <span>Qty:</span>
+                                                            <span>{item?.quantity}</span>
+                                                        </p>
+                                                        <p className="font-semibold text-gray-500 text-xs">
+                                                            <span dangerouslySetInnerHTML={{ __html: moneyFormat(getProductDetails(item.product_id)?.price || 0)}}></span>
+                                                        </p>
+                                                    </div>
                                                     <p className="px-1 py-2 font-bold text-lg text-center">$102</p>
                                                 </div>
                                             </div>
@@ -124,11 +132,15 @@ const page = () => {
                                     <dl className="space-y-1">
                                         <div className="w-full inline-flex justify-between items-center">
                                             <dt className="text-sm text-gray-500 font-normal">Sub Total</dt>
-                                            <dd className="text-sm text-gray-800 font-medium">200NGN</dd>
+                                            <dd className="text-sm text-gray-800 font-medium">
+                                                <span dangerouslySetInnerHTML={{ __html: moneyFormat(totalCartsPrice)}}></span>
+                                            </dd>
                                         </div>
                                         <div className="w-full inline-flex justify-between items-center">
                                             <dt className="text-sm text-gray-500 font-normal">Tax</dt>
-                                            <dd className="text-sm text-gray-800 font-medium">200NGN</dd>
+                                            <dd className="text-sm text-gray-800 font-medium">
+                                                <span dangerouslySetInnerHTML={{ __html: moneyFormat(getAllTaxValue)}}></span>
+                                            </dd>
                                         </div>
                                         <div className="w-full inline-flex justify-between items-center">
                                             <dt className="text-sm text-gray-500 font-normal">Delivery Fee</dt>
@@ -138,7 +150,9 @@ const page = () => {
 
                                     <div className="w-full inline-flex justify-between items-center pt-2 border-t border-gray-300">
                                         <dt className="text-md text-gray-600 font-normal">Total</dt>
-                                        <dd className="text-xl text-gray-800 font-medium">$200NGN</dd>
+                                        <dd className="text-xl text-gray-800 font-medium">
+                                            <span dangerouslySetInnerHTML={{ __html: moneyFormat(totalAmount)}}></span>
+                                        </dd>
                                     </div>
 
                                     <div className="pt-6">

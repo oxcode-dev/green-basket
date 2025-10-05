@@ -101,9 +101,7 @@ const page = () => {
                                                 />
                                                 <div className="w-full">
                                                     <p className="text-sm md:text-base font-semibold text-gray-800">
-                                                        Product Title Name
-                                                        Product Title Name
-                                                        Product
+                                                        {getProductDetails(item.product_id)?.title || ''}
                                                     </p>
                                                     <p dangerouslySetInnerHTML={{ __html: moneyFormat(getProductDetails(item.product_id)?.price || 0)}} className="font-semibold text-gray-500"></p>
                                                     <div className="flex justify-between items-center">

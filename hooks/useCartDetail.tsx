@@ -128,11 +128,11 @@ export const useCartDetail = () => {
 
     const getAllTaxValue = useMemo(() => {
         return (5/100) * totalCartsPrice||0;
-    }, [getAllCarts])
+    }, [getAllCarts, totalCartsPrice])
 
     const totalAmount = useMemo(() => {
         return totalCartsPrice + getAllTaxValue;
-    }, [getAllCarts])
+    }, [getAllCarts, totalCartsPrice])
 
     return {
         getAllCarts, handleAddCart, handleReduceCartQuantity, totalCartsQuantity,
