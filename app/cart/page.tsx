@@ -6,9 +6,11 @@ import { ShieldExclamationIcon } from '@heroicons/react/24/outline';
 import React from 'react'
 import Link from "next/link";
 import { useCartDetail } from '@/hooks/useCartDetail';
+import { moneyFormat } from '@/types/helper';
 
 const page = () => {
-    const {getAllCarts, handleAddCart, handleReduceCartQuantity, handleRemoveCartItem, cartProductsIds, totalCartsPrice } = useCartDetail();
+    const {getAllCarts, handleAddCart, handleReduceCartQuantity, handleRemoveCartItem, getProductDetails
+        , totalCartsPrice } = useCartDetail();
 
     return (
         <AppSetup>
@@ -52,12 +54,9 @@ const page = () => {
                                                             />
                                                             <div>
                                                                 <p className="font-semibold text-gray-800">
-                                                                    Product Title Name
-                                                                    Product
+                                                                    {getProductDetails(item.product_id)?.title || ''}
                                                                 </p>
-                                                                <p className="font-semibold text-gray-500">
-                                                                    $30
-                                                                </p>
+                                                                <p dangerouslySetInnerHTML={{ __html: moneyFormat(getProductDetails(item.product_id)?.price || 0)}} className="font-semibold text-gray-500"></p>
                                                             </div>
                                                         </div>
                                                     </div>

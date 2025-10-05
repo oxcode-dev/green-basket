@@ -22,12 +22,7 @@ export const useCartDetail = () => {
     const getAllCarts :CartProp[] = useSelector(getCarts) || []
 
     const pathname = usePathname();
-
-    // const [carts, setCarts] = useState([])
-    // const [isClient, setIsClient] = useState(false)
-    // const [isLoading, setIsLoading] = useState(true)
-    // const [totalAmount, setTotalAmount] = useState(0)
-    // const [shippingCost] = useState(8)
+    const [shippingCost] = useState(8)
 
     const cartProductsIds = useMemo(() => {
         let ids: string[] = [];
@@ -86,37 +81,18 @@ export const useCartDetail = () => {
     }
 
 
-    const totalCartsPrice = () => {
+    const totalCartsPrice = (): number => {
         return getAllCarts.reduce((acc = {total: 0}, item: CartProp) => {
             //@ts-expect-error
             const itemTotal = parseFloat((item.quantity * getProductDetails(item.product_id)?.price || 0).toFixed(2));
             acc.total = (acc.total + itemTotal)
             return acc;
-        },  { total: 0 })
+        },  { total: 0 })?.total || 0
     }
 
     const resetCart = () => {
         dispatch(addCart([]))
     }
-
-
-    // const handleCartQuantity = (product_id: string, e: FormEvent) => {
-    //     e.preventDefault();
-    //     let checkCart = carts.find(n => n.product_id === product_id)
-    //     let product = products.find(n => n.id === product_id)
-    //     let items = []
-
-    //     if(checkCart) {
-    //         if(product.quantity > checkCart.quantity) {
-    //             items = carts.map(obj =>
-    //                 obj.product_id === product_id ? { ...obj, quantity: obj.quantity + 1 } : obj
-    //             );
-    //             dispatch(addCart(items))
-    //             setCarts(items)
-    //         }
-    //     }
-        
-    // }
 
     async function fetchCartProducts() : Promise<ProductsProp | null> {
         const params = new URLSearchParams();
@@ -153,5 +129,6 @@ export const useCartDetail = () => {
     return {
         getAllCarts, handleAddCart, handleReduceCartQuantity, totalCartsQuantity,
         resetCart, handleRemoveCartItem, cartProductsIds, products, totalCartsPrice,
+        getProductDetails
     }
 }
