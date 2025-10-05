@@ -81,14 +81,14 @@ export const useCartDetail = () => {
     }
 
 
-    const totalCartsPrice = (): number => {
+    const totalCartsPrice = useMemo((): number => {
         return getAllCarts.reduce((acc = {total: 0}, item: CartProp) => {
             //@ts-expect-error
             const itemTotal = parseFloat((item.quantity * getProductDetails(item.product_id)?.price || 0).toFixed(2));
             acc.total = (acc.total + itemTotal)
             return acc;
         },  { total: 0 })?.total || 0
-    }
+    }, [getAllCarts])
 
     const resetCart = () => {
         dispatch(addCart([]))

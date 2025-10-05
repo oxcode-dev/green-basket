@@ -24,7 +24,7 @@ const page = () => {
                 </div>
 
                 <div className="w-full py-4 md:py-8">
-                    <pre>{JSON.stringify(totalCartsPrice())}</pre>
+                    <pre>{JSON.stringify(totalCartsPrice)}</pre>
                     <div className="flex flex-wrap md:flex-nowrap">
                         <div className="w-full md:w-2/3 md:pr-6">
                             <div className="border border-gray-300 rounded-xl p-2 w-full">
@@ -72,7 +72,9 @@ const page = () => {
                                                         </a>
                                                     </div>
                                                 </td>
-                                                <td className="px-1 py-2 border-t border-gray-200 bg-white text-md text-center">$102</td>
+                                                <td className="px-1 py-2 border-t border-gray-200 bg-white text-md text-center">
+                                                    <p dangerouslySetInnerHTML={{ __html: moneyFormat(getProductDetails(item.product_id)?.price * item.quantity)}}></p>
+                                                </td>
                                                 <td className="px-1 py-2 border-t border-gray-200 bg-white text-md text-center">
                                                     <a onClick={e => handleRemoveCartItem(item.product_id, e)} className="text-gray-600 p-1 inline-flex justify-center" href="#">
                                                         <TrashIcon className="size-5" />
@@ -103,9 +105,7 @@ const page = () => {
                                                         Product Title Name
                                                         Product
                                                     </p>
-                                                    <p className="font-semibold text-gray-500">
-                                                        $30
-                                                    </p>
+                                                    <p dangerouslySetInnerHTML={{ __html: moneyFormat(getProductDetails(item.product_id)?.price || 0)}} className="font-semibold text-gray-500"></p>
                                                     <div className="flex justify-between items-center">
                                                         <div className="flex items-center">
                                                             <div className="inline-flex rounded-full p-0.5 border border-gray-400 text-gray-600">
@@ -121,7 +121,7 @@ const page = () => {
                                                                 <TrashIcon className="size-5" />
                                                             </a>
                                                         </div>
-                                                        <p className="px-1 py-2 font-bold text-lg text-center">$102</p>
+                                                        <p dangerouslySetInnerHTML={{ __html: moneyFormat(getProductDetails(item.product_id)?.price * item?.quantity)}} className="px-1 py-2 font-bold text-lg text-center"></p>
                                                     </div>
                                                 </div>
                                             </div>
@@ -142,7 +142,9 @@ const page = () => {
                                     <dl className="space-y-1">
                                         <div className="w-full inline-flex justify-between items-center">
                                             <dt className="text-sm text-gray-500 font-normal">Sub Total</dt>
-                                            <dd className="text-sm text-gray-800 font-medium">200NGN</dd>
+                                            <dd className="text-sm text-gray-800 font-medium">
+                                                <span dangerouslySetInnerHTML={{ __html: moneyFormat(totalCartsPrice)}}></span>
+                                            </dd>
                                         </div>
                                         <div className="w-full inline-flex justify-between items-center">
                                             <dt className="text-sm text-gray-500 font-normal">Tax</dt>
