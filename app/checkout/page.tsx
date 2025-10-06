@@ -119,7 +119,9 @@ const page = () => {
                                                             <span dangerouslySetInnerHTML={{ __html: moneyFormat(getProductDetails(item.product_id)?.price || 0)}}></span>
                                                         </p>
                                                     </div>
-                                                    <p className="px-1 py-2 font-bold text-lg text-center">$102</p>
+                                                    <p className="px-1 py-2 font-bold text-lg text-center">
+                                                        <span dangerouslySetInnerHTML={{ __html: moneyFormat(getProductDetails(item.product_id)?.price * item.quantity)}}></span>
+                                                    </p>
                                                 </div>
                                             </div>
                                         </div>
