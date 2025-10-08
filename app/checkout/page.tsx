@@ -2,11 +2,14 @@
 
 import { useCartDetail } from '@/hooks/useCartDetail';
 import { moneyFormat } from '@/types/helper';
-import React from 'react'
+import React, { useMemo } from 'react'
 
 const page = () => {
-    const {getAllCarts, handleAddCart, handleReduceCartQuantity, handleRemoveCartItem, getProductDetails
-        , totalCartsPrice, getAllTaxValue, totalAmount } = useCartDetail();
+    const {getAllCarts, getProductDetails, totalCartsPrice, getAllTaxValue, totalAmount } = useCartDetail();
+    const shippingCost = 200;
+    const totalCostWithShipping = useMemo(() :number => {
+        return totalAmount + shippingCost
+    }, [totalAmount])
 
     return (
         <div>
@@ -146,14 +149,16 @@ const page = () => {
                                         </div>
                                         <div className="w-full inline-flex justify-between items-center">
                                             <dt className="text-sm text-gray-500 font-normal">Delivery Fee</dt>
-                                            <dd className="text-sm text-gray-800 font-medium">200</dd>
+                                            <dd className="text-sm text-gray-800 font-medium">
+                                                <span dangerouslySetInnerHTML={{ __html: moneyFormat(shippingCost)}}></span>
+                                            </dd>
                                         </div>
                                     </dl>
 
                                     <div className="w-full inline-flex justify-between items-center pt-2 border-t border-gray-300">
                                         <dt className="text-md text-gray-600 font-normal">Total</dt>
                                         <dd className="text-xl text-gray-800 font-medium">
-                                            <span dangerouslySetInnerHTML={{ __html: moneyFormat(totalAmount)}}></span>
+                                            <span dangerouslySetInnerHTML={{ __html: moneyFormat(totalCostWithShipping)}}></span>
                                         </dd>
                                     </div>
 

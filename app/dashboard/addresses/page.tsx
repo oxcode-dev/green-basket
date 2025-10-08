@@ -4,48 +4,19 @@ import AddressCard from '@/components/AddressCard';
 import { EmptyState } from '@/components/EmptyState';
 import Loading from '@/components/Loading';
 import CreateAddressForm from '@/forms/dashboard/CreateAddressForm';
+import { useFetchAddresses } from '@/hooks/useFetchAddresses';
 import { AddressItemProp } from '@/types';
 import { isEmpty } from '@/types/helper';
 import { useQuery } from '@tanstack/react-query';
 import React from 'react'
 
-type AddressFetchType = {
-    data: AddressItemProp[];
-    message: string
-    success: boolean
-}
 
-async function fetchAddress() {
-    const getTokenResponse = await fetch('/api/fetch-token')
-
-    const getToken = await getTokenResponse.json()
-
-    if(isEmpty(getToken)) {
-        location.href = '/logout'
-    }
-    
-    const res = await fetch(`${process.env.NEXT_PUBLIC_API_ENDPOINT}/api/addresses`, {
-        headers: { 
-            Authorization: `Bearer ${getToken.token}`,
-            'Content-Type': 'application/json' 
-        },
-    });
-
-    if (!res.ok) {
-        throw new Error("Failed to fetch posts");
-    }
-    return res.json();
-}
 
 const page = () => {
     const [open, setOpen] = React.useState(false);
     const addressCount = 4;
 
-    const { data, error, isLoading } = useQuery<AddressFetchType>({
-        queryKey: ["list_address"],
-        queryFn: fetchAddress,
-        staleTime: 3 * 60 * 1000,
-    });
+    const { addresses, isFetching, isLoading} = useFetchAddresses();
 
     return (
         <div>
@@ -54,7 +25,7 @@ const page = () => {
                     <h2>Delivery Addresses</h2>
                 </div>
                 {
-                    data?.data && data?.data?.length < addressCount ? (
+                    addresses && addresses?.length < addressCount ? (
                         <div>
                             <CreateAddressForm
                                 open={open}
@@ -68,13 +39,13 @@ const page = () => {
             <div className="p-3 md:p-4">
                 { isLoading ? <Loading /> : null }
                 <div className="w-full grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-6">
-                    { data?.data?.map((item, key) => (
+                    { addresses?.map((item, key) => (
                         <div key={key}>
                             <AddressCard address={item} />
                         </div>
                     ))}
                 </div>
-                { !isLoading && data?.data?.length === 0 ? <EmptyState text="No Data!" /> : null }
+                { !isLoading && addresses?.length === 0 ? <EmptyState text="No Data!" /> : null }
             </div>
         </div>
     )
