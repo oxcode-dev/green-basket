@@ -7,6 +7,24 @@ import { useMutation } from '@tanstack/react-query';
 import React, { useMemo } from 'react'
 import { SubmitHandler, useForm } from 'react-hook-form';
 
+type CartProp = {
+    product_id: string;
+    quantity: number;
+}
+
+type CheckoutOrderProp = {
+    address_id: string;
+    name_on_card: string;
+    card_number: string | number;
+    expiry_month?: number | string;
+    expiry_year?: number | string;
+    cvv: string | number;
+    cart: CartProp[],
+    totalAmount: number,
+    shippingCost: number,
+    tax: number,
+    totalPrice: number,
+}
 const page = () => {
     const {getAllCarts, getProductDetails, totalCartsPrice, getAllTaxValue, totalAmount } = useCartDetail();
     const shippingCost = 200;
@@ -24,14 +42,19 @@ const page = () => {
         handleSubmit,
         watch,
         formState: { errors },
-    } = useForm({
+    } = useForm<CheckoutOrderProp>({
         defaultValues: {
-            address_id: null,
-            name_on_card: null,
-            card_number: null,
-            expiry_month: null,
-            expiry_year: null,
-            cvv: null,
+            address_id: '',
+            name_on_card: '',
+            card_number: '',
+            expiry_month: '',
+            expiry_year: '',
+            cvv: '',
+            cart: getAllCarts,
+            totalAmount: totalAmount,
+            shippingCost: shippingCost,
+            tax: getAllTaxValue,
+            totalPrice: totalCostWithShipping,
         }
     });
 
