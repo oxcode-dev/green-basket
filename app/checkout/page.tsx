@@ -2,7 +2,7 @@
 
 import { useCartDetail } from '@/hooks/useCartDetail';
 import { useFetchAddresses } from '@/hooks/useFetchAddresses';
-import { moneyFormat } from '@/types/helper';
+import { isEmpty, moneyFormat } from '@/types/helper';
 import { useMutation } from '@tanstack/react-query';
 import React, { useMemo } from 'react'
 import { SubmitHandler, useForm } from 'react-hook-form';
@@ -34,7 +34,7 @@ const page = () => {
     const { addresses } = useFetchAddresses()
 
     const mutation = useMutation({
-        // mutationFn: (data) => handleForm(data)
+        mutationFn: (data) => handleForm(data)
     })
 
     const {
@@ -58,13 +58,43 @@ const page = () => {
         }
     });
 
-    // // const onSubmit: SubmitHandler = async(data) => {
-    //     mutation.mutate(data)
-    // }
+    const onSubmit: SubmitHandler<CheckoutOrderProp> = async(data) => {
+        mutation.mutate(data)
+    }
+
+    const handleForm = async(data: CheckoutOrderProp) => {
+        console.log(data)
+        const getTokenResponse = await fetch('/api/fetch-token')
+
+        const getToken = await getTokenResponse.json()
+
+        if(isEmpty(getToken)) {
+            return alert('Unauthenticated User')
+        }
+
+        const url = `${process.env.NEXT_PUBLIC_API_ENDPOINT}/api/addresses`
+
+        const response = await fetch(url, {
+            method: 'POST',
+            headers: { 
+                Authorization: `Bearer ${getToken.token}`,
+                'Content-Type': 'application/json' 
+            },
+            body: JSON.stringify({ 
+                // street: data?.street,
+                // city: data?.city,
+                // state: data?.state,
+                // postal_code: data?.postal_code,
+            }),
+        })
+
+        const feedback = await response.json()
+        return data
+    }
 
     return (
         <div>
-            <div className="container w-full mx-auto py-8 px-4 md:px-0">
+            <form onSubmit={handleSubmit(onSubmit)} className="container w-full mx-auto py-8 px-4 md:px-0">
                 <div className="w-full flex flex-wrap md:flex-nowrap items-start space-y-6 md:space-y-0">
                     <div className="w-full md:w-2/3 md:pr-6">
                         <div className="space-y-4">
@@ -225,7 +255,7 @@ const page = () => {
                         </div>
                     </div>
                 </div>
-            </div>
+            </form>
         </div>
     )
 }
