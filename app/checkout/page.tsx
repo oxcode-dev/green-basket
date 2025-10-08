@@ -63,7 +63,7 @@ const page = () => {
     }
 
     const handleForm = async(data: CheckoutOrderProp) => {
-        console.log(data)
+        return console.log(data)
         const getTokenResponse = await fetch('/api/fetch-token')
 
         const getToken = await getTokenResponse.json()
@@ -108,10 +108,10 @@ const page = () => {
                                         <div key={key} className="relative">
                                             <input
                                                 className="hidden peer"
-                                                defaultValue={key}
+                                                defaultValue={address.id}
                                                 id={`option${key}-checkbox`}
-                                                name="options"
                                                 type="radio"
+                                                {...register("address_id",  { required: true })}
                                             />
                                             <label
                                                 className="inline-flex items-center justify-between w-full p-3 bg-white border-2 rounded-lg cursor-pointer group border-neutral-200/70 text-neutral-600 peer-checked:border-green-200 peer-checked:text-green-900 peer-checked:bg-green-200/50 hover:text-neutral-900 hover:border-neutral-300"
@@ -145,26 +145,26 @@ const page = () => {
                                     <div className="space-y-4 py-2">
                                         <div className="space-y-4 md:space-y-0">
                                             <label>Name on Card</label>
-                                            <input type="text" name="subject" placeholder="Subject" className="input w-full bg-white border border-gray-300" />
+                                            <input type="text" {...register("name_on_card",  { required: true })} placeholder="Name on card" className="input w-full bg-white border border-gray-300" />
                                         </div>
                                         <div className="space-y-4 md:space-y-0">
                                             <label>Card Number</label>
-                                            <input type="text" name="subject" placeholder="Subject" className="input w-full bg-white border border-gray-300" />
+                                            <input type="text" {...register("card_number",  { required: true })} placeholder="Subject" className="input w-full bg-white border border-gray-300" />
                                         </div>
                                         <div>
                                             <p>Expiry</p>
                                             <div className="w-full grid grid-cols-3 space-x-3">
                                                 <div className="space-y-4 md:space-y-0">
                                                     {/* <label>Month</label> */}
-                                                    <input type="text" name="month" placeholder="month" className="input w-full bg-white border border-gray-300" />
+                                                    <input type="text"  {...register("expiry_month",  { required: true })} placeholder="month" className="input w-full bg-white border border-gray-300" />
                                                 </div>
                                                 <div className="space-y-4 md:space-y-0">
                                                     {/* <label>Year</label> */}
-                                                    <input type="text" name="year" placeholder="year" className="input w-full bg-white border border-gray-300" />
+                                                    <input type="text"  {...register("expiry_year",  { required: true })} placeholder="year" className="input w-full bg-white border border-gray-300" />
                                                 </div>
                                                 <div className="space-y-4 md:space-y-0">
                                                     {/* <label>CVV</label> */}
-                                                    <input type="text" name="cvv" placeholder="CVV" className="input w-full bg-white border border-gray-300" />
+                                                    <input type="text"  {...register("cvv",  { required: true })} placeholder="CVV" className="input w-full bg-white border border-gray-300" />
                                                 </div>
                                             </div>
                                         </div>
@@ -246,7 +246,7 @@ const page = () => {
                                     </div>
 
                                     <div className="pt-6">
-                                        <button className="btn btn-md bg-black text-white border-black w-full rounded-full">
+                                        <button type="submit" className="btn btn-md bg-black text-white border-black w-full rounded-full">
                                             Place Order
                                         </button>
                                     </div>
