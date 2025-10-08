@@ -25,7 +25,7 @@ const page = () => {
                                 </p>
 
                                 <div className="space-y-3 pb-2">
-                                    { addresses?.map((item, key) => (
+                                    { addresses?.map((address, key) => (
                                         <div key={key} className="relative">
                                             <input
                                                 className="hidden peer"
@@ -43,10 +43,12 @@ const page = () => {
                                                     <div className="flex flex-col justify-start space-y-1">
                                                         <div className="w-full font-semibold">Oxcode</div>
                                                         <div className="w-full text-xs opacity-60 space-x-1.5">
-                                                            <span>Address</span>
-                                                            <span>City</span>
-                                                            <span>State</span>
-                                                            <span>Phone</span>
+                                                            <span className="space-x-1.5 pl-0.5">
+                                                                <span>{address?.street}</span>
+                                                                <span>{address?.city}</span>
+                                                                <span>{address?.state}</span>
+                                                                <span>{address?.postal_code}</span>
+                                                            </span>
                                                         </div>
                                                     </div>
                                                 </div>
