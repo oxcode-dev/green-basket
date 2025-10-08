@@ -3,7 +3,9 @@
 import { useCartDetail } from '@/hooks/useCartDetail';
 import { useFetchAddresses } from '@/hooks/useFetchAddresses';
 import { moneyFormat } from '@/types/helper';
+import { useMutation } from '@tanstack/react-query';
 import React, { useMemo } from 'react'
+import { SubmitHandler, useForm } from 'react-hook-form';
 
 const page = () => {
     const {getAllCarts, getProductDetails, totalCartsPrice, getAllTaxValue, totalAmount } = useCartDetail();
@@ -12,6 +14,30 @@ const page = () => {
         return totalAmount + shippingCost
     }, [totalAmount])
     const { addresses } = useFetchAddresses()
+
+    const mutation = useMutation({
+        // mutationFn: (data) => handleForm(data)
+    })
+
+    const {
+        register,
+        handleSubmit,
+        watch,
+        formState: { errors },
+    } = useForm({
+        defaultValues: {
+            address_id: null,
+            name_on_card: null,
+            card_number: null,
+            expiry_month: null,
+            expiry_year: null,
+            cvv: null,
+        }
+    });
+
+    // // const onSubmit: SubmitHandler = async(data) => {
+    //     mutation.mutate(data)
+    // }
 
     return (
         <div>
