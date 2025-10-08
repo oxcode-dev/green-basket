@@ -1,6 +1,7 @@
 'use client';
 
 import { useCartDetail } from '@/hooks/useCartDetail';
+import { useFetchAddresses } from '@/hooks/useFetchAddresses';
 import { moneyFormat } from '@/types/helper';
 import React, { useMemo } from 'react'
 
@@ -10,6 +11,7 @@ const page = () => {
     const totalCostWithShipping = useMemo(() :number => {
         return totalAmount + shippingCost
     }, [totalAmount])
+    const { addresses } = useFetchAddresses()
 
     return (
         <div>
@@ -23,7 +25,7 @@ const page = () => {
                                 </p>
 
                                 <div className="space-y-3 pb-2">
-                                    { Array.from({ length: 3 }).map((item, key) => (
+                                    { addresses?.map((item, key) => (
                                         <div key={key} className="relative">
                                             <input
                                                 className="hidden peer"
