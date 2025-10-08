@@ -35,7 +35,7 @@ const page = () => {
                                                 type="radio"
                                             />
                                             <label
-                                                className="inline-flex items-center justify-between w-full p-3 bg-white border-2 rounded-lg cursor-pointer group border-neutral-200/70 text-neutral-600 peer-checked:border-green-200 peer-checked:text-neutral-900 peer-checked:bg-green-200/50 hover:text-neutral-900 hover:border-neutral-300"
+                                                className="inline-flex items-center justify-between w-full p-3 bg-white border-2 rounded-lg cursor-pointer group border-neutral-200/70 text-neutral-600 peer-checked:border-green-200 peer-checked:text-green-900 peer-checked:bg-green-200/50 hover:text-neutral-900 hover:border-neutral-300"
                                                 htmlFor={`option${key}-checkbox`}
                                             >
                                                 <div className="flex items-center space-x-5">
