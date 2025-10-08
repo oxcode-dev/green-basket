@@ -5,18 +5,13 @@ import { EmptyState } from '@/components/EmptyState';
 import Loading from '@/components/Loading';
 import CreateAddressForm from '@/forms/dashboard/CreateAddressForm';
 import { useFetchAddresses } from '@/hooks/useFetchAddresses';
-import { AddressItemProp } from '@/types';
-import { isEmpty } from '@/types/helper';
-import { useQuery } from '@tanstack/react-query';
 import React from 'react'
-
-
 
 const page = () => {
     const [open, setOpen] = React.useState(false);
     const addressCount = 4;
 
-    const { addresses, isFetching, isLoading} = useFetchAddresses();
+    const { addresses, isLoading} = useFetchAddresses();
 
     return (
         <div>
