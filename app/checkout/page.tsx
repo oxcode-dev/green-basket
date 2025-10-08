@@ -72,7 +72,7 @@ const page = () => {
             return alert('Unauthenticated User')
         }
 
-        const url = `${process.env.NEXT_PUBLIC_API_ENDPOINT}/api/addresses`
+        const url = `${process.env.NEXT_PUBLIC_API_ENDPOINT}/api/orders`
 
         const response = await fetch(url, {
             method: 'POST',
