@@ -81,10 +81,11 @@ const page = () => {
                 'Content-Type': 'application/json' 
             },
             body: JSON.stringify({ 
-                // street: data?.street,
-                // city: data?.city,
-                // state: data?.state,
-                // postal_code: data?.postal_code,
+                cart: getAllCarts,
+                totalAmount: totalAmount,
+                shippingCost: shippingCost,
+                tax: getAllTaxValue,
+                totalPrice: totalCostWithShipping,
             }),
         })
 
