@@ -63,7 +63,7 @@ const page = () => {
     }
 
     const handleForm = async(data: CheckoutOrderProp) => {
-        return console.log(data)
+
         const getTokenResponse = await fetch('/api/fetch-token')
 
         const getToken = await getTokenResponse.json()
@@ -81,6 +81,12 @@ const page = () => {
                 'Content-Type': 'application/json' 
             },
             body: JSON.stringify({ 
+                address_id: data.address_id,
+                name_on_card: data.name_on_card,
+                card_number: data.card_number,
+                expiry_month: data.expiry_month,
+                expiry_year: data.expiry_year,
+                cvv: data.cvv,
                 cart: getAllCarts,
                 totalAmount: totalAmount,
                 shippingCost: shippingCost,
@@ -90,7 +96,7 @@ const page = () => {
         })
 
         const feedback = await response.json()
-        return data
+        console.log(feedback)
     }
 
     return (
