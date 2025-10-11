@@ -87,7 +87,7 @@ const page = () => {
                 expiry_month: Number(data.expiry_month),
                 expiry_year: Number(data.expiry_year),
                 cvv: Number(data.cvv),
-                cart: Number(getAllCarts),
+                cart: getAllCarts,
                 totalAmount: Number(totalAmount),
                 shippingCost: Number(shippingCost),
                 tax: Number(getAllTaxValue),
