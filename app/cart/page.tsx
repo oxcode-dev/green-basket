@@ -24,7 +24,6 @@ const page = () => {
                 </div>
 
                 <div className="w-full py-4 md:py-8">
-                    <pre>{JSON.stringify(totalAmount)}</pre>
                     <div className="flex flex-wrap md:flex-nowrap">
                         <div className="w-full md:w-2/3 md:pr-6">
                             <div className="border border-gray-300 rounded-xl p-2 w-full">
