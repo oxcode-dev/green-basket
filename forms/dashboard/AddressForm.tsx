@@ -52,7 +52,7 @@ const AddressForm = ({ address, setOpen }: FormProp) => {
 
         const getToken = await getTokenResponse.json()
 
-        if(isEmpty(getToken)) {
+        if(getToken && !getToken?.token){
             return alert('Unauthenticated User')
         }
 
@@ -62,7 +62,8 @@ const AddressForm = ({ address, setOpen }: FormProp) => {
             method: data.id ? 'PUT' : 'POST',
             headers: { 
                 Authorization: `Bearer ${getToken.token}`,
-                'Content-Type': 'application/json' 
+                'Content-Type': 'application/json',
+                'Accept': 'application/json', 
             },
             body: JSON.stringify({ 
                 street: data?.street,

@@ -26,7 +26,6 @@ const page = () => {
         const getToken = await getTokenResponse.json()
     
         if(getToken && !getToken?.token){
-
             location.href = '/logout'
         }
         
