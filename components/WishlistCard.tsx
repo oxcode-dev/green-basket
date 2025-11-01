@@ -28,7 +28,7 @@ const WishlistCard = ({ wishlist }: Prop) => {
 
         const getToken = await getTokenResponse.json()
 
-        if(isEmpty(getToken)) {
+        if(getToken && !getToken?.token){
             location.href = '/logout'
         }
         
@@ -36,7 +36,8 @@ const WishlistCard = ({ wishlist }: Prop) => {
             method: 'DELETE',
             headers: { 
                 Authorization: `Bearer ${getToken.token}`,
-                'Content-Type': 'application/json' 
+                'Content-Type': 'application/json',
+                'Accept': 'application/json',
             },
         });
 
