@@ -78,7 +78,8 @@ const page = () => {
             method: 'POST',
             headers: { 
                 Authorization: `Bearer ${getToken.token}`,
-                'Content-Type': 'application/json' 
+                'Content-Type': 'application/json',
+                'Accept': 'application/json',
             },
             body: JSON.stringify({ 
                 address_id: data.address_id,
