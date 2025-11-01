@@ -26,7 +26,10 @@ const page = () => {
         setIsLoading(true);
         const response = await fetch(`${process.env.NEXT_PUBLIC_API_ENDPOINT}/api/forgot-password`, {
             method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
+            headers: { 
+                'Content-Type': 'application/json',
+                'Accept': 'application/json',
+             },
             body: JSON.stringify({ 
                 email: data.email, 
             }),
