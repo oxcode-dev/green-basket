@@ -27,7 +27,6 @@ export const useFetchAddresses = () => {
                 Authorization: `Bearer ${getToken.token}`,
                 'Content-Type': 'application/json',
                 'Accept': 'application/json',
-                'Accept-Type': 'application/json',
             },
         });
     
