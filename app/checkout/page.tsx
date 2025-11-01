@@ -68,7 +68,7 @@ const page = () => {
 
         const getToken = await getTokenResponse.json()
 
-        if(isEmpty(getToken)) {
+        if(getToken && !getToken?.token){
             return alert('Unauthenticated User')
         }
 

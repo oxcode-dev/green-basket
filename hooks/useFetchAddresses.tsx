@@ -16,9 +16,8 @@ export const useFetchAddresses = () => {
     
         const getToken = await getTokenResponse.json()
 
-        console.log(getToken && !getToken?.token)
-    
-        if(isEmpty(getToken) && !getToken?.token) {
+        if(getToken && !getToken?.token){
+        // if(isEmpty(getToken) && !getToken?.token) {
             location.href = '/logout'
         }
         
