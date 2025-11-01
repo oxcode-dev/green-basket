@@ -25,14 +25,16 @@ const page = () => {
     
         const getToken = await getTokenResponse.json()
     
-        if(isEmpty(getToken)) {
+        if(getToken && !getToken?.token){
+
             location.href = '/logout'
         }
         
         const res = await fetch(`${process.env.NEXT_PUBLIC_API_ENDPOINT}/api/orders/${params.id}`, {
             headers: { 
                 Authorization: `Bearer ${getToken.token}`,
-                'Content-Type': 'application/json' 
+                'Content-Type': 'application/json',
+                'Accept': 'application/json',
             },
         });
     
