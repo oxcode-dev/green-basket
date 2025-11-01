@@ -25,7 +25,9 @@ export const useFetchAddresses = () => {
         const res = await fetch(`${process.env.NEXT_PUBLIC_API_ENDPOINT}/api/addresses`, {
             headers: { 
                 Authorization: `Bearer ${getToken.token}`,
-                'Content-Type': 'application/json' 
+                'Content-Type': 'application/json',
+                'Accept': 'application/json',
+                'Accept-Type': 'application/json',
             },
         });
     
