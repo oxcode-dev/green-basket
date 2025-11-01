@@ -28,7 +28,7 @@ const ChangePasswordForm = () => {
 
         const getToken = await getTokenResponse.json()
 
-        if(isEmpty(getToken)) {
+        if(getToken && !getToken?.token){
             return alert('Unauthenticated User')
         }
 
@@ -36,7 +36,8 @@ const ChangePasswordForm = () => {
             method: 'POST',
             headers: { 
                 Authorization: `Bearer ${getToken.token}`,
-                'Content-Type': 'application/json' 
+                'Content-Type': 'application/json',
+                'Accept': 'application/json',
             },
             body: JSON.stringify({ 
                 current_password: data.current_password,
