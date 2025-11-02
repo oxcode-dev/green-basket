@@ -20,21 +20,9 @@ export const useFetchProducts = () => {
         return productSortLists.find(n => n.value === sortBy)
     }, [sortBy]);
     async function fetchProducts(page :number) {
-        // const res = await fetch(`${process.env.NEXT_PUBLIC_API_ENDPOINT}/api/products?search=${search}&page=${page}&perPage=${perPage}&sortField=${sortValue?.sort_field}&sortAsc=${sortValue?.sort_order}`, {
-        //     headers: { 
-        //         // Authorization: `Bearer ${getToken.token}`,
-        //         'Content-Type': 'application/json' 
-        //     },
-        // });
-    
-        // if (!res.ok) {
-        //     throw new Error("Failed to fetch posts");
-        // }
-        // return res.json();
-
         const url = `/products?search=${search}&page=${page}&perPage=${perPage}&sortField=${sortValue?.sort_field}&sortAsc=${sortValue?.sort_order}`
 
-        return get(url, '')
+        return get(url)
     }
 
     const { data: productsList, error, isLoading, isFetching } = useQuery({
