@@ -2,6 +2,7 @@ import { ProductSortListType } from '@/types';
 import { keepPreviousData, useQuery } from '@tanstack/react-query';
 import { useSearchParams } from 'next/navigation';
 import React, { useMemo } from 'react'
+import { get } from '@/services'
 
 export const useFetchProducts = () => {
     const searchParams = useSearchParams()
@@ -19,17 +20,21 @@ export const useFetchProducts = () => {
         return productSortLists.find(n => n.value === sortBy)
     }, [sortBy]);
     async function fetchProducts(page :number) {
-        const res = await fetch(`${process.env.NEXT_PUBLIC_API_ENDPOINT}/api/products?search=${search}&page=${page}&perPage=${perPage}&sortField=${sortValue?.sort_field}&sortAsc=${sortValue?.sort_order}`, {
-            headers: { 
-                // Authorization: `Bearer ${getToken.token}`,
-                'Content-Type': 'application/json' 
-            },
-        });
+        // const res = await fetch(`${process.env.NEXT_PUBLIC_API_ENDPOINT}/api/products?search=${search}&page=${page}&perPage=${perPage}&sortField=${sortValue?.sort_field}&sortAsc=${sortValue?.sort_order}`, {
+        //     headers: { 
+        //         // Authorization: `Bearer ${getToken.token}`,
+        //         'Content-Type': 'application/json' 
+        //     },
+        // });
     
-        if (!res.ok) {
-            throw new Error("Failed to fetch posts");
-        }
-        return res.json();
+        // if (!res.ok) {
+        //     throw new Error("Failed to fetch posts");
+        // }
+        // return res.json();
+
+        const url = `/products?search=${search}&page=${page}&perPage=${perPage}&sortField=${sortValue?.sort_field}&sortAsc=${sortValue?.sort_order}`
+
+        return get(url, '')
     }
 
     const { data: productsList, error, isLoading, isFetching } = useQuery({
