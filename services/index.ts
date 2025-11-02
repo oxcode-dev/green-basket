@@ -8,8 +8,8 @@ export async function get(url: string, token: string = '') {
     });
 
     if (!res.ok) {
-        // throw new Error("Failed to fetch posts");
-        console.log("Failed to fetch posts");
+        throw new Error("Failed to fetch posts");
+        // console.log("Failed to fetch posts");
     }
     return res.json();
 }
