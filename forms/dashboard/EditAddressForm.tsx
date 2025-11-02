@@ -30,7 +30,7 @@ const EditAddressForm = ({ address, open, setOpen} : FormProp) => {
 
         const getToken = await getTokenResponse.json()
 
-        if(isEmpty(getToken)) {
+        if(getToken && !getToken?.token){
             location.href = '/logout'
         }
         
@@ -38,7 +38,8 @@ const EditAddressForm = ({ address, open, setOpen} : FormProp) => {
             method: 'DELETE',
             headers: { 
                 Authorization: `Bearer ${getToken.token}`,
-                'Content-Type': 'application/json' 
+                'Content-Type': 'application/json',
+                'Accept': 'application/json' 
             },
         });
 

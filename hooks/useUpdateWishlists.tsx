@@ -18,7 +18,7 @@ export const useUpdateWishlists = () => {
 
         const getToken = await getTokenResponse.json()
 
-        if(isEmpty(getToken)) {
+        if(getToken && !getToken?.token){
             location.href = '/logout'
         }
         
@@ -26,7 +26,8 @@ export const useUpdateWishlists = () => {
             method: 'POST',
             headers: { 
                 Authorization: `Bearer ${getToken.token}`,
-                'Content-Type': 'application/json'
+                'Content-Type': 'application/json',
+                'Accept': 'application/json',
             },
             body: JSON.stringify({ 
                 product_id: product?.id,
