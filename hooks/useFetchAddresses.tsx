@@ -1,3 +1,4 @@
+import { get } from '@/services';
 import { AddressItemProp } from '@/types';
 import { isEmpty } from '@/types/helper';
 import { keepPreviousData, useQuery } from '@tanstack/react-query';
@@ -19,19 +20,16 @@ export const useFetchAddresses = () => {
         if(getToken && !getToken?.token){
             location.href = '/logout'
         }
-        
-        const res = await fetch(`${process.env.NEXT_PUBLIC_API_ENDPOINT}/api/addresses`, {
-            headers: { 
-                Authorization: `Bearer ${getToken.token}`,
-                'Content-Type': 'application/json',
-                'Accept': 'application/json',
-            },
-        });
-    
-        if (!res.ok) {
+
+        const url = '/addresses';
+
+        let response = await get(url, getToken.token)
+
+        if (!response.ok) {
             throw new Error("Failed to fetch posts");
         }
-        return res.json();
+
+        return response.json();
     }
 
     const { data: addressesList, error, isLoading, isFetching } = useQuery<AddressFetchType>({

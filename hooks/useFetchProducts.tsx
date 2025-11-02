@@ -20,9 +20,16 @@ export const useFetchProducts = () => {
         return productSortLists.find(n => n.value === sortBy)
     }, [sortBy]);
     async function fetchProducts(page :number) {
-        const url = `/produ?search=${search}&page=${page}&perPage=${perPage}&sortField=${sortValue?.sort_field}&sortAsc=${sortValue?.sort_order}`
+        const url = `/products?search=${search}&page=${page}&perPage=${perPage}&sortField=${sortValue?.sort_field}&sortAsc=${sortValue?.sort_order}`
 
-        return get(url)
+        let response = await get(url)
+
+        if (!response.ok) {
+            throw new Error("Failed to fetch posts");
+            // return console.log("Failed to fetch posts");
+        }
+
+        return response.json();
     }
 
     const { data: productsList, error, isLoading, isFetching } = useQuery({
@@ -31,8 +38,6 @@ export const useFetchProducts = () => {
         placeholderData: keepPreviousData,
         staleTime: 10 * 60 * 1000,
     });
-
-    console.log(error)
 
     const products = useMemo(() => {
         return productsList?.data?.data || [];

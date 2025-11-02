@@ -1,3 +1,4 @@
+import { get } from '@/services';
 import { ProductSortListType } from '@/types';
 import { keepPreviousData, useQuery } from '@tanstack/react-query';
 import { useParams, useSearchParams } from 'next/navigation';
@@ -20,17 +21,15 @@ export const useFetchCategoryProducts = () => {
         return productSortLists.find(n => n.value === sortBy)
     }, [sortBy]);
     async function fetchProducts(page :number) {
-        const res = await fetch(`${process.env.NEXT_PUBLIC_API_ENDPOINT}/api/categories/${params.slug}/products?page=${page}&perPage=${perPage}&sortField=${sortValue?.sort_field}&sortAsc=${sortValue?.sort_order}`, {
-            headers: { 
-                // Authorization: `Bearer ${getToken.token}`,
-                'Content-Type': 'application/json' 
-            },
-        });
-    
-        if (!res.ok) {
+        const url = `/categories/${params.slug}/products?page=${page}&perPage=${perPage}&sortField=${sortValue?.sort_field}&sortAsc=${sortValue?.sort_order}`;
+
+        let response = await get(url)
+
+        if (!response.ok) {
             throw new Error("Failed to fetch posts");
         }
-        return res.json();
+
+        return response.json();
     }
 
     const { data: productsList, error, isLoading, isFetching } = useQuery({

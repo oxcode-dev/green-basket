@@ -5,6 +5,7 @@ import { keepPreviousData, useQuery } from '@tanstack/react-query';
 import { useSearchParams } from 'next/navigation';
 import React, { useMemo } from 'react'
 import { useParams } from 'next/navigation'
+import { get } from '@/services';
 
 type FetchedProductType = {
     data: ProductItem;
@@ -16,17 +17,16 @@ export const useFetchProduct = () => {
     const { id } = params;
     
     async function fetchProduct(id : string) {
-        const res = await fetch(`${process.env.NEXT_PUBLIC_API_ENDPOINT}/api/products/${id}`, {
-            headers: { 
-                // Authorization: `Bearer ${getToken.token}`,
-                'Content-Type': 'application/json' 
-            },
-        });
-    
-        if (!res.ok) {
+        const url = `/products/${id}`
+
+        let response = await get(url)
+
+        if (!response.ok) {
             throw new Error("Failed to fetch posts");
+            // return console.log("Failed to fetch posts");
         }
-        return res.json();
+
+        return response.json();
     }
 
     const { data, error, isLoading, isFetching } = useQuery<FetchedProductType>({

@@ -1,19 +1,18 @@
+import { get } from '@/services';
 import { keepPreviousData, useQuery } from '@tanstack/react-query';
 import React, { useMemo } from 'react'
 
 export const useFetchCategories = () => {
     async function fetchCategories() {
-        const res = await fetch(`${process.env.NEXT_PUBLIC_API_ENDPOINT}/api/categories`, {
-            headers: { 
-                // Authorization: `Bearer ${getToken.token}`,
-                'Content-Type': 'application/json' 
-            },
-        });
+        const url = '/categories';
     
-        if (!res.ok) {
+        let response = await get(url)
+
+        if (!response.ok) {
             throw new Error("Failed to fetch posts");
         }
-        return res.json();
+
+        return response.json();
     }
 
     const { data: categoriesList, error, isLoading, isFetching } = useQuery({
@@ -24,7 +23,7 @@ export const useFetchCategories = () => {
     });
 
     const categories = useMemo(() => {
-        return categoriesList?.data;
+        return categoriesList?.data || [];
     }, [categoriesList]);
 
     return {
