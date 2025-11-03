@@ -1,4 +1,5 @@
 import React, { createContext, useState } from "react";
+import { JSX } from "react/jsx-runtime";
 
 type TokenContextType = {
     token: string;
@@ -13,7 +14,7 @@ type PropsType = {
     children:  React.ReactNode;
 }
 
-export const AuthProvider = ({children}: PropsType) => {
+export const AuthProvider = ({ children }: PropsType) : JSX.Element => {
     const [token, setToken] = useState('');
     const updateToken = (string: string) => setToken(string);
 
