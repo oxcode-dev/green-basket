@@ -180,7 +180,7 @@ const page = () => {
                         </div>
                     </div>
                 : null }
-                { !isFetching && !product ? <EmptyState text="Product Not Found" /> : null }
+                { !isFetching && !product ? <EmptyState text="Product Reviews Not Found" /> : null }
             </div>
         </AppSetup>
     )
