@@ -14,11 +14,11 @@ type CartProp = {
 
 type CheckoutOrderProp = {
     address_id: string;
-    name_on_card: string;
-    card_number: string | number;
-    expiry_month?: number | string;
-    expiry_year?: number | string;
-    cvv: string | number;
+    // name_on_card: string;
+    // card_number: string | number;
+    // expiry_month?: number | string;
+    // expiry_year?: number | string;
+    // cvv: string | number;
     cart: CartProp[],
     totalAmount: number,
     shippingCost: number,
@@ -34,7 +34,7 @@ const page = () => {
     const { addresses } = useFetchAddresses()
 
     const mutation = useMutation({
-        mutationFn: (data) => handleForm(data)
+        mutationFn: (data: CheckoutOrderProp) => handleForm(data)
     })
 
     const {
@@ -45,11 +45,11 @@ const page = () => {
     } = useForm<CheckoutOrderProp>({
         defaultValues: {
             address_id: '',
-            name_on_card: '',
-            card_number: '',
-            expiry_month: '',
-            expiry_year: '',
-            cvv: '',
+            // name_on_card: '',
+            // card_number: '',
+            // expiry_month: '',
+            // expiry_year: '',
+            // cvv: '',
             cart: getAllCarts,
             totalAmount: totalAmount,
             shippingCost: shippingCost,
@@ -83,11 +83,11 @@ const page = () => {
             },
             body: JSON.stringify({ 
                 address_id: data.address_id,
-                name_on_card: data.name_on_card,
-                card_number: data.card_number,
-                expiry_month: Number(data.expiry_month),
-                expiry_year: Number(data.expiry_year),
-                cvv: Number(data.cvv),
+                // name_on_card: data.name_on_card,
+                // card_number: data.card_number,
+                // expiry_month: Number(data.expiry_month),
+                // expiry_year: Number(data.expiry_year),
+                // cvv: Number(data.cvv),
                 cart: getAllCarts,
                 totalAmount: Number(totalAmount),
                 shippingCost: Number(shippingCost),
@@ -145,40 +145,7 @@ const page = () => {
                                 </div>
                             </div>
 
-                            <div className="border border-gray-300 rounded-xl p-2 px-4 w-full">
-                                <p className="text-md text-gray-600 font-semibold py-2">
-                                    Payment
-                                </p>
-                                <div>
-                                    <div className="space-y-4 py-2">
-                                        <div className="space-y-4 md:space-y-0">
-                                            <label>Name on Card</label>
-                                            <input type="text" {...register("name_on_card",  { required: true })} placeholder="Name on card" className="input w-full bg-white border border-gray-300" />
-                                        </div>
-                                        <div className="space-y-4 md:space-y-0">
-                                            <label>Card Number</label>
-                                            <input type="text" {...register("card_number",  { required: true })} placeholder="Subject" className="input w-full bg-white border border-gray-300" />
-                                        </div>
-                                        <div>
-                                            <p>Expiry</p>
-                                            <div className="w-full grid grid-cols-3 space-x-3">
-                                                <div className="space-y-4 md:space-y-0">
-                                                    {/* <label>Month</label> */}
-                                                    <input type="text"  {...register("expiry_month",  { required: true })} placeholder="month" className="input w-full bg-white border border-gray-300" />
-                                                </div>
-                                                <div className="space-y-4 md:space-y-0">
-                                                    {/* <label>Year</label> */}
-                                                    <input type="text"  {...register("expiry_year",  { required: true })} placeholder="year" className="input w-full bg-white border border-gray-300" />
-                                                </div>
-                                                <div className="space-y-4 md:space-y-0">
-                                                    {/* <label>CVV</label> */}
-                                                    <input type="text"  {...register("cvv",  { required: true })} placeholder="CVV" className="input w-full bg-white border border-gray-300" />
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
+                            
                         </div>
                     </div>
 
@@ -269,3 +236,40 @@ const page = () => {
 }
 
 export default page;
+
+
+
+// <div className="border border-gray-300 rounded-xl p-2 px-4 w-full hidden">
+//     <p className="text-md text-gray-600 font-semibold py-2">
+//         Payment
+//     </p>
+//     <div>
+//         <div className="space-y-4 py-2">
+//             <div className="space-y-4 md:space-y-0">
+//                 <label>Name on Card</label>
+//                 <input type="text" {...register("name_on_card",  { required: true })} placeholder="Name on card" className="input w-full bg-white border border-gray-300" />
+//             </div>
+//             <div className="space-y-4 md:space-y-0">
+//                 <label>Card Number</label>
+//                 <input type="text" {...register("card_number",  { required: true })} placeholder="Subject" className="input w-full bg-white border border-gray-300" />
+//             </div>
+//             <div>
+//                 <p>Expiry</p>
+//                 <div className="w-full grid grid-cols-3 space-x-3">
+//                     <div className="space-y-4 md:space-y-0">
+//                         {/* <label>Month</label> */}
+//                         <input type="text"  {...register("expiry_month",  { required: true })} placeholder="month" className="input w-full bg-white border border-gray-300" />
+//                     </div>
+//                     <div className="space-y-4 md:space-y-0">
+//                         {/* <label>Year</label> */}
+//                         <input type="text"  {...register("expiry_year",  { required: true })} placeholder="year" className="input w-full bg-white border border-gray-300" />
+//                     </div>
+//                     <div className="space-y-4 md:space-y-0">
+//                         {/* <label>CVV</label> */}
+//                         <input type="text"  {...register("cvv",  { required: true })} placeholder="CVV" className="input w-full bg-white border border-gray-300" />
+//                     </div>
+//                 </div>
+//             </div>
+//         </div>
+//     </div>
+// </div>
