@@ -171,7 +171,7 @@ const page = () => {
                                                     <ReviewCard review={review} />
                                                 </div>
                                             ))}
-                                            { reviews && reviews.length === 0 ? <EmptyState text="Product Not Found" /> : null }
+                                            { reviews && reviews.length === 0 ? <EmptyState text="Product Reviews Not Found" /> : null }
                                         </div>
                                     )}
                                 </div>
@@ -180,7 +180,7 @@ const page = () => {
                         </div>
                     </div>
                 : null }
-                { !isFetching && !product ? <EmptyState text="Product Reviews Not Found" /> : null }
+                { !isFetching && !product ? <EmptyState text="Product Not Found" /> : null }
             </div>
         </AppSetup>
     )
