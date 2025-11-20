@@ -28,7 +28,7 @@ export const ProductCard = ({ product } : ProductCardType) => {
   }, [product]);
 
   return (
-    <div className="product-card flex flex-col justify-center rounded-md border border-gray-300">
+    <div title={product?.title} className="product-card flex flex-col justify-center rounded-md border border-gray-300">
       <Link href={`/shop/${product.slug}`} className="flex flex-col justify-center items-center">
         <img 
           src="https://preview.colorlib.com/theme/vegefoods/images/product-2.jpg"
@@ -38,7 +38,10 @@ export const ProductCard = ({ product } : ProductCardType) => {
         />
       </Link>
       <div className="flex flex-col justify-center items-center p-2 py-6">
-        <Link href={`/shop/${product.slug}`} className="text-gray-800 font-semibold text-lg line-clamp-1">
+        <Link 
+          href={`/shop/${product.slug}`} 
+          className="text-gray-800 font-semibold text-base line-clamp-1"
+        >
           { product?.title }
         </Link>
         <p dangerouslySetInnerHTML={{ __html: moneyFormat(product?.price || 0)}} className="cart-text text-gray-400 text-md font-medium pb-2.5"></p>
