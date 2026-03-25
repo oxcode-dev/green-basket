@@ -88,12 +88,14 @@ export const page = () => {
               
             </div>
 
-            <div className="py-8 flex justify-center">
-              <Link href="/shop" className="btn btn-pill">
-                <span>Visit Shop</span>
-                <ArrowRightIcon className="size-5" />
-              </Link>
-            </div>
+            { products.length > 0 ? (
+              <div className="py-8 flex justify-center">
+                <Link href="/shop" className="btn btn-pill">
+                  <span>Visit Shop</span>
+                  <ArrowRightIcon className="size-5" />
+                </Link>
+              </div>
+            ): null }
           </div>
 
           <div className="w-full md:w-1/5 md:flex hidden">
