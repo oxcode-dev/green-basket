@@ -21,7 +21,7 @@ export const EmptyState = ({ text } : Prop) => {
                     />
                 </div>
                 
-                <h1 className="text-xl font-medium py-2 text-gray-400">
+                <h1 className="text-xl font-medium py-2 pt-4 text-gray-400">
                     {text}
                 </h1>
             </div>

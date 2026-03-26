@@ -1,3 +1,4 @@
+import { EmptyState } from '@/components/EmptyState'
 import { useFetchCategories } from '@/hooks/useFetchCategories'
 import { CategoryItem } from '@/types'
 import { ChevronDownIcon, TagIcon } from '@heroicons/react/24/outline'
@@ -28,6 +29,10 @@ export const CategoriesSection = () => {
                 </div>
                 ): null 
             }
+
+            {/* { !isFetching && categories.length === 0 ? (
+                <EmptyState text='No Data' />
+            ) : null } */}
         </div>
     )
 }
@@ -50,7 +55,7 @@ export const CategoryDropdown = () => {
                     </div>
                 </div>
                 {
-                    !isFetching ? (
+                    !isFetching && categories.length > 0 ? (
                         <ul
                             tabIndex={0}
                             className="bg-white menu menu-sm dropdown-content bg-base-100 rounded-box z-10 mt-3 w-52 p-2 shadow"
@@ -65,6 +70,8 @@ export const CategoryDropdown = () => {
                         </ul>
                     ) : null
                 }
+
+                
             </div>
         </div>
     )
