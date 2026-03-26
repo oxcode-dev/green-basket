@@ -1,5 +1,6 @@
 'use client'
 
+import { EmptyState } from '@/components/EmptyState';
 import Loading from '@/components/Loading';
 import Pager from '@/components/Pager';
 import { ProductCard } from '@/components/ProductCard';
@@ -123,7 +124,7 @@ const page = () => {
 
                         { isFetching ? <Loading /> : null }
                         
-                        { !isFetching ? (
+                        { !isFetching && products.length > 0 ? (
                             <div>
                                 <div className="grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 md:gap-6 gap-6 sm:gap-4">
                                     { products.map((item, key) => (
@@ -141,6 +142,8 @@ const page = () => {
                                 </div>
                             </div>
                         ): null }
+
+                        { !isFetching && products.length === 0 ? <EmptyState text="Product Not Found" /> : null }
                     </div>
                 </div>
             </div>
