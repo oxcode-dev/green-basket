@@ -1,5 +1,6 @@
 'use client'
 
+import { EmptyState } from '@/components/EmptyState'
 import Loading from '@/components/Loading'
 import { ProductCard } from '@/components/ProductCard'
 import { useFetchProducts } from '@/hooks/useFetchProducts'
@@ -85,8 +86,17 @@ export const page = () => {
                   </div>
                 ))}
               </Suspense>
-              
             </div>
+
+            { !isFetching && products.length === 0 ? (
+              <div>
+                <div>
+                  <EmptyState 
+                    text="No Product Available in our store! Try Again"
+                  />
+                </div>
+              </div>
+            ) : null }
 
             { products.length > 0 ? (
               <div className="py-8 flex justify-center">
