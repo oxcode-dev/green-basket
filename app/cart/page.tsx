@@ -7,8 +7,8 @@ import React from 'react'
 import Link from "next/link";
 import { useCartDetail } from '@/hooks/useCartDetail';
 import { moneyFormat } from '@/types/helper';
-import { EmptyState } from '@/components/EmptyState';
 import Loading from '@/components/Loading';
+import { EmptyCart } from '@/components/EmptyCart';
 
 const page = () => {
     const {getAllCarts, handleAddCart, handleReduceCartQuantity, handleRemoveCartItem, getProductDetails
@@ -191,7 +191,7 @@ const page = () => {
 
                 {
                     !isFetching && getAllCarts.length === 0 ? (
-                        <EmptyState text='No Data' />
+                        <EmptyCart text='Cart Empty' />
                     ) : null
                 }
             </div>
