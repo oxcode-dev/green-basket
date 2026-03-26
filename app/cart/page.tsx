@@ -8,10 +8,11 @@ import Link from "next/link";
 import { useCartDetail } from '@/hooks/useCartDetail';
 import { moneyFormat } from '@/types/helper';
 import { EmptyState } from '@/components/EmptyState';
+import Loading from '@/components/Loading';
 
 const page = () => {
     const {getAllCarts, handleAddCart, handleReduceCartQuantity, handleRemoveCartItem, getProductDetails
-        , totalCartsPrice, getAllTaxValue, totalAmount } = useCartDetail();
+        , totalCartsPrice, getAllTaxValue, totalAmount, isFetching } = useCartDetail();
 
     return (
         <AppSetup>
@@ -24,7 +25,9 @@ const page = () => {
                     </div>
                 </div>
 
-                { getAllCarts && getAllCarts.length > 0 ? (
+                { isFetching ? <Loading /> : null }
+
+                { !isFetching && getAllCarts && getAllCarts.length > 0 ? (
                     <div className="w-full py-4 md:py-8">
                         <div className="flex flex-wrap md:flex-nowrap">
                             <div className="w-full md:w-2/3 md:pr-6">
@@ -184,9 +187,13 @@ const page = () => {
                         </div>
                         
                     </div>
-                ): (
-                    <EmptyState text='No Data' />
-                )}
+                ): null}
+
+                {
+                    !isFetching && getAllCarts.length === 0 ? (
+                        <EmptyState text='No Data' />
+                    ) : null
+                }
             </div>
         </AppSetup>
     )
