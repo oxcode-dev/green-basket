@@ -9,7 +9,7 @@ type Prop = {
 export const EmptyCart = ({ text } : Prop) => {
     return (
         <div>
-            <div className="py-24 flex justify-center flex-col items-center">
+            <div className="py-24 flex justify-center flex-col items-center space-y-4">
                 <div className="w-48">
                     <Image
                         className="w-full rounded-lg"
@@ -26,7 +26,7 @@ export const EmptyCart = ({ text } : Prop) => {
                     {text}
                 </h1>
 
-                <Link href="/">
+                <Link href="/shop" className="bg-green-600 text-white rounded-lg p-6 py-2.5 my-2">
                     Continue Shopping
                 </Link>
             </div>
