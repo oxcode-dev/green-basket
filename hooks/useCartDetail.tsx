@@ -137,6 +137,6 @@ export const useCartDetail = () => {
     return {
         getAllCarts, handleAddCart, handleReduceCartQuantity, totalCartsQuantity,
         resetCart, handleRemoveCartItem, cartProductsIds, products, totalCartsPrice,
-        getProductDetails, getAllTaxValue, totalAmount,
+        getProductDetails, getAllTaxValue, totalAmount, isFetching,
     }
 }
