@@ -34,4 +34,3 @@ export const EmptyCart = ({ text } : Prop) => {
     )
 }
 
-
