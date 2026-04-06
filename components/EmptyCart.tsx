@@ -33,3 +33,4 @@ export const EmptyCart = ({ text } : Prop) => {
         </div>
     )
 }
+
