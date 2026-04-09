@@ -1,14 +1,30 @@
-export async function get(url: string, token: string = '') {
-    console.log(process.env.NEXT_PUBLIC_API_ENDPOINT)
-    const res = await fetch(`${process.env.NEXT_PUBLIC_API_ENDPOINT}/api${url}`, {
+// export async function get(url: string, token: string = '') {
+//     console.log(process.env.NEXT_PUBLIC_API_ENDPOINT)
+//     const res = await fetch(`${process.env.NEXT_PUBLIC_API_ENDPOINT}/api${url}`, {
+//         headers: { 
+//             Authorization: `${token ? 'Bearer ' + token : ''}`,
+//             'Content-Type': 'application/json',
+//             'Accept': 'application/json',
+//         },
+//     });
+
+//     return await res//.json();
+// }
+
+import axios from "axios";
+axios.defaults.withCredentials = true;
+
+export async function get(url: string, token: string | null = '') {
+    const res = await axios(`${process.env.NEXT_PUBLIC_API_ENDPOINT}${url}`, {
         headers: { 
             Authorization: `${token ? 'Bearer ' + token : ''}`,
             'Content-Type': 'application/json',
             'Accept': 'application/json',
         },
+        withCredentials: true,
     });
 
-    return await res//.json();
+    return res
 }
 
 export async function post(url: string, data={}, token: string = '') {
