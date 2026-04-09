@@ -1,4 +1,5 @@
 export async function get(url: string, token: string = '') {
+    console.log(process.env.NEXT_PUBLIC_API_ENDPOINT)
     const res = await fetch(`${process.env.NEXT_PUBLIC_API_ENDPOINT}/api${url}`, {
         headers: { 
             Authorization: `${token ? 'Bearer ' + token : ''}`,
