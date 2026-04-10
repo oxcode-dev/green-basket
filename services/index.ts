@@ -15,7 +15,7 @@ import axios from "axios";
 axios.defaults.withCredentials = true;
 
 export async function get(url: string, token: string | null = '') {
-    const res = await axios(`${process.env.NEXT_PUBLIC_API_ENDPOINT}${url}`, {
+    const res = await axios(`${process.env.NEXT_PUBLIC_API_ENDPOINT}/api${url}`, {
         headers: { 
             Authorization: `${token ? 'Bearer ' + token : ''}`,
             'Content-Type': 'application/json',
